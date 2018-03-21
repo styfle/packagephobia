@@ -22,16 +22,16 @@ function getDirSize(root, size=0) {
 
 async function getPackageSize(package) {
     console.log(`getPackageSize(${package})`);
-    const TMPPACKAGE = 'tmp-package' + Math.random();
-    const PACKAGEDIR = join(TMPDIR, TMPPACKAGE);
-    const NODEMODULES = join(PACKAGEDIR, 'node_modules');
-    console.log({ TMPDIR, TMPPACKAGE, PACKAGEDIR, NODEMODULES });
-    await exec(`mkdir ${TMPPACKAGE}`, { cwd: TMPDIR });
-    await exec(`npm init -y`, { cwd: PACKAGEDIR });
-    await exec(`npm install --save ${package}`, { cwd: PACKAGEDIR });
-    const size = getDirSize(NODEMODULES);
+    const tmpPackage = 'tmp-package' + Math.random();
+    const pkgDir = join(TMPDIR, tmpPackage);
+    const nodeModules = join(pkgDir, 'node_modules');
+    console.log({ TMPDIR, tmpPackage, pkgDir, nodeModules });
+    await exec(`mkdir ${tmpPackage}`, { cwd: TMPDIR });
+    await exec(`npm init -y`, { cwd: pkgDir });
+    await exec(`npm install --save ${package}`, { cwd: pkgDir });
+    const size = getDirSize(nodeModules);
     console.log(`Size of ${package}: ${size} bytes`);
-    await exec(`rm -rf ${TMPPACKAGE}`, { cwd: TMPDIR });
+    await exec(`rm -rf ${tmpPackage}`, { cwd: TMPDIR });
     return size;
 }
 
