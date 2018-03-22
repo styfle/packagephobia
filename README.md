@@ -4,6 +4,8 @@
 
 Inspired by [bundlephobia](https://github.com/pastelsky/bundlephobia) and [cost-of-modules](https://github.com/siddharthkp/cost-of-modules).
 
+**NOTE: This is currenlty a work in progress...let me know if you find this useful [@styfle](https://twitter.com/styfle)**
+
 ## How is this different?
 
 - Package Phobia reports the install size of a package.
