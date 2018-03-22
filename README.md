@@ -1,5 +1,7 @@
 # Package Phobia
 
+<a href="http://turnoff.us/geek/npm-install/"><img src="http://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
+
 ⚖️ Find the cost of adding a new dev dependency to your project
 
 Inspired by [bundlephobia](https://github.com/pastelsky/bundlephobia) and [cost-of-modules](https://github.com/siddharthkp/cost-of-modules).
