@@ -59,3 +59,6 @@ typings/
 
 # output files
 dist
+.next
+pages/*.js
+src/*.js
