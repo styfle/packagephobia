@@ -1,7 +1,7 @@
 {
   "name": "packagephobia",
   "version": "1.0.0",
-  "description": "",
+  "description": "Find the cost of adding a new dev dependency to your project",
   "main": "dist/index.js",
   "scripts": {
     "dev": "next",
@@ -9,13 +9,18 @@
     "start": "next start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/styfle/packagephobia.git"
+  },
   "keywords": [],
   "author": "styfle",
   "license": "MIT",
   "dependencies": {
     "@types/next": "^2.4.8",
     "@zeit/next-typescript": "0.0.11",
-    "next": "^5.0.0",
+    "isomorphic-unfetch": "^2.0.0",
+    "next": "^5.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
