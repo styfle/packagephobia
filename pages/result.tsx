@@ -12,7 +12,7 @@ interface Props {
 interface State {}
 
 export default class ResultPage extends React.Component<Props, State> {
-    static async getInitialProps(props: {req: any, query: any}) {
+    static async getInitialProps(props: { req: any, query: any }) {
         const { req, query } = props;
         const isServer = !!req
         const pkg = query.p;
@@ -20,9 +20,11 @@ export default class ResultPage extends React.Component<Props, State> {
         console.log(`getInitialProps() was called on the ${env} for package ${pkg}`);
 
         if (isServer) {
-            const { getPackageSize } = await import('../src/pkg-stats');
+            // TODO: fix this since its trying to render on client for some reason
+            //const { getPackageSize } = await import('../src/pkg-stats');
             const pkgVersion = parsePackageString(pkg);
-            const size = await getPackageSize(pkg);
+            //const size = await getPackageSize(pkg);
+            const size = 1237532;
             return { pkgVersion, size };
         } else {
             // On the client, we should fetch the data remotely
@@ -38,8 +40,16 @@ export default class ResultPage extends React.Component<Props, State> {
     render () {
         const { pkgVersion, size } = this.props;
         const readableSize = getReadableFileSize(size);
-        return (<div>
-            <h1>Result</h1>
+
+        const container: React.CSSProperties = {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+        };
+
+        return (<div style={container}>
+            <h1>{pkgVersion.name}@{pkgVersion.version}</h1>
             <p>Package {pkgVersion.name} is size {readableSize}</p>
         </div>);
     }
