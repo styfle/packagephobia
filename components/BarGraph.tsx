@@ -10,8 +10,8 @@ interface Props {
 
 interface Reading {
     version: string;
-    size: number;
-    gzip: number;
+    installSize: number;
+    publishSize: number;
     disabled: boolean;
 }
 
@@ -22,19 +22,18 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
 
     const gzipValues = readings
       .filter(reading => !reading.disabled)
-      .map(reading => reading.gzip)
+      .map(reading => reading.publishSize)
 
     const sizeValues = readings
       .filter(reading => !reading.disabled)
-      .map(reading => reading.size)
+      .map(reading => reading.installSize)
 
     const maxValue = Math.max(...[...gzipValues, ...sizeValues])
     const scale = 100 / maxValue
 
-    const getTooltipMessage = (reading: Reading) => {
-      const formattedSize = getReadableFileSize(reading.size);
-      const formattedGzip = getReadableFileSize(reading.gzip);
-      return `Minified: ${formattedSize} | Gzipped: ${formattedGzip}`;
+    const getTooltipMessage = (r: Reading) => {
+      return `Publish Size: ${getReadableFileSize(r.installSize)}`
+        + `| Install Size: ${getReadableFileSize(r.publishSize)}`;
     }
 
 
@@ -43,43 +42,38 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
         <style dangerouslySetInnerHTML={ { __html: stylesheet } } />
         <figure className="bar-graph">
           {
-            readings.map((reading, i) => (
-              reading.disabled ? (
+            readings.map((r, i) => (
+              r.disabled ? (
                 <div
-                  key={ i }
+                  key={i}
                   className="bar-graph__bar-group bar-graph__bar-group--disabled"
-                  onClick={ () => onBarClick(reading) }
+                  onClick={() => onBarClick(r)}
                 >
                   <div
                     className="bar-graph__bar"
-                    style={ { height: `${ 50 }%` } }
-                    data-balloon="Unknown | Click 👆 to build"
+                    style={{ height: '50%' }}
+                    title="Unknown | Click to build"
                   >
-                       <span className="bar-graph__bar-version">
-                        { reading.version }
-                        </span>
-                    <span className="bar-graph__bar-version">
-                        { reading.version }
-                        </span>
+                    <span className="bar-graph__bar-version">{ r.version }</span>
+                    <span className="bar-graph__bar-version">{ r.version }</span>
                   </div>
                 </div>
               ) : (
                 <div
-                  onClick={ () => onBarClick(reading) }
-                  key={ i } className="bar-graph__bar-group"
+                  onClick={() => onBarClick(r)}
+                  key={i}
+                  className="bar-graph__bar-group"
                 >
                   <div
                     className="bar-graph__bar"
-                    style={ { height: `${reading.size * scale}%` } }
-                    data-balloon={ getTooltipMessage(reading) }
+                    style={{ height: `${r.installSize * scale}%` }}
+                    title={getTooltipMessage(r) }
                   >
-                      <span className="bar-graph__bar-version">
-                        { reading.version }
-                        </span>
+                      <span className="bar-graph__bar-version">{r.version}</span>
                   </div>
                   <div
                     className="bar-graph__bar2"
-                    style={ { height: `${reading.gzip * scale}%` } }
+                    style={{ height: `${r.publishSize * scale}%` }}
                   />
                 </div>
               )
@@ -89,11 +83,11 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
         <div className="bar-graph__legend">
           <div className="bar-graph__legend__bar1">
             <div className="bar-graph__legend__colorbox"/>
-            Min
+            Install
           </div>
           <div className="bar-graph__legend__bar2">
             <div className="bar-graph__legend__colorbox"/>
-            GZIP
+            Publish
           </div>
         </div>
       </div>

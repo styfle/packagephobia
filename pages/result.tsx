@@ -13,7 +13,7 @@ interface Props {
 interface State {}
 
 export default class ResultPage extends React.Component<Props, State> {
-    static async getInitialProps(props: { req: any, query: any }) {
+    static async getInitialProps(props: { req: any, query: any }): Promise<Props> {
         const { req, query } = props;
         const isServer = !!req
         const pkg = query.p;
@@ -52,40 +52,42 @@ export default class ResultPage extends React.Component<Props, State> {
         const readings = [
             {
                 version: '1.0.0',
-                size: 200124,
-                gzip: 123541,
+                installSize: 200124,
+                publishSize: 123541,
                 disabled: false,
             },
             {
                 version: '1.0.1',
-                size: 200224,
-                gzip: 123641,
+                installSize: 200224,
+                publishSize: 123641,
                 disabled: false,
             },
             {
                 version: '1.0.2',
-                size: 200524,
-                gzip: 123941,
+                installSize: 200524,
+                publishSize: 123941,
                 disabled: false,
             },
             {
                 version: '1.0.3',
-                size: 200824,
-                gzip: 124041,
+                installSize: 200824,
+                publishSize: 124041,
                 disabled: false,
             },
             {
                 version: '1.0.4',
-                size: 200924,
-                gzip: 124241,
+                installSize: 500924,
+                publishSize: 324241,
                 disabled: false,
             },
         ];
 
+        const current = readings.find(o => o.version === pkgVersion.version);
+
         return (<div style={container}>
             <h1>{pkgVersion.name}@{pkgVersion.version}</h1>
             <p>Package {pkgVersion.name} is {readableSize} after npm install</p>
-            <BarGraph readings={readings} onBarClick={(r) => console.log('you clicked ' + r.version)} />
+            <BarGraph readings={readings} onBarClick={r => console.log('you clicked ' + r.version)} />
         </div>);
     }
 }
