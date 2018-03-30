@@ -2,7 +2,7 @@ import * as React from 'react';
 import 'isomorphic-unfetch';
 import { parsePackageString, getReadableFileSize } from '../utils/index';
 import BarGraph from '../components/BarGraph';
-
+import Stats from '../components/Stats';
 
 interface Props {
     //url: { query: any };
@@ -84,10 +84,19 @@ export default class ResultPage extends React.Component<Props, State> {
 
         const current = readings.find(o => o.version === pkgVersion.version);
 
+        if (!current) {
+            console.error('Failed to find version ' + pkgVersion.version)
+            return null;
+        }
+
         return (<div style={container}>
             <h1>{pkgVersion.name}@{pkgVersion.version}</h1>
             <p>Package {pkgVersion.name} is {readableSize} after npm install</p>
-            <BarGraph readings={readings} onBarClick={r => console.log('you clicked ' + r.version)} />
+            <div style={{ display: 'flex' }}>
+                <Stats publishSize={current.publishSize} installSize={current.installSize} />
+                <BarGraph readings={readings} onBarClick={r => console.log('you clicked ' + r.version)} />
+            </div>
+            
         </div>);
     }
 }
