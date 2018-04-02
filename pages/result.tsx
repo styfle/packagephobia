@@ -51,6 +51,10 @@ export default class ResultPage extends React.Component<Props, State> {
             alignItems: 'center',
         };
 
+        const h1: React.CSSProperties = {
+            fontFamily: '"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace'
+        }
+
         const readings = [
             {
                 version: '1.0.0',
@@ -98,7 +102,7 @@ export default class ResultPage extends React.Component<Props, State> {
         }
 
         return (<div style={container}>
-            <h1>{pkgVersion.name}@{pkgVersion.version}</h1>
+            <h1 style={h1}>{pkgVersion.name}@{pkgVersion.version}</h1>
             <p>Package {pkgVersion.name} is {readableSize.readable} after npm install</p>
             <div style={{ display: 'flex' }}>
                 <Stats publish={publish} install={install} />
