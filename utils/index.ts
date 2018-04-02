@@ -27,7 +27,7 @@ export function parsePackageString(packageString: string): PackageVersion {
     return { name, version, scoped };
 }
 
-export function getReadableFileSize(bytes: number): string {
+export function getReadableFileSize(bytes: number): SizeWithUnit {
     let i = -1;
     const units = ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     do {
@@ -35,5 +35,7 @@ export function getReadableFileSize(bytes: number): string {
         i++;
     } while (bytes > 1024);
 
-    return Math.max(bytes, 0.1).toFixed(1) + ' ' + units[i];
+    const size = Math.max(bytes, 0.1).toFixed(1);
+    const unit = units[i];
+    return { size, unit, readable: `${size} ${unit}` };
 };

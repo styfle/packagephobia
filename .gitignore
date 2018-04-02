@@ -62,3 +62,5 @@ dist
 .next
 pages/*.js
 src/*.js
+
+example.js

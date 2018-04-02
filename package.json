@@ -18,11 +18,13 @@
   "license": "MIT",
   "dependencies": {
     "@types/next": "^2.4.8",
+    "@types/redis": "^2.8.6",
     "@zeit/next-typescript": "0.0.11",
     "isomorphic-unfetch": "^2.0.0",
     "next": "^5.1.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "redis": "^2.8.0"
   },
   "devDependencies": {
     "@types/node": "^9.4.7",

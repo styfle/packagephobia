@@ -3,3 +3,9 @@ interface PackageVersion {
     version: string | null;
     scoped: boolean;
 }
+
+interface SizeWithUnit {
+    size: string;
+    unit: string;
+    readable: string;
+}

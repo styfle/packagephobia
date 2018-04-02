@@ -32,10 +32,9 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
     const scale = 100 / maxValue
 
     const getTooltipMessage = (r: Reading) => {
-      return `Publish Size: ${getReadableFileSize(r.installSize)}`
-        + `| Install Size: ${getReadableFileSize(r.publishSize)}`;
+      return `Publish Size: ${getReadableFileSize(r.installSize).readable}`
+        + `| Install Size: ${getReadableFileSize(r.publishSize).readable}`;
     }
-
 
     return (
       <div className="bar-graph-container">

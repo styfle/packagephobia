@@ -1,10 +1,9 @@
 import * as React from 'react';
 
 interface Props {
-    publishSize: number;
-    installSize: number;
+    publish: SizeWithUnit;
+    install: SizeWithUnit;
 }
-
 
 export default function Stats(props: Props) {
     const style: React.CSSProperties = {
@@ -14,12 +13,12 @@ export default function Stats(props: Props) {
         justifyContent: 'center',
     };
     return (<div style={style}>
-        <Stat size={props.publishSize} unit="MB" />
-        <Stat size={props.installSize} unit="MB" />
+        <Stat {...props.publish} />
+        <Stat {...props.install} />
     </div>);
 }
 
-function Stat(props: {size: number, unit: string}) {
+function Stat(props: SizeWithUnit) {
 
     const styleValue: React.CSSProperties = {
         fontSize: '3rem',

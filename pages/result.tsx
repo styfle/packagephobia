@@ -41,6 +41,8 @@ export default class ResultPage extends React.Component<Props, State> {
     render () {
         const { pkgVersion, size } = this.props;
         const readableSize = getReadableFileSize(size);
+        const install = getReadableFileSize(90031);
+        const publish = getReadableFileSize(70031);
 
         const container: React.CSSProperties = {
             display: 'flex',
@@ -50,6 +52,12 @@ export default class ResultPage extends React.Component<Props, State> {
         };
 
         const readings = [
+            {
+                version: '1.0.0',
+                installSize: 200124,
+                publishSize: 123541,
+                disabled: true,
+            },
             {
                 version: '1.0.0',
                 installSize: 200124,
@@ -91,9 +99,9 @@ export default class ResultPage extends React.Component<Props, State> {
 
         return (<div style={container}>
             <h1>{pkgVersion.name}@{pkgVersion.version}</h1>
-            <p>Package {pkgVersion.name} is {readableSize} after npm install</p>
+            <p>Package {pkgVersion.name} is {readableSize.readable} after npm install</p>
             <div style={{ display: 'flex' }}>
-                <Stats publishSize={current.publishSize} installSize={current.installSize} />
+                <Stats publish={publish} install={install} />
                 <BarGraph readings={readings} onBarClick={r => console.log('you clicked ' + r.version)} />
             </div>
             
