@@ -1,6 +1,6 @@
 import * as React from 'react';
 import 'isomorphic-unfetch';
-import { parsePackageString, getReadableFileSize } from '../utils/index';
+import { parsePackageString, getReadableFileSize } from '../parse-utils';
 import BarGraph from '../components/BarGraph';
 import Stats from '../components/Stats';
 

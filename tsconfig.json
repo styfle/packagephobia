@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
-        "module": "esnext",
+        "outDir": "./dist",
+        "module": "commonjs",
         "target": "esnext",
         "moduleResolution": "node",
-        "jsx": "preserve",
+        "jsx": "react",
         "sourceMap": true,
         "strict": true,
         "noFallthroughCasesInSwitch": true,
@@ -11,7 +12,7 @@
         "noEmitOnError": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "removeComments": false,
+        "removeComments": true,
         "preserveConstEnums": true
     },
     "exclude": [

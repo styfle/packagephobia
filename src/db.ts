@@ -1,5 +1,4 @@
 import { createClient } from 'redis';
-import { promisify } from 'util';
 
 const { REDIS_HOST, REDIS_PORT, REDIS_PASS } = process.env;
 
