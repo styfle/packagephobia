@@ -17,20 +17,15 @@ function getDirSize(root: string, size=0): number {
         .reduce((acc, num) => acc + num, size);
 }
 
-export async function getPackageSize(pkgName: string, pkgVersion: string, tmpDir='/tmp'): Promise<PkgSize> {
+export async function calculatePackageSize(name: string, version: string, tmpDir='/tmp'): Promise<PkgSize> {
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
     const nodeModules = join(pkgDir, 'node_modules');
     await exec(`mkdir ${tmpPackage}`, { cwd: tmpDir });
     await exec(`npm init -y`, { cwd: pkgDir });
-    await exec(`npm install --save ${pkgName}@${pkgVersion}`, { cwd: pkgDir });
+    await exec(`npm install --save ${name}@${version}`, { cwd: pkgDir });
     const installSize = getDirSize(nodeModules);
-    const publishSize = getDirSize(join(nodeModules, pkgName));
+    const publishSize = getDirSize(join(nodeModules, name));
     await exec(`rm -rf ${tmpPackage}`, { cwd: tmpDir });
-    return { publishSize, installSize };
-}
-
-interface PkgSize {
-    publishSize: number;
-    installSize: number;
+    return { name, version, publishSize, installSize };
 }

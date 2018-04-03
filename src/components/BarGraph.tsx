@@ -4,15 +4,8 @@ const stylesheet = `.bar-graph-container{display:-webkit-box;display:-ms-flexbox
 
 
 interface Props {
-    readings: Reading[];
-    onBarClick: (r: Reading) => void;
-}
-
-interface Reading {
-    version: string;
-    installSize: number;
-    publishSize: number;
-    disabled: boolean;
+    readings: PkgSize[];
+    onBarClick: (r: PkgSize) => void;
 }
 
 export default class BarGraph extends React.PureComponent<Props, {}> {
@@ -31,7 +24,7 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
     const maxValue = Math.max(...[...gzipValues, ...sizeValues])
     const scale = 100 / maxValue
 
-    const getTooltipMessage = (r: Reading) => {
+    const getTooltipMessage = (r: PkgSize) => {
       return `Publish Size: ${getReadableFileSize(r.installSize).readable}`
         + `| Install Size: ${getReadableFileSize(r.publishSize).readable}`;
     }

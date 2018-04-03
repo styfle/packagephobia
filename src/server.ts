@@ -3,9 +3,6 @@ import { parse } from 'url';
 import { createReadStream } from 'fs';
 import { createFactory } from 'react';
 import { renderToNodeStream } from 'react-dom/server';
-import { getPackageSize } from './pkg-stats';
-import { parsePackageString } from './parse-utils';
-import { getLatestVersion } from './npm-api';
 import { lookup } from './mime-types';
 import { control } from './cache-control';
 
@@ -18,8 +15,11 @@ import {
     containerId,
 } from './constants';
 
-import Index from './pages/index';
-const AppFactory = createFactory(Index);
+import IndexPage from './pages/index';
+import ResultPage from './pages/result';
+import { getResultProps } from './page-props/results';
+const IndexFactory = createFactory(IndexPage);
+const ResultFactory = createFactory(ResultPage);
 
 const { TMPDIR='/tmp', PORT=3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
@@ -29,13 +29,14 @@ console.log('isProduction: ', isProd);
 createServer(async (req, res) => {
     let { httpVersion, method, url } = req;
     console.log(`${httpVersion} ${method} ${url}`);
-    let { pathname='/', query={} } = parse(req.url || '', true);
-    if (!url || url === '/') {
-        url = 'index.html';
+    let { pathname='/', query={} } = parse(url || '', true);
+    if (pathname === '/') {
+        pathname = '/index.html';
     }
     try {
-        if (url === 'index.html') {
-            res.setHeader('Content-Type', lookup(url));
+        console.log('the pathname is ', pathname);
+        if (pathname === '/index.html' || pathname === '/result.html') {
+            res.setHeader('Content-Type', lookup(pathname));
             res.setHeader('Cache-Control', control(isProd, 1));
             res.write(`<!DOCTYPE html>
             <html>
@@ -55,7 +56,11 @@ createServer(async (req, res) => {
             </head>
             <body>
             <div id="${containerId}">`);
-            const stream = renderToNodeStream(AppFactory());
+            const stream = renderToNodeStream(
+                pathname === '/index.html'
+                ? IndexFactory()
+                : ResultFactory(await getResultProps(query, TMPDIR))
+            );
             stream.pipe(res, { end: false });
             stream.on('end', () => {
                 res.end(`</div>
@@ -65,34 +70,36 @@ createServer(async (req, res) => {
             </body>
             </html>`);
             });
-        } else if (url === reactUrl || url === reactDomUrl) {
-            res.setHeader('Content-Type', lookup(url));
+        } else if (pathname === reactUrl || pathname === reactDomUrl) {
+            res.setHeader('Content-Type', lookup(pathname));
             res.setHeader('Cache-Control', control(isProd, 7));
-            const name = url.replace('.js', '');
+            const name = pathname.replace('.js', '');
             const file = `./node_modules${name}/umd${name}${suffix}`;
             createReadStream(file).pipe(res);
-        } else if (url === browserUrl || url === browserMapUrl) {
-            res.setHeader('Content-Type', lookup(url));
+        } else if (pathname === browserUrl || pathname === browserMapUrl) {
+            res.setHeader('Content-Type', lookup(pathname));
             res.setHeader('Cache-Control', control(isProd, 7));
-            const file = `./dist${url}`;
+            const file = `./dist${pathname}`;
             createReadStream(file).pipe(res);
         } else if (pathname === '/query' && query.package && typeof query.package === 'string') {
+            /*
             const { name, version } = parsePackageString(query.package);
             const ver = version ||  await getLatestVersion(name);
             const obj = await getPackageSize(name, ver, TMPDIR);
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(obj));
+            */
         } else {
-            url = 'notfound.txt';
-            res.setHeader('Content-Type', lookup(url));
+            pathname = 'notfound.txt';
+            res.setHeader('Content-Type', lookup(pathname));
             res.setHeader('Cache-Control', control(isProd, 0));
             res.statusCode = 404;
             res.end('404 Not Found');
         }
     } catch (e) {
         console.error(e);
-        url = 'notfound.txt';
-        res.setHeader('Content-Type', lookup(url));
+        pathname = 'notfound.txt';
+        res.setHeader('Content-Type', lookup(pathname));
         res.setHeader('Cache-Control', control(isProd, 0));
         res.statusCode = 500;
         res.end('500 Internal Error');
