@@ -79,7 +79,7 @@ export default () =>
 
             <p>Find the cost of adding a new dev dependency to your project</p>
             
-            <form method="GET" action="/result" style={form}>
+            <form method="GET" action="/result.html" style={form}>
                 <input
                     style={input}
                     type="text"
