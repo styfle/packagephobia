@@ -34,7 +34,6 @@ createServer(async (req, res) => {
         pathname = '/index.html';
     }
     try {
-        console.log('the pathname is ', pathname);
         if (pathname === '/index.html' || pathname === '/result.html') {
             res.setHeader('Content-Type', lookup(pathname));
             res.setHeader('Cache-Control', control(isProd, 1));

@@ -10,10 +10,12 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
         let { name, version } = parsePackageString(query.p);
         if (!version) {
             version = await getLatestVersion(name);
+            console.log('no version found, using ' + version);
         }
 
         let existing = await getVersion(name, version);
         if (!existing) {
+            console.log('no existing found...calculating')
             existing = await calculatePackageSize(name, version, tmp);
             setVersion(existing);
         }
