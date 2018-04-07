@@ -37,8 +37,14 @@ export function getVersion(name: string, version: string) {
             if (err) {
                 reject(err);
             } else {
-                const record: PkgSize | null = reply ? JSON.parse(reply) : null;
-                resolve(record);
+                if (!reply) {
+                    resolve(null);
+                } else {
+                    let record: PkgSize = JSON.parse(reply);
+                     record.name = name;
+                     record.version = version;
+                     resolve(record);
+                }
             }
         });
     });
