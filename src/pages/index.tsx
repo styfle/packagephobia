@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { pages } from '../constants';
 
 const container: React.CSSProperties = {
     display: 'flex',
@@ -79,7 +80,7 @@ export default () =>
 
             <p>Find the cost of adding a new dev dependency to your project</p>
             
-            <form method="GET" action="/result.html" style={form}>
+            <form method="GET" action={pages.result} style={form}>
                 <input
                     style={input}
                     type="text"

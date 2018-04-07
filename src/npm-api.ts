@@ -7,8 +7,7 @@ interface Manifest {
 
 export async function getLatestVersion(pkg: string) {
     const manifest = await fetchManifest(pkg);
-    const latest: string = manifest['dist-tags'].latest;
-    return latest;
+    return manifest['dist-tags'].latest;
 }
 
 export async function getMostRecentVersions(pkg: string, limit=5) {

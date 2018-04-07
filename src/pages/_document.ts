@@ -20,7 +20,10 @@ import {
     reactUrl,
     reactDomUrl,
     browserUrl,
+    pages,
 } from '../constants';
+
+const exisitingPaths = new Set(Object.values(pages));
 
 const css = 
 ` body {
@@ -31,6 +34,7 @@ const css =
 }`;
 
 export async function renderPage(res: ServerResponse, pathname: string, query: ParsedUrlQuery, tmpDir: string) {
+    res.statusCode = getStatusCode(pathname);
     res.write(`<!DOCTYPE html>
             <html>
             <head>
@@ -56,16 +60,21 @@ export async function renderPage(res: ServerResponse, pathname: string, query: P
 }
 
 async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string) {
-    console.log('pathname ', pathname);
     switch (pathname) {
-        case '/index.html':
+        case pages.index:
             return IndexFactory();
-        case '/result.html':
+        case pages.result:
             return ResultFactory(await getResultProps(query, tmpDir));
-        case '/about.html':
+        case pages.about:
             return AboutFactory();
         default:
-            //res.statusCode = 404;
             return NotFoundFactory();
     }
+}
+
+function getStatusCode(pathname: string) {
+    if (exisitingPaths.has(pathname)) {
+        return 200;
+    }
+    return 404;
 }

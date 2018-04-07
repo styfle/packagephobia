@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { pages } from '../constants';
 import { getReadableFileSize } from '../parse-utils';
 import BarGraph from '../components/BarGraph';
 import Stats from '../components/Stats';
@@ -37,4 +38,4 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
     }
 }
 
-const getHref = (r: PkgSize) => `/result.html?p=${r.name}@${r.version}`
+const getHref = (r: PkgSize) => `${pages.result}?p=${r.name}@${r.version}`

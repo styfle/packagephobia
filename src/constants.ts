@@ -5,4 +5,12 @@ export const faviconUrl =
 export const stylesUrl = '/style.min.css';
 export const browserUrl = '/browser.js';
 export const browserMapUrl = '/browser.js.map';
-export const containerId = 'content';
+
+export const pages = {
+    about: '/about',
+    index: '/index',
+    result: '/result',
+    //{ [page: string]: string}
+};
+
+export const containerId = 'page-container';
