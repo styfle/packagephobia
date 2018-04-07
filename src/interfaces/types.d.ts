@@ -22,3 +22,5 @@ interface ResultProps {
     pkgSize: PkgSize;
     readings: PkgSize[];
 }
+
+interface ParsedUrlQuery { [key: string]: string | string[]; }

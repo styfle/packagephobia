@@ -3,8 +3,6 @@ import { getAllVersions, getVersion, setVersion } from '../db';
 import { getLatestVersion, getMostRecentVersions } from '../npm-api';
 import { calculatePackageSize } from '../pkg-stats';
 
-interface ParsedUrlQuery { [key: string]: string | string[]; }
-
 export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     if (query && typeof query.p === 'string') {
         let { name, version } = parsePackageString(query.p);
