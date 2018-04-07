@@ -8,7 +8,6 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
         const { pkgSize, readings } = this.props;
         const install = getReadableFileSize(pkgSize.installSize);
         const publish = getReadableFileSize(pkgSize.publishSize);
-        
 
         const container: React.CSSProperties = {
             display: 'flex',
@@ -31,9 +30,11 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
             <p>Package {pkgSize.name} is {install.readable} after npm install</p>
             <div style={{ display: 'flex' }}>
                 <Stats publish={publish} install={install} />
-                <BarGraph readings={readings} onBarClick={r => console.log('you clicked ' + r.version)} />
+                <BarGraph readings={readings} getHref={getHref} />
             </div>
             
         </div>);
     }
 }
+
+const getHref = (r: PkgSize) => `/result.html?p=${r.name}@${r.version}`

@@ -80,25 +80,15 @@ createServer(async (req, res) => {
             res.setHeader('Cache-Control', control(isProd, 7));
             const file = `./dist${pathname}`;
             createReadStream(file).pipe(res);
-        } else if (pathname === '/query' && query.package && typeof query.package === 'string') {
-            /*
-            const { name, version } = parsePackageString(query.package);
-            const ver = version ||  await getLatestVersion(name);
-            const obj = await getPackageSize(name, ver, TMPDIR);
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify(obj));
-            */
         } else {
-            pathname = 'notfound.txt';
-            res.setHeader('Content-Type', lookup(pathname));
+            res.setHeader('Content-Type', lookup('400.txt'));
             res.setHeader('Cache-Control', control(isProd, 0));
             res.statusCode = 404;
             res.end('404 Not Found');
         }
     } catch (e) {
         console.error(e);
-        pathname = 'notfound.txt';
-        res.setHeader('Content-Type', lookup(pathname));
+        res.setHeader('Content-Type', lookup('500.txt'));
         res.setHeader('Cache-Control', control(isProd, 0));
         res.statusCode = 500;
         res.end('500 Internal Error');
