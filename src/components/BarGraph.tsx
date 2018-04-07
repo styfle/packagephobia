@@ -22,11 +22,6 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
     const maxValue = Math.max(...[...gzipValues, ...sizeValues])
     const scale = 100 / maxValue
 
-    const getTooltipMessage = (r: PkgSize) => {
-      return `Publish Size: ${getReadableFileSize(r.installSize).readable}`
-        + `| Install Size: ${getReadableFileSize(r.publishSize).readable}`;
-    }
-
     return (
       <div className="bar-graph-container">
         <style dangerouslySetInnerHTML={ { __html: stylesheet } } />
@@ -38,12 +33,11 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
                   key={i}
                   className="bar-graph__bar-group bar-graph__bar-group--disabled"
                   href={getHref(r)}
-                  title={`Click to view version ${r.version}`}
                 >
                   <div
                     className="bar-graph__bar"
                     style={{ height: '50%' }}
-                    title="Unknown | Click to build"
+                    title={getTooltipMessage(r)}
                   >
                     <span className="bar-graph__bar-version">{ r.version }</span>
                     <span className="bar-graph__bar-version">{ r.version }</span>
@@ -54,12 +48,11 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
                   key={i}
                   className="bar-graph__bar-group"
                   href={getHref(r)}
-                  title={`Click to view version ${r.version}`}
                 >
                   <div
                     className="bar-graph__bar"
                     style={{ height: `${r.installSize * scale}%` }}
-                    title={getTooltipMessage(r) }
+                    title={getTooltipMessage(r)}
                   >
                       <span className="bar-graph__bar-version">{r.version}</span>
                   </div>
@@ -85,4 +78,15 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
       </div>
     )
   }
+}
+
+const getTooltipMessage = (r: PkgSize) => {
+  if (r.disabled) {
+    return r.version
+      + ' | Unknown size'
+      + ' | Click to build and find out!'
+  }
+  return r.version
+    + ` | Publish Size: ${getReadableFileSize(r.installSize).readable}`
+    + ` | Install Size: ${getReadableFileSize(r.publishSize).readable}`;
 }

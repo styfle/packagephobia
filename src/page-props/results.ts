@@ -20,7 +20,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
             setVersion(existing);
         }
 
-        const mostRecentVersions = await getMostRecentVersions(name, 5);
+        const mostRecentVersions = await getMostRecentVersions(name, 10);
         const cachedVersions = await getAllVersions(name);
 
         const readings = mostRecentVersions.map(v => {
