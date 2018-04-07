@@ -43,7 +43,7 @@ createServer(async (req, res) => {
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="${faviconUrl}" rel="icon" type="image/x-icon" />
-                <title>React Example</title>
+                <title>PackagePhobia | find the cost of adding a dev dependency</title>
                 <style>
                     body {
                         margin: 0;
