@@ -38,4 +38,4 @@ export function getReadableFileSize(bytes: number): SizeWithUnit {
     const size = Math.max(bytes, 0.1).toFixed(1);
     const unit = units[i];
     return { size, unit, readable: `${size} ${unit}` };
-};
+}

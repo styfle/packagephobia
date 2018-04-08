@@ -8,85 +8,79 @@ interface Props {
 }
 
 export default class BarGraph extends React.PureComponent<Props, {}> {
-  render() {
-    const { readings, getHref } = this.props
+    render() {
+        const { readings, getHref } = this.props;
 
-    const gzipValues = readings
-      .filter(reading => !reading.disabled)
-      .map(reading => reading.publishSize)
+        const gzipValues = readings
+            .filter(reading => !reading.disabled)
+            .map(reading => reading.publishSize);
 
-    const sizeValues = readings
-      .filter(reading => !reading.disabled)
-      .map(reading => reading.installSize)
+        const sizeValues = readings
+            .filter(reading => !reading.disabled)
+            .map(reading => reading.installSize);
 
-    const maxValue = Math.max(...[...gzipValues, ...sizeValues])
-    const scale = 100 / maxValue
+        const maxValue = Math.max(...[...gzipValues, ...sizeValues]);
+        const scale = 100 / maxValue;
 
-    return (
-      <div className="bar-graph-container">
-        <style dangerouslySetInnerHTML={ { __html: stylesheet } } />
-        <figure className="bar-graph">
-          {
-            readings.map((r, i) => (
-              r.disabled ? (
-                <a
-                  key={i}
-                  className="bar-graph__bar-group bar-graph__bar-group--disabled"
-                  href={getHref(r)}
-                >
-                  <div
-                    className="bar-graph__bar"
-                    style={{ height: '50%' }}
-                    title={getTooltipMessage(r)}
-                  >
-                    <span className="bar-graph__bar-version">{ r.version }</span>
-                    <span className="bar-graph__bar-version">{ r.version }</span>
-                  </div>
-                </a>
-              ) : (
-                <a
-                  key={i}
-                  className="bar-graph__bar-group"
-                  href={getHref(r)}
-                >
-                  <div
-                    className="bar-graph__bar"
-                    style={{ height: `${r.installSize * scale}%` }}
-                    title={getTooltipMessage(r)}
-                  >
-                      <span className="bar-graph__bar-version">{r.version}</span>
-                  </div>
-                  <div
-                    className="bar-graph__bar2"
-                    style={{ height: `${r.publishSize * scale}%` }}
-                  />
-                </a>
-              )
-            ))
-          }
-        </figure>
-        <div className="bar-graph__legend">
-          <div className="bar-graph__legend__bar1">
-            <div className="bar-graph__legend__colorbox"/>
-            Install
-          </div>
-          <div className="bar-graph__legend__bar2">
-            <div className="bar-graph__legend__colorbox"/>
-            Publish
-          </div>
-        </div>
-      </div>
-    )
-  }
+        return (
+            <div className="bar-graph-container">
+                <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+                <figure className="bar-graph">
+                    {readings.map(
+                        (r, i) =>
+                            r.disabled ? (
+                                <a
+                                    key={i}
+                                    className="bar-graph__bar-group bar-graph__bar-group--disabled"
+                                    href={getHref(r)}
+                                >
+                                    <div
+                                        className="bar-graph__bar"
+                                        style={{ height: '50%' }}
+                                        title={getTooltipMessage(r)}
+                                    >
+                                        <span className="bar-graph__bar-version">{r.version}</span>
+                                        <span className="bar-graph__bar-version">{r.version}</span>
+                                    </div>
+                                </a>
+                            ) : (
+                                <a key={i} className="bar-graph__bar-group" href={getHref(r)}>
+                                    <div
+                                        className="bar-graph__bar"
+                                        style={{ height: `${r.installSize * scale}%` }}
+                                        title={getTooltipMessage(r)}
+                                    >
+                                        <span className="bar-graph__bar-version">{r.version}</span>
+                                    </div>
+                                    <div
+                                        className="bar-graph__bar2"
+                                        style={{ height: `${r.publishSize * scale}%` }}
+                                    />
+                                </a>
+                            ),
+                    )}
+                </figure>
+                <div className="bar-graph__legend">
+                    <div className="bar-graph__legend__bar1">
+                        <div className="bar-graph__legend__colorbox" />
+                        Install
+                    </div>
+                    <div className="bar-graph__legend__bar2">
+                        <div className="bar-graph__legend__colorbox" />
+                        Publish
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 const getTooltipMessage = (r: PkgSize) => {
-  if (r.disabled) {
-    return r.version
-      + ' | Unknown size'
-      + ' | Click to build and find out!'
-  }
-  return r.version
-    + ` | Publish Size: ${getReadableFileSize(r.installSize).readable}`
-    + ` | Install Size: ${getReadableFileSize(r.publishSize).readable}`;
-}
+    if (r.disabled) {
+        return `${r.version} | Unknown size | Click to build and find out!`;
+    }
+    const install = getReadableFileSize(r.installSize).readable;
+    const publish = getReadableFileSize(r.publishSize).readable;
+
+    return `${r.version} | Publish Size: ${publish} | Install Size: ${install}`;
+};

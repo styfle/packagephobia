@@ -13,16 +13,17 @@ export default function Stats(props: Props) {
         justifyContent: 'center',
         marginRight: '60px',
     };
-    return (<div style={style}>
-        <Stat {...props.publish} label="Publish" />
-        <Stat {...props.install} label="Install" />
-    </div>);
+    return (
+        <div style={style}>
+            <Stat {...props.publish} label="Publish Size" />
+            <Stat {...props.install} label="Install Size" />
+        </div>
+    );
 }
 
 type StatProp = SizeWithUnit & { label: string };
 
 function Stat(props: StatProp) {
-
     const styleValue: React.CSSProperties = {
         fontSize: '3rem',
         fontWeight: 'bold',
@@ -45,9 +46,11 @@ function Stat(props: StatProp) {
         marginBottom: '25px',
     };
 
-    return (<div>
-        <span style={styleValue}>{props.size}</span>
-        <span style={styleUnit}>{props.unit}</span>
-        <div style={styleLabel}>{props.label}</div>
-    </div>);
+    return (
+        <div>
+            <span style={styleValue}>{props.size}</span>
+            <span style={styleUnit}>{props.unit}</span>
+            <div style={styleLabel}>{props.label}</div>
+        </div>
+    );
 }

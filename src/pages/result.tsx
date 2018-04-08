@@ -5,7 +5,7 @@ import BarGraph from '../components/BarGraph';
 import Stats from '../components/Stats';
 
 export default class ResultPage extends React.Component<ResultProps, {}> {
-    render () {
+    render() {
         const { pkgSize, readings } = this.props;
         const install = getReadableFileSize(pkgSize.installSize);
         const publish = getReadableFileSize(pkgSize.publishSize);
@@ -18,7 +18,8 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
         };
 
         const h1: React.CSSProperties = {
-            fontFamily: '"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace'
+            fontFamily:
+                '"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace',
         };
 
         if (!pkgSize) {
@@ -26,16 +27,21 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
             return null;
         }
 
-        return (<div style={container}>
-            <h1 style={h1}>{pkgSize.name}@{pkgSize.version}</h1>
-            <p>Package {pkgSize.name} is {install.readable} after npm install</p>
-            <div style={{ display: 'flex' }}>
-                <Stats publish={publish} install={install} />
-                <BarGraph readings={readings} getHref={getHref} />
+        return (
+            <div style={container}>
+                <h1 style={h1}>
+                    {pkgSize.name}@{pkgSize.version}
+                </h1>
+                <p>
+                    Package {pkgSize.name} is {install.readable} after npm install
+                </p>
+                <div style={{ display: 'flex' }}>
+                    <Stats publish={publish} install={install} />
+                    <BarGraph readings={readings} getHref={getHref} />
+                </div>
             </div>
-            
-        </div>);
+        );
     }
 }
 
-const getHref = (r: PkgSize) => `${pages.result}?p=${r.name}@${r.version}`
+const getHref = (r: PkgSize) => `${pages.result}?p=${r.name}@${r.version}`;

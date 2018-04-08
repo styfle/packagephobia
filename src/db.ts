@@ -1,6 +1,6 @@
 import { createClient } from 'redis';
 
-const { REDIS_HOST='127.0.0.1', REDIS_PORT='14555', REDIS_PASS } = process.env;
+const { REDIS_HOST = '127.0.0.1', REDIS_PORT = '14555', REDIS_PASS } = process.env;
 
 const client = createClient({
     host: REDIS_HOST,
@@ -8,17 +8,17 @@ const client = createClient({
     password: REDIS_PASS,
 });
 
-client.on('error', (err) => {
+client.on('error', err => {
     console.error('Redis error: ', err);
 });
 
 export function getAllVersions(name: string) {
-    return new Promise<{[key: string]: PkgSize}>((resolve, reject) => {
+    return new Promise<{ [key: string]: PkgSize }>((resolve, reject) => {
         client.hgetall(name, (err, reply) => {
             if (err) {
                 reject(err);
             } else {
-                const obj: {[key: string]: PkgSize} = {};
+                const obj: { [key: string]: PkgSize } = {};
                 for (let version in reply) {
                     const payload: PkgSize = JSON.parse(reply[version]);
                     payload.name = name;
@@ -41,9 +41,9 @@ export function getVersion(name: string, version: string) {
                     resolve(null);
                 } else {
                     let record: PkgSize = JSON.parse(reply);
-                     record.name = name;
-                     record.version = version;
-                     resolve(record);
+                    record.name = name;
+                    record.version = version;
+                    resolve(record);
                 }
             }
         });

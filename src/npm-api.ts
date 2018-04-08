@@ -1,7 +1,7 @@
 import 'isomorphic-unfetch';
 
 interface Manifest {
-    'versions': { [version: string]: any };
+    versions: { [version: string]: any };
     'dist-tags': { latest: string };
 }
 
@@ -10,7 +10,7 @@ export async function getLatestVersion(pkg: string) {
     return manifest['dist-tags'].latest;
 }
 
-export async function getMostRecentVersions(pkg: string, limit=5) {
+export async function getMostRecentVersions(pkg: string, limit = 5) {
     const manifest = await fetchManifest(pkg);
     return Object.keys(manifest.versions).slice(-limit);
 }
@@ -32,4 +32,4 @@ async function fetchManifest(pkg: string) {
  */
 function escapePackageName(pkg: string) {
     return pkg.replace('/', '%2f');
-  }
+}

@@ -23,4 +23,6 @@ interface ResultProps {
     readings: PkgSize[];
 }
 
-interface ParsedUrlQuery { [key: string]: string | string[]; }
+interface ParsedUrlQuery {
+    [key: string]: string | string[];
+}

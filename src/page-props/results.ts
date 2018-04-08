@@ -8,13 +8,17 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
         let { name, version } = parsePackageString(query.p);
         if (!version) {
             version = await getLatestVersion(name);
-            console.log('no version found, using ' + version);
+            console.log(`Querystring missing ${name} version, using ${version}`);
         }
 
         let existing = await getVersion(name, version);
         if (!existing) {
-            console.log('no existing found...calculating')
+            console.log(`Cache miss for ${name}@${version}...`);
+            const start = new Date();
             existing = await calculatePackageSize(name, version, tmp);
+            const end = new Date();
+            const sec = (end.getTime() - start.getTime()) / 1000;
+            console.log(`Calculated size of ${name}@${version} in ${sec} seconds`);
             setVersion(existing);
         }
 
@@ -33,7 +37,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
                     disabled: true,
                 };
             }
-        })
+        });
         const result: ResultProps = { pkgSize: existing, readings };
         return result;
     }

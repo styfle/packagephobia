@@ -1,11 +1,11 @@
 import { lstatSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { promisify } from 'util';
-import * as child_process from 'child_process'; 
+import * as child_process from 'child_process';
 const exec = promisify(child_process.exec);
 
 // TODO: Can this be optimized by changing sync to async?
-function getDirSize(root: string, size=0): number {
+function getDirSize(root: string, size = 0): number {
     const stats = lstatSync(root);
 
     if (!stats.isDirectory()) {
@@ -17,7 +17,7 @@ function getDirSize(root: string, size=0): number {
         .reduce((acc, num) => acc + num, size);
 }
 
-export async function calculatePackageSize(name: string, version: string, tmpDir='/tmp'): Promise<PkgSize> {
+export async function calculatePackageSize(name: string, version: string, tmpDir = '/tmp') {
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
     const nodeModules = join(pkgDir, 'node_modules');
@@ -27,5 +27,6 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
     const installSize = getDirSize(nodeModules);
     const publishSize = getDirSize(join(nodeModules, name));
     await exec(`rm -rf ${tmpPackage}`, { cwd: tmpDir });
-    return { name, version, publishSize, installSize };
+    const output: PkgSize = { name, version, publishSize, installSize };
+    return output;
 }

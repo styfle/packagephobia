@@ -6,7 +6,7 @@ const style: React.CSSProperties = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-}
+};
 
 export default () => (
     <div style={style}>

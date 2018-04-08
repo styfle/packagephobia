@@ -6,6 +6,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
+    "prettier": "prettier \"./src/**/*.ts\" \"./src/**/*.tsx\"",
+    "prettier:check": "npm run prettier -- --list-different",
+    "prettier:write": "npm run prettier -- --write",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "now --public && now alias"
   },
@@ -27,6 +30,7 @@
     "@types/react": "^16.1.0",
     "@types/react-dom": "^16.0.4",
     "@types/redis": "^2.8.6",
+    "prettier": "^1.11.1",
     "typescript": "^2.8.1"
   }
 }

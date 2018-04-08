@@ -5,15 +5,9 @@ import { lookup } from './mime-types';
 import { control } from './cache-control';
 import { renderPage } from './pages/_document';
 
-import {
-    reactUrl,
-    reactDomUrl,
-    browserUrl,
-    browserMapUrl,
-    pages
-} from './constants';
+import { reactUrl, reactDomUrl, browserUrl, browserMapUrl, pages } from './constants';
 
-const { TMPDIR='/tmp', PORT=3107, NODE_ENV } = process.env;
+const { TMPDIR = '/tmp', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
 const suffix = isProd ? '.production.min.js' : '.development.js';
 console.log('isProduction: ', isProd);
@@ -21,7 +15,7 @@ console.log('isProduction: ', isProd);
 createServer(async (req, res) => {
     let { httpVersion, method, url } = req;
     console.log(`${httpVersion} ${method} ${url}`);
-    let { pathname='/', query={} } = parse(url || '', true);
+    let { pathname = '/', query = {} } = parse(url || '', true);
     if (pathname === '/') {
         pathname = pages.index;
     }

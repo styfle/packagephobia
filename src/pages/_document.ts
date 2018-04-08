@@ -14,26 +14,23 @@ const NotFoundFactory = createFactory(NotFoundPage);
 
 import { getResultProps } from '../page-props/results';
 
-import {
-    faviconUrl,
-    containerId,
-    reactUrl,
-    reactDomUrl,
-    browserUrl,
-    pages,
-} from '../constants';
+import { faviconUrl, containerId, reactUrl, reactDomUrl, browserUrl, pages } from '../constants';
 
 const exisitingPaths = new Set(Object.values(pages));
 
-const css = 
-` body {
+const css = ` body {
     margin: 0;
     padding: 0;
     background: #fafafa;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 }`;
 
-export async function renderPage(res: ServerResponse, pathname: string, query: ParsedUrlQuery, tmpDir: string) {
+export async function renderPage(
+    res: ServerResponse,
+    pathname: string,
+    query: ParsedUrlQuery,
+    tmpDir: string,
+) {
     res.statusCode = getStatusCode(pathname);
     res.write(`<!DOCTYPE html>
             <html>
@@ -46,17 +43,17 @@ export async function renderPage(res: ServerResponse, pathname: string, query: P
             </head>
             <body>
             <div id="${containerId}">`);
-            const factory = await routePage(pathname, query, tmpDir);
-            const stream = renderToNodeStream(factory);
-            stream.pipe(res, { end: false });
-            stream.on('end', () => {
-                res.end(`</div>
+    const factory = await routePage(pathname, query, tmpDir);
+    const stream = renderToNodeStream(factory);
+    stream.pipe(res, { end: false });
+    stream.on('end', () => {
+        res.end(`</div>
                 <script src="${reactUrl}"></script>
                 <script src="${reactDomUrl}"></script>
                 <script src="${browserUrl}"></script>
             </body>
             </html>`);
-            });
+    });
 }
 
 async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string) {
