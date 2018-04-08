@@ -24,10 +24,11 @@ A good use case might be comparing test harnesses ([tap](https://packagephobia.n
 
 ## What are the long term goals?
 
-Ideally, this information could be listed on npmjs.com or npms.io.
+Ideally, this information could be listed on npmjs.com, npms.io, or bundlephobia.com.
 
 Below are the relevant feature requests for each website.
 
+- [bunldephobia request](https://github.com/pastelsky/bundlephobia/issues/40)
 - [npmjs request](https://github.com/npm/www/issues/197)
 - [npms request](https://github.com/npms-io/npms-www/issues/219)
 
