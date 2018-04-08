@@ -1,4 +1,10 @@
 {
     "name": "packagephobia",
-    "alias": "packagephobia.now.sh"
+    "alias": "packagephobia.now.sh",
+    "env": {
+        "NODE_ENV": "@packagephobia-node-env",
+        "REDIS_HOST": "@packagephobia-redis-host",
+        "REDIS_PORT": "@packagephobia-redis-port",
+        "REDIS_PASS": "@packagephobia-redis-pass"
+      }
   }
