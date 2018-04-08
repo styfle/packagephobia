@@ -1,10 +1,10 @@
 import { createClient } from 'redis';
 
-const { REDIS_HOST, REDIS_PORT, REDIS_PASS } = process.env;
+const { REDIS_HOST='127.0.0.1', REDIS_PORT='14555', REDIS_PASS } = process.env;
 
 const client = createClient({
     host: REDIS_HOST,
-    port: parseInt(REDIS_PORT || 'no-port', 10),
+    port: parseInt(REDIS_PORT),
     password: REDIS_PASS,
 });
 
@@ -63,11 +63,3 @@ export function setVersion(data: PkgSize) {
         });
     });
 }
-
-//client.hset('copee', '1.0.0', 42, console.log);
-//client.hset('copee', '1.0.1', 43, console.log);
-//client.hset('copee', '1.0.2', 47, console.log);
-//client.hget('copee', '1.0.0', console.log);
-//client.hkeys('copee', console.log);
-//client.hvals('copee', console.log);
-//client.hgetall('copee', (_, obj) => console.log(obj['1.0.0']));
