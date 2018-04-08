@@ -64,3 +64,4 @@ pages/*.js
 src/*.js
 
 example.js
+dev.sh
