@@ -31,6 +31,7 @@ Below are the relevant feature requests for each website.
 - [bunldephobia request](https://github.com/pastelsky/bundlephobia/issues/40)
 - [npmjs request](https://github.com/npm/www/issues/197)
 - [npms request](https://github.com/npms-io/npms-www/issues/219)
+- [costofmodules request](https://github.com/siddharthkp/cost-of-modules/issues/50)
 
 ## NPM dependencies in the media
 
