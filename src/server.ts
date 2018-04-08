@@ -7,7 +7,7 @@ import { renderPage } from './pages/_document';
 
 import { reactUrl, reactDomUrl, browserUrl, browserMapUrl, pages } from './constants';
 
-const { TMPDIR = '/tmp', PORT = 3107, NODE_ENV } = process.env;
+const { TMPDIR = '/tmp', GA_ID = '', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
 const suffix = isProd ? '.production.min.js' : '.development.js';
 console.log('isProduction: ', isProd);
@@ -34,7 +34,7 @@ createServer(async (req, res) => {
         } else {
             res.setHeader('Content-Type', lookup('page.html'));
             res.setHeader('Cache-Control', control(isProd, 0));
-            renderPage(res, pathname, query, TMPDIR);
+            renderPage(res, pathname, query, TMPDIR, GA_ID);
         }
     } catch (e) {
         console.error(e);

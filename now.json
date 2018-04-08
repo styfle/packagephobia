@@ -2,9 +2,10 @@
     "name": "packagephobia",
     "alias": "packagephobia.now.sh",
     "env": {
-        "NODE_ENV": "@packagephobia-node-env",
+        "NODE_ENV": "production",
         "REDIS_HOST": "@packagephobia-redis-host",
         "REDIS_PORT": "@packagephobia-redis-port",
-        "REDIS_PASS": "@packagephobia-redis-pass"
+        "REDIS_PASS": "@packagephobia-redis-pass",
+        "GA_ID": "@packagephobia-ga-id"
       }
   }
