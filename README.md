@@ -38,6 +38,7 @@ Below are the relevant feature requests for each website.
 I'm not the first one to notice npm packages are snowballing into bloated dependencies of dependencies.
 
 - [thomasfuchs](https://twitter.com/thomasfuchs/status/977541462199029760)
+- [devrant](https://devrant.com/rants/760537/heaviest-objects-in-the-universe)
 - [turnoff.us](http://turnoff.us/geek/npm-install/)
 - [styfle](https://twitter.com/styfle/status/968180698149539841)
 - [davej](https://github.com/npm/npm/issues/10361)
