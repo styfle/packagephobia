@@ -17,7 +17,7 @@ function getDirSize(root: string, size = 0): number {
         .reduce((acc, num) => acc + num, size);
 }
 
-export async function calculatePackageSize(name: string, version: string, tmpDir = '/tmp') {
+export async function calculatePackageSize(name: string, version: string, tmpDir: string) {
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
     const nodeModules = join(pkgDir, 'node_modules');
