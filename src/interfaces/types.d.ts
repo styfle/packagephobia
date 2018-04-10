@@ -26,3 +26,8 @@ interface ResultProps {
 interface ParsedUrlQuery {
     [key: string]: string | string[];
 }
+
+interface NpmManifest {
+    versions: { [version: string]: any };
+    'dist-tags': { latest: string };
+}

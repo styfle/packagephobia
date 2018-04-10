@@ -1,35 +1,38 @@
 import 'isomorphic-unfetch';
 
-interface Manifest {
-    versions: { [version: string]: any };
-    'dist-tags': { latest: string };
-}
-
-export async function getLatestVersion(pkg: string) {
-    const manifest = await fetchManifest(pkg);
-    return manifest['dist-tags'].latest;
-}
-
-export async function getMostRecentVersions(pkg: string, limit = 5) {
-    const manifest = await fetchManifest(pkg);
-    return Object.keys(manifest.versions).slice(-limit);
-}
-
 /**
  * Make an API call to npm to get package manifest details
- * @param pkg The npm package name
+ * @param name The npm package name
  */
-async function fetchManifest(pkg: string) {
-    const encodedPackage = escapePackageName(pkg);
+export async function fetchManifest(name: string) {
+    const encodedPackage = escapePackageName(name);
     const response = await fetch(`https://registry.npmjs.com/${encodedPackage}`);
-    const manifest: Manifest = await response.json();
+    const manifest: NpmManifest = await response.json();
+    if (response.status === 404 || !manifest || Object.keys(manifest).length === 0) {
+        throw new Error('Package not found');
+    }
     return manifest;
 }
 
 /**
- * npm registry expects the slashes in the (scoped) package names to be sent escaped.
- * @param pkg The npm package name
+ * Get the latest/newest version of the npm package
  */
-function escapePackageName(pkg: string) {
-    return pkg.replace('/', '%2f');
+export async function getLatestVersion(manifest: NpmManifest) {
+    return manifest['dist-tags'].latest;
+}
+
+/**
+ * Get the most recent versions of the npm package
+ */
+export async function getMostRecentVersions(manifest: NpmManifest, limit: number) {
+    return Object.keys(manifest.versions).slice(-limit);
+}
+
+/**
+ * Escape an npm package name.
+ * The registry expects the slashes in the (scoped) package names
+ * to be sent escaped.
+ */
+function escapePackageName(name: string) {
+    return name.replace('/', '%2f');
 }
