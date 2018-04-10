@@ -20,15 +20,22 @@ export async function fetchManifest(name: string) {
 /**
  * Get the latest/newest version of the npm package
  */
-export async function getLatestVersion(manifest: NpmManifest) {
+export function getLatestVersion(manifest: NpmManifest) {
     return manifest['dist-tags'].latest;
+}
+
+/**
+ * Get all versions of the npm package
+ */
+export function getAllVersions(manifest: NpmManifest) {
+    return Object.keys(manifest.versions);
 }
 
 /**
  * Get the most recent versions of the npm package
  */
-export async function getMostRecentVersions(manifest: NpmManifest, limit: number) {
-    return Object.keys(manifest.versions).slice(-limit);
+export function getMostRecentVersions(allVersions: string[], limit: number) {
+    return allVersions.slice(-limit);
 }
 
 /**

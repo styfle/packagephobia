@@ -1,6 +1,6 @@
 import { parsePackageString } from '../parse-utils';
 import { findAll, findOne, insert } from '../db';
-import { fetchManifest, getLatestVersion, getMostRecentVersions } from '../npm-api';
+import { fetchManifest, getLatestVersion, getMostRecentVersions, getAllVersions } from '../npm-api';
 import { calculatePackageSize } from '../pkg-stats';
 
 export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
@@ -11,21 +11,20 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
             manifest = await fetchManifest(name);
         } catch (e) {
             console.error(`Package ${name} does not exist in npm`);
-            const pkgSize: PkgSize = {
-                name,
-                version: version || 'unknown',
-                publishSize: 0,
-                installSize: 0,
-                disabled: true,
-            };
-            const result: ResultProps = { pkgSize, readings: [] };
-            return result;
+            return packageNotFound(name);
         }
 
         if (!version) {
             version = await getLatestVersion(manifest);
-            console.log(`Querystring missing ${name} version, using ${version}`);
+            console.log(`Querystring missing version, using version ${version}`);
         }
+
+        const allVersions = getAllVersions(manifest);
+        if (!allVersions.includes(version)) {
+            console.error(`Version ${version} does not exist in npm`);
+            return packageNotFound(name);
+        }
+        const mostRecentVersions = getMostRecentVersions(allVersions, 15);
 
         let existing = await findOne(name, version);
         if (!existing) {
@@ -38,7 +37,6 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
             insert(existing);
         }
 
-        const mostRecentVersions = await getMostRecentVersions(manifest, 15);
         const cachedVersions = await findAll(name);
 
         const readings = mostRecentVersions.map(v => {
@@ -59,4 +57,16 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     }
 
     throw new Error(`Unknown query string ${query}`);
+}
+
+function packageNotFound(name: string) {
+    const pkgSize: PkgSize = {
+        name,
+        version: 'unknown',
+        publishSize: 0,
+        installSize: 0,
+        disabled: true,
+    };
+    const result: ResultProps = { pkgSize, readings: [] };
+    return result;
 }
