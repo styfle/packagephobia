@@ -2,6 +2,7 @@ import { parsePackageString } from '../parse-utils';
 import { findAll, findOne, insert } from '../db';
 import { fetchManifest, getLatestVersion, getMostRecentVersions, getAllVersions } from '../npm-api';
 import { calculatePackageSize } from '../pkg-stats';
+import { versionUnknown } from '../constants';
 
 export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     if (query && typeof query.p === 'string') {
@@ -62,7 +63,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
 function packageNotFound(name: string) {
     const pkgSize: PkgSize = {
         name,
-        version: 'unknown',
+        version: versionUnknown,
         publishSize: 0,
         installSize: 0,
         disabled: true,

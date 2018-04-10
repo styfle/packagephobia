@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { pages } from '../constants';
+import { pages, versionUnknown } from '../constants';
 import { getReadableFileSize } from '../parse-utils';
 import BarGraph from '../components/BarGraph';
 import Stats from '../components/Stats';
@@ -30,7 +30,7 @@ const imgSrc =
 export default class ResultPage extends React.Component<ResultProps, {}> {
     render() {
         const { pkgSize, readings } = this.props;
-        const exists = pkgSize.version !== 'unknown';
+        const exists = pkgSize.version !== versionUnknown;
         const install = getReadableFileSize(pkgSize.installSize);
         const publish = getReadableFileSize(pkgSize.publishSize);
 

@@ -14,3 +14,4 @@ export const pages = {
 };
 
 export const containerId = 'page-container';
+export const versionUnknown = 'unknown';
