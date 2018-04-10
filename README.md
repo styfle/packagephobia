@@ -33,6 +33,11 @@ Below are the relevant feature requests for each website.
 - [npms request](https://github.com/npms-io/npms-www/issues/219)
 - [costofmodules request](https://github.com/siddharthkp/cost-of-modules/issues/50)
 
+Hopefully, this would lead to publishers taking notice of their bloated packages such as the following:
+
+- [micro is not micro](https://github.com/zeit/micro/issues/234)
+- [ava is not minimal](https://github.com/avajs/ava/issues/1622)
+
 ## NPM dependencies in the media
 
 I'm not the first one to notice npm packages are snowballing into bloated dependencies of dependencies.
