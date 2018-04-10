@@ -10,7 +10,6 @@ export const pages = {
     about: '/about',
     index: '/index',
     result: '/result',
-    //{ [page: string]: string}
 };
 
 export const containerId = 'page-container';

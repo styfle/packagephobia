@@ -14,7 +14,7 @@ const NotFoundFactory = createFactory(NotFoundPage);
 
 import { getResultProps } from '../page-props/results';
 
-import { faviconUrl, containerId, reactUrl, reactDomUrl, browserUrl, pages } from '../constants';
+import { faviconUrl, containerId, pages } from '../constants';
 
 const exisitingPaths = new Set(Object.values(pages));
 
@@ -49,9 +49,6 @@ export async function renderPage(
     stream.pipe(res, { end: false });
     stream.on('end', () => {
         res.end(`</div>
-                <script src="${reactUrl}"></script>
-                <script src="${reactDomUrl}"></script>
-                <script src="${browserUrl}"></script>
                 <script type="text/javascript">
                     if (window.location.hostname === 'packagephobia.now.sh') {
                         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
