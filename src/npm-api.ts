@@ -11,6 +11,9 @@ export async function fetchManifest(name: string) {
     if (response.status === 404 || !manifest || Object.keys(manifest).length === 0) {
         throw new Error('Package not found');
     }
+    if (manifest.time.unpublished) {
+        throw new Error('Package was unpublished');
+    }
     return manifest;
 }
 

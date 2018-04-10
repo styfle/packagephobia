@@ -12,7 +12,7 @@ client.on('error', err => {
     console.error('Redis error: ', err);
 });
 
-export function getAllVersions(name: string) {
+export function findAll(name: string) {
     return new Promise<{ [key: string]: PkgSize }>((resolve, reject) => {
         client.hgetall(name, (err, reply) => {
             if (err) {
@@ -31,7 +31,7 @@ export function getAllVersions(name: string) {
     });
 }
 
-export function getVersion(name: string, version: string) {
+export function findOne(name: string, version: string) {
     return new Promise<PkgSize | null>((resolve, reject) => {
         client.hget(name, version, (err, reply) => {
             if (err) {
@@ -50,7 +50,7 @@ export function getVersion(name: string, version: string) {
     });
 }
 
-export function setVersion(data: PkgSize) {
+export function insert(data: PkgSize) {
     return new Promise<number>((resolve, reject) => {
         const { name, version, ...payload } = data;
         const value = JSON.stringify(payload);
