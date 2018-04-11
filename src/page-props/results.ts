@@ -1,8 +1,13 @@
-import { parsePackageString } from '../parse-utils';
-import { findAll, findOne, insert } from '../db';
-import { fetchManifest, getLatestVersion, getMostRecentVersions, getAllVersions } from '../npm-api';
-import { calculatePackageSize } from '../pkg-stats';
-import { versionUnknown } from '../constants';
+import { parsePackageString } from '../util/npm-parser';
+import { findAll, findOne, insert } from '../util/backend/db';
+import {
+    fetchManifest,
+    getLatestVersion,
+    getMostRecentVersions,
+    getAllVersions,
+} from '../util/npm-api';
+import { calculatePackageSize } from '../util/backend/npm-stats';
+import { versionUnknown } from '../util/constants';
 
 export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     if (query && typeof query.p === 'string') {

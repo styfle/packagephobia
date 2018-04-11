@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { pages, versionUnknown } from '../constants';
-import { getReadableFileSize } from '../parse-utils';
+import { pages, versionUnknown } from '../util/constants';
+import { getReadableFileSize } from '../util/npm-parser';
 import BarGraph from '../components/BarGraph';
 import Stats from '../components/Stats';
 import Footer from '../components/Footer';

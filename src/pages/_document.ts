@@ -14,11 +14,11 @@ const NotFoundFactory = createFactory(NotFoundPage);
 
 import { getResultProps } from '../page-props/results';
 
-import { faviconUrl, containerId, pages } from '../constants';
+import { faviconUrl, containerId, pages } from '../util/constants';
 
-const exisitingPaths = new Set(Object.values(pages));
+const existingPaths = new Set(Object.values(pages));
 
-const css = ` body {
+const css = `body {
     margin: 0;
     padding: 0;
     background: #fafafa;
@@ -34,7 +34,7 @@ export async function renderPage(
 ) {
     res.statusCode = getStatusCode(pathname);
     res.write(`<!DOCTYPE html>
-            <html>
+            <html lang="en">
             <head>
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,7 +79,7 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
 }
 
 function getStatusCode(pathname: string) {
-    if (exisitingPaths.has(pathname)) {
+    if (existingPaths.has(pathname)) {
         return 200;
     }
     return 404;

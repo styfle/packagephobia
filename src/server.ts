@@ -1,11 +1,10 @@
 import { createServer } from 'http';
 import { parse } from 'url';
 import { createReadStream } from 'fs';
-import { lookup } from './mime-types';
-import { control } from './cache-control';
+import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
 
-import { browserUrl, browserMapUrl, pages } from './constants';
+import { browserUrl, browserMapUrl, pages } from './util/constants';
 
 const { TMPDIR = '/tmp', GA_ID = '', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
@@ -20,19 +19,18 @@ createServer(async (req, res) => {
     }
     try {
         if (pathname === browserUrl || pathname === browserMapUrl) {
-            res.setHeader('Content-Type', lookup(pathname));
-            res.setHeader('Cache-Control', control(isProd, 7));
-            const file = `./dist${pathname}`;
-            createReadStream(file).pipe(res);
+            res.setHeader('Content-Type', mimeType(pathname));
+            res.setHeader('Cache-Control', cacheControl(isProd, 7));
+            createReadStream(`./dist${pathname}`).pipe(res);
         } else {
-            res.setHeader('Content-Type', lookup('*.html'));
-            res.setHeader('Cache-Control', control(isProd, 0));
+            res.setHeader('Content-Type', mimeType('*.html'));
+            res.setHeader('Cache-Control', cacheControl(isProd, 0));
             renderPage(res, pathname, query, TMPDIR, GA_ID);
         }
     } catch (e) {
         console.error(e);
-        res.setHeader('Content-Type', lookup('500.txt'));
-        res.setHeader('Cache-Control', control(isProd, 0));
+        res.setHeader('Content-Type', mimeType('500.txt'));
+        res.setHeader('Cache-Control', cacheControl(isProd, 0));
         res.statusCode = 500;
         res.end('500 Internal Error');
     }

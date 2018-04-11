@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { pages } from '../constants';
+import { pages } from '../util/constants';
 import Footer from '../components/Footer';
 
 const container: React.CSSProperties = {
