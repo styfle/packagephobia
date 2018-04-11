@@ -4,6 +4,7 @@ import { getReadableFileSize } from '../util/npm-parser';
 import BarGraph from '../components/BarGraph';
 import Stats from '../components/Stats';
 import Footer from '../components/Footer';
+import Image from '../components/Image';
 
 const container: React.CSSProperties = {
     display: 'flex',
@@ -23,9 +24,6 @@ const error: React.CSSProperties = {
     fontSize: '2.3rem',
     color: '#D33',
 };
-
-const imgSrc =
-    'https://res.cloudinary.com/ceriously/image/upload/c_scale,w_350/tumblebeasts/tbstand2.png';
 
 export default class ResultPage extends React.Component<ResultProps, {}> {
     render() {
@@ -51,7 +49,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                             <BarGraph readings={readings} getHref={getHref} />
                         </div>
                     ) : (
-                        <img src={imgSrc} width="350px" height="350px" />
+                        <Image width={350} height={350} file="tumblebeasts/tbstand2.png" />
                     )}
                 </div>
                 <Footer />

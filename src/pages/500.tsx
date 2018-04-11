@@ -14,12 +14,12 @@ const style: React.CSSProperties = {
 export default () => (
     <>
         <div style={style}>
-            <h1>404 Not Found</h1>
-            <p>Oops, this page does not exist.</p>
+            <h1>500 Internal Server Error</h1>
+            <p>Oops, something terribly went wrong.</p>
             <p>
                 <a href={pages.index}>Go Home You</a>
             </p>
-            <Image width={300} height={380} file="tumblebeasts/tb_sign1.png" />
+            <Image width={500} height={320} file="tumblebeasts/tbservers.png" />
         </div>
         <Footer />
     </>

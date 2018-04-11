@@ -6,11 +6,13 @@ import IndexPage from '../pages/index';
 import ResultPage from '../pages/result';
 import AboutPage from '../pages/about';
 import NotFoundPage from '../pages/404';
+import ServerErrorPage from '../pages/500';
 
 const IndexFactory = createFactory(IndexPage);
 const ResultFactory = createFactory(ResultPage);
 const AboutFactory = createFactory(AboutPage);
 const NotFoundFactory = createFactory(NotFoundPage);
+const ServerErrorFactory = createFactory(ServerErrorPage);
 
 import { getResultProps } from '../page-props/results';
 
@@ -66,15 +68,19 @@ export async function renderPage(
 }
 
 async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string) {
-    switch (pathname) {
-        case pages.index:
-            return IndexFactory();
-        case pages.result:
-            return ResultFactory(await getResultProps(query, tmpDir));
-        case pages.about:
-            return AboutFactory();
-        default:
-            return NotFoundFactory();
+    try {
+        switch (pathname) {
+            case pages.index:
+                return IndexFactory();
+            case pages.result:
+                return ResultFactory(await getResultProps(query, tmpDir));
+            case pages.about:
+                return AboutFactory();
+            default:
+                return NotFoundFactory();
+        }
+    } catch (e) {
+        return ServerErrorFactory();
     }
 }
 

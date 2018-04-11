@@ -22,19 +22,19 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
 
         if (!version) {
             version = await getLatestVersion(manifest);
-            console.log(`Querystring missing version, using version ${version}`);
+            console.log(`Querystring missing version, using version ${name}@${version}`);
         }
 
         const allVersions = getAllVersions(manifest);
         if (!allVersions.includes(version)) {
-            console.error(`Version ${version} does not exist in npm`);
+            console.error(`Version ${name}@${version} does not exist in npm`);
             return packageNotFound(name);
         }
         const mostRecentVersions = getMostRecentVersions(allVersions, 15);
 
         let existing = await findOne(name, version);
         if (!existing) {
-            console.log(`Cache miss for ${name}@${version}...`);
+            console.log(`Cache miss for ${name}@${version} - running npm install...`);
             const start = new Date();
             existing = await calculatePackageSize(name, version, tmp);
             const end = new Date();
