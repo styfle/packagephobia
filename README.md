@@ -51,6 +51,7 @@ Hopefully, this would lead to publishers taking notice of their bloated packages
 
 - [micro is not micro](https://github.com/zeit/micro/issues/234)
 - [ava is not minimal](https://github.com/avajs/ava/issues/1622)
+- [typescript is ever increasing](https://github.com/Microsoft/TypeScript/issues/23339)
 
 ## npm dependencies in the media
 
