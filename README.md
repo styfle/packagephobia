@@ -16,7 +16,7 @@ This is useful for inspecting potential `devDependencies` without using up preci
 
 ## [Demo](https://packagephobia.now.sh)
 
-A good use case might be comparing test runners, web frameworks, or even bundlers. Click one of the links below to see Bundle Phobia in action!
+A good use case might be comparing test runners, web frameworks, or even bundlers. Click one of the links below to see Package Phobia in action!
 
 - Test Harnesses: [tap](https://packagephobia.now.sh/result?p=tap) vs [tape](https://packagephobia.now.sh/result?p=tape)
 - Web Frameworks: [express](https://packagephobia.now.sh/result?p=express) vs [micro](https://packagephobia.now.sh/result?p=micro)
