@@ -51,6 +51,10 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                     ) : (
                         <Image width={350} height={350} file="tumblebeasts/tbstand2.png" />
                     )}
+                    <p>
+                        See more info about this package on{' '}
+                        <a href={`https://www.npmjs.com/package/${pkgSize.name}`}>npmjs.com</a>
+                    </p>
                 </div>
                 <Footer />
             </>
