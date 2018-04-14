@@ -3,8 +3,12 @@ import { pages } from '../util/constants';
 
 const form: React.CSSProperties = {
     display: 'flex',
+    alignItems: 'center',
     maxWidth: '90vw',
 };
+
+const height = '4rem';
+const radius = '3px';
 
 const input: React.CSSProperties = {
     color: '#333',
@@ -15,21 +19,18 @@ const input: React.CSSProperties = {
     fontWeight: 300,
     width: '100%',
     border: '1px solid #eee',
-    borderRadius: '3px 0px 0px 3px',
-    height: '64px',
+    borderRadius: `${radius} 0px 0px ${radius}`,
+    height: height,
 };
 
 const button: React.CSSProperties = {
-    width: '64px',
-    height: '64px',
-    marginLeft: '-64px',
-    background: 'transparent',
-    border: 'none',
-    /*
+    width: height,
+    height: height,
+    padding: '0.5rem',
     background: '#fcfcfc',
     border: '1px solid #eee',
     borderLeft: 'none',
-    borderRadius: '0px 3px 3px 0px',*/
+    borderRadius: `0px ${radius} ${radius} 0px`,
 };
 
 export default (props: { autoFocus: boolean; defaultValue?: string }) => (
