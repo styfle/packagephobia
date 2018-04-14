@@ -4,7 +4,6 @@ import { pages } from '../util/constants';
 const form: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    maxWidth: '90vw',
 };
 
 const height = '4rem';

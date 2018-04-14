@@ -6,15 +6,8 @@ interface Props {
 }
 
 export default function Stats(props: Props) {
-    const style: React.CSSProperties = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: '60px',
-    };
     return (
-        <div style={style}>
+        <div className="stats-container">
             <Stat {...props.publish} label="Publish Size" />
             <Stat {...props.install} label="Install Size" />
         </div>

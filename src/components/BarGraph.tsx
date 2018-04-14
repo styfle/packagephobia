@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { getReadableFileSize } from '../util/npm-parser';
-const stylesheet = `.bar-graph-container{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    width:100%;
-    height:48vh
+const stylesheet = `
+.bar-graph-container{
+    
 }
 .bar-graph{
     height:45vh;
@@ -13,7 +10,9 @@ const stylesheet = `.bar-graph-container{
     display:flex;
     align-items:baseline;
     margin:0;
-    justify-content:center
+    justify-content:center;
+    max-width: 80vw;
+    overflow-x: auto;
 }
 .bar-graph__bar-group{
     height:100%;
