@@ -3,6 +3,7 @@ import { pages, versionUnknown } from '../util/constants';
 import { getReadableFileSize } from '../util/npm-parser';
 import BarGraph from '../components/BarGraph';
 import Stats from '../components/Stats';
+import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import Image from '../components/Image';
 
@@ -13,11 +14,6 @@ const container: React.CSSProperties = {
     alignItems: 'center',
     height: '120vh',
     marginTop: '-20vh',
-};
-
-const h1: React.CSSProperties = {
-    fontFamily:
-        '"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace',
 };
 
 const error: React.CSSProperties = {
@@ -31,13 +27,12 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
         const exists = pkgSize.version !== versionUnknown;
         const install = getReadableFileSize(pkgSize.installSize);
         const publish = getReadableFileSize(pkgSize.publishSize);
+        const pkgNameAndVersion = `${pkgSize.name}@${pkgSize.version}`;
 
         return (
             <>
                 <div style={container}>
-                    <h1 style={h1}>
-                        {pkgSize.name}@{pkgSize.version}
-                    </h1>
+                    <SearchBar autoFocus={false} defaultValue={pkgNameAndVersion} />
                     {exists ? (
                         <p>Package is {install.readable} after npm install</p>
                     ) : (
