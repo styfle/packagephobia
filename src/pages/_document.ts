@@ -24,7 +24,32 @@ const css = `body {
     margin: 0;
     padding: 0;
     background: #fafafa;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;    
+}
+
+.content-container {
+    display: flex;
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3rem;
+}
+
+@media screen and (max-width: 48em) {
+    .content-container {
+        flex-wrap: wrap;
+    }
+    .stats-container {
+        margin: 0 auto;
+    }
+
+    .bar-graph-container {
+        margin: 0 auto;
+    }
 }`;
 
 export async function renderPage(

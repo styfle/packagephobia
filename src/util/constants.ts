@@ -10,5 +10,5 @@ export const pages = {
     result: '/result',
 };
 
-export const containerId = 'page-container';
+export const containerId = 'app-container';
 export const versionUnknown = 'unknown';

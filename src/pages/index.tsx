@@ -1,15 +1,7 @@
 import * as React from 'react';
+import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
-
-const container: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '120vh',
-    marginTop: '-20vh',
-};
 
 const h1: React.CSSProperties = {
     letterSpacing: '4px',
@@ -20,7 +12,7 @@ const h1: React.CSSProperties = {
 
 export default () => (
     <>
-        <div style={container}>
+        <PageContainer>
             <svg
                 width="150px"
                 height="150px"
@@ -40,7 +32,7 @@ export default () => (
             <p>Find the cost of adding a new dev dependency to your project</p>
 
             <SearchBar autoFocus={true} />
-        </div>
+        </PageContainer>
 
         <Footer />
     </>

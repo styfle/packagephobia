@@ -1,20 +1,12 @@
 import * as React from 'react';
 import { pages, versionUnknown } from '../util/constants';
 import { getReadableFileSize } from '../util/npm-parser';
+import PageContainer from '../components/PageContainer';
 import BarGraph from '../components/BarGraph';
 import Stats from '../components/Stats';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import Image from '../components/Image';
-
-const container: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '120vh',
-    marginTop: '-20vh',
-};
 
 const error: React.CSSProperties = {
     fontSize: '2.3rem',
@@ -31,7 +23,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
 
         return (
             <>
-                <div style={container}>
+                <PageContainer>
                     <SearchBar autoFocus={false} defaultValue={pkgNameAndVersion} />
                     {exists ? (
                         <p>Package is {install.readable} after npm install</p>
@@ -39,7 +31,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                         <p style={error}>A Tumbeast ate your package</p>
                     )}
                     {exists ? (
-                        <div style={{ display: 'flex' }}>
+                        <div className="content-container">
                             <Stats publish={publish} install={install} />
                             <BarGraph readings={readings} getHref={getHref} />
                         </div>
@@ -50,7 +42,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                         See more info about this package on{' '}
                         <a href={`https://www.npmjs.com/package/${pkgSize.name}`}>npmjs.com</a>
                     </p>
-                </div>
+                </PageContainer>
                 <Footer />
             </>
         );
