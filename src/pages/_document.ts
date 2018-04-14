@@ -22,7 +22,7 @@ const existingPaths = new Set(Object.values(pages));
 
 const css = `body {
     margin: 0;
-    padding: 0;
+    padding: 1rem;
     background: #fafafa;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 }`;

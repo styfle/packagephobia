@@ -7,8 +7,7 @@ const container: React.CSSProperties = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '120vh',
-    marginTop: '-20vh',
+    minHeight: '100vh',
 };
 
 const h1: React.CSSProperties = {
