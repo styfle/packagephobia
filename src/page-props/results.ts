@@ -3,7 +3,7 @@ import { findAll, findOne, insert } from '../util/backend/db';
 import {
     fetchManifest,
     getLatestVersion,
-    getMostRecentVersions,
+    getVersionsForChart,
     getAllVersions,
 } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
@@ -30,7 +30,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
             console.error(`Version ${name}@${version} does not exist in npm`);
             return packageNotFound(name);
         }
-        const mostRecentVersions = getMostRecentVersions(allVersions, 15);
+        const chartVersions = getVersionsForChart(allVersions, version, 7);
 
         let existing = await findOne(name, version);
         if (!existing) {
@@ -45,7 +45,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
 
         const cachedVersions = await findAll(name);
 
-        const readings = mostRecentVersions.map(v => {
+        const readings = chartVersions.map(v => {
             if (v in cachedVersions) {
                 return cachedVersions[v];
             } else {
