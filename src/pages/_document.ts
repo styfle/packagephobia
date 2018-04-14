@@ -20,12 +20,34 @@ import { faviconUrl, containerId, pages } from '../util/constants';
 
 const existingPaths = new Set(Object.values(pages));
 
-const css = `body {
+const css = `
+body {
     margin: 0;
     padding: 0;
     background: #fafafa;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;    
 }
+
+#spinner {
+    box-sizing: border-box;
+    height: 60px;
+    width: 60px;
+    margin-top: calc(50vh - 60px);
+    margin-left: calc(50vw - 60px);
+    border: 0px;
+    border-radius: 50%;
+    box-shadow: 0 -20px 0 24px #65C3F8 inset;
+    animation: rotate 1s infinite linear;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 
 
 .content-container {
     display: flex;
@@ -70,12 +92,15 @@ export async function renderPage(
                 <style>${css}</style>
             </head>
             <body>
+            <div id="spinner"></div>
+            <script>document.getElementById('spinner').style.display='block'</script>
             <div id="${containerId}">`);
     const factory = await routePage(pathname, query, tmpDir);
     const stream = renderToNodeStream(factory);
     stream.pipe(res, { end: false });
     stream.on('end', () => {
         res.end(`</div>
+                <script>document.getElementById('spinner').style.display='none'</script>
                 <script type="text/javascript">
                     if (window.location.hostname === 'packagephobia.now.sh') {
                         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
