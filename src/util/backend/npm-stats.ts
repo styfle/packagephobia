@@ -5,7 +5,7 @@ import * as child_process from 'child_process';
 const exec = promisify(child_process.exec);
 
 // TODO: Can this be optimized by changing sync to async?
-function getDirSize(root: string, size = 0): number {
+export function getDirSize(root: string, size = 0): number {
     const stats = lstatSync(root);
 
     if (!stats.isDirectory()) {
