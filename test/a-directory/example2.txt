@@ -1,0 +1,3 @@
+Hello folder,
+
+This is another file.

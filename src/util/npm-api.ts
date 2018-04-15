@@ -32,19 +32,23 @@ export function getAllVersions(manifest: NpmManifest) {
 }
 
 /**
- * Get the most recent versions of the npm package
+ * Get the most recent versions of the npm package.
+ * Returns (count * 2 + 1) results.
  */
 export function getVersionsForChart(allVersions: string[], version: string, count: number) {
+    const total = count * 2 + 1;
     const index = allVersions.indexOf(version);
-    const last = allVersions.length - 1;
     let start = index - count;
-    if (start < 0) {
-        start = 0;
-    }
     let end = index + count + 1;
-    if (end > last) {
-        end = last;
+
+    if (end > allVersions.length) {
+        const tmp = allVersions.length - total;
+        start = tmp > 0 ? tmp : 0;
+    } else if (start < 0) {
+        start = 0;
+        end = start + total;
     }
+
     return allVersions.slice(start, end);
 }
 
