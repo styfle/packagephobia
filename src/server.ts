@@ -5,6 +5,8 @@ import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
 
 import { browserUrl, browserMapUrl, pages } from './util/constants';
+import { getResultProps } from './page-props/results';
+import { getBadgeUrl } from './util/badge';
 
 const { TMPDIR = '/tmp', GA_ID = '', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
@@ -22,6 +24,12 @@ createServer(async (req, res) => {
             res.setHeader('Content-Type', mimeType(pathname));
             res.setHeader('Cache-Control', cacheControl(isProd, 7));
             createReadStream(`./dist${pathname}`).pipe(res);
+        } else if (pathname === pages.badge) {
+            const resultProps = await getResultProps(query, TMPDIR);
+            const badgeUrl = getBadgeUrl(resultProps.pkgSize);
+            res.statusCode = 302;
+            res.setHeader('Location', badgeUrl);
+            res.end();
         } else {
             res.setHeader('Content-Type', mimeType('*.html'));
             res.setHeader('Cache-Control', cacheControl(isProd, 0));

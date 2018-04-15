@@ -2,10 +2,10 @@
   "name": "packagephobia",
   "version": "1.0.0",
   "description": "Find the cost of adding a new dev dependency to your project",
-  "main": "dist/server.js",
+  "main": "dist/src/server.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
     "test": "tape dist/test/**/*.js",
     "deploy": "now --public && now alias"

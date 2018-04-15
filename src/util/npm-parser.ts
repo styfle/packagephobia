@@ -39,3 +39,23 @@ export function getReadableFileSize(bytes: number): SizeWithUnit {
     const unit = units[i];
     return { size, unit, readable: `${size} ${unit}` };
 }
+
+const megabyte = 1024 * 1024;
+const green = 5 * megabyte;
+const yellow = 30 * megabyte;
+const orange = 100 * megabyte;
+const red = 500 * megabyte;
+
+export function getHexColor(bytes: number) {
+    if (bytes < green) {
+        return '4bc524';
+    } else if (bytes < yellow) {
+        return 'cba41b';
+    } else if (bytes < orange) {
+        return 'e77335';
+    } else if (bytes < red) {
+        return 'cb543e';
+    } else {
+        return 'ff0000';
+    }
+}
