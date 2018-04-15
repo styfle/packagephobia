@@ -40,7 +40,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                                     <input
                                         type="text"
                                         defaultValue={markdown}
-                                        style={{ width: '100%' }}
+                                        style={{ width: '100%', fontFamily: 'monospace' }}
                                     />
                                 </p>
                             </details>
