@@ -4,7 +4,7 @@ const footer: React.CSSProperties = {
     color: '#9daa9a',
     background: '#202420',
     width: '100%',
-    fontSize: '13px',
+    fontSize: '0.9rem',
 };
 
 const footerSection: React.CSSProperties = {
@@ -20,23 +20,45 @@ const social: React.CSSProperties = {
     fontWeight: 'bold',
     textDecoration: 'none',
     color: '#ccc',
+    width: '137px',
 };
 
 export default () => {
     return (
         <footer style={footer}>
             <section style={footerSection}>
-                <div>
-                    <h3>What does this thing do?</h3>
+                <div style={{ marginRight: '2rem' }}>
+                    <h3>What is Package Phobia?</h3>
                     <p>
-                        JavaScript bloat is more real today than it ever was. Developer tools
-                        continuously get bigger as more (often redundant) libraries are thrown to
-                        solve new problems. Until of-course, the <i>big rewrite</i> happens.
+                        Package Phobia reports the size of an npm package <em>before</em> you
+                        install it.
                     </p>
                     <p>
-                        This thing lets you understand the performance cost of{' '}
-                        <code>npm&nbsp;install</code> ing a new npm package before actually using up
-                        the time and disk space on your computer.
+                        This is useful for inspecting potential <code>devDependencies</code> without
+                        using up precious disk space or waiting minutes for{' '}
+                        <code>npm&nbsp;install</code>. Ain't nobody got time for dat.
+                    </p>
+                    <h3>What is "publish size" vs "install size"?</h3>
+                    <p>
+                        The "publish size" is the size of the packaged source code published to npm.
+                        This number is easy to detect and is typically very small.
+                    </p>
+                    <p>
+                        The "install size" is the size your hard drive will report after running{' '}
+                        <code>npm&nbsp;install</code>. This includes the package, all of the
+                        dependencies, and its dependency's dependencies...and so on. You can see how
+                        this might get very large and why you want to think before adding a new
+                        dependency to your project.
+                    </p>
+                    <p>
+                        See the{' '}
+                        <a
+                            target="_blank"
+                            href="https://github.com/styfle/packagephobia/blob/master/README.md"
+                        >
+                            README
+                        </a>{' '}
+                        for more info.
                     </p>
                 </div>
                 <div>
@@ -67,7 +89,7 @@ export default () => {
                         </svg>
                         <span>&nbsp;Chat on Twitter</span>
                     </a>
-                    <p>I would greatly appreciate feedback or Pull Requests :)</p>
+                    <p>We appreciate any feedback 😃</p>
                 </div>
             </section>
         </footer>
