@@ -8,6 +8,7 @@ export const pages = {
     about: '/about',
     index: '/index',
     result: '/result',
+    badge: '/badge',
 };
 
 export const containerId = 'app-container';

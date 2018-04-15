@@ -7,6 +7,7 @@ import Stats from '../components/Stats';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import Image from '../components/Image';
+import { getBadgeUrl } from '../util/badge';
 
 const error: React.CSSProperties = {
     fontSize: '2.3rem',
@@ -20,13 +21,16 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
         const install = getReadableFileSize(pkgSize.installSize);
         const publish = getReadableFileSize(pkgSize.publishSize);
         const pkgNameAndVersion = `${pkgSize.name}@${pkgSize.version}`;
+        const badgeUrl = getBadgeUrl(pkgSize);
 
         return (
             <>
                 <PageContainer>
                     <SearchBar autoFocus={false} defaultValue={pkgNameAndVersion} />
                     {exists ? (
-                        <p>Package is {install.readable} after npm install</p>
+                        <p>
+                            <img src={badgeUrl} />
+                        </p>
                     ) : (
                         <p style={error}>A Tumbeast ate your package</p>
                     )}
