@@ -6,14 +6,14 @@ test('getDirSize top level', t => {
     t.plan(1);
     const dir = path.join(__dirname, 'a-directory').replace('/dist', '');
     const actual = npmstats.getDirSize(dir);
-    t.deepEqual(actual, 242);
+    t.equal(actual, 242);
 });
 
 test('getDirSize second level', t => {
     t.plan(1);
     const dir = path.join(__dirname, 'a-directory', 'a-nested-directory').replace('/dist', '');
     const actual = npmstats.getDirSize(dir);
-    t.deepEqual(actual, 120);
+    t.equal(actual, 120);
 });
 
 test('getDirSize single file', t => {
@@ -22,5 +22,5 @@ test('getDirSize single file', t => {
         .join(__dirname, 'a-directory', 'a-nested-directory', 'example4.txt')
         .replace('/dist', '');
     const actual = npmstats.getDirSize(dir);
-    t.deepEqual(actual, 77);
+    t.equal(actual, 77);
 });
