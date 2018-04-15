@@ -23,7 +23,6 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
         const publish = getReadableFileSize(pkgSize.publishSize);
         const pkgNameAndVersion = `${pkgSize.name}@${pkgSize.version}`;
         const badgeUrl = getBadgeUrl(pkgSize);
-        const markdown = `![install size](https://${hostname}${pages.badge}?p=${pkgNameAndVersion})`;
 
         return (
             <>
@@ -39,7 +38,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                                     Copy and paste the following into your README.md:<br />
                                     <input
                                         type="text"
-                                        defaultValue={markdown}
+                                        defaultValue={getMarkdown(pkgNameAndVersion)}
                                         style={{ width: '100%', fontFamily: 'monospace' }}
                                     />
                                 </p>
@@ -68,3 +67,9 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
 }
 
 const getHref = (r: PkgSize) => `${pages.result}?p=${r.name}@${r.version}`;
+
+const getMarkdown = (pkgNameAndVersion: string) => {
+    const badgePage = `https://${hostname}${pages.badge}?p=${pkgNameAndVersion}`;
+    const resultPage = `https://${hostname}${pages.result}?p=${pkgNameAndVersion}`;
+    return `[![install size](${badgePage})](${resultPage})`;
+};
