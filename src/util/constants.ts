@@ -13,4 +13,4 @@ export const pages = {
 
 export const containerId = 'app-container';
 export const versionUnknown = 'unknown';
-export const hostname = 'https://packagephobia.now.sh';
+export const hostname = 'packagephobia.now.sh';
