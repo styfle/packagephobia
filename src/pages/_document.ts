@@ -16,7 +16,7 @@ const ServerErrorFactory = createFactory(ServerErrorPage);
 
 import { getResultProps } from '../page-props/results';
 
-import { faviconUrl, containerId, pages } from '../util/constants';
+import { faviconUrl, containerId, pages, hostname } from '../util/constants';
 
 const existingPaths = new Set(Object.values(pages));
 
@@ -102,7 +102,7 @@ export async function renderPage(
         res.end(`</div>
                 <script>document.getElementById('spinner').style.display='none'</script>
                 <script type="text/javascript">
-                    if (window.location.hostname === 'packagephobia.now.sh') {
+                    if (window.location.hostname === '${hostname}') {
                         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

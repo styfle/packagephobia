@@ -8,6 +8,7 @@ import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import Image from '../components/Image';
 import { getBadgeUrl } from '../util/badge';
+import { hostname } from '../util/constants';
 
 const error: React.CSSProperties = {
     fontSize: '2.3rem',
@@ -22,15 +23,28 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
         const publish = getReadableFileSize(pkgSize.publishSize);
         const pkgNameAndVersion = `${pkgSize.name}@${pkgSize.version}`;
         const badgeUrl = getBadgeUrl(pkgSize);
+        const markdown = `![install size](https://${hostname}${pages.badge}?${pkgNameAndVersion})`;
 
         return (
             <>
                 <PageContainer>
                     <SearchBar autoFocus={false} defaultValue={pkgNameAndVersion} />
                     {exists ? (
-                        <p>
-                            <img src={badgeUrl} />
-                        </p>
+                        <div style={{ padding: '10px 0' }}>
+                            <details>
+                                <summary>
+                                    <img src={badgeUrl} />
+                                </summary>
+                                <p>
+                                    Copy and paste the following into your README.md:<br />
+                                    <input
+                                        type="text"
+                                        defaultValue={markdown}
+                                        style={{ width: '100%' }}
+                                    />
+                                </p>
+                            </details>
+                        </div>
                     ) : (
                         <p style={error}>A Tumbeast ate your package</p>
                     )}
