@@ -23,7 +23,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
         const publish = getReadableFileSize(pkgSize.publishSize);
         const pkgNameAndVersion = `${pkgSize.name}@${pkgSize.version}`;
         const badgeUrl = getBadgeUrl(pkgSize);
-        const markdown = `![install size](https://${hostname}${pages.badge}?${pkgNameAndVersion})`;
+        const markdown = `![install size](https://${hostname}${pages.badge}?p=${pkgNameAndVersion})`;
 
         return (
             <>
