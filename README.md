@@ -1,6 +1,11 @@
 # Package Phobia
 
+[![dependency](https://david-dm.org/styfle/packagephobia.svg)](https://david-dm.org/styfle/packagephobia)
+[![devDependency](https://david-dm.org/styfle/packagephobia/dev-status.svg)](https://david-dm.org/styfle/packagephobia#info=devDependencies)
+[![travis](https://travis-ci.org/styfle/packagephobia.svg?branch=master)](https://travis-ci.org/styfle/packagephobia)
+
 <a href="http://turnoff.us/geek/npm-install/"><img src="http://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
+
 
 ⚖️ Find the cost of adding a new dev dependency to your project.
 
