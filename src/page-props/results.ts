@@ -1,4 +1,4 @@
-import { parsePackageString } from '../util/npm-parser';
+import { parsePackageString, isFullRelease } from '../util/npm-parser';
 import { findAll, findOne, insert } from '../util/backend/db';
 import {
     fetchManifest,
@@ -30,7 +30,11 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
             console.error(`Version ${name}@${version} does not exist in npm`);
             return packageNotFound(name);
         }
-        const chartVersions = getVersionsForChart(allVersions, version, 7);
+
+        const filteredVersions = isFullRelease(version)
+            ? allVersions.filter(isFullRelease)
+            : allVersions;
+        const chartVersions = getVersionsForChart(filteredVersions, version, 7);
 
         let existing = await findOne(name, version);
         if (!existing) {

@@ -111,3 +111,27 @@ test('parsePackageString with scope and without version', t => {
     const actual = npmparser.parsePackageString('@types/foo');
     t.deepEqual(actual, { scoped: true, name: '@types/foo', version: null });
 });
+
+test('isFullRelease 1.2.3', t => {
+    t.plan(1);
+    const actual = npmparser.isFullRelease('1.2.3');
+    t.equal(actual, true);
+});
+
+test('isFullRelease 10.0.39', t => {
+    t.plan(1);
+    const actual = npmparser.isFullRelease('10.0.39');
+    t.equal(actual, true);
+});
+
+test('isFullRelease 2.9.0-dev.20180323', t => {
+    t.plan(1);
+    const actual = npmparser.isFullRelease('2.9.0-dev.20180323');
+    t.equal(actual, false);
+});
+
+test('isFullRelease 2.0.0-alpha.1', t => {
+    t.plan(1);
+    const actual = npmparser.isFullRelease('2.0.0-alpha.1');
+    t.equal(actual, false);
+});

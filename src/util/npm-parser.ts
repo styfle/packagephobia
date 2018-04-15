@@ -27,6 +27,12 @@ export function parsePackageString(packageString: string): PackageVersion {
     return { name, version, scoped };
 }
 
+const semver = /^\d+\.\d+.\d+$/;
+
+export function isFullRelease(version: string): boolean {
+    return semver.test(version);
+}
+
 const UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
 
 export function getReadableFileSize(bytes: number): SizeWithUnit {
