@@ -27,33 +27,31 @@ export function parsePackageString(packageString: string): PackageVersion {
     return { name, version, scoped };
 }
 
-export function getReadableFileSize(bytes: number): SizeWithUnit {
-    let i = -1;
-    const units = ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    do {
-        bytes = bytes / 1024;
-        i++;
-    } while (bytes > 1024);
+const UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
 
-    const size = Math.max(bytes, 0.1).toFixed(1);
-    const unit = units[i];
+export function getReadableFileSize(bytes: number): SizeWithUnit {
+    const exponent = Math.min(Math.floor(Math.log10(bytes) / 3), UNITS.length - 1);
+    const size = (bytes / Math.pow(1024, exponent)).toPrecision(3);
+    const unit = UNITS[exponent];
     return { size, unit, readable: `${size} ${unit}` };
 }
 
 const megabyte = 1024 * 1024;
-const green = 5 * megabyte;
-const yellow = 30 * megabyte;
-const orange = 100 * megabyte;
-const red = 500 * megabyte;
+const fiveMb = 5 * megabyte;
+const thirtyMb = 30 * megabyte;
+const oneHundredMb = 100 * megabyte;
+const fiveHundred = 500 * megabyte;
 
 export function getHexColor(bytes: number) {
-    if (bytes < green) {
+    if (bytes < megabyte) {
         return '4bc524';
-    } else if (bytes < yellow) {
+    } else if (bytes < fiveMb) {
+        return '0472b4';
+    } else if (bytes < thirtyMb) {
         return 'cba41b';
-    } else if (bytes < orange) {
+    } else if (bytes < oneHundredMb) {
         return 'e77335';
-    } else if (bytes < red) {
+    } else if (bytes < fiveHundred) {
         return 'cb543e';
     } else {
         return 'ff0000';

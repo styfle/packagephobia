@@ -1,12 +1,25 @@
 import * as npmparser from '../src/util/npm-parser';
 import * as test from 'tape';
 
+const kilobyte = 1024;
 const megabyte = 1024 * 1024;
 
-test('getHexColor 1 MB green', t => {
+test('getHexColor B green', t => {
     t.plan(1);
-    const actual = npmparser.getHexColor(megabyte * 1);
+    const actual = npmparser.getHexColor(712);
     t.equal(actual, '4bc524');
+});
+
+test('getHexColor kB green', t => {
+    t.plan(1);
+    const actual = npmparser.getHexColor(kilobyte * 3.14);
+    t.equal(actual, '4bc524');
+});
+
+test('getHexColor 2 MB blue', t => {
+    t.plan(1);
+    const actual = npmparser.getHexColor(megabyte * 2);
+    t.equal(actual, '0472b4');
 });
 
 test('getHexColor 10 MB yellow', t => {
@@ -33,41 +46,45 @@ test('getHexColor 700 MB super red', t => {
     t.equal(actual, 'ff0000');
 });
 
-/* TODO: fix me
-test('getReadableFileSize 512 kB', t => {
+test('getReadableFileSize 512 B', t => {
     t.plan(2);
     const actual = npmparser.getReadableFileSize(512);
-    t.equal(actual.size, '512.0');
+    t.equal(actual.size, '512');
     t.equal(actual.unit, 'B');
+});
+
+test('getReadableFileSize 3.14 kB', t => {
+    t.plan(2);
+    const actual = npmparser.getReadableFileSize(kilobyte * 3.14);
+    t.equal(actual.size, '3.14');
+    t.equal(actual.unit, 'kB');
 });
 
 test('getReadableFileSize 1 MB', t => {
     t.plan(2);
     const actual = npmparser.getReadableFileSize(megabyte);
-    t.equal(actual.size, '1.0');
+    t.equal(actual.size, '1.00');
     t.equal(actual.unit, 'MB');
 });
 
-*/
-
 test('getReadableFileSize 10 MB', t => {
     t.plan(2);
-    const actual = npmparser.getReadableFileSize(megabyte * 10);
-    t.equal(actual.size, '10.0');
+    const actual = npmparser.getReadableFileSize(megabyte * 16.3);
+    t.equal(actual.size, '16.3');
     t.equal(actual.unit, 'MB');
 });
 
 test('getReadableFileSize 712 MB', t => {
     t.plan(2);
-    const actual = npmparser.getReadableFileSize(megabyte * 712);
-    t.equal(actual.size, '712.0');
+    const actual = npmparser.getReadableFileSize(megabyte * 712.8);
+    t.equal(actual.size, '713');
     t.equal(actual.unit, 'MB');
 });
 
-test('getReadableFileSize 5.9 GB', t => {
+test('getReadableFileSize 5.86 GB', t => {
     t.plan(2);
     const actual = npmparser.getReadableFileSize(megabyte * 6000);
-    t.equal(actual.size, '5.9');
+    t.equal(actual.size, '5.86');
     t.equal(actual.unit, 'GB');
 });
 
