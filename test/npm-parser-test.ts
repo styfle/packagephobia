@@ -7,43 +7,55 @@ const megabyte = 1024 * 1024;
 test('getHexColor B green', t => {
     t.plan(1);
     const actual = npmparser.getHexColor(712);
-    t.equal(actual, '4bc524');
+    t.equal(actual, npmparser.color.brightgreen);
 });
 
 test('getHexColor kB green', t => {
     t.plan(1);
     const actual = npmparser.getHexColor(kilobyte * 3.14);
-    t.equal(actual, '4bc524');
+    t.equal(actual, npmparser.color.brightgreen);
+});
+
+test('getHexColor 900 kB limegreen', t => {
+    t.plan(1);
+    const actual = npmparser.getHexColor(kilobyte * 900);
+    t.equal(actual, npmparser.color.limegreen);
 });
 
 test('getHexColor 2 MB blue', t => {
     t.plan(1);
     const actual = npmparser.getHexColor(megabyte * 2);
-    t.equal(actual, '0472b4');
+    t.equal(actual, npmparser.color.blue);
 });
 
 test('getHexColor 10 MB yellow', t => {
     t.plan(1);
     const actual = npmparser.getHexColor(megabyte * 10);
-    t.equal(actual, 'cba41b');
+    t.equal(actual, npmparser.color.yellow);
 });
 
-test('getHexColor 50 MB orange', t => {
+test('getHexColor 40 MB orange', t => {
     t.plan(1);
-    const actual = npmparser.getHexColor(megabyte * 50);
-    t.equal(actual, 'e77335');
+    const actual = npmparser.getHexColor(megabyte * 40);
+    t.equal(actual, npmparser.color.orange);
 });
 
 test('getHexColor 80 MB red', t => {
     t.plan(1);
     const actual = npmparser.getHexColor(megabyte * 80);
-    t.equal(actual, 'e77335');
+    t.equal(actual, npmparser.color.orange);
 });
 
-test('getHexColor 700 MB super red', t => {
+test('getHexColor 120 MB red', t => {
+    t.plan(1);
+    const actual = npmparser.getHexColor(megabyte * 120);
+    t.equal(actual, npmparser.color.red);
+});
+
+test('getHexColor 700 MB super red pink', t => {
     t.plan(1);
     const actual = npmparser.getHexColor(megabyte * 700);
-    t.equal(actual, 'ff0000');
+    t.equal(actual, npmparser.color.pink);
 });
 
 test('getReadableFileSize 512 B', t => {
