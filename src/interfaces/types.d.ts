@@ -18,9 +18,15 @@ interface PkgSize {
     disabled?: boolean;
 }
 
+interface ApiResponse {
+    publishSize: number;
+    installSize: number;
+}
+
 interface ResultProps {
     pkgSize: PkgSize;
     readings: PkgSize[];
+    cacheResult: boolean;
 }
 
 interface ParsedUrlQuery {
