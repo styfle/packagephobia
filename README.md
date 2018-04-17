@@ -43,6 +43,7 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [Package Phobia](https://packagephobia.now.sh) reports the install size of a package.
 - [Bundle Phobia](https://bundlephobia.com) reports the size after webpack bundles the package.
 - [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules) reports the size of your currently installed packages.
+- [Badge Size](https://github.com/ngryman/badge-size) reports the gzip size of a single file from a package.
 
 ## What are the long term goals?
 
