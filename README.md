@@ -8,11 +8,11 @@
 <a href="http://turnoff.us/geek/npm-install/"><img src="http://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
 
 
-⚖️ Find the cost of adding a new dev dependency to your project.
-
-🕗 Save yourself time and disk space with this web app.
-
-📈 Detect javascript bloat over time with a chart.
+- ⚖️ Find the cost of adding a new dev dependency to your project
+- 🕗 Save yourself time and disk space with this web app
+- 📈 Detect javascript bloat over time with a chart
+- 🛡️ Get a badge/shield for your README
+- 🆕 Fetch size as json to integrate your tool
 
 ## What is the purpose?
 
