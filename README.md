@@ -53,6 +53,7 @@ Below are the relevant feature requests for each website.
 - [GitHub issue for bundlephobia.com](https://github.com/pastelsky/bundlephobia/issues/40)
 - [GitHub issue for npmjs.com](https://github.com/npm/www/issues/197)
 - [GitHub issue for npms.io](https://github.com/npms-io/npms-www/issues/219)
+- [GitHub issue for staticgen.com](https://github.com/netlify/staticgen/issues/359)
 - [GitHub issue for cost-of-modules](https://github.com/siddharthkp/cost-of-modules/issues/50)
 
 Hopefully, this would lead to publishers taking notice of their bloated packages such as the following:
