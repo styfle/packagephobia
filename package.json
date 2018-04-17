@@ -29,7 +29,7 @@
     "@types/react-dom": "^16.0.5",
     "@types/redis": "^2.8.6",
     "@types/tape": "^4.2.32",
-    "prettier": "^1.12.0",
+    "prettier": "^1.12.1",
     "tape": "^4.9.0",
     "typescript": "^2.8.1"
   }
