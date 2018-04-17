@@ -9,6 +9,7 @@ export const pages = {
     index: '/index',
     result: '/result',
     badge: '/badge',
+    api_json: '/api.json',
 };
 
 export const containerId = 'app-container';

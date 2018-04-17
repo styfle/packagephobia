@@ -4,7 +4,7 @@ import { createReadStream } from 'fs';
 import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
 
-import { browserUrl, browserMapUrl, pages } from './util/constants';
+import { browserUrl, browserMapUrl, pages, versionUnknown } from './util/constants';
 import { getResultProps } from './page-props/results';
 import { getBadgeUrl } from './util/badge';
 
@@ -25,11 +25,20 @@ createServer(async (req, res) => {
             res.setHeader('Cache-Control', cacheControl(isProd, 7));
             createReadStream(`./dist${pathname}`).pipe(res);
         } else if (pathname === pages.badge) {
-            const resultProps = await getResultProps(query, TMPDIR);
-            const badgeUrl = getBadgeUrl(resultProps.pkgSize);
+            const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
+            const badgeUrl = getBadgeUrl(pkgSize);
             res.statusCode = 302;
             res.setHeader('Location', badgeUrl);
+            res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end();
+        } else if (pathname === pages.api_json) {
+            const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
+            const { publishSize, installSize, version } = pkgSize;
+            const result: ApiResponse = { publishSize, installSize };
+            res.statusCode = version === versionUnknown ? 404 : 200;
+            res.setHeader('Content-Type', mimeType(pathname));
+            res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
+            res.end(JSON.stringify(result));
         } else {
             res.setHeader('Content-Type', mimeType('*.html'));
             res.setHeader('Cache-Control', cacheControl(isProd, 0));
