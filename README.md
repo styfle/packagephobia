@@ -44,6 +44,7 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [Bundle Phobia](https://bundlephobia.com) reports the size after webpack bundles the package.
 - [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules) reports the size of your currently installed packages.
 - [Badge Size](https://github.com/ngryman/badge-size) reports the gzip size of a single file from a package.
+- [Require So Slow](https://github.com/ofrobots/require-so-slow) traces the time of each `require` module in a node.js app.
 
 ## What are the long term goals?
 
