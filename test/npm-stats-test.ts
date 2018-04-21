@@ -51,3 +51,15 @@ test('getDirSize should count hardlink once', t => {
     
     t.equal(actual, 214);
 });
+/*
+test('getDirSize full-icu should be 26 MB', t => {
+    t.plan(1);
+    const dir = path
+        .join(__dirname, '../node_modules/full-icu')
+        .replace('/dist', '');
+
+    const actual = npmstats.getDirSize(dir);
+    
+    t.equal(actual, 26874753);
+});
+*/
