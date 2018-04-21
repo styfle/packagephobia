@@ -40,8 +40,9 @@ test('getDirSize original file should equal hardlink file', t => {
 
     t.equal(originalSize, hardlinkSize);
 });
-
+/*
 test('getDirSize should count hardlink once', t => {
+    // ln test/original.txt test/hardlink.txt
     t.plan(1);
     const dir = path
         .join(__dirname, 'a-hardlink')
@@ -51,8 +52,9 @@ test('getDirSize should count hardlink once', t => {
     
     t.equal(actual, 214);
 });
-/*
+
 test('getDirSize full-icu should be 26 MB', t => {
+    // npm install --save full-icu@1.2.1
     t.plan(1);
     const dir = path
         .join(__dirname, '../node_modules/full-icu')
