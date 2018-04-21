@@ -5,16 +5,22 @@ import * as child_process from 'child_process';
 const exec = promisify(child_process.exec);
 
 // TODO: Can this be optimized by changing sync to async?
-export function getDirSize(root: string, size = 0): number {
+export function getDirSize(root: string, seen = new Set()): number {
     const stats = lstatSync(root);
 
+    if (seen.has(stats.ino)) {
+        return 0;
+    }
+
+    seen.add(stats.ino);
+
     if (!stats.isDirectory()) {
-        return stats.size + size;
+        return stats.size;
     }
 
     return readdirSync(root)
-        .map(file => getDirSize(join(root, file)))
-        .reduce((acc, num) => acc + num, size);
+        .map(file => getDirSize(join(root, file), seen))
+        .reduce((acc, num) => acc + num, 0);
 }
 
 export async function calculatePackageSize(name: string, version: string, tmpDir: string) {
