@@ -24,6 +24,10 @@ createServer(async (req, res) => {
             res.setHeader('Content-Type', mimeType(pathname));
             res.setHeader('Cache-Control', cacheControl(isProd, 7));
             createReadStream(`./dist${pathname}`).pipe(res);
+        } else if (pathname === pages.robots) {
+            res.setHeader('Content-Type', mimeType(pathname));
+            res.setHeader('Cache-Control', cacheControl(isProd, 30));
+            res.end('User-agent: *');
         } else if (pathname === pages.badge) {
             const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
             const badgeUrl = getBadgeUrl(pkgSize);
