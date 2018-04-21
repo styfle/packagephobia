@@ -5,7 +5,6 @@ export const browserUrl = '/browser.js';
 export const browserMapUrl = '/browser.js.map';
 
 export const pages = {
-    about: '/about',
     index: '/index',
     result: '/result',
     badge: '/badge',
