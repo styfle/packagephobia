@@ -32,7 +32,8 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 - Type Checkers: [typescript](https://packagephobia.now.sh/result?p=typescript) vs [flow-bin](https://packagephobia.now.sh/result?p=flow-bin)
 - Linters: [eslint](https://packagephobia.now.sh/result?p=eslint) vs [jslint](https://packagephobia.now.sh/result?p=jslint)
 - Command Line Interfaces: [@angular/cli](https://packagephobia.now.sh/result?p=%40angular%2Fcli) vs [@babel/cli](https://packagephobia.now.sh/result?p=%40babel%2Fcli)
-- Platforms: [nw](https://packagephobia.now.sh/result?p=nw) vs [electron](https://packagephobia.now.sh/result?p=electron)
+- Desktop Frameworks: [nw](https://packagephobia.now.sh/result?p=nw) vs [electron](https://packagephobia.now.sh/result?p=electron)
+- Headless Browsers: [puppeteer](https://packagephobia.now.sh/result?p=puppeteer) vs [phantom](https://packagephobia.now.sh/result?p=phantom)
 
 ## Prior Art
 
