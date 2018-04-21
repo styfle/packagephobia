@@ -24,3 +24,44 @@ test('getDirSize single file', t => {
     const actual = npmstats.getDirSize(dir);
     t.equal(actual, 77);
 });
+
+test('getDirSize original file should equal hardlink file', t => {
+    t.plan(1);
+    const original = path
+        .join(__dirname, 'a-hardlink', 'original.txt')
+        .replace('/dist', '');
+
+    const hardlink = path
+        .join(__dirname, 'a-hardlink', 'hardlink.txt')
+        .replace('/dist', '');
+
+    const originalSize = npmstats.getDirSize(original);
+    const hardlinkSize = npmstats.getDirSize(hardlink);
+
+    t.equal(originalSize, hardlinkSize);
+});
+/*
+test('getDirSize should count hardlink once', t => {
+    // ln test/original.txt test/hardlink.txt
+    t.plan(1);
+    const dir = path
+        .join(__dirname, 'a-hardlink')
+        .replace('/dist', '');
+
+    const actual = npmstats.getDirSize(dir);
+    
+    t.equal(actual, 214);
+});
+
+test('getDirSize full-icu should be 26 MB', t => {
+    // npm install --save full-icu@1.2.1
+    t.plan(1);
+    const dir = path
+        .join(__dirname, '../node_modules/full-icu')
+        .replace('/dist', '');
+
+    const actual = npmstats.getDirSize(dir);
+    
+    t.equal(actual, 26874753);
+});
+*/
