@@ -21,13 +21,15 @@
     "isomorphic-unfetch": "^2.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "semver": "^5.5.0"
   },
   "devDependencies": {
     "@types/node": "^9.6.6",
     "@types/react": "^16.3.12",
     "@types/react-dom": "^16.0.5",
     "@types/redis": "^2.8.6",
+    "@types/semver": "^5.5.0",
     "@types/tape": "^4.2.32",
     "prettier": "^1.12.1",
     "tape": "^4.9.0",
