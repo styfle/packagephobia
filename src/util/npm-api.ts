@@ -1,4 +1,5 @@
 import 'isomorphic-unfetch';
+import * as semver from 'semver';
 
 /**
  * Make an API call to npm to get package manifest details
@@ -25,10 +26,13 @@ export function getLatestVersion(manifest: NpmManifest) {
 }
 
 /**
- * Get all versions of the npm package
+ * Get all versions of the npm package and order
+ * by semver oldest to newest
  */
 export function getAllVersions(manifest: NpmManifest) {
-    return Object.keys(manifest.versions);
+    return Object.keys(manifest.versions).sort((a, b) => {
+        return semver.gt(a, b) ? 1 : semver.eq(a, b) ? 0 : -1;
+    });
 }
 
 /**

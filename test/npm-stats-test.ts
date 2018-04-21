@@ -27,13 +27,9 @@ test('getDirSize single file', t => {
 
 test('getDirSize original file should equal hardlink file', t => {
     t.plan(1);
-    const original = path
-        .join(__dirname, 'a-hardlink', 'original.txt')
-        .replace('/dist', '');
+    const original = path.join(__dirname, 'a-hardlink', 'original.txt').replace('/dist', '');
 
-    const hardlink = path
-        .join(__dirname, 'a-hardlink', 'hardlink.txt')
-        .replace('/dist', '');
+    const hardlink = path.join(__dirname, 'a-hardlink', 'hardlink.txt').replace('/dist', '');
 
     const originalSize = npmstats.getDirSize(original);
     const hardlinkSize = npmstats.getDirSize(hardlink);

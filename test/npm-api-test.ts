@@ -3,68 +3,101 @@ import * as test from 'tape';
 
 const manifest = {
     versions: {
-        one: '',
-        two: '',
-        three: '',
-        four: '',
-        five: '',
-        six: '',
-        seven: '',
-        eight: '',
-        nine: '',
-        ten: '',
+        '1.0.0': '',
+        '1.0.1': '',
+        '1.0.2': '',
+        '1.0.3': '',
+        '1.1.0': '',
+        '1.2.0': '',
+        '1.3.0-alpha': '',
+        '1.3.0-beta': '',
+        '1.3.0': '',
+        '2.0.0': '',
     },
     time: {},
-    'dist-tags': { latest: 'ten' },
+    'dist-tags': { latest: '2.0.0' },
 };
 
-const allVersions = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+const allVersions = [
+    '1.0.0',
+    '1.0.1',
+    '1.0.2',
+    '1.0.3',
+    '1.1.0',
+    '1.2.0',
+    '1.3.0-alpha',
+    '1.3.0-beta',
+    '1.3.0',
+    '2.0.0',
+];
 
-test('getAllVersions', t => {
+const manifestUnordered = {
+    versions: {
+        '1.3.0-alpha': '',
+        '1.3.0-beta': '',
+        '2.0.0': '',
+        '1.0.1': '',
+        '1.0.2': '',
+        '1.3.0': '',
+        '1.2.0': '',
+        '1.1.0': '',
+        '1.0.3': '',
+        '1.0.0': '',
+    },
+    time: {},
+    'dist-tags': { latest: '2.0.0' },
+};
+
+test('getAllVersions should return versions array', t => {
     t.plan(1);
     const actual = npmapi.getAllVersions(manifest);
-    const expected = allVersions;
-    t.deepEqual(actual, expected);
+    t.deepEqual(actual, allVersions);
+});
+
+test('getAllVersions should sort by semver', t => {
+    t.plan(1);
+    const actual = npmapi.getAllVersions(manifestUnordered);
+    t.deepEqual(actual, allVersions);
 });
 
 test('getLatestVersion', t => {
     t.plan(1);
     const latest = npmapi.getLatestVersion(manifest);
-    t.equal(latest, 'ten');
+    t.equal(latest, '2.0.0');
 });
 
 test('getVersionsForChart middle', t => {
     t.plan(1);
-    const actual = npmapi.getVersionsForChart(allVersions, 'six', 2);
-    t.deepEqual(actual, ['four', 'five', 'six', 'seven', 'eight']);
+    const actual = npmapi.getVersionsForChart(allVersions, '1.2.0', 2);
+    t.deepEqual(actual, ['1.0.3', '1.1.0', '1.2.0', '1.3.0-alpha', '1.3.0-beta']);
 });
 
 test('getVersionsForChart first', t => {
     t.plan(1);
-    const actual = npmapi.getVersionsForChart(allVersions, 'one', 2);
-    t.deepEqual(actual, ['one', 'two', 'three', 'four', 'five']);
+    const actual = npmapi.getVersionsForChart(allVersions, '1.0.0', 2);
+    t.deepEqual(actual, ['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.1.0']);
 });
 
 test('getVersionsForChart second', t => {
     t.plan(1);
-    const actual = npmapi.getVersionsForChart(allVersions, 'two', 2);
-    t.deepEqual(actual, ['one', 'two', 'three', 'four', 'five']);
+    const actual = npmapi.getVersionsForChart(allVersions, '1.0.1', 2);
+    t.deepEqual(actual, ['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.1.0']);
 });
 
 test('getVersionsForChart last', t => {
     t.plan(1);
-    const actual = npmapi.getVersionsForChart(allVersions, 'ten', 2);
-    t.deepEqual(actual, ['six', 'seven', 'eight', 'nine', 'ten']);
+    const actual = npmapi.getVersionsForChart(allVersions, '2.0.0', 2);
+    t.deepEqual(actual, ['1.2.0', '1.3.0-alpha', '1.3.0-beta', '1.3.0', '2.0.0']);
 });
 
 test('getVersionsForChart second to last', t => {
     t.plan(1);
-    const actual = npmapi.getVersionsForChart(allVersions, 'nine', 2);
-    t.deepEqual(actual, ['six', 'seven', 'eight', 'nine', 'ten']);
+    const actual = npmapi.getVersionsForChart(allVersions, '1.3.0', 2);
+    t.deepEqual(actual, ['1.2.0', '1.3.0-alpha', '1.3.0-beta', '1.3.0', '2.0.0']);
 });
 
 test('getVersionsForChart with count larger than allVersions', t => {
     t.plan(1);
-    const actual = npmapi.getVersionsForChart(allVersions, 'eight', 30);
+    const actual = npmapi.getVersionsForChart(allVersions, '1.3.0-beta', 30);
     t.deepEqual(actual, allVersions);
 });
