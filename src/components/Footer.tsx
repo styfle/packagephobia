@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 const footer: React.CSSProperties = {
-    color: '#9daa9a',
+    color: '#90AA90',
     background: '#202420',
     width: '100%',
     fontSize: '0.9rem',

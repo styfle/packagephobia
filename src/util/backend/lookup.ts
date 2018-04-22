@@ -7,6 +7,11 @@ const data: { [ext: string]: string } = {
     '.css': 'text/css',
     '.html': 'text/html',
     '.txt': 'text/plain',
+    '.ico': 'image/x-icon',
+    '.svg': 'image/svg+xml',
+    '.xml': 'application/xml',
+    '.png': 'image/png',
+    '.webmanifest': 'application/manifest+json',
 };
 
 export function mimeType(path: string): string {

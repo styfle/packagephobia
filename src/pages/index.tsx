@@ -13,20 +13,29 @@ const h1: React.CSSProperties = {
 export default () => (
     <>
         <PageContainer>
-            <svg
-                width="150px"
-                height="150px"
-                fill="#01250f"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path d="M11.435.153l-9.37 5.43c-.35.203-.564.578-.563.983V17.43c0 .404.215.78.564.982l9.37 5.435c.35.203.78.203 1.13 0l9.366-5.433c.35-.205.564-.578.565-.982V6.566c0-.404-.216-.78-.566-.984L12.567.152c-.35-.203-.782-.203-1.13 0" />
+            <svg width="108px" height="108px">
+                <defs id="SvgjsDefs6088">
+                    <linearGradient id="SvgjsLinearGradient6093">
+                        <stop id="SvgjsStop6094" stopColor="#006838" offset="0" />
+                        <stop id="SvgjsStop6095" stopColor="#96cf24" offset="1" />
+                    </linearGradient>
+                </defs>
+                <g id="SvgjsG6089" fill="#000000" transform="matrix(1,0,0,1,0,0)" />
+                <g
+                    id="SvgjsG6090"
+                    fill="url(#SvgjsLinearGradient6093)"
+                    transform="matrix(1.25,0,0,1.25,-8.75,-7.5)"
+                >
+                    <polygon
+                        xmlns="http://www.w3.org/2000/svg"
+                        points="21.667,73.809 21.667,33.867 49.997,17.679 78.334,33.867 78.334,66.13 49.997,82.321 35,73.75 35,41.604   49.997,33.034 65,41.604 65,58.392 49.997,66.963 48.334,66.013 48.334,49.343 56.716,44.551 49.997,40.713 41.667,45.476   41.667,69.88 49.997,74.642 71.667,62.259 71.667,37.737 49.997,25.358 28.334,37.737 28.334,77.617 49.997,90 85,70 85,30   49.997,10 15,30 15,70 "
+                    />
+                </g>
             </svg>
 
             <h1 style={h1}>
-                <span>Package</span>
-                <span style={{ color: '#888' }}>Phobia</span>
+                <span style={{ color: '#202420' }}>Package</span>
+                <span style={{ color: '#90AA90' }}>Phobia</span>
             </h1>
 
             <p>Find the cost of adding a new dev dependency to your project</p>
