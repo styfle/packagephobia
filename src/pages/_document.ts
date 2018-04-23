@@ -17,7 +17,7 @@ import { getResultProps } from '../page-props/results';
 import { containerId, pages, hostname } from '../util/constants';
 
 const existingPaths = new Set(Object.values(pages));
-
+const logoSize = 108;
 const css = `
 body {
     margin: 0;
@@ -27,14 +27,12 @@ body {
 }
 
 #spinner {
+    background: url(${pages.logo});
     box-sizing: border-box;
-    height: 60px;
-    width: 60px;
-    margin-top: calc(50vh - 60px);
-    margin-left: calc(50vw - 60px);
-    border: 0px;
-    border-radius: 50%;
-    box-shadow: 0 -20px 0 24px #65C3F8 inset;
+    height: ${logoSize}px;
+    width: ${logoSize}px;
+    margin-top: calc(50vh - ${logoSize / 2}px);
+    margin-left: calc(50vw - ${logoSize / 2}px);
     animation: rotate 1s infinite linear;
   }
   
