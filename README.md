@@ -1,3 +1,5 @@
+<img src="https://packagephobia.now.sh/logo.svg" width=32 height=32 align="left" />
+
 # Package Phobia
 
 [![dependency](https://david-dm.org/styfle/packagephobia.svg)](https://david-dm.org/styfle/packagephobia)
