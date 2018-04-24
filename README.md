@@ -83,6 +83,10 @@ I'm not the first one to notice npm packages are snowballing into bloated depend
 - [FredyC](https://github.com/yarnpkg/yarn/issues/2088)
 - [tomitrescak](https://github.com/npm/npm/issues/12515)
 
+## Contributing
+
+See [CONTRIBUTING.md](https://github.com/styfle/packagephobia/blob/master/CODE_OF_CONDUCT.md) before you start writing any code
+
 ## Author
 
 Developed by [ceriously.com](https://www.ceriously.com)
