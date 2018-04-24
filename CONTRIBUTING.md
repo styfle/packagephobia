@@ -13,6 +13,7 @@ cd packagephobia
 npm install
 npm run build -s
 npm run test -s
+npm run prettier -s
 ```
 
 This will do the following:
@@ -22,6 +23,7 @@ This will do the following:
 - install the dependendencies which will show up in `node_modules` directory
 - build the code, the output will be in the `dist` directory
 - test the code, you'll want to do this periodically
+- make the code pretty, you'll want to do this periodically w/commit hook
 
 ## Running the code
 
@@ -47,3 +49,12 @@ Currently, the code is hosted on Zeit Now which makes it super easy to deploy
 I run `npm run deploy` which will deploy and alias, however this alias is exclusive to my account.
 
 So you can deploy a new instance by simply running `npx now --public`.
+
+## Submitting a PR
+
+Wow you're doing great! Before you submit a Pull Request, please create an issue so that we can discuss the problem you are solving. When we're all on the same page, make sure you test the code and prettify the code. And please add additional tests if possible.
+
+```sh
+npm run test
+npm run prettier
+```
