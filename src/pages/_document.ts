@@ -90,6 +90,8 @@ export async function renderPage(
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33" />
                 <meta name="msapplication-TileColor" content="#333333" />
                 <meta name="theme-color" content="#333333" />
+                <meta property="og:image" content="https://${hostname}${pages.logo}" />
+                <meta property="twitter:image" content="https://${hostname}${pages.logo}" />
                 <title>PackagePhobia | find the cost of adding a dev dependency</title>
                 <style>${css}</style>
             </head>
