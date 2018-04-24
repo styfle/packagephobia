@@ -14,10 +14,10 @@ const ServerErrorFactory = createFactory(ServerErrorPage);
 
 import { getResultProps } from '../page-props/results';
 
-import { faviconUrl, containerId, pages, hostname } from '../util/constants';
+import { containerId, pages, hostname } from '../util/constants';
 
 const existingPaths = new Set(Object.values(pages));
-
+const logoSize = 108;
 const css = `
 body {
     margin: 0;
@@ -27,14 +27,12 @@ body {
 }
 
 #spinner {
+    background: url(${pages.logo});
     box-sizing: border-box;
-    height: 60px;
-    width: 60px;
-    margin-top: calc(50vh - 60px);
-    margin-left: calc(50vw - 60px);
-    border: 0px;
-    border-radius: 50%;
-    box-shadow: 0 -20px 0 24px #65C3F8 inset;
+    height: ${logoSize}px;
+    width: ${logoSize}px;
+    margin-top: calc(50vh - ${logoSize / 2}px);
+    margin-left: calc(50vw - ${logoSize / 2}px);
     animation: rotate 1s infinite linear;
   }
   
@@ -84,8 +82,14 @@ export async function renderPage(
             <html lang="en">
             <head>
                 <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link href="${faviconUrl}" rel="icon" type="image/x-icon" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="manifest" href="/site.webmanifest" />
+                <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33" />
+                <meta name="msapplication-TileColor" content="#333333" />
+                <meta name="theme-color" content="#333333" />
                 <title>PackagePhobia | find the cost of adding a dev dependency</title>
                 <style>${css}</style>
             </head>

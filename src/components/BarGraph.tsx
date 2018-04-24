@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { getReadableFileSize } from '../util/npm-parser';
 const stylesheet = `
-.bar-graph-container{
-    
-}
 .bar-graph{
     height:45vh;
     padding-bottom:10vh;
@@ -31,25 +28,21 @@ const stylesheet = `
     transform-origin:100% 100%;
     cursor:pointer
 }
-.bar-graph__bar{
-    background:#65C3F8
+.color1 {
+    background: #32DE85;
 }
-.bar-graph__bar-group:not(.bar-graph__bar-group--disabled):hover .bar-graph__bar{
-    background:#4db9f7
+.color2 {
+    background: #26A664;
 }
 .bar-graph__bar-group--disabled .bar-graph__bar{
     background:#dfe1e4
 }
-.bar-graph__bar-group--disabled .bar-graph__bar:hover{
-    background:#c4c8cd
-}
 .bar-graph__bar2{
-    background:#65A1F8;
     z-index:1;
     pointer-events:none
 }
-.bar-graph__bar-group:hover .bar-graph__bar2{
-    background:#4d92f7
+.bar-graph__bar:hover, .bar-graph__bar2:hover{
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 .bar-graph__bar-version{
     font-size:0.8rem;
@@ -108,12 +101,6 @@ const stylesheet = `
     height:15px;
     margin-right:10px
 }
-.bar-graph__legend__bar1 .bar-graph__legend__colorbox{
-    background:#65C3F8
-}
-.bar-graph__legend__bar2 .bar-graph__legend__colorbox{
-    background:#65A1F8
-}
 .bar-graph__legend__bar1,.bar-graph__legend__bar2{
     display:flex;
     align-items:center
@@ -171,7 +158,7 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
                                     href={getHref(r)}
                                 >
                                     <div
-                                        className="bar-graph__bar"
+                                        className="bar-graph__bar color1"
                                         style={{ height: '50%' }}
                                         title={getTooltipMessage(r)}
                                     >
@@ -182,14 +169,14 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
                             ) : (
                                 <a key={i} className="bar-graph__bar-group" href={getHref(r)}>
                                     <div
-                                        className="bar-graph__bar"
+                                        className="bar-graph__bar color1"
                                         style={{ height: `${r.installSize * scale}%` }}
                                         title={getTooltipMessage(r)}
                                     >
                                         <span className="bar-graph__bar-version">{r.version}</span>
                                     </div>
                                     <div
-                                        className="bar-graph__bar2"
+                                        className="bar-graph__bar2 color2"
                                         style={{ height: `${r.publishSize * scale}%` }}
                                     />
                                 </a>
@@ -198,11 +185,11 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
                 </figure>
                 <div className="bar-graph__legend">
                     <div className="bar-graph__legend__bar1">
-                        <div className="bar-graph__legend__colorbox" />
+                        <div className="bar-graph__legend__colorbox color1" />
                         Install
                     </div>
                     <div className="bar-graph__legend__bar2">
-                        <div className="bar-graph__legend__colorbox" />
+                        <div className="bar-graph__legend__colorbox color2" />
                         Publish
                     </div>
                 </div>

@@ -1,10 +1,11 @@
 import { createServer } from 'http';
 import { parse } from 'url';
-import { createReadStream } from 'fs';
+import { createReadStream, existsSync } from 'fs';
+import { join } from 'path';
 import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
 
-import { browserUrl, browserMapUrl, pages, versionUnknown } from './util/constants';
+import { pages, versionUnknown } from './util/constants';
 import { getResultProps } from './page-props/results';
 import { getBadgeUrl } from './util/badge';
 
@@ -20,15 +21,7 @@ createServer(async (req, res) => {
         pathname = pages.index;
     }
     try {
-        if (pathname === browserUrl || pathname === browserMapUrl) {
-            res.setHeader('Content-Type', mimeType(pathname));
-            res.setHeader('Cache-Control', cacheControl(isProd, 7));
-            createReadStream(`./dist${pathname}`).pipe(res);
-        } else if (pathname === pages.robots) {
-            res.setHeader('Content-Type', mimeType(pathname));
-            res.setHeader('Cache-Control', cacheControl(isProd, 30));
-            res.end('User-agent: *');
-        } else if (pathname === pages.badge) {
+        if (pathname === pages.badge) {
             const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
             const badgeUrl = getBadgeUrl(pkgSize);
             res.statusCode = 302;
@@ -44,9 +37,16 @@ createServer(async (req, res) => {
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end(JSON.stringify(result));
         } else {
-            res.setHeader('Content-Type', mimeType('*.html'));
-            res.setHeader('Cache-Control', cacheControl(isProd, 0));
-            renderPage(res, pathname, query, TMPDIR, GA_ID);
+            const file = join('./static', pathname);
+            if (existsSync(file)) {
+                res.setHeader('Content-Type', mimeType(pathname));
+                res.setHeader('Cache-Control', cacheControl(isProd, 30));
+                createReadStream(file).pipe(res);
+            } else {
+                res.setHeader('Content-Type', mimeType('*.html'));
+                res.setHeader('Cache-Control', cacheControl(isProd, 0));
+                renderPage(res, pathname, query, TMPDIR, GA_ID);
+            }
         }
     } catch (e) {
         console.error(e);
