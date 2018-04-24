@@ -1,4 +1,4 @@
-<img src="https://packagephobia.now.sh/logo.svg" width=32 height=32 align="left" />
+<img src="https://packagephobia.now.sh/logo.svg" width=40 height=40 align="left" />
 
 # Package Phobia
 
