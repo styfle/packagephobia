@@ -85,7 +85,7 @@ I'm not the first one to notice npm packages are snowballing into bloated depend
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/styfle/packagephobia/blob/master/CODE_OF_CONDUCT.md) before you start writing any code
+See [CONTRIBUTING.md](https://github.com/styfle/packagephobia/blob/master/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/styfle/packagephobia/blob/master/CODE_OF_CONDUCT.md) before you start writing any code
 
 ## Author
 
