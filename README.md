@@ -36,6 +36,7 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 - Command Line Interfaces: [@angular/cli](https://packagephobia.now.sh/result?p=%40angular%2Fcli) vs [@babel/cli](https://packagephobia.now.sh/result?p=%40babel%2Fcli)
 - Desktop Frameworks: [nw](https://packagephobia.now.sh/result?p=nw) vs [electron](https://packagephobia.now.sh/result?p=electron)
 - Headless Browsers: [puppeteer](https://packagephobia.now.sh/result?p=puppeteer) vs [phantom](https://packagephobia.now.sh/result?p=phantom)
+- Package Managers: [npm](https://packagephobia.now.sh/result?p=npm) vs [yarn](https://packagephobia.now.sh/result?p=yarn)
 
 ## Prior Art
 
