@@ -62,6 +62,7 @@ Below are the relevant feature requests for each website.
 - [GitHub issue for npms.io](https://github.com/npms-io/npms-www/issues/219)
 - [GitHub issue for staticgen.com](https://github.com/netlify/staticgen/issues/359)
 - [GitHub issue for cost-of-modules](https://github.com/siddharthkp/cost-of-modules/issues/50)
+- [GitHub issue for npm-cli](https://github.com/npm/npm/issues/20427)
 
 Hopefully, this would lead to publishers taking notice of their bloated packages such as the following:
 
@@ -82,6 +83,7 @@ I'm not the first one to notice npm packages are snowballing into bloated depend
 - [davej](https://github.com/npm/npm/issues/10361)
 - [FredyC](https://github.com/yarnpkg/yarn/issues/2088)
 - [tomitrescak](https://github.com/npm/npm/issues/12515)
+- [maybekatz](https://twitter.com/maybekatz/status/988893800054456320)
 
 ## Contributing
 
