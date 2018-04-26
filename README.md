@@ -9,12 +9,13 @@
 
 <a href="http://turnoff.us/geek/npm-install/"><img src="http://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
 
-
 - ⚖️ Find the cost of adding a new dev dependency to your project
 - 🕗 Save yourself time and disk space with this web app
 - 📈 Detect javascript bloat over time with a chart
 - 🛡️ Get a badge/shield for your README
-- 🆕 Fetch size as json to integrate your tool
+- 📡 Fetch size from json API to integrate into any tool
+
+*...as seen on [npm weekly](https://medium.com/npm-inc/87f3bd77529#1883) and [ponyfoo weekly](https://ponyfoo.com/weekly/111/how-css-works-integration-testing-angular-6-optimizing-react-and-the-future-of-javascript) and [habr](https://habr.com/company/zfort/blog/354060/) and [rwpod](http://www.rwpod.com/posts/2018/04/23/podcast-06-16.html) and [wolf report](http://michael-wolfenden.github.io/2018/04/20/april-20th-2018/) and all over twitter*
 
 ## What is the purpose?
 
