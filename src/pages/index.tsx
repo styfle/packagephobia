@@ -14,7 +14,7 @@ const h1: React.CSSProperties = {
 export default () => (
     <>
         <PageContainer>
-            <img src={pages.logo} width="108px" height="108px" />
+            <img src={pages.logo_svg} alt="Logo" width="108" height="108" />
 
             <h1 style={h1}>
                 <span style={{ color: '#202420' }}>Package</span>

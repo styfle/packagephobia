@@ -18,6 +18,8 @@ import { containerId, pages, hostname } from '../util/constants';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
+const title = 'Package Phobia';
+const description = 'Find the cost of installing a node dependency';
 const css = `
 body {
     margin: 0;
@@ -27,7 +29,7 @@ body {
 }
 
 #spinner {
-    background: url(${pages.logo});
+    background: url(${pages.logo_svg});
     box-sizing: border-box;
     height: ${logoSize}px;
     width: ${logoSize}px;
@@ -90,9 +92,13 @@ export async function renderPage(
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33" />
                 <meta name="msapplication-TileColor" content="#333333" />
                 <meta name="theme-color" content="#333333" />
-                <meta property="og:image" content="https://${hostname}${pages.logo}" />
-                <meta property="twitter:image" content="https://${hostname}${pages.logo}" />
-                <title>PackagePhobia | find the cost of adding a dev dependency</title>
+
+                <meta property="og:title" content="${title}" />
+                <meta property="og:image" content="https://${hostname}${pages.logo_png}" />
+                <meta property="og:description" content="${description}" />
+
+                <title>${title}</title>
+                <meta name="description" content="${description}" />
                 <style>${css}</style>
             </head>
             <body>

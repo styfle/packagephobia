@@ -3,7 +3,8 @@ export const pages = {
     result: '/result',
     badge: '/badge',
     api_json: '/api.json',
-    logo: '/logo.svg',
+    logo_svg: '/logo.svg',
+    logo_png: '/logo.png',
 };
 export const containerId = 'app-container';
 export const versionUnknown = 'unknown';
