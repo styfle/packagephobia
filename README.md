@@ -53,6 +53,7 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [Package Size](https://github.com/egoist/package-size) compares the bundle size of multiple packages
 - [Require So Slow](https://github.com/ofrobots/require-so-slow) traces the time of each `require` module in a node.js app.
 - [Why Bundled?](https://github.com/d4rkr00t/whybundled) uses webpack stats to show your number of imports and package size.
+- [Do you even lift?](https://github.com/npm/do-you-even-lift) - *NEW* reports size after rollup bundles the package.
 
 ## What are the long term goals?
 
