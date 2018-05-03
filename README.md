@@ -23,6 +23,8 @@ Package Phobia reports the size of an npm package *before* you install it.
 
 This is useful for inspecting potential `devDependencies` without using up precious disk space or waiting minutes for `npm install`. Ain't nobody got time for dat.
 
+Results are saved so the first person might wait a bit to view package size, but everyone else gets to see the results instantly!
+
 ## [Demo](https://packagephobia.now.sh)
 
 A good use case might be comparing test runners, web frameworks, or even bundlers. Click one of the links below to see Package Phobia in action!
