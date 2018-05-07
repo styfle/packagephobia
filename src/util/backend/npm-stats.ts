@@ -29,7 +29,7 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
     const nodeModules = join(pkgDir, 'node_modules');
     await exec(`mkdir ${tmpPackage}`, { cwd: tmpDir });
     await exec(`npm init -y`, { cwd: pkgDir });
-    await exec(`npm install --save ${name}@${version}`, { cwd: pkgDir });
+    await exec(`npm install --save ${name}@${version}`, { cwd: pkgDir, timeout: 120000 });
     const installSize = getDirSize(nodeModules);
     const publishSize = getDirSize(join(nodeModules, name));
     await exec(`rm -rf ${tmpPackage}`, { cwd: tmpDir });

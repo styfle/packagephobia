@@ -15,7 +15,7 @@ export default () => (
     <>
         <div style={style}>
             <h1>500 Internal Server Error</h1>
-            <p>Oops, something terribly went wrong.</p>
+            <p>Oops, something went terribly wrong.</p>
             <p>
                 <a href={pages.index}>Go Home You</a>
             </p>
