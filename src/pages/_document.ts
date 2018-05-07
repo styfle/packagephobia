@@ -138,6 +138,7 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
                 return NotFoundFactory();
         }
     } catch (e) {
+        console.error(`ERROR: ${e.message}`);
         return ServerErrorFactory();
     }
 }
