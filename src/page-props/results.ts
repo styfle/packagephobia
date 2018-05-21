@@ -28,7 +28,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     if (!version) {
         version = await getLatestVersion(manifest);
         cacheResult = false;
-        console.log(`Querystring missing version, using version ${name}@${version}`);
+        //console.log(`Querystring missing version, using version ${name}@${version}`);
     }
 
     const allVersions = getAllVersions(manifest);
