@@ -31,7 +31,7 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 
 - Test Harnesses: [tap](https://packagephobia.now.sh/result?p=tap) vs [tape](https://packagephobia.now.sh/result?p=tape)
 - Web Frameworks: [express](https://packagephobia.now.sh/result?p=express) vs [micro](https://packagephobia.now.sh/result?p=micro)
-- JavaScript Bundlers: [webpack](https://packagephobia.now.sh/result?p=webpack) vs [browserify](https://packagephobia.now.sh/result?p=browserify)
+- JavaScript Bundlers: [webpack](https://packagephobia.now.sh/result?p=webpack) vs [rollup](https://packagephobia.now.sh/result?p=rollup)
 - Task Runners: [grunt](https://packagephobia.now.sh/result?p=grunt) vs [gulp](https://packagephobia.now.sh/result?p=gulp)
 - Site Generators: [gatsby](https://packagephobia.now.sh/result?p=gatsby) vs [hexo](https://packagephobia.now.sh/result?p=hexo)
 - Type Checkers: [typescript](https://packagephobia.now.sh/result?p=typescript) vs [flow-bin](https://packagephobia.now.sh/result?p=flow-bin)
