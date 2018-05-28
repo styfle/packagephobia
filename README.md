@@ -7,7 +7,7 @@
 [![travis](https://travis-ci.org/styfle/packagephobia.svg?branch=master)](https://travis-ci.org/styfle/packagephobia)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-<a href="http://turnoff.us/geek/npm-install/"><img src="http://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
+<a href="https://turnoff.us/geek/npm-install/"><img src="https://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
 
 - ⚖️ Find the cost of adding a new dev dependency to your project
 - 🕗 Save yourself time and disk space with this web app
@@ -15,7 +15,7 @@
 - 🛡️ Get a badge/shield for your README
 - 📡 Fetch size from json API to integrate into any tool
 
-*...as seen on [npm weekly](https://medium.com/npm-inc/87f3bd77529#1883) and [ponyfoo weekly](https://ponyfoo.com/weekly/111/how-css-works-integration-testing-angular-6-optimizing-react-and-the-future-of-javascript) and [habr](https://habr.com/company/zfort/blog/354060/) and [rwpod](http://www.rwpod.com/posts/2018/04/23/podcast-06-16.html) and [wolf report](http://michael-wolfenden.github.io/2018/04/20/april-20th-2018/) and all over twitter*
+*...as seen on [npm weekly](https://medium.com/npm-inc/87f3bd77529#1883) and [ponyfoo weekly](https://ponyfoo.com/weekly/111/how-css-works-integration-testing-angular-6-optimizing-react-and-the-future-of-javascript) and [habr](https://habr.com/company/zfort/blog/354060/) and [rwpod](https://www.rwpod.com/posts/2018/04/23/podcast-06-16.html) and [wolf report](https://michael-wolfenden.github.io/2018/04/20/april-20th-2018/) and all over twitter*
 
 ## What is the purpose?
 
@@ -84,7 +84,7 @@ I'm not the first one to notice npm packages are snowballing into bloated depend
 - [thomasfuchs](https://twitter.com/thomasfuchs/status/977541462199029760)
 - [ben_a_adams](https://twitter.com/ben_a_adams/status/979358943561609216)
 - [devrant](https://devrant.com/rants/760537/heaviest-objects-in-the-universe)
-- [turnoff.us](http://turnoff.us/geek/npm-install/)
+- [turnoff.us](https://turnoff.us/geek/npm-install/)
 - [styfle](https://twitter.com/styfle/status/968180698149539841)
 - [davej](https://github.com/npm/npm/issues/10361)
 - [FredyC](https://github.com/yarnpkg/yarn/issues/2088)
