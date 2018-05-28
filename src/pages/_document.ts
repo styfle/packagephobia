@@ -107,7 +107,10 @@ export async function renderPage(
             <div id="${containerId}">`);
     const factory = await routePage(pathname, query, tmpDir);
     const stream = renderToNodeStream(factory);
-    stream.pipe(res, { end: false });
+    stream.pipe(
+        res,
+        { end: false },
+    );
     stream.on('end', () => {
         res.end(`</div>
                 <script>document.getElementById('spinner').style.display='none'</script>

@@ -30,7 +30,7 @@ interface ResultProps {
 }
 
 interface ParsedUrlQuery {
-    [key: string]: string | string[] | undefined; 
+    [key: string]: string | string[] | undefined;
 }
 
 interface NpmManifest {
