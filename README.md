@@ -58,6 +58,16 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [Why Bundled?](https://github.com/d4rkr00t/whybundled) uses webpack stats to show your number of imports and package size.
 - [Do you even lift?](https://github.com/npm/do-you-even-lift) - *NEW* reports size after rollup bundles the package.
 
+## Why is the size different than size on disk?
+
+Did you install a package and compare the size on disk with the size reported on Package Phobia?
+
+This might be difference because Package Phobia doesn't know anything about your hard drive so it can't predict how blocks are allocated.
+
+Packages are known to contain many small `.js` files which can actually use up a lot of disk space.
+
+See [StackOverflow](https://superuser.com/q/66825/27229) for more details.
+
 ## What are the long term goals?
 
 Ideally, this information could be listed on npmjs.com, npms.io, or bundlephobia.com.
