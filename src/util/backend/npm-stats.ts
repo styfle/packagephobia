@@ -27,9 +27,10 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
     const nodeModules = join(pkgDir, 'node_modules');
+    const npm = join(process.env.PWD || '', 'node_modules', 'npm', 'bin', 'npm-cli.js');
     await execFile('mkdir', [tmpPackage], { cwd: tmpDir });
-    await execFile('npm', ['init', '-y'], { cwd: pkgDir });
-    await execFile('npm', ['install', '--no-package-lock', `${name}@${version}`], {
+    await execFile(npm, ['init', '-y'], { cwd: pkgDir });
+    await execFile(npm, ['i', '--no-package-lock', '--no-audit', `${name}@${version}`], {
         cwd: pkgDir,
         timeout: 60000,
     });

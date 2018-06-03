@@ -1,0 +1,7 @@
+*
+!src
+!static
+!now.json
+!package-lock.json
+!package.json
+!tsconfig.json
