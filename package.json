@@ -8,7 +8,7 @@
     "start": "node dist/src/server.js",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
     "test": "tape dist/test/**/*.js",
-    "deploy": "now --public && now alias"
+    "deploy": "now --docker --public && now alias"
   },
   "repository": {
     "type": "git",
