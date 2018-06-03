@@ -43,7 +43,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     const chartVersions = getVersionsForChart(filteredVersions, version, 7);
 
     let existing = await findOne(name, version);
-    if (!existing) {
+    if (!existing || query.force === '1') {
         console.log(`Cache miss for ${name}@${version} - running npm install in ${tmpdir}...`);
         const start = new Date();
         existing = await calculatePackageSize(name, version, tmp);
