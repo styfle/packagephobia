@@ -104,6 +104,7 @@ I'm not the first one to notice npm packages are snowballing into bloated depend
 - [maybekatz](https://twitter.com/maybekatz/status/988893800054456320)
 - [hichaelmart](https://twitter.com/hichaelmart/status/988882864270962688)
 - [brad_frost](https://twitter.com/brad_frost/status/996014341592961025)
+- [Bryan_Chapel](https://twitter.com/Bryan_Chapel/status/1002680482159648769)
 
 ## Contributing
 
