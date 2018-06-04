@@ -39,12 +39,13 @@ export default (props: { autoFocus: boolean; defaultValue?: string }) => (
             type="text"
             id="p"
             name="p"
-            placeholder="webpack"
+            placeholder="typescript"
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck={false}
             autoFocus={props.autoFocus}
             defaultValue={props.defaultValue}
+            required={true}
         />
         <button type="submit" style={button}>
             <svg width="100%" height="100%" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
