@@ -54,7 +54,8 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules) reports the size of your currently installed packages.
 - [Badge Size](https://github.com/ngryman/badge-size) reports the gzip size of a single file from a package.
 - [Bundle Size](https://github.com/siddharthkp/bundlesize) fails CI if a file's size is too large.
-- [Package Size](https://github.com/egoist/package-size) compares the bundle size of multiple packages
+- [Package Size](https://github.com/egoist/package-size) compares the bundle size of multiple packages.
+- [Size Limit](https://github.com/ai/size-limit) compares the bundled (or non-bundled size) of of your package.
 - [Require So Slow](https://github.com/ofrobots/require-so-slow) traces the time of each `require` module in a node.js app.
 - [Why Bundled?](https://github.com/d4rkr00t/whybundled) uses webpack stats to show your number of imports and package size.
 - [Do you even lift?](https://github.com/npm/do-you-even-lift) - *NEW* reports size after rollup bundles the package.
