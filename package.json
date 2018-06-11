@@ -33,7 +33,7 @@
     "@types/semver": "^5.5.0",
     "@types/tape": "^4.2.32",
     "prettier": "^1.13.3",
-    "tape": "^4.9.0",
+    "tape": "^4.9.1",
     "typescript": "^2.9.1"
   }
 }
