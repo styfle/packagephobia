@@ -82,6 +82,7 @@ Below are the relevant feature requests for each website.
 - [GitHub issue for staticgen.com](https://github.com/netlify/staticgen/issues/359)
 - [GitHub issue for cost-of-modules](https://github.com/siddharthkp/cost-of-modules/issues/50)
 - [GitHub issue for npm-cli](https://github.com/npm/npm/issues/20427)
+- [GitHub issue for bundlesize](https://github.com/siddharthkp/bundlesize/issues/205)
 
 Hopefully, this would lead to publishers taking notice of their bloated packages such as the following:
 
@@ -89,6 +90,10 @@ Hopefully, this would lead to publishers taking notice of their bloated packages
 - [ava is not minimal](https://github.com/avajs/ava/issues/1622)
 - [typescript has doubled in size since v2.0.0](https://github.com/Microsoft/TypeScript/issues/23339)
 - [bundlesize is 10x larger after npm install since v0.14.0](https://github.com/siddharthkp/bundlesize/issues/213)
+- [jquery@3.3.0 accidentally adds 300 dependencies](https://twitter.com/styfle/status/985955164573065217)
+- [socket.io is 6x smaller](https://twitter.com/styfle/status/986224072882380802)
+- [serve@7.0.0 is 3x smaller](https://twitter.com/styfle/status/1001901854417178624)
+- [webpack-cli@3.0.0 is 4x smaller](https://twitter.com/styfle/status/1006605750981021697)
 
 ## npm dependencies in the media
 
