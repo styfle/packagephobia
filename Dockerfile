@@ -8,6 +8,7 @@ ENV NODE_ENV production
 RUN npm run build
 
 FROM mhart/alpine-node:base-8.11.2
+RUN apk add --no-cache --virtual .build-deps alpine-sdk python
 WORKDIR /usr/app
 ENV NODE_ENV production
 COPY --from=build /usr/app/prod_modules ./node_modules
