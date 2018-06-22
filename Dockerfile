@@ -7,7 +7,7 @@ RUN npm install
 ENV NODE_ENV production
 RUN npm run build
 
-FROM mhart/alpine-node:base-8.11.2
+FROM mhart/alpine-node:base-10.5.0
 WORKDIR /usr/app
 ENV NODE_ENV production
 COPY --from=build /usr/app/prod_modules ./node_modules
