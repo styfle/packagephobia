@@ -15,6 +15,7 @@ const ServerErrorFactory = createFactory(ServerErrorPage);
 import { getResultProps } from '../page-props/results';
 
 import { containerId, pages, hostname } from '../util/constants';
+import OctocatCorner from '../components/OctocatCorner';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
@@ -104,6 +105,7 @@ export async function renderPage(
             <body>
             <div id="spinner"></div>
             <script>document.getElementById('spinner').style.display='block'</script>
+            ${OctocatCorner()}
             <div id="${containerId}">`);
     const factory = await routePage(pathname, query, tmpDir);
     const stream = renderToNodeStream(factory);
