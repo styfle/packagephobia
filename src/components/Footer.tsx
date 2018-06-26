@@ -101,7 +101,24 @@ export default () => {
                             <title>Ceriously icon</title>
                             <path d="M11.997 24L1.605 17.997v-12L12 0l10.396 5.997L16.5 9.402 12 6.8 7.496 9.4v5.2l4.502 2.6 4.5-2.6 5.895 3.397L12.003 24h-.006z" />
                         </svg>
-                        <span>&nbsp;More ceriously</span>
+                        <span>&nbsp;Get ceriously</span>
+                    </a>
+                    <a style={social} href="https://zeit.co/now">
+                        <svg
+                            width="24px"
+                            height="24px"
+                            viewBox="100 120 300 300"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <title>Zeit Logo</title>
+                            <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                                <g fill="#FFFFFF">
+                                    <polygon points="254 156.459299 367 356 141 356" />
+                                </g>
+                            </g>
+                        </svg>
+
+                        <span>&nbsp;Hosted on Now</span>
                     </a>
                 </div>
             </section>
