@@ -9,9 +9,9 @@ const footer: React.CSSProperties = {
 
 const footerSection: React.CSSProperties = {
     display: 'flex',
-    maxWidth: '800px',
-    padding: '30px 10px',
+    maxWidth: '50rem',
     margin: 'auto',
+    flexWrap: 'wrap',
 };
 
 const social: React.CSSProperties = {
@@ -24,11 +24,16 @@ const social: React.CSSProperties = {
     margin: '0 0 1rem 0.5rem',
 };
 
+const footerDiv: React.CSSProperties = {
+    margin: '2rem 2rem 0 2rem',
+    maxWidth: '30rem',
+};
+
 export default () => {
     return (
         <footer style={footer}>
             <section style={footerSection}>
-                <div style={{ marginRight: '2rem' }}>
+                <div style={footerDiv}>
                     <h3>What is Package Phobia?</h3>
                     <p>
                         Package Phobia reports the size of an npm package <em>before</em> you
@@ -37,19 +42,17 @@ export default () => {
                     <p>
                         This is useful for inspecting potential <code>devDependencies</code> without
                         using up precious disk space or waiting minutes for{' '}
-                        <code>npm&nbsp;install</code>. Ain't nobody got time for dat.
+                        <code>npm&nbsp;install</code>.
                     </p>
                     <h3>What is "publish size" vs "install size"?</h3>
                     <p>
-                        The "publish size" is the size of the packaged source code published to npm.
-                        This number is easy to detect and is typically very small.
+                        The "publish size" is the size of the source code published to npm. This
+                        number is easy to detect and is typically very small.
                     </p>
                     <p>
                         The "install size" is the size your hard drive will report after running{' '}
                         <code>npm&nbsp;install</code>. This includes the package, all of the
-                        dependencies, and its dependency's dependencies...and so on. You can see how
-                        this might get very large and why you want to think before adding a new
-                        dependency to your project.
+                        dependencies, and its dependency's dependencies...and so on.
                     </p>
                     <p>
                         See the{' '}
@@ -62,7 +65,7 @@ export default () => {
                         for more info.
                     </p>
                 </div>
-                <div>
+                <div style={footerDiv}>
                     <h3>Connect</h3>
                     <a style={social} href="https://github.com/styfle/packagephobia">
                         <svg
