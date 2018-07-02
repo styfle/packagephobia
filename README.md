@@ -99,6 +99,8 @@ Hopefully, this would lead to publishers taking notice of their bloated packages
 
 I'm not the first one to notice npm packages are snowballing into bloated dependencies of dependencies.
 
+Below are some other users who comically point out this JS bloat.
+
 - [thomasfuchs](https://twitter.com/thomasfuchs/status/977541462199029760)
 - [ben_a_adams](https://twitter.com/ben_a_adams/status/979358943561609216)
 - [devrant](https://devrant.com/rants/760537/heaviest-objects-in-the-universe)
@@ -111,6 +113,8 @@ I'm not the first one to notice npm packages are snowballing into bloated depend
 - [hichaelmart](https://twitter.com/hichaelmart/status/988882864270962688)
 - [brad_frost](https://twitter.com/brad_frost/status/996014341592961025)
 - [Bryan_Chapel](https://twitter.com/Bryan_Chapel/status/1002680482159648769)
+- [getabitlit](https://twitter.com/getabitlit/status/1013524294394003456)
+- [iamdevloper](https://twitter.com/iamdevloper/status/1013767672369242112)
 
 ## Contributing
 
