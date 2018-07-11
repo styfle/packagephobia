@@ -5,7 +5,7 @@
 [![dependency](https://david-dm.org/styfle/packagephobia.svg)](https://david-dm.org/styfle/packagephobia)
 [![devDependency](https://david-dm.org/styfle/packagephobia/dev-status.svg)](https://david-dm.org/styfle/packagephobia?type=dev)
 [![travis](https://travis-ci.org/styfle/packagephobia.svg?branch=master)](https://travis-ci.org/styfle/packagephobia)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![code style: prettier](https://badgen.now.sh/badge/code%20style/prettier/ff69b4)](https://github.com/prettier/prettier)
 
 <a href="https://turnoff.us/geek/npm-install/"><img src="https://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
 
