@@ -1,6 +1,7 @@
 {
     "name": "packagephobia",
     "alias": "packagephobia.now.sh",
+    "type": "docker",
     "env": {
         "NODE_ENV": "production",
         "REDIS_HOST": "@packagephobia-redis-host",
