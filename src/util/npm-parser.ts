@@ -51,8 +51,9 @@ const oneHundredMb = 100 * megabyte;
 const fiveHundredMb = 500 * megabyte;
 
 /**
- * Colors came from here:
+ * Some colors are defined here:
  * https://github.com/badges/shields/blob/master/lib/colorscheme.json
+ * https://github.com/amio/badgen/blob/master/lib/color-presets.js
  */
 export const color = {
     brightgreen: '44CC11',
