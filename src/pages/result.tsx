@@ -7,6 +7,7 @@ import Stats from '../components/Stats';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import Image from '../components/Image';
+import LinkedLogos from '../components/LinkedLogos';
 import { getBadgeUrl } from '../util/badge';
 import { hostname } from '../util/constants';
 
@@ -29,8 +30,8 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                 <PageContainer>
                     <SearchBar autoFocus={false} defaultValue={pkgNameAndVersion} />
                     {exists ? (
-                        <div style={{ padding: '10px 0' }}>
-                            <details>
+                        <div style={{ display: 'flex', padding: '10px 0' }}>
+                            <details style={{ cursor: 'pointer' }} title="Click to view markdown">
                                 <summary>
                                     <img src={badgeUrl} />
                                 </summary>
@@ -43,6 +44,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                                     />
                                 </p>
                             </details>
+                            <LinkedLogos pkgSize={pkgSize} />
                         </div>
                     ) : (
                         <p style={error}>A Tumbeast ate your package</p>
@@ -55,10 +57,6 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                     ) : (
                         <Image width={350} height={350} file="tumblebeasts/tbstand2.png" />
                     )}
-                    <p>
-                        See more info about this package on{' '}
-                        <a href={`https://www.npmjs.com/package/${pkgSize.name}`}>npmjs.com</a>
-                    </p>
                 </PageContainer>
                 <Footer />
             </>
