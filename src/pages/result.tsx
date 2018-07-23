@@ -44,7 +44,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                                     />
                                 </p>
                             </details>
-                            <LinkedLogos name={pkgSize.name} />
+                            <LinkedLogos pkgSize={pkgSize} />
                         </div>
                     ) : (
                         <p style={error}>A Tumbeast ate your package</p>
