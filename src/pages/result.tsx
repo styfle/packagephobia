@@ -31,7 +31,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                     <SearchBar autoFocus={false} defaultValue={pkgNameAndVersion} />
                     {exists ? (
                         <div style={{ display: 'flex', padding: '10px 0' }}>
-                            <details>
+                            <details style={{ cursor: 'pointer' }} title="Click to view markdown">
                                 <summary>
                                     <img src={badgeUrl} />
                                 </summary>
