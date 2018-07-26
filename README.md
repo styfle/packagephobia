@@ -83,6 +83,7 @@ Below are the relevant feature requests for each website.
 - [GitHub issue for cost-of-modules](https://github.com/siddharthkp/cost-of-modules/issues/50)
 - [GitHub issue for npm-cli](https://github.com/npm/npm/issues/20427)
 - [GitHub issue for bundlesize](https://github.com/siddharthkp/bundlesize/issues/205)
+- [GitHub issue for npmgraph.an](https://github.com/anvaka/npmgraph.an/issues/25)
 
 Hopefully, this would lead to publishers taking notice of their bloated packages such as the following:
 
