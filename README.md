@@ -94,6 +94,7 @@ Hopefully, this would lead to publishers taking notice of their bloated packages
 - [socket.io is 6x smaller](https://twitter.com/styfle/status/986224072882380802)
 - [serve@7.0.0 is 3x smaller](https://twitter.com/styfle/status/1001901854417178624)
 - [webpack-cli@3.0.0 is 4x smaller](https://twitter.com/styfle/status/1006605750981021697)
+- [v8n@1.1.1 is 11x smaller](https://twitter.com/styfle/status/1022433043498364931)
 
 ## npm dependencies in the media
 
