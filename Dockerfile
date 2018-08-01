@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8.11.3 as build
+FROM mhart/alpine-node:10.7.0 as build
 WORKDIR /usr/app
 COPY . .
 RUN npm install --only=production
