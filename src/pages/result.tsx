@@ -36,7 +36,8 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                                     <img src={badgeUrl} />
                                 </summary>
                                 <p>
-                                    Copy and paste the following into your README.md:<br />
+                                    Copy and paste the following into your README.md:
+                                    <br />
                                     <input
                                         type="text"
                                         defaultValue={getMarkdown(pkgNameAndVersion)}
