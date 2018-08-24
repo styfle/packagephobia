@@ -38,7 +38,7 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 - Site Generators: [gatsby](https://packagephobia.now.sh/result?p=gatsby) vs [hexo](https://packagephobia.now.sh/result?p=hexo)
 - Type Checkers: [typescript](https://packagephobia.now.sh/result?p=typescript) vs [flow-bin](https://packagephobia.now.sh/result?p=flow-bin)
 - Linters: [eslint](https://packagephobia.now.sh/result?p=eslint) vs [jslint](https://packagephobia.now.sh/result?p=jslint)
-- Color Formatters: [chalk](https://packagephobia.now.sh/result?p=chalk) vs [turbocolor](https://packagephobia.now.sh/result?p=turbocolor)
+- Color Formatters: [chalk](https://packagephobia.now.sh/result?p=chalk) vs [colorette](https://packagephobia.now.sh/result?p=colorette)
 - Command Line Interfaces: [@angular/cli](https://packagephobia.now.sh/result?p=%40angular%2Fcli) vs [@babel/cli](https://packagephobia.now.sh/result?p=%40babel%2Fcli)
 - Desktop Frameworks: [nw](https://packagephobia.now.sh/result?p=nw) vs [electron](https://packagephobia.now.sh/result?p=electron)
 - Headless Browsers: [puppeteer](https://packagephobia.now.sh/result?p=puppeteer) vs [phantom](https://packagephobia.now.sh/result?p=phantom)
