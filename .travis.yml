@@ -16,6 +16,7 @@ node_js:
 
 before_install:
   - npm install -g npm
+  - npm --version
 
 script:
   - npm run build
