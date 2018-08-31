@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { escape } from 'querystring';
 import LinkedLogo from './LinkedLogo';
 
 export default (props: { pkgSize: PkgSize }) => (
@@ -36,7 +37,7 @@ export default (props: { pkgSize: PkgSize }) => (
             icon="graphql"
             color="#36394A"
             title="graph"
-            href={`https://npm.anvaka.com/#/view/2d/${props.pkgSize.name}/`}
+            href={`https://npm.anvaka.com/#/view/2d/${escape(escape(props.pkgSize.name))}`}
         />
     </>
 );
