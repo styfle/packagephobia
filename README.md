@@ -4,6 +4,7 @@
 
 [![dependency](https://badgen.now.sh/david/dep/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia)
 [![devDependency](https://badgen.now.sh/david/dev/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia?type=dev)
+[![lgtm](https://badgen.net/lgtm/grade/javascript/g/styfle/packagephobia)](https://lgtm.com/projects/g/styfle/packagephobia/)
 [![travis](https://badgen.now.sh/travis/styfle/packagephobia)](https://travis-ci.org/styfle/packagephobia)
 [![code style: prettier](https://badgen.now.sh/badge/code%20style/prettier/ff69b4)](https://github.com/prettier/prettier)
 
