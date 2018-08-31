@@ -17,4 +17,4 @@ before_install:
   - docker build -t packagephobia .
 
 script:
-  - echo 'hello world'
+  - npm run test
