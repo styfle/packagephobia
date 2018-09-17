@@ -40,7 +40,7 @@ export default () => {
                         install it.
                     </p>
                     <p>
-                        This is useful for inspecting potential <code>dependencies</code> or
+                        This is useful for inspecting potential <code>dependencies</code> or{' '}
                         <code>devDependencies</code> without using up precious disk space or
                         waiting minutes for <code>npm&nbsp;install</code>.
                     </p>
