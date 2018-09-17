@@ -10,7 +10,7 @@
 
 <a href="https://turnoff.us/geek/npm-install/"><img src="https://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
 
-- ⚖️ Find the cost of adding a new dev dependency to your project
+- ⚖️ Find the cost of adding a new dependency to your project
 - 🕗 Save yourself time and disk space with this web app
 - 📈 Detect javascript bloat over time with a chart
 - 🛡️ Get a badge/shield for your README
@@ -22,7 +22,7 @@
 
 Package Phobia reports the size of an npm package *before* you install it.
 
-This is useful for inspecting potential `devDependencies` without using up precious disk space or waiting minutes for `npm install`. Ain't nobody got time for dat.
+This is useful for inspecting potential `dependencies` or `devDependencies` without using up precious disk space or waiting minutes for `npm install`. Ain't nobody got time for dat.
 
 Results are saved so the first person might wait a bit to view package size, but everyone else gets to see the results instantly!
 

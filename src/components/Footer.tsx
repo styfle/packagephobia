@@ -40,9 +40,9 @@ export default () => {
                         install it.
                     </p>
                     <p>
-                        This is useful for inspecting potential <code>devDependencies</code> without
-                        using up precious disk space or waiting minutes for{' '}
-                        <code>npm&nbsp;install</code>.
+                        This is useful for inspecting potential <code>dependencies</code> or{' '}
+                        <code>devDependencies</code> without using up precious disk space or
+                        waiting minutes for <code>npm&nbsp;install</code>.
                     </p>
                     <h3>What is "publish size" vs "install size"?</h3>
                     <p>
