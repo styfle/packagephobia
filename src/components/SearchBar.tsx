@@ -42,6 +42,7 @@ export default (props: { autoFocus: boolean; defaultValue?: string }) => (
             placeholder="micro"
             autoCorrect="off"
             autoCapitalize="off"
+            autoComplete="off"
             spellCheck={false}
             autoFocus={props.autoFocus}
             defaultValue={props.defaultValue}
