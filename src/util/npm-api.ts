@@ -62,5 +62,5 @@ export function getVersionsForChart(allVersions: string[], version: string, coun
  * to be sent escaped.
  */
 function escapePackageName(name: string) {
-    return name.replace('/', '%2f');
+    return name.replace(/\//g, '%2f');
 }
