@@ -1,13 +1,15 @@
 import 'isomorphic-unfetch';
 import * as semver from 'semver';
 
+const { NPM_REGISTRY_URL = 'https://registry.npmjs.com' } = process.env;
+
 /**
  * Make an API call to npm to get package manifest details
  * @param name The npm package name
  */
 export async function fetchManifest(name: string) {
     const encodedPackage = escapePackageName(name);
-    const response = await fetch(`https://registry.npmjs.com/${encodedPackage}`);
+    const response = await fetch(`${NPM_REGISTRY_URL}/${encodedPackage}`);
     const manifest: NpmManifest = await response.json();
     if (response.status === 404 || !manifest || Object.keys(manifest).length === 0) {
         throw new Error('Package not found');
