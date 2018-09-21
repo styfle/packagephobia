@@ -27,20 +27,31 @@ This will do the following:
 
 ## Running the code
 
-Open a terminal and execute the following to run the code:
+You will need to run `redis` either locally or in the cloud such as [redis labs](https://redislabs.com).
+
+If you have docker, you can get started quickly with the following command.
 
 ```sh
-export REDIS_HOST="redis.example.com"
-export REDIS_PORT="6380"
-export REDIS_PASS="password123"
-export PORT="3000" # optional
+docker run -p 6379:6379 redis
+```
+
+Now that the database is running, let's launch the app.
+
+```sh
+## required settings
+export REDIS_HOST="localhost"
+export REDIS_PORT="6379"
+export REDIS_PASS="SomePass42"
+
+# optional settings
+export PORT="3000"
+export NPM_REGISTRY_URL="https://registry.npmjs.com"
+
+# launch node.js via npm
 npm start
 ```
 
-This will do the following:
-
-- assign environment variables for redis, the main database
-- start the server on http://localhost:3000
+Now, the web app should be avaialble at http://localhost:3000
 
 ## Deploying the code
 
