@@ -18,11 +18,11 @@ const error: React.CSSProperties = {
 
 export default class ResultPage extends React.Component<ResultProps, {}> {
     render() {
-        const { pkgSize, readings } = this.props;
+        const { pkgSize, readings, isLatest } = this.props;
         const exists = pkgSize.version !== versionUnknown;
         const install = getReadableFileSize(pkgSize.installSize);
         const publish = getReadableFileSize(pkgSize.publishSize);
-        const pkgNameAndVersion = `${pkgSize.name}@${pkgSize.version}`;
+        const pkgNameAndVersion = isLatest ? pkgSize.name : `${pkgSize.name}@${pkgSize.version}`;
         const badgeUrl = getBadgeUrl(pkgSize);
 
         return (
@@ -45,7 +45,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                                     />
                                 </p>
                             </details>
-                            <LinkedLogos pkgSize={pkgSize} />
+                            <LinkedLogos pkgSize={pkgSize} isLatest={isLatest} />
                         </div>
                     ) : (
                         <p style={error}>A Tumbeast ate your package</p>
