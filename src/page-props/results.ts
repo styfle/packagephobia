@@ -17,6 +17,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     let { name, version } = parsePackageString(query.p);
     let manifest: NpmManifest;
     let cacheResult = true;
+    let isLatest = false;
 
     try {
         manifest = await fetchManifest(name);
@@ -27,8 +28,8 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
 
     if (!version) {
         version = await getLatestVersion(manifest);
+        isLatest = true;
         cacheResult = false;
-        //console.log(`Querystring missing version, using version ${name}@${version}`);
     }
 
     const allVersions = getAllVersions(manifest);
@@ -42,15 +43,15 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
         : allVersions;
     const chartVersions = getVersionsForChart(filteredVersions, version, 7);
 
-    let existing = await findOne(name, version);
-    if (!existing || query.force === '1') {
+    let pkgSize = await findOne(name, version);
+    if (!pkgSize || query.force === '1') {
         console.log(`Cache miss for ${name}@${version} - running npm install in ${tmpdir}...`);
         const start = new Date();
-        existing = await calculatePackageSize(name, version, tmp);
+        pkgSize = await calculatePackageSize(name, version, tmp);
         const end = new Date();
         const sec = (end.getTime() - start.getTime()) / 1000;
         console.log(`Calculated size of ${name}@${version} in ${sec}s`);
-        insert(existing);
+        insert(pkgSize);
     }
 
     const cachedVersions = await findAll(name);
@@ -69,7 +70,12 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
         }
     });
 
-    const result: ResultProps = { pkgSize: existing, readings, cacheResult };
+    const result: ResultProps = {
+        pkgSize,
+        readings,
+        cacheResult,
+        isLatest,
+    };
     return result;
 }
 
@@ -81,6 +87,11 @@ function packageNotFound(name: string) {
         installSize: 0,
         disabled: true,
     };
-    const result: ResultProps = { pkgSize, readings: [], cacheResult: false };
+    const result: ResultProps = {
+        pkgSize,
+        readings: [],
+        cacheResult: false,
+        isLatest: false,
+    };
     return result;
 }

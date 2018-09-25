@@ -27,6 +27,7 @@ interface ResultProps {
     pkgSize: PkgSize;
     readings: PkgSize[];
     cacheResult: boolean;
+    isLatest: boolean;
 }
 
 interface ParsedUrlQuery {
