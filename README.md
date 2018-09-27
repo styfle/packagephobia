@@ -70,7 +70,7 @@ This number will likely be different because Package Phobia doesn't know anythin
 
 Packages are known to contain many small `.js` files which can actually use up a lot of disk space, more than if there was one large, contiguous file.
 
-See [StackOverflow](https://superuser.com/q/66825/27229) for more details.
+See [this question](https://superuser.com/q/66825/27229) for more details.
 
 ## What are the long term goals?
 
