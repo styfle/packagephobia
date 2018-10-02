@@ -51,7 +51,7 @@ export NPM_REGISTRY_URL="https://registry.npmjs.com"
 npm start
 ```
 
-Now, the web app should be avaialble at http://localhost:3000
+Now, the web app should be available at http://localhost:3000
 
 ## Deploying the code
 
