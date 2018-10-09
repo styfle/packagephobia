@@ -26,7 +26,7 @@
     "semver": "^5.5.1"
   },
   "devDependencies": {
-    "@types/node": "^10.11.4",
+    "@types/node": "^10.11.5",
     "@types/node-fetch": "^2.1.2",
     "@types/react": "^16.4.16",
     "@types/react-dom": "^16.0.8",
