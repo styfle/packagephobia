@@ -4,9 +4,9 @@
     "type": "docker",
     "env": {
         "NODE_ENV": "production",
-        "REDIS_HOST": "@packagephobia-redis-host",
-        "REDIS_PORT": "@packagephobia-redis-port",
-        "REDIS_PASS": "@packagephobia-redis-pass",
+        "REDIS_HOST": "@packagephobia2-redis-host",
+        "REDIS_PORT": "@packagephobia2-redis-port",
+        "REDIS_PASS": "@packagephobia2-redis-pass",
         "GA_ID": "@packagephobia-ga-id"
       }
   }
