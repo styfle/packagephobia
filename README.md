@@ -119,6 +119,7 @@ Below are some other users who comically point out this JS bloat.
 - [Bryan_Chapel](https://twitter.com/Bryan_Chapel/status/1002680482159648769)
 - [getabitlit](https://twitter.com/getabitlit/status/1013524294394003456)
 - [iamdevloper](https://twitter.com/iamdevloper/status/1013767672369242112)
+- [rickhanlonii](https://twitter.com/rickhanlonii/status/1062319416107560961)
 
 ## Contributing
 
