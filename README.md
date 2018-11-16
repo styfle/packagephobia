@@ -51,16 +51,17 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 
 ## How is this different?
 
-- [Package Phobia](https://packagephobia.now.sh) reports the install size of a package.
-- [Bundle Phobia](https://bundlephobia.com) reports the size after webpack bundles the package.
-- [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules) reports the size of your currently installed packages.
-- [Badge Size](https://github.com/ngryman/badge-size) reports the gzip size of a single file from a package.
-- [Bundle Size](https://github.com/siddharthkp/bundlesize) fails CI if a file's size is too large.
-- [Package Size](https://github.com/egoist/package-size) compares the bundle size of multiple packages.
-- [Size Limit](https://github.com/ai/size-limit) compares the bundled (or non-bundled) size of your package.
-- [Require So Slow](https://github.com/ofrobots/require-so-slow) traces the time of each `require` module in a node.js app.
-- [Why Bundled?](https://github.com/d4rkr00t/whybundled) uses webpack stats to show your number of imports and package size.
-- [Do you even lift?](https://github.com/npm/do-you-even-lift) - *NEW* reports size after rollup bundles the package.
+- [Package Phobia](https://packagephobia.now.sh) **THIS TOOL** web app that reports the install size of a package over time.
+- [Bundle Phobia](https://bundlephobia.com) web app that reports the size after webpack bundles the package over time.
+- [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules) cli that reports the size of your currently installed packages.
+- [Badge Size](https://github.com/ngryman/badge-size) badge service that reports the gzip size of a single file from a package as svg.
+- [Size Limit](https://github.com/ai/size-limit) cli that fails if the bundled (or non-bundled) size of your app is too large.
+- [Bundle Size](https://github.com/siddharthkp/bundlesize) cli that fails CI if a file's size is too large.
+- [Package Size](https://github.com/egoist/package-size) cli that compares the bundle size of multiple packages.
+- [Require So Slow](https://github.com/ofrobots/require-so-slow) cli that traces the time of each `require` module in a node.js app.
+- [Why Bundled?](https://github.com/d4rkr00t/whybundled) cli that uses webpack stats to show your number of imports and package size.
+- [Do you even lift?](https://github.com/npm/do-you-even-lift) - cli that reports size after rollup bundles the package via npm team.
+- [Import Cost](https://github.com/wix/import-cost) extension (and cli) that displays package size inline in the editor.
 
 ## Why is the size different than size on disk?
 
