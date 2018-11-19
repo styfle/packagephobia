@@ -62,7 +62,7 @@ test('getAllVersions should sort by semver', t => {
 
 test('getLatestVersion', t => {
     t.plan(1);
-    const latest = npmapi.getLatestVersion(manifest);
+    const { latest } = npmapi.getAllDistTags(manifest);
     t.equal(latest, '2.0.0');
 });
 

@@ -21,10 +21,11 @@ export async function fetchManifest(name: string) {
 }
 
 /**
- * Get the latest/newest version of the npm package
+ * Get all the published npm dist tags
+ * which returns object {tagname => version}
  */
-export function getLatestVersion(manifest: NpmManifest) {
-    return manifest['dist-tags'].latest;
+export function getAllDistTags(manifest: NpmManifest) {
+    return manifest['dist-tags'];
 }
 
 /**
