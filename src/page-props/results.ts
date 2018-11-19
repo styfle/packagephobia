@@ -2,7 +2,7 @@ import { parsePackageString, isFullRelease } from '../util/npm-parser';
 import { findAll, findOne, insert } from '../util/backend/db';
 import {
     fetchManifest,
-    getLatestVersion,
+    getAllDistTags,
     getVersionsForChart,
     getAllVersions,
 } from '../util/npm-api';
@@ -26,9 +26,13 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
         return packageNotFound(name);
     }
 
+    const tagToVersion = getAllDistTags(manifest);
     if (!version) {
-        version = await getLatestVersion(manifest);
+        version = tagToVersion['latest'];
         isLatest = true;
+        cacheResult = false;
+    } else if (typeof tagToVersion[version] !== 'undefined') {
+        version = tagToVersion[version];
         cacheResult = false;
     }
 
