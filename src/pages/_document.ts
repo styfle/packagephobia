@@ -4,15 +4,18 @@ import { renderToNodeStream } from 'react-dom/server';
 
 import IndexPage from '../pages/index';
 import ResultPage from '../pages/result';
+import StatsPage from '../pages/stats';
 import NotFoundPage from '../pages/404';
 import ServerErrorPage from '../pages/500';
 
 const IndexFactory = createFactory(IndexPage);
 const ResultFactory = createFactory(ResultPage);
+const StatsFactory = createFactory(StatsPage);
 const NotFoundFactory = createFactory(NotFoundPage);
 const ServerErrorFactory = createFactory(ServerErrorPage);
 
 import { getResultProps } from '../page-props/results';
+import { getStatsProps } from '../page-props/stats';
 
 import { containerId, pages, hostname } from '../util/constants';
 import OctocatCorner from '../components/OctocatCorner';
@@ -139,6 +142,8 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
                 return IndexFactory();
             case pages.result:
                 return ResultFactory(await getResultProps(query, tmpDir));
+            case pages.stats:
+                return StatsFactory(await getStatsProps(query));
             default:
                 return NotFoundFactory();
         }

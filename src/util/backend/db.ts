@@ -63,3 +63,27 @@ export function insert(data: PkgSize) {
         });
     });
 }
+
+export function hlen(name: string) {
+    return new Promise<number>((resolve, reject) => {
+        client.hlen(name, (err, reply) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(reply);
+            }
+        });
+    });
+}
+
+export function scan(start: string) {
+    return new Promise<[string, string[]]>((resolve, reject) => {
+        client.scan(start, 'COUNT', '10000', (err, reply) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(reply);
+            }
+        });
+    });
+}

@@ -30,6 +30,11 @@ interface ResultProps {
     isLatest: boolean;
 }
 
+interface StatsProps {
+    packageCount: number;
+    packageVersionCount: number;
+}
+
 interface ParsedUrlQuery {
     [key: string]: string | string[] | undefined;
 }
