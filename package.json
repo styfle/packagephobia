@@ -35,6 +35,6 @@
     "@types/tape": "^4.2.32",
     "prettier": "^1.15.3",
     "tape": "^4.9.1",
-    "typescript": "^3.2.1"
+    "typescript": "^3.2.2"
   }
 }
