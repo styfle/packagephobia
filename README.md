@@ -62,6 +62,8 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [Why Bundled?](https://github.com/d4rkr00t/whybundled) cli that uses webpack stats to show your number of imports and package size.
 - [Do you even lift?](https://github.com/npm/do-you-even-lift) - cli that reports size after rollup bundles the package via npm team.
 - [Import Cost](https://github.com/wix/import-cost) extension (and cli) that displays package size inline in the editor.
+- [npm download size](https://github.com/arve0/npm-download-size) web app that reports the download size (network traffic) of a package.
+- [npm download size cli](https://github.com/arve0/npm-download-size-cli) cli that reports the download size (network traffic) of a package. 
 
 ## Why is the size different than size on disk?
 
