@@ -36,6 +36,7 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 - Task Runners: [grunt](https://packagephobia.now.sh/result?p=grunt) vs [gulp](https://packagephobia.now.sh/result?p=gulp)
 - HTTP Requests: [request](https://packagephobia.now.sh/result?p=request) vs [node-fetch](https://packagephobia.now.sh/result?p=node-fetch)
 - Glob Patterns: [glob](https://packagephobia.now.sh/result?p=glob) vs [tiny-glob](https://packagephobia.now.sh/result?p=tiny-glob)
+- Arguments: [yargs](https://packagephobia.now.sh/result?p=yargs) vs [arg](https://packagephobia.now.sh/result?p=arg)
 - Site Generators: [gatsby](https://packagephobia.now.sh/result?p=gatsby) vs [hexo](https://packagephobia.now.sh/result?p=hexo)
 - Type Checkers: [typescript](https://packagephobia.now.sh/result?p=typescript) vs [flow-bin](https://packagephobia.now.sh/result?p=flow-bin)
 - Linters: [eslint](https://packagephobia.now.sh/result?p=eslint) vs [jslint](https://packagephobia.now.sh/result?p=jslint)
