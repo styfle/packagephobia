@@ -30,7 +30,7 @@
     "@types/node-fetch": "^2.1.4",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",
-    "@types/redis": "^2.8.8",
+    "@types/redis": "^2.8.10",
     "@types/semver": "^5.5.0",
     "@types/tape": "^4.2.32",
     "prettier": "^1.15.3",
