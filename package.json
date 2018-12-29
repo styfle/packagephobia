@@ -21,7 +21,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "npm": "^6.5.0",
     "react": "^16.7.0",
-    "react-dom": "^16.6.1",
+    "react-dom": "^16.7.0",
     "redis": "^2.8.0",
     "semver": "^5.6.0"
   },
