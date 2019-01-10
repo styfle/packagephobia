@@ -29,6 +29,10 @@ const footerDiv: React.CSSProperties = {
     maxWidth: '30rem',
 };
 
+const footerLink: React.CSSProperties = {
+    color: '#ccc',
+};
+
 export default () => {
     return (
         <footer style={footer}>
@@ -59,6 +63,7 @@ export default () => {
                         <a
                             target="_blank"
                             href="https://github.com/styfle/packagephobia/blob/master/README.md"
+                            style={footerLink}
                         >
                             README
                         </a>{' '}
