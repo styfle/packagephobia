@@ -149,38 +149,37 @@ export default class BarGraph extends React.PureComponent<Props, {}> {
             <div className="bar-graph-container">
                 <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
                 <figure className="bar-graph">
-                    {readings.map(
-                        (r, i) =>
-                            r.disabled ? (
-                                <a
-                                    key={i}
-                                    className="bar-graph__bar-group bar-graph__bar-group--disabled"
-                                    href={getHref(r)}
+                    {readings.map((r, i) =>
+                        r.disabled ? (
+                            <a
+                                key={i}
+                                className="bar-graph__bar-group bar-graph__bar-group--disabled"
+                                href={getHref(r)}
+                            >
+                                <div
+                                    className="bar-graph__bar color1"
+                                    style={{ height: '50%' }}
+                                    title={getTooltipMessage(r)}
                                 >
-                                    <div
-                                        className="bar-graph__bar color1"
-                                        style={{ height: '50%' }}
-                                        title={getTooltipMessage(r)}
-                                    >
-                                        <span className="bar-graph__bar-version">{r.version}</span>
-                                        <span className="bar-graph__bar-version">{r.version}</span>
-                                    </div>
-                                </a>
-                            ) : (
-                                <a key={i} className="bar-graph__bar-group" href={getHref(r)}>
-                                    <div
-                                        className="bar-graph__bar color1"
-                                        style={{ height: `${r.installSize * scale}%` }}
-                                        title={getTooltipMessage(r)}
-                                    >
-                                        <span className="bar-graph__bar-version">{r.version}</span>
-                                    </div>
-                                    <div
-                                        className="bar-graph__bar2 color2"
-                                        style={{ height: `${r.publishSize * scale}%` }}
-                                    />
-                                </a>
-                            ),
+                                    <span className="bar-graph__bar-version">{r.version}</span>
+                                    <span className="bar-graph__bar-version">{r.version}</span>
+                                </div>
+                            </a>
+                        ) : (
+                            <a key={i} className="bar-graph__bar-group" href={getHref(r)}>
+                                <div
+                                    className="bar-graph__bar color1"
+                                    style={{ height: `${r.installSize * scale}%` }}
+                                    title={getTooltipMessage(r)}
+                                >
+                                    <span className="bar-graph__bar-version">{r.version}</span>
+                                </div>
+                                <div
+                                    className="bar-graph__bar2 color2"
+                                    style={{ height: `${r.publishSize * scale}%` }}
+                                />
+                            </a>
+                        ),
                     )}
                 </figure>
                 <div className="bar-graph__legend">
