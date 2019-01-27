@@ -1,12 +1,18 @@
 {
-    "name": "packagephobia",
-    "alias": "packagephobia.now.sh",
-    "type": "docker",
+    "name": "packagephobia2",
+    "alias": "packagephobia2.now.sh",
+    "version": 2,
+    "builds": [
+        { "src": "src/server.ts", "use": "@now/node@canary", "config": { "maxLambdaSize": "40mb" } }
+    ],
+    "routes": [
+        { "src": "/(.*)", "dest": "/src/server.ts" }
+    ],
     "env": {
         "NODE_ENV": "production",
         "REDIS_HOST": "@packagephobia2-redis-host",
         "REDIS_PORT": "@packagephobia2-redis-port",
         "REDIS_PASS": "@packagephobia2-redis-pass",
         "GA_ID": "@packagephobia-ga-id"
-      }
-  }
+    }
+}

@@ -1,4 +1,4 @@
-import { createServer } from 'http';
+import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { parse } from 'url';
 import { createReadStream, existsSync } from 'fs';
 import { join } from 'path';
@@ -13,7 +13,7 @@ const { TMPDIR = '/tmp', GA_ID = '', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
 console.log('isProduction: ', isProd);
 
-createServer(async (req, res) => {
+export default async function handler(req: IncomingMessage, res: ServerResponse) {
     let { httpVersion, method, url } = req;
     console.log(`${httpVersion} ${method} ${url}`);
     let { pathname = '/', query = {} } = parse(url || '', true);
@@ -55,6 +55,9 @@ createServer(async (req, res) => {
         res.statusCode = 500;
         res.end('500 Internal Error');
     }
-}).listen(PORT, () => {
-    console.log(`Listening on ${PORT}...`);
-});
+}
+
+if (!isProd) {
+    const listen = () => console.log(`Listening on ${PORT}...`);
+    createServer(handler).listen(PORT, listen);
+}
