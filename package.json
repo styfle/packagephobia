@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "isomorphic-unfetch": "^3.0.0",
-    "npm": "^6.6.0",
+    "npm": "^6.7.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "redis": "^2.8.0",
