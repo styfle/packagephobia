@@ -7,8 +7,7 @@
     "build": "tsc",
     "start": "node dist/src/server.js",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
-    "test": "tape dist/test/**/*.js",
-    "deploy": "now --docker --public && now alias"
+    "test": "tape dist/test/**/*.js"
   },
   "repository": {
     "type": "git",
