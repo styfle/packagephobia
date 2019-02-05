@@ -58,7 +58,8 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [Badge Size](https://github.com/ngryman/badge-size) badge service that reports the gzip size of a single file from a package as svg.
 - [Size Limit](https://github.com/ai/size-limit) cli that fails if the bundled (or non-bundled) size of your app is too large.
 - [Bundle Size](https://github.com/siddharthkp/bundlesize) cli that fails CI if a file's size is too large.
-- [Package Size](https://github.com/egoist/package-size) cli that compares the bundle size of multiple packages.
+- [package-size](https://github.com/egoist/package-size) cli that compares the bundle size of multiple packages.
+- [npm-size](https://github.com/egoist/npm-size) cli that compares the npm install size of multiple packages.
 - [Require So Slow](https://github.com/ofrobots/require-so-slow) cli that traces the time of each `require` module in a node.js app.
 - [Why Bundled?](https://github.com/d4rkr00t/whybundled) cli that uses webpack stats to show your number of imports and package size.
 - [Do you even lift?](https://github.com/npm/do-you-even-lift) - cli that reports size after rollup bundles the package via npm team.
