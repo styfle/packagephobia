@@ -2,10 +2,13 @@
     "name": "packagephobia2",
     "alias": "packagephobia2.now.sh",
     "version": 2,
+    "regions": ["all"],
     "builds": [
-        { "src": "src/server.ts", "use": "@now/node@canary", "config": { "maxLambdaSize": "40mb" } }
+        { "src": "static/**", "use": "@now/static" },
+        { "src": "src/server.ts", "use": "@now/node@canary" }
     ],
     "routes": [
+        { "src": "/(.+svg|.+png|.+ico|robots.txt|browserconfig.xml)", "dest": "/static/$1" },
         { "src": "/(.*)", "dest": "/src/server.ts" }
     ],
     "env": {
