@@ -10,7 +10,7 @@ import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
 import { tmpdir } from 'os';
 
-export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
+export async function getResultProps(query: ParsedUrlQuery, workingDir: string, tmp: string) {
     if (!query || typeof query.p !== 'string') {
         throw new Error(`Unknown query string ${query}`);
     }
@@ -51,7 +51,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     if (!pkgSize || query.force === '1') {
         console.log(`Cache miss for ${name}@${version} - running npm install in ${tmpdir}...`);
         const start = new Date();
-        pkgSize = await calculatePackageSize(name, version, tmp);
+        pkgSize = await calculatePackageSize(name, version, workingDir, tmp);
         const end = new Date();
         const sec = (end.getTime() - start.getTime()) / 1000;
         console.log(`Calculated size of ${name}@${version} in ${sec}s`);
