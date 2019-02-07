@@ -26,8 +26,11 @@ export function getDirSize(root: string, seen = new Set()): number {
 export async function calculatePackageSize(name: string, version: string, tmpDir: string) {
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
+    const homeDir = join(tmpDir, 'home');
     const nodeModules = join(pkgDir, 'node_modules');
     const npm = join(process.env.PWD || '', 'node_modules', 'npm', 'bin', 'npm-cli.js');
+
+    await execFile('mkdir', [homeDir], { cwd: tmpDir });
     await execFile('mkdir', [tmpPackage], { cwd: tmpDir });
     await execFile(npm, ['init', '-y'], { cwd: pkgDir });
     await execFile(
@@ -42,6 +45,7 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
         {
             cwd: pkgDir,
             timeout: 60000,
+            env: { HOME: homeDir },
         },
     );
     const installSize = getDirSize(nodeModules);
