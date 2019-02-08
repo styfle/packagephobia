@@ -1,7 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { parse } from 'url';
 import { createReadStream, existsSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
 import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
 
@@ -9,12 +9,12 @@ import { pages, versionUnknown } from './util/constants';
 import { getResultProps } from './page-props/results';
 import { getBadgeUrl } from './util/badge';
 
-const outputDir = '/dist/src';
-const PWD = __dirname.endsWith(outputDir) ? __dirname.slice(0, -outputDir.length) : __dirname;
+const pkg = require.resolve('npm/package.json');
+const npmCli = join(dirname(pkg), require(pkg).bin.npm);
 const { TMPDIR = '/tmp', GA_ID = '', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
 console.log('isProduction: ', isProd);
-console.log('PWD:', PWD);
+console.log('npm-cli:', npmCli);
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
     let { httpVersion, method, url } = req;
@@ -25,14 +25,14 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     }
     try {
         if (pathname === pages.badge) {
-            const { pkgSize, cacheResult } = await getResultProps(query, PWD, TMPDIR);
+            const { pkgSize, cacheResult } = await getResultProps(query, npmCli, TMPDIR);
             const badgeUrl = getBadgeUrl(pkgSize);
             res.statusCode = 302;
             res.setHeader('Location', badgeUrl);
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end();
         } else if (pathname === pages.api_json) {
-            const { pkgSize, cacheResult } = await getResultProps(query, PWD, TMPDIR);
+            const { pkgSize, cacheResult } = await getResultProps(query, npmCli, TMPDIR);
             const { publishSize, installSize, version } = pkgSize;
             const result: ApiResponse = { publishSize, installSize };
             res.statusCode = version === versionUnknown ? 404 : 200;
@@ -48,7 +48,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
             } else {
                 res.setHeader('Content-Type', mimeType('*.html'));
                 res.setHeader('Cache-Control', cacheControl(isProd, 0));
-                renderPage(res, pathname, query, PWD, TMPDIR, GA_ID);
+                renderPage(res, pathname, query, npmCli, TMPDIR, GA_ID);
             }
         }
     } catch (e) {

@@ -133,18 +133,13 @@ export async function renderPage(
     });
 }
 
-async function routePage(
-    pathname: string,
-    query: ParsedUrlQuery,
-    workingDir: string,
-    tmpDir: string,
-) {
+async function routePage(pathname: string, query: ParsedUrlQuery, npmCli: string, tmpDir: string) {
     try {
         switch (pathname) {
             case pages.index:
                 return IndexFactory();
             case pages.result:
-                return ResultFactory(await getResultProps(query, workingDir, tmpDir));
+                return ResultFactory(await getResultProps(query, npmCli, tmpDir));
             default:
                 return NotFoundFactory();
         }

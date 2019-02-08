@@ -26,18 +26,16 @@ export function getDirSize(root: string, seen = new Set()): number {
 export async function calculatePackageSize(
     name: string,
     version: string,
-    workingDir: string,
+    npmCli: string,
     tmpDir: string,
 ) {
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
     const nodeModules = join(pkgDir, 'node_modules');
-    const npm = join(workingDir, 'node_modules', 'npm', 'bin', 'npm-cli.js');
-    console.log('npm: ', npm);
     await execFile('mkdir', [tmpPackage], { cwd: tmpDir });
-    await execFile(npm, ['init', '-y'], { cwd: pkgDir });
+    await execFile(npmCli, ['init', '-y'], { cwd: pkgDir });
     await execFile(
-        npm,
+        npmCli,
         [
             'i',
             '--no-package-lock',
