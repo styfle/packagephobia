@@ -77,7 +77,6 @@ export async function renderPage(
     res: ServerResponse,
     pathname: string,
     query: ParsedUrlQuery,
-    workingDir: string,
     tmpDir: string,
     gaId: string,
 ) {
@@ -108,7 +107,7 @@ export async function renderPage(
             <script>document.getElementById('spinner').style.display='block'</script>
             ${OctocatCorner()}
             <div id="${containerId}">`);
-    const factory = await routePage(pathname, query, workingDir, tmpDir);
+    const factory = await routePage(pathname, query, tmpDir);
     const stream = renderToNodeStream(factory);
     stream.pipe(
         res,
@@ -133,13 +132,13 @@ export async function renderPage(
     });
 }
 
-async function routePage(pathname: string, query: ParsedUrlQuery, npmCli: string, tmpDir: string) {
+async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string) {
     try {
         switch (pathname) {
             case pages.index:
                 return IndexFactory();
             case pages.result:
-                return ResultFactory(await getResultProps(query, npmCli, tmpDir));
+                return ResultFactory(await getResultProps(query, tmpDir));
             default:
                 return NotFoundFactory();
         }

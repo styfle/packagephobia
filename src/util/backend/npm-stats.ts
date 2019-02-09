@@ -1,8 +1,17 @@
-import { lstatSync, readdirSync } from 'fs';
+import { lstatSync, readdirSync, mkdir, writeFile } from 'fs';
 import { join } from 'path';
 import { promisify } from 'util';
-import * as child_process from 'child_process';
-const execFile = promisify(child_process.execFile);
+const mkdirAsync = promisify(mkdir);
+const writeFileAsync = promisify(writeFile);
+import { npmInstall } from './npm-wrapper';
+
+const packageString = JSON.stringify({
+    name: 'none',
+    version: '1.0.0',
+    description: 'None',
+    main: 'index.js',
+    license: 'ISC',
+});
 
 // TODO: Can this be optimized by changing sync to async?
 export function getDirSize(root: string, seen = new Set()): number {
@@ -26,31 +35,18 @@ export function getDirSize(root: string, seen = new Set()): number {
 export async function calculatePackageSize(
     name: string,
     version: string,
-    npmCli: string,
     tmpDir: string,
 ) {
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
+    const packageJson = join(pkgDir, 'package.json');
     const nodeModules = join(pkgDir, 'node_modules');
-    await execFile('mkdir', [tmpPackage], { cwd: tmpDir });
-    await execFile(npmCli, ['init', '-y'], { cwd: pkgDir });
-    await execFile(
-        npmCli,
-        [
-            'i',
-            '--no-package-lock',
-            '--no-audit',
-            ...(process.env.NPM_REGISTRY_URL ? ['--registry', process.env.NPM_REGISTRY_URL] : []),
-            `${name}@${version}`,
-        ],
-        {
-            cwd: pkgDir,
-            timeout: 60000,
-        },
-    );
+    await mkdirAsync(pkgDir);
+    await writeFileAsync(packageJson, packageString, 'utf8');
+    await npmInstall(pkgDir, name, version);
     const installSize = getDirSize(nodeModules);
     const publishSize = getDirSize(join(nodeModules, name));
-    await execFile('rm', ['-rf', tmpPackage], { cwd: tmpDir });
+    //await execFile('rm', ['-rf', tmpPackage], { cwd: tmpDir });
     const output: PkgSize = { name, version, publishSize, installSize };
     return output;
 }
