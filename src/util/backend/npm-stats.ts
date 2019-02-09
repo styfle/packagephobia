@@ -11,6 +11,7 @@ const packageString = JSON.stringify({
     description: 'None',
     main: 'index.js',
     license: 'ISC',
+    repository: 'github:npm/cli',
 });
 
 // TODO: Can this be optimized by changing sync to async?
@@ -32,11 +33,7 @@ export function getDirSize(root: string, seen = new Set()): number {
         .reduce((acc, num) => acc + num, 0);
 }
 
-export async function calculatePackageSize(
-    name: string,
-    version: string,
-    tmpDir: string,
-) {
+export async function calculatePackageSize(name: string, version: string, tmpDir: string) {
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
     const packageJson = join(pkgDir, 'package.json');
