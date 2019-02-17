@@ -1,4 +1,5 @@
 const npm = require('npm');
+const install = require('npm/lib/install');
 
 export function npmInstall(where: string, name: string, version: string) {
     return new Promise((resolve, reject) => {
@@ -15,7 +16,7 @@ export function npmInstall(where: string, name: string, version: string) {
                 npm.config.set('registry', process.env.NPM_REGISTRY_URL);
             }
             const args = [`${name}@${version}`];
-            npm.commands.install(where, args, (err?: Error) => {
+            install(where, args, (err?: Error) => {
                 if (err) {
                     reject(err);
                     return;
