@@ -8,7 +8,6 @@ import {
 } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
-import { tmpdir } from 'os';
 
 export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
     if (!query || typeof query.p !== 'string') {
@@ -49,7 +48,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
 
     let pkgSize = await findOne(name, version);
     if (!pkgSize || query.force === '1') {
-        console.log(`Cache miss for ${name}@${version} - running npm install in ${tmpdir}...`);
+        console.log(`Cache miss for ${name}@${version} - running npm install in ${tmp}...`);
         const start = new Date();
         pkgSize = await calculatePackageSize(name, version, tmp);
         const end = new Date();
