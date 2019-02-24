@@ -1,8 +1,11 @@
-import { lstatSync, readdirSync } from 'fs';
+import { lstatSync, readdirSync, mkdir, writeFile } from 'fs';
 import { join } from 'path';
+import { execFile } from 'child_process';
 import { promisify } from 'util';
-import * as child_process from 'child_process';
-const execFile = promisify(child_process.execFile);
+const mkdirAsync = promisify(mkdir);
+const writeFileAsync = promisify(writeFile);
+const execFileAsync = promisify(execFile);
+import { npmInstall, packageString } from './npm-wrapper';
 
 // TODO: Can this be optimized by changing sync to async?
 export function getDirSize(root: string, seen = new Set()): number {
@@ -26,27 +29,15 @@ export function getDirSize(root: string, seen = new Set()): number {
 export async function calculatePackageSize(name: string, version: string, tmpDir: string) {
     const tmpPackage = 'tmp-package' + Math.random();
     const pkgDir = join(tmpDir, tmpPackage);
+    const cacheDir = join(tmpDir, 'npm-cache');
+    const packageJson = join(pkgDir, 'package.json');
     const nodeModules = join(pkgDir, 'node_modules');
-    const npm = join(process.env.PWD || '', 'node_modules', 'npm', 'bin', 'npm-cli.js');
-    await execFile('mkdir', [tmpPackage], { cwd: tmpDir });
-    await execFile(npm, ['init', '-y'], { cwd: pkgDir });
-    await execFile(
-        npm,
-        [
-            'i',
-            '--no-package-lock',
-            '--no-audit',
-            ...(process.env.NPM_REGISTRY_URL ? ['--registry', process.env.NPM_REGISTRY_URL] : []),
-            `${name}@${version}`,
-        ],
-        {
-            cwd: pkgDir,
-            timeout: 60000,
-        },
-    );
+    await mkdirAsync(pkgDir);
+    await writeFileAsync(packageJson, packageString, 'utf8');
+    await npmInstall(pkgDir, cacheDir, name, version);
     const installSize = getDirSize(nodeModules);
     const publishSize = getDirSize(join(nodeModules, name));
-    await execFile('rm', ['-rf', tmpPackage], { cwd: tmpDir });
+    await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
     const output: PkgSize = { name, version, publishSize, installSize };
     return output;
 }
