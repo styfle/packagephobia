@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { getReadableFileSize } from '../util/npm-parser';
 const stylesheet = `
 .bar-graph{

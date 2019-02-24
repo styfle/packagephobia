@@ -1,6 +1,6 @@
 import * as npmstats from '../src/util/backend/npm-stats';
-import * as path from 'path';
-import * as test from 'tape';
+import path from 'path';
+import test from 'tape';
 
 test('getDirSize top level', t => {
     t.plan(1);

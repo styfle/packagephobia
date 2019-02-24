@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { pages, versionUnknown } from '../util/constants';
 import { getReadableFileSize } from '../util/npm-parser';
 import PageContainer from '../components/PageContainer';

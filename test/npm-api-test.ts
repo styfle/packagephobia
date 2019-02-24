@@ -1,5 +1,5 @@
 import * as npmapi from '../src/util/npm-api';
-import * as test from 'tape';
+import test from 'tape';
 
 const manifest = {
     versions: {

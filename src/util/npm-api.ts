@@ -1,5 +1,5 @@
-import 'isomorphic-unfetch';
-import * as semver from 'semver';
+import fetch from 'node-fetch';
+import semver from 'semver';
 
 const { NPM_REGISTRY_URL = 'https://registry.npmjs.com' } = process.env;
 

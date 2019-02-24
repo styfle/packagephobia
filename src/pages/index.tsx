@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';

@@ -31,7 +31,6 @@ export function npmInstall(where: string, cacheDir: string, name: string, versio
     });
 }
 
-
 export const packageString = JSON.stringify({
     name: 'none',
     version: '1.0.0',

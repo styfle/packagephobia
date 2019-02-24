@@ -1,5 +1,5 @@
 import * as npmparser from '../src/util/npm-parser';
-import * as test from 'tape';
+import test from 'tape';
 
 const kilobyte = 1024;
 const megabyte = 1024 * 1024;

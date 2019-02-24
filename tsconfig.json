@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "esModuleInterop": true,
         "outDir": "./dist",
         "module": "commonjs",
         "target": "esnext",

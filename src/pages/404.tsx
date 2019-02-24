@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Image from '../components/Image';
 import Footer from '../components/Footer';
 import { pages } from '../util/constants';

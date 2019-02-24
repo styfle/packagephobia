@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { pages } from '../util/constants';
 
 const form: React.CSSProperties = {
