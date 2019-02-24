@@ -1,7 +1,7 @@
 const npm = require('npm');
 const install = require('npm/lib/install');
 
-export function npmInstall(where: string, name: string, version: string) {
+export function npmInstall(where: string, cacheDir: string, name: string, version: string) {
     return new Promise((resolve, reject) => {
         npm.load((err?: Error) => {
             if (err) {
@@ -9,6 +9,7 @@ export function npmInstall(where: string, name: string, version: string) {
                 return;
             }
             npm.config.set('audit', false);
+            npm.config.set('cache', cacheDir);
             npm.config.set('package-lock', false);
             npm.config.set('progress', false);
             npm.config.set('silent', true);
@@ -19,9 +20,9 @@ export function npmInstall(where: string, name: string, version: string) {
             install(where, args, (err?: Error) => {
                 if (err) {
                     reject(err);
-                    return;
+                } else {
+                    resolve();
                 }
-                resolve();
             });
         });
     });

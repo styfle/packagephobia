@@ -11,7 +11,6 @@ import { getBadgeUrl } from './util/badge';
 
 const { TMPDIR = '/tmp', GA_ID = '', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
-process.env.HOME = isProd ? TMPDIR : process.env.HOME;
 console.log('isProduction: ', isProd);
 console.log('TMPDIR: ', TMPDIR);
 console.log('HOME: ', process.env.HOME);
