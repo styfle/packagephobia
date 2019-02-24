@@ -13,7 +13,6 @@ const { TMPDIR = '/tmp', GA_ID = '', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
 console.log('isProduction: ', isProd);
 console.log('TMPDIR: ', TMPDIR);
-console.log('HOME: ', process.env.HOME);
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
     let { httpVersion, method, url } = req;
