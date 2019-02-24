@@ -1,18 +1,11 @@
 import { lstatSync, readdirSync, mkdir, writeFile } from 'fs';
 import { join } from 'path';
+import { execFile } from 'child_process';
 import { promisify } from 'util';
 const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);
-import { npmInstall } from './npm-wrapper';
-
-const packageString = JSON.stringify({
-    name: 'none',
-    version: '1.0.0',
-    description: 'None',
-    main: 'index.js',
-    license: 'ISC',
-    repository: 'github:npm/cli',
-});
+const execFileAsync = promisify(execFile);
+import { npmInstall, packageString } from './npm-wrapper';
 
 // TODO: Can this be optimized by changing sync to async?
 export function getDirSize(root: string, seen = new Set()): number {
@@ -44,7 +37,7 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
     await npmInstall(pkgDir, cacheDir, name, version);
     const installSize = getDirSize(nodeModules);
     const publishSize = getDirSize(join(nodeModules, name));
-    //await execFile('rm', ['-rf', tmpPackage], { cwd: tmpDir });
+    await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
     const output: PkgSize = { name, version, publishSize, installSize };
     return output;
 }

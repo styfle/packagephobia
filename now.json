@@ -1,6 +1,6 @@
 {
-    "name": "packagephobia2",
-    "alias": "packagephobia2.now.sh",
+    "name": "packagephobia",
+    "alias": "packagephobia.now.sh",
     "version": 2,
     "regions": ["all"],
     "builds": [

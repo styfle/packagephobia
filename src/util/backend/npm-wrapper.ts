@@ -8,16 +8,19 @@ export function npmInstall(where: string, cacheDir: string, name: string, versio
                 reject(err);
                 return;
             }
-            npm.config.set('audit', false);
+
             npm.config.set('cache', cacheDir);
+            npm.config.set('audit', false);
+            npm.config.set('update-notifier', false);
             npm.config.set('package-lock', false);
             npm.config.set('progress', false);
             npm.config.set('silent', true);
+
             if (process.env.NPM_REGISTRY_URL) {
                 npm.config.set('registry', process.env.NPM_REGISTRY_URL);
             }
-            const args = [`${name}@${version}`];
-            install(where, args, (err?: Error) => {
+
+            install(where, [`${name}@${version}`], (err?: Error) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -27,3 +30,13 @@ export function npmInstall(where: string, cacheDir: string, name: string, versio
         });
     });
 }
+
+
+export const packageString = JSON.stringify({
+    name: 'none',
+    version: '1.0.0',
+    description: 'None',
+    main: 'index.js',
+    license: 'ISC',
+    repository: 'github:npm/cli',
+});

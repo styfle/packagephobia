@@ -9,7 +9,7 @@ import {
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
 
-export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
+export async function getResultProps(query: ParsedUrlQuery, tmpDir: string) {
     if (!query || typeof query.p !== 'string') {
         throw new Error(`Unknown query string ${query}`);
     }
@@ -48,9 +48,9 @@ export async function getResultProps(query: ParsedUrlQuery, tmp: string) {
 
     let pkgSize = await findOne(name, version);
     if (!pkgSize || query.force === '1') {
-        console.log(`Cache miss for ${name}@${version} - running npm install in ${tmp}...`);
+        console.log(`Cache miss for ${name}@${version} - running npm install in ${tmpDir}...`);
         const start = new Date();
-        pkgSize = await calculatePackageSize(name, version, tmp);
+        pkgSize = await calculatePackageSize(name, version, tmpDir);
         const end = new Date();
         const sec = (end.getTime() - start.getTime()) / 1000;
         console.log(`Calculated size of ${name}@${version} in ${sec}s`);
