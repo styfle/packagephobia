@@ -7,7 +7,7 @@ interface PackageVersion {
 interface SizeWithUnit {
     size: string;
     unit: string;
-    readable: string;
+    pretty: string;
 }
 
 interface PkgSize {
@@ -18,9 +18,20 @@ interface PkgSize {
     disabled?: boolean;
 }
 
-interface ApiResponse {
+interface ApiResponseV1 {
     publishSize: number;
     installSize: number;
+}
+
+interface ApiResponseV2 {
+    publish: ApiResponseSize;
+    install: ApiResponseSize;
+}
+
+interface ApiResponseSize {
+    bytes: number;
+    pretty: string;
+    color: string;
 }
 
 interface ResultProps {

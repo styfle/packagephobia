@@ -201,8 +201,8 @@ const getTooltipMessage = (r: PkgSize) => {
     if (r.disabled) {
         return `${r.version} | Unknown size | Click to build and find out!`;
     }
-    const install = getReadableFileSize(r.installSize).readable;
-    const publish = getReadableFileSize(r.publishSize).readable;
+    const install = getReadableFileSize(r.installSize).pretty;
+    const publish = getReadableFileSize(r.publishSize).pretty;
 
     return `${r.version} | Publish Size: ${publish} | Install Size: ${install}`;
 };

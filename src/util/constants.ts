@@ -2,7 +2,8 @@ export const pages = {
     index: '/index',
     result: '/result',
     badge: '/badge',
-    api_json: '/api.json',
+    apiv1: '/api.json',
+    apiv2: '/v2/api.json',
     logo_svg: '/logo.svg',
     logo_png: '/logo.png',
 };

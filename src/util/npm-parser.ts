@@ -40,7 +40,7 @@ export function getReadableFileSize(bytes: number): SizeWithUnit {
     const exponent = Math.min(Math.floor(Math.log10(bytes) / 3), UNITS.length - 1);
     const size = (bytes / Math.pow(KB, exponent)).toPrecision(3);
     const unit = UNITS[exponent];
-    return { size, unit, readable: `${size} ${unit}` };
+    return { size, unit, pretty: `${size} ${unit}` };
 }
 
 const oneHundredKb = 100 * KB;
