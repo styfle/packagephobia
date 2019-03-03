@@ -24,6 +24,8 @@ interface ApiResponseV1 {
 }
 
 interface ApiResponseV2 {
+    name: string;
+    version: string;
     publish: ApiResponseSize;
     install: ApiResponseSize;
 }
