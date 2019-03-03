@@ -7,7 +7,7 @@ import { renderPage } from './pages/_document';
 
 import { pages, versionUnknown } from './util/constants';
 import { getResultProps } from './page-props/results';
-import { getBadgeUrl } from './util/badge';
+import { getBadgeUrl, getApiResponseSize } from './util/badge';
 
 const { TMPDIR = '/tmp', GA_ID = '', PORT = 3107, NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
@@ -29,10 +29,17 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
             res.setHeader('Location', badgeUrl);
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end();
-        } else if (pathname === pages.api_json) {
+        } else if (pathname === pages.apiv1 || pathname === pages.apiv2) {
             const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
             const { publishSize, installSize, version } = pkgSize;
-            const result: ApiResponse = { publishSize, installSize };
+            let result: ApiResponseV1 | ApiResponseV2;
+            if (pathname === pages.apiv1) {
+                result = { publishSize, installSize };
+            } else {
+                const publish = getApiResponseSize(publishSize);
+                const install = getApiResponseSize(installSize);
+                result = { publish, install };
+            }
             res.statusCode = version === versionUnknown ? 404 : 200;
             res.setHeader('Content-Type', mimeType(pathname));
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
