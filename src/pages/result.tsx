@@ -8,8 +8,7 @@ import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import Image from '../components/Image';
 import LinkedLogos from '../components/LinkedLogos';
-import { getBadgeUrl } from '../util/badge';
-import { hostname } from '../util/constants';
+import { getBadgeUrl, getBadgeMarkdown } from '../util/badge';
 
 const error: React.CSSProperties = {
     fontSize: '2.3rem',
@@ -23,7 +22,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
         const install = getReadableFileSize(pkgSize.installSize);
         const publish = getReadableFileSize(pkgSize.publishSize);
         const pkgNameAndVersion = isLatest ? pkgSize.name : `${pkgSize.name}@${pkgSize.version}`;
-        const badgeUrl = getBadgeUrl(pkgSize);
+        const badgeUrl = getBadgeUrl(pkgSize, isLatest);
 
         return (
             <>
@@ -40,7 +39,7 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                                     <br />
                                     <input
                                         type="text"
-                                        defaultValue={getMarkdown(pkgNameAndVersion)}
+                                        defaultValue={getBadgeMarkdown(pkgNameAndVersion)}
                                         style={{ width: '100%', fontFamily: 'monospace' }}
                                     />
                                 </p>
@@ -66,9 +65,3 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
 }
 
 const getHref = (r: PkgSize) => `${pages.result}?p=${r.name}@${r.version}`;
-
-const getMarkdown = (pkgNameAndVersion: string) => {
-    const badgePage = `https://${hostname}${pages.badge}?p=${pkgNameAndVersion}`;
-    const resultPage = `https://${hostname}${pages.result}?p=${pkgNameAndVersion}`;
-    return `[![install size](${badgePage})](${resultPage})`;
-};

@@ -23,8 +23,8 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     }
     try {
         if (pathname === pages.badge) {
-            const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
-            const badgeUrl = getBadgeUrl(pkgSize);
+            const { pkgSize, isLatest, cacheResult } = await getResultProps(query, TMPDIR);
+            const badgeUrl = getBadgeUrl(pkgSize, isLatest);
             res.statusCode = 302;
             res.setHeader('Location', badgeUrl);
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
