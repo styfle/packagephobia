@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "node-fetch": "^2.3.0",
-    "npm": "^6.8.0",
+    "npm": "^6.9.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "redis": "^2.8.0",
