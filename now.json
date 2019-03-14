@@ -5,7 +5,7 @@
     "regions": ["all"],
     "builds": [
         { "src": "static/**", "use": "@now/static" },
-        { "src": "src/server.ts", "use": "@now/node@canary" }
+        { "src": "src/server.ts", "use": "@now/node" }
     ],
     "routes": [
         { "src": "/(.+svg|.+png|.+ico|robots.txt|browserconfig.xml)", "dest": "/static/$1" },
