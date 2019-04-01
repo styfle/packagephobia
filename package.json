@@ -4,16 +4,13 @@
   "description": "Find the cost of adding a new dev dependency to your project",
   "main": "dist/src/server.js",
   "scripts": {
+    "dev": "now dev",
     "build": "tsc",
     "start": "node dist/src/server.js",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
     "test": "tape dist/test/**/*.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/styfle/packagephobia.git"
-  },
-  "keywords": [],
+  "repository": "styfle/packagephobia",
   "author": "styfle",
   "license": "MIT",
   "dependencies": {
