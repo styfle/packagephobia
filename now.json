@@ -8,7 +8,7 @@
         { "src": "src/server.ts", "use": "@now/node" }
     ],
     "routes": [
-        { "src": "/(.+svg|.+png|.+ico|.+webmanifest|robots.txt|browserconfig.xml|)", "dest": "/static/$1" },
+        { "src": "/(.+svg|.+png|.+ico|.+webmanifest|robots.txt|browserconfig.xml)", "dest": "/static/$1" },
         { "src": "/(.*)", "dest": "/src/server.ts" }
     ],
     "env": {
