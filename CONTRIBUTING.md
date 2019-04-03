@@ -1,3 +1,5 @@
+# Contributing
+
 Thank you for considering contributing to Package Phobia!
 
 The goal of this project can be found in the README.md so this document will focus on building, running, and testing the code.
