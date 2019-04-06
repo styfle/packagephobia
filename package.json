@@ -27,7 +27,7 @@
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
     "@types/redis": "^2.8.12",
-    "@types/semver": "^5.5.0",
+    "@types/semver": "^6.0.0",
     "@types/tape": "^4.2.33",
     "prettier": "^1.16.4",
     "tape": "^4.10.1",
