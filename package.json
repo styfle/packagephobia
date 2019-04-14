@@ -29,7 +29,7 @@
     "@types/redis": "^2.8.12",
     "@types/semver": "^6.0.0",
     "@types/tape": "^4.2.33",
-    "prettier": "^1.16.4",
+    "prettier": "^1.17.0",
     "tape": "^4.10.1",
     "typescript": "^3.4.3"
   }
