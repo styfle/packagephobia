@@ -2,7 +2,7 @@
     "name": "packagephobia",
     "alias": "packagephobia.now.sh",
     "version": 2,
-    "regions": ["all"],
+    "regions": ["sfo1", "pdx1", "cle1", "oma1", "iad1"],
     "builds": [
         { "src": "static/**", "use": "@now/static" },
         { "src": "src/server.ts", "use": "@now/node" }
