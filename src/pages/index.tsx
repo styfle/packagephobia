@@ -18,7 +18,7 @@ export default () => (
 
             <h1 style={h1}>
                 <span style={{ color: '#202420' }}>Package</span>
-                <span style={{ color: '#90AA90' }}>Phobia</span>
+                <span style={{ color: '#16864d' }}>Phobia</span>
             </h1>
 
             <p>Find the cost of adding a new dev dependency to your project</p>
