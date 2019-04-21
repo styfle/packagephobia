@@ -28,5 +28,5 @@ export function cacheControl(isProd: boolean, days: number): string {
         return 'public, no-cache, no-store, must-revalidate';
     }
     const sec = days * 24 * 60 * 60;
-    return `public, max-age=${sec}`;
+    return `public, s-maxage=${sec}, max-age=${sec}`;
 }
