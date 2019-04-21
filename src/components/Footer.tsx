@@ -62,6 +62,7 @@ export default () => {
                         See the{' '}
                         <a
                             target="_blank"
+                            rel="noopener"
                             href="https://github.com/styfle/packagephobia/blob/master/README.md"
                             style={footerLink}
                         >
@@ -118,7 +119,7 @@ export default () => {
                             viewBox="100 120 300 300"
                             xmlns="http://www.w3.org/2000/svg"
                         >
-                            <title>Zeit Logo</title>
+                            <title>ZEIT Logo</title>
                             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                 <g fill="#FFFFFF">
                                     <polygon points="254 156.459299 367 356 141 356" />
