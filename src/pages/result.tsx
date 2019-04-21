@@ -32,13 +32,14 @@ export default class ResultPage extends React.Component<ResultProps, {}> {
                         <div style={{ display: 'flex', padding: '10px 0' }}>
                             <details style={{ cursor: 'pointer' }} title="Click to view markdown">
                                 <summary>
-                                    <img src={badgeUrl} />
+                                    <img alt="badge" src={badgeUrl} />
                                 </summary>
                                 <p>
                                     Copy and paste the following into your README.md:
                                     <br />
                                     <input
                                         type="text"
+                                        aria-label="Markdown for Badge"
                                         defaultValue={getBadgeMarkdown(pkgNameAndVersion)}
                                         style={{ width: '100%', fontFamily: 'monospace' }}
                                     />
