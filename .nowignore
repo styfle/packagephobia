@@ -1,6 +1,8 @@
 *
 !src
+!src/**
 !static
+!static/**
 !now.json
 !package-lock.json
 !package.json
