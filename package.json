@@ -14,7 +14,7 @@
   "author": "styfle",
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.4.0",
+    "node-fetch": "^2.5.0",
     "npm": "^6.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
