@@ -1,7 +1,7 @@
 {
   "name": "packagephobia",
   "version": "1.0.0",
-  "description": "Find the cost of adding a new dev dependency to your project",
+  "description": "Find the cost of adding a new dependency to your project",
   "main": "dist/src/server.js",
   "engines": {
     "node": "10.x"
