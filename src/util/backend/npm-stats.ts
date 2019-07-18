@@ -34,10 +34,16 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
     const nodeModules = join(pkgDir, 'node_modules');
     await mkdirAsync(pkgDir);
     await writeFileAsync(packageJson, packageString, 'utf8');
-    await npmInstall(pkgDir, cacheDir, name, version);
-    const installSize = getDirSize(nodeModules);
-    const publishSize = getDirSize(join(nodeModules, name));
-    await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
-    const output: PkgSize = { name, version, publishSize, installSize };
+    let output: PkgSize;
+    try {
+        await npmInstall(pkgDir, cacheDir, name, version);
+        const installSize = getDirSize(nodeModules);
+        const publishSize = getDirSize(join(nodeModules, name));
+        output = { name, version, publishSize, installSize };
+    } catch (error) {
+        throw error;
+    } finally {
+        await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
+    }
     return output;
 }
