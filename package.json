@@ -19,7 +19,7 @@
   "dependencies": {
     "node-fetch": "^2.6.0",
     "npm": "^6.10.2",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "redis": "^2.8.0",
     "semver": "^6.3.0"
