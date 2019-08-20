@@ -1,6 +1,5 @@
 {
     "name": "packagephobia",
-    "alias": "packagephobia.now.sh",
     "version": 2,
     "regions": ["sfo1", "cle1", "pdx1", "iad1"],
     "builds": [
