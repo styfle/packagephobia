@@ -35,11 +35,11 @@ const stylesheet = `
     background: #26A664;
 }
 .bar-graph__bar-group--disabled .bar-graph__bar{
-    background:#dfe1e4
+    background:#dfe1e4;
 }
 .bar-graph__bar2{
     z-index:1;
-    pointer-events:none
+    pointer-events:none;
 }
 .bar-graph__bar:hover, .bar-graph__bar2:hover{
     box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -99,14 +99,14 @@ const stylesheet = `
 .bar-graph__legend__colorbox{
     width:15px;
     height:15px;
-    margin-right:10px
+    margin-right:10px;
 }
 .bar-graph__legend__bar1,.bar-graph__legend__bar2{
     display:flex;
     align-items:center;
 }
 .bar-graph__legend__bar1{
-    margin-right:40px
+    margin-right:40px;
 }
 @keyframes grow{
     from{
