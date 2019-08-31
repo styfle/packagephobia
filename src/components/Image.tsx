@@ -12,6 +12,7 @@ export default (props: Props) => (
     <img
         width={props.width}
         height={props.height}
+        style={{ maxWidth: 'calc(100vw - 4rem)', objectFit: 'contain' }}
         src={`${prefix}/c_scale,w_${props.width},h_${props.height}/${props.file}`}
     />
 );

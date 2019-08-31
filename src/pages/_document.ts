@@ -29,6 +29,12 @@ body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;    
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 #spinner {
     background: url(${pages.logo_svg});
     box-sizing: border-box;

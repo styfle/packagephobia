@@ -65,3 +65,5 @@ src/*.js
 
 example.js
 dev.sh
+
+.DS_Store

@@ -13,6 +13,7 @@ import { getBadgeUrl, getBadgeMarkdown } from '../util/badge';
 const error: React.CSSProperties = {
     fontSize: '2.3rem',
     color: '#D33',
+    textAlign: 'center',
 };
 
 export default class ResultPage extends React.Component<ResultProps, {}> {

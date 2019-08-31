@@ -14,9 +14,9 @@ export default (props: Props) => (
         title={`View ${props.name} at ${props.title}`}
         style={{
             marginLeft: 8,
-            width: 15,
-            height: 15,
-            padding: 3,
+            width: 20,
+            height: 20,
+            padding: 2,
             display: 'inline-block',
             background: props.color,
             fill: 'white',
