@@ -21,7 +21,9 @@ export default () => (
                 <span style={{ color: '#16864d' }}>Phobia</span>
             </h1>
 
-            <p>Find the cost of adding a new dev dependency to your project</p>
+            <p style={{ textAlign: 'center' }}>
+                Find the cost of adding a new dev dependency to your project
+            </p>
 
             <SearchBar autoFocus={true} />
         </PageContainer>

@@ -4,6 +4,8 @@ import { pages } from '../util/constants';
 const form: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
+    maxWidth: 'calc(100vw - 2rem)',
 };
 
 const height = '4rem';
@@ -16,20 +18,22 @@ const input: React.CSSProperties = {
     fontFamily:
         '"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace',
     fontWeight: 300,
-    width: '100%',
+    maxWidth: `calc(100% - ${height})`,
     border: '1px solid #eee',
-    borderRadius: `${radius} 0px 0px ${radius}`,
+    borderRadius: `${radius} 0 0 ${radius}`,
     height: height,
 };
 
 const button: React.CSSProperties = {
+    minWidth: height,
     width: height,
     height: height,
-    padding: '0.5rem',
+    padding: '0.7rem',
     background: '#fcfcfc',
     border: '1px solid #eee',
     borderLeft: 'none',
-    borderRadius: `0px ${radius} ${radius} 0px`,
+    borderRadius: `0 ${radius} ${radius} 0`,
+    cursor: 'pointer',
 };
 
 export default (props: { autoFocus: boolean; defaultValue?: string }) => (

@@ -5,7 +5,7 @@ const style: React.CSSProperties = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: 'calc(100vh - 6px)',
+    minHeight: '100vh',
     padding: '1rem',
 };
 

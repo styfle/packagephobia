@@ -2,7 +2,7 @@ import React from 'react';
 import { getReadableFileSize } from '../util/npm-parser';
 const stylesheet = `
 .bar-graph{
-    height:45vh;
+    height:55vh;
     padding-bottom:10vh;
     display:flex;
     align-items:baseline;
@@ -16,7 +16,7 @@ const stylesheet = `
     position:relative;
     width:1.6vw;
     min-width:15px;
-    margin:0 5px
+    margin:0 5px;
 }
 .bar-graph__bar,.bar-graph__bar2{
     width:100%;
@@ -26,7 +26,7 @@ const stylesheet = `
     transition:background 0.2s;
     animation:grow 0.4s cubic-bezier(0.305,0.42,0.205,1.2);
     transform-origin:100% 100%;
-    cursor:pointer
+    cursor:pointer;
 }
 .color1 {
     background: #32DE85;
@@ -35,11 +35,11 @@ const stylesheet = `
     background: #26A664;
 }
 .bar-graph__bar-group--disabled .bar-graph__bar{
-    background:#dfe1e4
+    background:#dfe1e4;
 }
 .bar-graph__bar2{
     z-index:1;
-    pointer-events:none
+    pointer-events:none;
 }
 .bar-graph__bar:hover, .bar-graph__bar2:hover{
     box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -59,24 +59,24 @@ const stylesheet = `
     transition:opacity 0.2s,color 0.2s;
     animation:fade-in 0.5s 0.1s forwards cubic-bezier(0.305,0.42,0.205,1.2);
     font-family:"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
-    letter-spacing:-1px
+    letter-spacing:-1px;
 }
 @media screen and (max-width:48em){
     .bar-graph__bar-version{
-        font-size:0.75rem
+        font-size:0.75rem;
     }
 }
 @media screen and (max-width:40em){
     .bar-graph__bar-version{
-        font-size:0.7rem
+        font-size:0.7rem;
     }
 }
 .bar-graph-container:hover .bar-graph__bar-version{
     opacity:1;
-    color:black
+    color:black;
 }
 .bar-graph__bar-group:hover .bar-graph__bar-version{
-    color:black
+    color:black;
 }
 .bar-graph__legend{
     font-size:0.8rem;
@@ -84,44 +84,44 @@ const stylesheet = `
     display:flex;
     text-transform:uppercase;
     justify-content:center;
-    color:#9aa1aa
+    color:#9aa1aa;
 }
 @media screen and (max-width:48em){
     .bar-graph__legend{
-        font-size:0.75rem
+        font-size:0.75rem;
     }
 }
 @media screen and (max-width:40em){
     .bar-graph__legend{
-        font-size:0.7rem
+        font-size:0.7rem;
     }
 }
 .bar-graph__legend__colorbox{
     width:15px;
     height:15px;
-    margin-right:10px
+    margin-right:10px;
 }
 .bar-graph__legend__bar1,.bar-graph__legend__bar2{
     display:flex;
-    align-items:center
+    align-items:center;
 }
 .bar-graph__legend__bar1{
-    margin-right:40px
+    margin-right:40px;
 }
 @keyframes grow{
     from{
-        transform:scaleY(0)
+        transform:scaleY(0);
     }
     to{
-        transform:scaleY(1)
+        transform:scaleY(1);
     }
 }
 @keyframes fade-in{
     from{
-        opacity:0
+        opacity:0;
     }
     to{
-        opacity:0.7
+        opacity:0.7;
     }
 }`;
 
