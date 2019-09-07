@@ -30,7 +30,7 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/redis": "^2.8.13",
-    "@types/semver": "^6.0.1",
+    "@types/semver": "^6.0.2",
     "@types/tape": "^4.2.33",
     "prettier": "^1.18.2",
     "tape": "^4.11.0",
