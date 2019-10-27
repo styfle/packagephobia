@@ -14,7 +14,6 @@ console.log('isProduction: ', isProd);
 console.log('TMPDIR: ', TMPDIR);
 console.log('HOME: ', process.env.HOME);
 
-
 export async function handler(req: IncomingMessage, res: ServerResponse) {
     let { httpVersion, method, url } = req;
     console.log(`${httpVersion} ${method} ${url}`);
