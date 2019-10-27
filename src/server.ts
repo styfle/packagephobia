@@ -45,8 +45,10 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end(JSON.stringify(result));
         } else {
+            const hasQuery = Object.keys(query).length > 0;
+            const isIndex = pathname === pages.index;
             res.setHeader('Content-Type', mimeType('*.html'));
-            res.setHeader('Cache-Control', cacheControl(isProd, 0));
+            res.setHeader('Cache-Control', cacheControl(isProd, hasQuery || isIndex ? 7 : 0));
             renderPage(res, pathname, query, TMPDIR, GA_ID);
         }
     } catch (e) {
