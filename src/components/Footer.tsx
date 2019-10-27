@@ -127,7 +127,7 @@ export default () => {
                             </g>
                         </svg>
 
-                        <span>&nbsp;Hosted on Now</span>
+                        <span>&nbsp;Hosted on ZEIT Now</span>
                     </a>
                 </div>
             </section>
