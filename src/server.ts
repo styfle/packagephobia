@@ -2,10 +2,10 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { parse } from 'url';
 import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
-
 import { pages, versionUnknown } from './util/constants';
 import { getResultProps } from './page-props/results';
 import { getBadgeUrl, getApiResponseSize } from './util/badge';
+import { parsePackageString } from './util/npm-parser';
 
 const { TMPDIR = '/tmp', GA_ID = '', NODE_ENV } = process.env;
 process.env.HOME = TMPDIR;
@@ -45,8 +45,10 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end(JSON.stringify(result));
         } else {
+            const isIndex = pathname === pages.index;
+            const hasVersion = typeof query.p === 'string' && parsePackageString(query.p).version !== null;
             res.setHeader('Content-Type', mimeType('*.html'));
-            res.setHeader('Cache-Control', cacheControl(isProd, 0));
+            res.setHeader('Cache-Control', cacheControl(isProd, isIndex || hasVersion ? 7 : 0));
             renderPage(res, pathname, query, TMPDIR, GA_ID);
         }
     } catch (e) {
