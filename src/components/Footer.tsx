@@ -20,7 +20,7 @@ const social: React.CSSProperties = {
     fontWeight: 'bold',
     textDecoration: 'none',
     color: '#ccc',
-    width: '10rem',
+    width: '11rem',
     margin: '0 0 1rem 0.5rem',
 };
 
