@@ -19,7 +19,7 @@
     "semver": "^6.3.0"
   },
   "devDependencies": {
-    "@types/node": "^12.11.7",
+    "@types/node": "^12.12.5",
     "@types/node-fetch": "^2.5.2",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
