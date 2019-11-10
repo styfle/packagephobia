@@ -46,7 +46,8 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             res.end(JSON.stringify(result));
         } else {
             const isIndex = pathname === pages.index;
-            const hasVersion = typeof query.p === 'string' && parsePackageString(query.p).version !== null;
+            const hasVersion =
+                typeof query.p === 'string' && parsePackageString(query.p).version !== null;
             res.setHeader('Content-Type', mimeType('*.html'));
             res.setHeader('Cache-Control', cacheControl(isProd, isIndex || hasVersion ? 7 : 0));
             renderPage(res, pathname, query, TMPDIR, GA_ID);
