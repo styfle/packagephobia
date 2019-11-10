@@ -87,7 +87,7 @@ export async function renderPage(
     gaId: string,
 ) {
     res.statusCode = getStatusCode(pathname);
-    res.write(`<!doctype html>
+    res.write(`<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="utf-8">
