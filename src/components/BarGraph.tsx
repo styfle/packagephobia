@@ -84,7 +84,7 @@ const stylesheet = `
     display:flex;
     text-transform:uppercase;
     justify-content:center;
-    color:#9aa1aa;
+    color:#6d747d;
 }
 @media screen and (max-width:48em){
     .bar-graph__legend{
