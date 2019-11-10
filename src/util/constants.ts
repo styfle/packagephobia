@@ -2,6 +2,7 @@ export const pages = {
     index: '/index',
     result: '/result',
     compare: '/compare',
+    parseFailure: '/parse-failure',
     badge: '/badge',
     apiv1: '/api.json',
     apiv2: '/v2/api.json',

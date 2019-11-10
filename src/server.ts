@@ -6,6 +6,7 @@ import { pages, versionUnknown } from './util/constants';
 import { getResultProps } from './page-props/results';
 import { getBadgeUrl, getApiResponseSize } from './util/badge';
 import { parsePackageString } from './util/npm-parser';
+import semver from 'semver';
 
 const { TMPDIR = '/tmp', GA_ID = '', NODE_ENV } = process.env;
 process.env.HOME = TMPDIR;
@@ -44,6 +45,33 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             res.setHeader('Content-Type', mimeType(pathname));
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end(JSON.stringify(result));
+        } else if (pathname === pages.compare) {
+            let data: any[] = [];
+            req.on('data', chunk => data.push(chunk));
+            req.on('end', () => {
+                const [packageString] = data.toString().match(/{[\s\S]+}/) || [];
+                if (!packageString) {
+                    return renderPage(res, '/parse-failure', query, TMPDIR, GA_ID);
+                }
+                let packageData;
+                try {
+                    packageData = JSON.parse(packageString);
+                } catch (e) {
+                    return renderPage(res, '/parse-failure', query, TMPDIR, GA_ID);
+                }
+                if (!packageData.dependencies) {
+                    return renderPage(res, '/parse-failure', query, TMPDIR, GA_ID);
+                }
+                const queryString = Object.entries(packageData.dependencies).map(([pkg, version]) => {
+                    let queryPart = pkg;
+                    if (version !== '*') {
+                        queryPart += `@${semver.coerce(String(version))}`;
+                    }
+                    return queryPart;
+                });
+                res.writeHead(302, { Location: `/result?p=${queryString}` });
+                return res.end();
+            });
         } else {
             const isIndex = pathname === pages.index;
             const hasVersion = typeof query.p === 'string' && parsePackageString(query.p).version !== null;

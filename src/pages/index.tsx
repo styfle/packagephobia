@@ -26,6 +26,13 @@ export default () => (
             </p>
 
             <SearchBar autoFocus={true} />
+
+            <form style={{ marginTop: '60px' }} method="post" action="/compare" encType="multipart/form-data">
+                <label><span style={{ marginRight: '20px' }}>Or upload a package.json</span>
+                    <input name="package.json" type="file" />
+                </label>
+                <button type="submit" value="submit">Submit</button>
+            </form>
         </PageContainer>
 
         <Footer />

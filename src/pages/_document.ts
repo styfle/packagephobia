@@ -7,12 +7,14 @@ import ResultPage from '../pages/result';
 import ComparePage from '../pages/compare';
 import NotFoundPage from '../pages/404';
 import ServerErrorPage from '../pages/500';
+import ParseFailurePage from '../pages/parse-failure';
 
 const IndexFactory = createFactory(IndexPage);
 const ResultFactory = createFactory(ResultPage);
 const CompareFactory = createFactory(ComparePage);
 const NotFoundFactory = createFactory(NotFoundPage);
 const ServerErrorFactory = createFactory(ServerErrorPage);
+const ParseFailureFactory = createFactory(ParseFailurePage);
 
 import { getResultProps } from '../page-props/results';
 import { getCompareProps } from '../page-props/compare';
@@ -142,10 +144,13 @@ export async function renderPage(
 }
 
 async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string) {
+    console.log(pathname);
     try {
         switch (pathname) {
             case pages.index:
                 return IndexFactory();
+            case pages.parseFailure:
+                return ParseFailureFactory();
             case pages.result:
                 return (query.p || '').includes(',')
                     ? CompareFactory(await getCompareProps(query, tmpDir))
