@@ -144,7 +144,6 @@ export async function renderPage(
 }
 
 async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string) {
-    console.log(pathname);
     try {
         switch (pathname) {
             case pages.index:

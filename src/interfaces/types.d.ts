@@ -62,3 +62,9 @@ interface NpmManifest {
     time: { [version: string]: string };
     'dist-tags': { [tag: string]: string };
 }
+
+interface PackageJson {
+    dependencies: {
+        [key: string]: string;
+    }
+}

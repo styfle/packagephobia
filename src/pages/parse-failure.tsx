@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from '../components/Image';
 import Footer from '../components/Footer';
 import { pages } from '../util/constants';
 
@@ -19,6 +20,7 @@ export default () => (
                 <a href={pages.index}>Go Home</a>
             </p>
         </div>
+        <Image width={300} height={380} file="/tumblebeasts/tbstand1.png" />
         <Footer />
     </>
 );

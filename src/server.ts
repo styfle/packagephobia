@@ -51,16 +51,16 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             req.on('end', () => {
                 const [packageString] = data.toString().match(/{[\s\S]+}/) || [];
                 if (!packageString) {
-                    return renderPage(res, '/parse-failure', query, TMPDIR, GA_ID);
+                    return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
-                let packageData;
+                let packageData: PackageJson;
                 try {
                     packageData = JSON.parse(packageString);
                 } catch (e) {
-                    return renderPage(res, '/parse-failure', query, TMPDIR, GA_ID);
+                    return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
                 if (!packageData.dependencies) {
-                    return renderPage(res, '/parse-failure', query, TMPDIR, GA_ID);
+                    return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
                 const queryString = Object.entries(packageData.dependencies).map(([pkg, version]) => {
                     let queryPart = pkg;
