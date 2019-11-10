@@ -19,7 +19,7 @@ export default (props: Props) => (
             padding: 2,
             display: 'inline-block',
             background: props.color,
-            fill: 'white',
+            fill: '#fff',
         }}
     >
         {icons[props.icon]}

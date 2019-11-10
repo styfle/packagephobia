@@ -1,7 +1,7 @@
 import React from 'react';
 
 const footer: React.CSSProperties = {
-    color: '#90AA90',
+    color: '#90aa90',
     background: '#202420',
     width: '100%',
     fontSize: '0.9rem',
@@ -17,7 +17,7 @@ const footerSection: React.CSSProperties = {
 const social: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    fontWeight: 'bold',
+    fontWeight: 700,
     textDecoration: 'none',
     color: '#ccc',
     width: '11rem',

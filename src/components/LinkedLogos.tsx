@@ -16,7 +16,7 @@ export default (props: Props) => {
             <LinkedLogo
                 name={name}
                 icon="npm"
-                color="#CB3837"
+                color="#cb3837"
                 title="npm"
                 href={
                     isLatest
@@ -38,7 +38,7 @@ export default (props: Props) => {
             <LinkedLogo
                 name={name}
                 icon="jsdelivr"
-                color="#F38020"
+                color="#f38020"
                 title="jsdelivr"
                 href={
                     isLatest
@@ -49,7 +49,7 @@ export default (props: Props) => {
             <LinkedLogo
                 name={name}
                 icon="libraries"
-                color="#9B59B6"
+                color="#9b59b6"
                 title="libraries"
                 href={
                     isLatest
@@ -60,7 +60,7 @@ export default (props: Props) => {
             <LinkedLogo
                 name={name}
                 icon="graphql"
-                color="#36394A"
+                color="#36394a"
                 title="graph"
                 href={`https://npm.anvaka.com/#/view/2d/${escape(escape(name))}`}
             />

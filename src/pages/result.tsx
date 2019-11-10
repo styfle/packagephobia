@@ -12,7 +12,7 @@ import { getBadgeUrl, getBadgeMarkdown } from '../util/badge';
 
 const error: React.CSSProperties = {
     fontSize: '2.3rem',
-    color: '#D33',
+    color: '#d33',
     textAlign: 'center',
 };
 

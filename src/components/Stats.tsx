@@ -19,20 +19,20 @@ type StatProp = SizeWithUnit & { label: string };
 function Stat(props: StatProp) {
     const styleValue: React.CSSProperties = {
         fontSize: '3rem',
-        fontWeight: 'bold',
+        fontWeight: 700,
         color: '#212121',
     };
 
     const styleUnit: React.CSSProperties = {
         fontSize: '2.4rem',
-        color: '#666E78',
-        fontWeight: 'bold',
+        color: '#666e78',
+        fontWeight: 700,
         marginLeft: '4px',
     };
 
     const styleLabel: React.CSSProperties = {
         fontSize: '1rem',
-        color: '#666E78',
+        color: '#666e78',
         textTransform: 'uppercase',
         letterSpacing: '2px',
         textAlign: 'center',

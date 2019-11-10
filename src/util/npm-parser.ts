@@ -56,16 +56,16 @@ const fiveHundredMb = 500 * megabyte;
  * https://github.com/amio/badgen/blob/master/lib/color-presets.js
  */
 export const color = {
-    brightgreen: '44CC11',
-    limegreen: '97CA00',
-    yellow: 'DFB317',
-    //yellowgreen: 'A4A61D',
-    orange: 'FE7D37',
-    red: 'E05D44',
-    blue: '007EC6',
+    brightgreen: '44cc11',
+    limegreen: '97ca00',
+    yellow: 'dfb317',
+    //yellowgreen: 'a4a61d',
+    orange: 'fe7d37',
+    red: 'e05d44',
+    blue: '007ec6',
     //gray: '555555',
-    //lightgray: '9F9F9F',
-    pink: 'FF69B4',
+    //lightgray: '9f9f9f',
+    pink: 'ff69b4',
 };
 
 export function getHexColor(bytes: number) {
