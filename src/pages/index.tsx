@@ -1,7 +1,9 @@
 import React from 'react';
+
 import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
+
 import { pages } from '../util/constants';
 
 const h1: React.CSSProperties = {

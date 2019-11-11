@@ -2,38 +2,32 @@
   "name": "packagephobia",
   "version": "1.0.0",
   "description": "Find the cost of adding a new dependency to your project",
-  "main": "dist/src/server.js",
-  "engines": {
-    "node": "10.x"
-  },
   "scripts": {
-    "dev": "now dev",
-    "build": "tsc",
-    "start": "node dist/src/server.js",
+    "build": "cp -r static public",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
-    "test": "tape dist/test/**/*.js"
+    "test": "tsc && tape dist/test/**/*.js"
   },
   "repository": "styfle/packagephobia",
   "author": "styfle",
   "license": "MIT",
   "dependencies": {
     "node-fetch": "^2.6.0",
-    "npm": "^6.11.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "npm": "^6.12.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "redis": "^2.8.0",
     "semver": "^6.3.0"
   },
   "devDependencies": {
-    "@types/node": "^12.6.9",
-    "@types/node-fetch": "^2.5.0",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "@types/redis": "^2.8.13",
-    "@types/semver": "^6.0.1",
+    "@types/node": "^12.11.7",
+    "@types/node-fetch": "^2.5.2",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "@types/redis": "^2.8.14",
+    "@types/semver": "^6.2.0",
     "@types/tape": "^4.2.33",
     "prettier": "^1.18.2",
     "tape": "^4.11.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.7.1-rc"
   }
 }
