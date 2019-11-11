@@ -2,6 +2,7 @@
 
 # Package Phobia
 
+[![tests](https://badgen.net/github/checks/styfle/packagephobia?label=tests&icon=github)](https://github.com/styfle/packagephobia/actions?workflow=Tests)
 [![dependency](https://badgen.net/david/dep/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia)
 [![devDependency](https://badgen.net/david/dev/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia?type=dev)
 [![lgtm](https://badgen.net/lgtm/grade/javascript/g/styfle/packagephobia)](https://lgtm.com/projects/g/styfle/packagephobia/)
