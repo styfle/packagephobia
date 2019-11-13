@@ -31,7 +31,7 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
 
     let t = setTimeout(async () => {
         await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
-    }, 2 * 60 * 1000);
+    }, 3 * 60 * 1000);
 
     const pkgDir = join(tmpDir, tmpPackage);
     const cacheDir = join(tmpDir, 'npm-cache');
