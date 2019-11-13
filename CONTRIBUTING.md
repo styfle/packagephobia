@@ -41,7 +41,7 @@ export NPM_REGISTRY_URL="https://registry.npmjs.com"
 
 ## Running the code
 
-Make sure you have the [ZEIT Now](http://zeit.co/now) cli installed with `npm install -g now`.
+Make sure you have the [ZEIT Now](https://zeit.co/now) cli installed with `npm i -g now`.
 
 ```sh
 now dev
@@ -60,9 +60,9 @@ npm test
 
 ## Deploying the code
 
-The code is deployed to [ZEIT Now](http://zeit.co/now) via [GitHub Integration](http://zeit.co/github).
+The code is deployed to [ZEIT Now](https://zeit.co/now) via [GitHub Integration](https://zeit.co/github).
 
-If you want to deploy from the command line, you'll need the `now` cli. Run `npm install -g now` to get it.
+If you want to deploy from the command line, you'll need the `now` cli. Run `npm i -g now` to get it.
 
 Then you can simply run `now` and the code will deploy.
 

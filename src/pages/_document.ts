@@ -90,23 +90,22 @@ export async function renderPage(
     res.write(`<!DOCTYPE html>
             <html lang="en">
             <head>
-                <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-                <link rel="manifest" href="/site.webmanifest" />
-                <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33" />
-                <meta name="msapplication-TileColor" content="#333333" />
-                <meta name="theme-color" content="#333333" />
-
-                <meta property="og:title" content="${title}" />
-                <meta property="og:image" content="https://${hostname}${pages.logo_png}" />
-                <meta property="og:description" content="${description}" />
-
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
                 <title>${title}</title>
-                <meta name="description" content="${description}" />
+                <meta name="description" content="${description}">
                 <style>${css}</style>
+                <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+                <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+                <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
+                <link rel="manifest" href="/site.webmanifest">
+                <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33">
+                <meta name="msapplication-TileColor" content="#333333">
+                <meta name="theme-color" content="#333333">
+
+                <meta property="og:title" content="${title}">
+                <meta property="og:image" content="https://${hostname}${pages.logo_png}">
+                <meta property="og:description" content="${description}">
             </head>
             <body>
             <div id="spinner"></div>
@@ -115,14 +114,11 @@ export async function renderPage(
             <div id="${containerId}">`);
     const factory = await routePage(pathname, query, tmpDir);
     const stream = renderToNodeStream(factory);
-    stream.pipe(
-        res,
-        { end: false },
-    );
+    stream.pipe(res, { end: false });
     stream.on('end', () => {
         res.end(`</div>
                 <script>document.getElementById('spinner').style.display='none'</script>
-                <script type="text/javascript">
+                <script>
                     if (window.location.hostname === '${hostname}') {
                         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
