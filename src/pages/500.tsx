@@ -1,26 +1,26 @@
 import React from 'react';
+
 import Image from '../components/Image';
 import Footer from '../components/Footer';
-import { pages } from '../util/constants';
+import PageContainer from '../components/PageContainer';
 
-const style: React.CSSProperties = {
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-};
+import { pages } from '../util/constants';
 
 export default () => (
     <>
-        <div style={style}>
-            <h1>500 Internal Server Error</h1>
-            <p>Oops, something went terribly wrong.</p>
-            <p>
-                <a href={pages.index}>Go Home You</a>
-            </p>
+        <PageContainer>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                <h1>500 Internal Server Error</h1>
+
+                <p>Oops, something went terribly wrong.</p>
+                <p>
+                    <a href={pages.index}>Go Home You</a>
+                </p>
+            </div>
+
             <Image width={500} height={320} file="tumblebeasts/tbservers.png" />
-        </div>
+        </PageContainer>
+
         <Footer />
     </>
 );
