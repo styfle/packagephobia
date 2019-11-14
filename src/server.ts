@@ -64,10 +64,8 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                 }
                 const queryString = Object.entries(packageData.dependencies).map(([pkg, version]) => {
                     let queryPart = pkg;
-                    if (version !== '*') {
-                        queryPart += `@${semver.coerce(String(version))}`;
-                    }
-                    return queryPart;
+                    const versionPart = version === '*' ? 'latest' : semver.coerce(String(version));
+                    return `${queryPart}@${versionPart}`;
                 });
                 res.writeHead(302, { Location: `/result?p=${queryString}` });
                 return res.end();

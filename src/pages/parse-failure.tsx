@@ -19,8 +19,8 @@ export default () => (
             <p>
                 <a href={pages.index}>Go Home</a>
             </p>
+            <Image width={370} height={299} file="tumblebeasts/tbstand1.png" />
         </div>
-        <Image width={300} height={380} file="/tumblebeasts/tbstand1.png" />
         <Footer />
     </>
 );
