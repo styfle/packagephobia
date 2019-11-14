@@ -1,11 +1,12 @@
 {
   "name": "packagephobia",
   "version": "1.0.0",
+  "private": true,
   "description": "Find the cost of adding a new dependency to your project",
   "scripts": {
     "build": "cp -r static public",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
-    "test": "tsc && tape dist/test/**/*.js"
+    "test": "tsc && tape \"dist/test/**/*.js\""
   },
   "repository": "styfle/packagephobia",
   "author": "styfle",
