@@ -63,9 +63,8 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                     return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
                 const queryString = Object.entries(packageData.dependencies).map(([pkg, version]) => {
-                    let queryPart = pkg;
                     const versionPart = version === '*' ? 'latest' : semver.coerce(String(version));
-                    return `${queryPart}@${versionPart}`;
+                    return `${pkg}@${versionPart}`;
                 });
                 res.writeHead(302, { Location: `/result?p=${queryString}` });
                 return res.end();
