@@ -126,6 +126,10 @@ export async function renderPage(
     );
     stream.on('end', () => {
         res.end(`</div>
+                <script>
+                    const input = document.querySelector('input[type=file]');
+                    input.onchange = () => input.form.submit();
+                </script>
                 <script>document.getElementById('spinner').style.display='none'</script>
                 <script type="text/javascript">
                     if (window.location.hostname === '${hostname}') {

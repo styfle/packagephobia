@@ -31,10 +31,9 @@ export default () => (
                 <label><span style={{ marginRight: '20px' }}>Or upload a package.json</span>
                     <input name="package.json" type="file" />
                 </label>
-                <button type="submit" value="submit">Submit</button>
+                <noscript><button type="submit" value="submit">Submit</button></noscript>
             </form>
         </PageContainer>
-
         <Footer />
     </>
 );
