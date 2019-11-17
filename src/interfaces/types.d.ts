@@ -13,6 +13,7 @@ interface SizeWithUnit {
 interface PkgSize {
     name: string;
     version: string;
+    publishDate: string;
     publishSize: number;
     installSize: number;
     disabled?: boolean;

@@ -1,6 +1,6 @@
 import { parsePackageString, isFullRelease } from '../util/npm-parser';
 import { findAll } from '../util/backend/db';
-import { getVersionsForChart } from '../util/npm-api';
+import { getVersionsForChart, getPublishDate } from '../util/npm-api';
 import { getPkgDetails } from './common';
 
 export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Promise<ResultProps> {
@@ -9,7 +9,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Pro
     }
     const parsed = parsePackageString(query.p);
     const force = query.force === '1';
-    const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(
+    const { pkgSize, allVersions, cacheResult, isLatest, manifest } = await getPkgDetails(
         parsed.name,
         parsed.version,
         force,
@@ -32,6 +32,7 @@ export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Pro
             return {
                 name: name,
                 version: v,
+                publishDate: getPublishDate(manifest, v),
                 publishSize: 0,
                 installSize: 0,
                 disabled: true,

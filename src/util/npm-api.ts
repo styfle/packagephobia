@@ -60,6 +60,13 @@ export function getVersionsForChart(allVersions: string[], version: string, coun
 }
 
 /**
+ * Get the npm publish date of a specific version
+ */
+export function getPublishDate(manifest: NpmManifest | null, version: string) {
+    return manifest ? manifest.time[version] : '';
+}
+
+/**
  * Escape an npm package name.
  * The registry expects the slashes in the (scoped) package names
  * to be sent escaped.
