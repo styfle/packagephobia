@@ -46,28 +46,23 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end(JSON.stringify(result));
         } else if (pathname === pages.compare) {
-            let data: any[] = [];
+            let data: Buffer[] = [];
             req.on('data', chunk => data.push(chunk));
             req.on('end', () => {
-                const [packageString] = data.toString().match(/{[\s\S]+}/) || [];
-                if (!packageString) {
-                    return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
-                }
-                let packageData: PackageJson;
                 try {
-                    packageData = JSON.parse(packageString);
+                    const [packageString] = data.toString().match(/{[\s\S]+}/) || [];
+                    const packageData: PackageJson = JSON.parse(packageString);
+                    const queryString = Object.entries(packageData.dependencies)
+                        .map(
+                            ([pkg, version]) =>
+                                `${pkg}@${version === '*' ? 'latest' : semver.coerce(version)}`,
+                        )
+                        .join(',');
+                    res.writeHead(302, { Location: `/result?p=${queryString}` });
+                    return res.end();
                 } catch (e) {
                     return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
-                if (!packageData.dependencies) {
-                    return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
-                }
-                const queryString = Object.entries(packageData.dependencies).map(([pkg, version]) => {
-                    const versionPart = version === '*' ? 'latest' : semver.coerce(String(version));
-                    return `${pkg}@${versionPart}`;
-                });
-                res.writeHead(302, { Location: `/result?p=${queryString}` });
-                return res.end();
             });
         } else {
             const isIndex = pathname === pages.index;

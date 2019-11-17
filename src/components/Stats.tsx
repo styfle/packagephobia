@@ -14,7 +14,7 @@ export default function Stats(props: Props) {
     );
 }
 
-type StatProp = SizeWithUnit & { label: string, scale?: number };
+type StatProp = SizeWithUnit & { label: string; scale?: number };
 
 export function Stat(props: StatProp) {
     const scale = props.scale || 1;
