@@ -28,8 +28,14 @@ export default () => (
             </p>
 
             <SearchBar autoFocus={true} />
-        </PageContainer>
 
+            <form style={{ marginTop: '60px' }} method="post" action={pages.compare} encType="multipart/form-data">
+                <label><span style={{ marginRight: '20px' }}>Or upload a package.json</span>
+                    <input name="package.json" type="file" />
+                </label>
+                <noscript><button type="submit" value="submit">Submit</button></noscript>
+            </form>
+        </PageContainer>
         <Footer />
     </>
 );

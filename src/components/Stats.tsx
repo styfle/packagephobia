@@ -14,24 +14,26 @@ export default function Stats(props: Props) {
     );
 }
 
-type StatProp = SizeWithUnit & { label: string };
+type StatProp = SizeWithUnit & { label: string, scale?: number };
 
-function Stat(props: StatProp) {
+export function Stat(props: StatProp) {
+    const scale = props.scale || 1;
+
     const styleValue: React.CSSProperties = {
-        fontSize: '3rem',
+        fontSize: `${3 * scale}rem`,
         fontWeight: 'bold',
         color: '#212121',
     };
 
     const styleUnit: React.CSSProperties = {
-        fontSize: '2.4rem',
+        fontSize: `${2.4 * scale}rem`,
         color: '#666E78',
         fontWeight: 'bold',
         marginLeft: '4px',
     };
 
     const styleLabel: React.CSSProperties = {
-        fontSize: '1rem',
+        fontSize: `${1 * scale}rem`,
         color: '#666E78',
         textTransform: 'uppercase',
         letterSpacing: '2px',

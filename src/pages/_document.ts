@@ -4,15 +4,20 @@ import { renderToNodeStream } from 'react-dom/server';
 
 import IndexPage from '../pages/index';
 import ResultPage from '../pages/result';
+import ComparePage from '../pages/compare';
 import NotFoundPage from '../pages/404';
 import ServerErrorPage from '../pages/500';
+import ParseFailurePage from '../pages/parse-failure';
 
 const IndexFactory = createFactory(IndexPage);
 const ResultFactory = createFactory(ResultPage);
+const CompareFactory = createFactory(ComparePage);
 const NotFoundFactory = createFactory(NotFoundPage);
 const ServerErrorFactory = createFactory(ServerErrorPage);
+const ParseFailureFactory = createFactory(ParseFailurePage);
 
 import { getResultProps } from '../page-props/results';
+import { getCompareProps } from '../page-props/compare';
 
 import { containerId, pages, hostname } from '../util/constants';
 import OctocatCorner from '../components/OctocatCorner';
@@ -117,6 +122,10 @@ export async function renderPage(
     stream.pipe(res, { end: false });
     stream.on('end', () => {
         res.end(`</div>
+                <script>
+                    const input = document.querySelector('input[type=file]');
+                    input.onchange = () => input.form.submit();
+                </script>
                 <script>document.getElementById('spinner').style.display='none'</script>
                 <script>
                     if (window.location.hostname === '${hostname}') {
@@ -139,8 +148,12 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
         switch (pathname) {
             case pages.index:
                 return IndexFactory();
+            case pages.parseFailure:
+                return ParseFailureFactory();
             case pages.result:
-                return ResultFactory(await getResultProps(query, tmpDir));
+                return (query.p || '').includes(',')
+                    ? CompareFactory(await getCompareProps(query, tmpDir))
+                    : ResultFactory(await getResultProps(query, tmpDir));
             default:
                 return NotFoundFactory();
         }

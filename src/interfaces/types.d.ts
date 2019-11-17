@@ -43,6 +43,16 @@ interface ResultProps {
     isLatest: boolean;
 }
 
+interface ComparePackage {
+    pkgSize: PkgSize;
+    cacheResult: boolean;
+    isLatest: boolean;
+}
+
+interface CompareProps {
+    results: ComparePackage[];
+}
+
 interface ParsedUrlQuery {
     [key: string]: string | string[] | undefined;
 }
@@ -51,4 +61,10 @@ interface NpmManifest {
     versions: { [version: string]: any };
     time: { [version: string]: string };
     'dist-tags': { [tag: string]: string };
+}
+
+interface PackageJson {
+    dependencies: {
+        [key: string]: string;
+    }
 }
