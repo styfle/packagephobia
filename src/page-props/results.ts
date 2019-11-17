@@ -1,61 +1,22 @@
 import { parsePackageString, isFullRelease } from '../util/npm-parser';
-import { findAll, findOne, insert } from '../util/backend/db';
-import {
-    fetchManifest,
-    getAllDistTags,
-    getVersionsForChart,
-    getAllVersions,
-} from '../util/npm-api';
-import { calculatePackageSize } from '../util/backend/npm-stats';
-import { versionUnknown } from '../util/constants';
+import { findAll } from '../util/backend/db';
+import { getVersionsForChart } from '../util/npm-api';
+import { getPkgDetails } from './common';
 
-export async function getResultProps(query: ParsedUrlQuery, tmpDir: string) {
+export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Promise<ResultProps> {
     if (!query || typeof query.p !== 'string') {
         throw new Error(`Unknown query string ${query}`);
     }
-    let { name, version } = parsePackageString(query.p);
-    let manifest: NpmManifest;
-    let cacheResult = true;
-    let isLatest = false;
-
-    try {
-        manifest = await fetchManifest(name);
-    } catch (e) {
-        console.error(`Package ${name} does not exist in npm`);
-        return packageNotFound(name);
-    }
-
-    const tagToVersion = getAllDistTags(manifest);
-    if (!version) {
-        version = tagToVersion['latest'];
-        isLatest = true;
-        cacheResult = false;
-    } else if (typeof tagToVersion[version] !== 'undefined') {
-        version = tagToVersion[version];
-        cacheResult = false;
-    }
-
-    const allVersions = getAllVersions(manifest);
-    if (!allVersions.includes(version)) {
-        console.error(`Version ${name}@${version} does not exist in npm`);
-        return packageNotFound(name);
-    }
+    const parsed = parsePackageString(query.p);
+    const force = query.force === '1';
+    const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(parsed.name, parsed.version, force, tmpDir);
+    const { name, version } = pkgSize;
 
     const filteredVersions = isFullRelease(version)
         ? allVersions.filter(isFullRelease)
         : allVersions;
-    const chartVersions = getVersionsForChart(filteredVersions, version, 7);
 
-    let pkgSize = await findOne(name, version);
-    if (!pkgSize || query.force === '1') {
-        console.log(`Cache miss for ${name}@${version} - running npm install in ${tmpDir}...`);
-        const start = new Date();
-        pkgSize = await calculatePackageSize(name, version, tmpDir);
-        const end = new Date();
-        const sec = (end.getTime() - start.getTime()) / 1000;
-        console.log(`Calculated size of ${name}@${version} in ${sec}s`);
-        insert(pkgSize);
-    }
+    const chartVersions = getVersionsForChart(filteredVersions, version, 7);
 
     const cachedVersions = await findAll(name);
 
@@ -73,28 +34,10 @@ export async function getResultProps(query: ParsedUrlQuery, tmpDir: string) {
         }
     });
 
-    const result: ResultProps = {
+    return {
         pkgSize,
         readings,
         cacheResult,
         isLatest,
     };
-    return result;
-}
-
-function packageNotFound(name: string) {
-    const pkgSize: PkgSize = {
-        name,
-        version: versionUnknown,
-        publishSize: 0,
-        installSize: 0,
-        disabled: true,
-    };
-    const result: ResultProps = {
-        pkgSize,
-        readings: [],
-        cacheResult: false,
-        isLatest: false,
-    };
-    return result;
 }
