@@ -62,7 +62,7 @@ function packageNotFound(name: string) {
     const pkgSize: PkgSize = {
         name,
         version: versionUnknown,
-        publishDate: new Date().toUTCString(),
+        publishDate: '',
         publishSize: 0,
         installSize: 0,
         disabled: true,
