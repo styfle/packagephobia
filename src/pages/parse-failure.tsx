@@ -1,26 +1,24 @@
 import React from 'react';
 import Image from '../components/Image';
 import Footer from '../components/Footer';
+import PageContainer from '../components/PageContainer';
 import { pages } from '../util/constants';
-
-const style: React.CSSProperties = {
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-};
 
 export default () => (
     <>
-        <div style={style}>
-            <h1>Failed to parse package.json</h1>
-            <p>Oops, the package.json you uploaded could not be parsed. Be sure you uploaded the right file.</p>
-            <p>
-                <a href={pages.index}>Go Home</a>
-            </p>
+        <PageContainer>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                <h1>400 Bad Request</h1>
+
+                <p>Oops, your package.json file could not be parsed.</p>
+                <p>
+                    <a href={pages.index}>Go Home You</a>
+                </p>
+            </div>
+
             <Image width={370} height={299} file="tumblebeasts/tbstand1.png" />
-        </div>
+        </PageContainer>
+
         <Footer />
     </>
 );

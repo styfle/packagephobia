@@ -9,7 +9,12 @@ export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Pro
     }
     const parsed = parsePackageString(query.p);
     const force = query.force === '1';
-    const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(parsed.name, parsed.version, force, tmpDir);
+    const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(
+        parsed.name,
+        parsed.version,
+        force,
+        tmpDir,
+    );
     const { name, version } = pkgSize;
 
     const filteredVersions = isFullRelease(version)

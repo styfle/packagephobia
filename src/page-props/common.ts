@@ -1,13 +1,14 @@
 import { findOne, insert } from '../util/backend/db';
-import {
-    fetchManifest,
-    getAllDistTags,
-    getAllVersions,
-} from '../util/npm-api';
+import { fetchManifest, getAllDistTags, getAllVersions } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
 
-export async function getPkgDetails(name: string, version: string | null, force: boolean, tmpDir: string) {
+export async function getPkgDetails(
+    name: string,
+    version: string | null,
+    force: boolean,
+    tmpDir: string,
+) {
     let manifest: NpmManifest;
     let cacheResult = true;
     let isLatest = false;
@@ -45,7 +46,6 @@ export async function getPkgDetails(name: string, version: string | null, force:
         console.log(`Calculated size of ${name}@${version} in ${sec}s`);
         insert(pkgSize);
     }
-
 
     const result = {
         pkgSize,

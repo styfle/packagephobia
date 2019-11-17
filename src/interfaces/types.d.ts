@@ -66,5 +66,5 @@ interface NpmManifest {
 interface PackageJson {
     dependencies: {
         [key: string]: string;
-    }
+    };
 }
