@@ -124,6 +124,18 @@ test('parsePackageString with scope and without version', t => {
     t.deepEqual(actual, { scoped: true, name: '@types/foo', version: null });
 });
 
+test('parsePackageString with leading space', t => {
+    t.plan(1);
+    const actual = npmparser.parsePackageString(' @types/foo');
+    t.deepEqual(actual, { scoped: true, name: '@types/foo', version: null });
+});
+
+test('parsePackageString with trailing space', t => {
+    t.plan(1);
+    const actual = npmparser.parsePackageString(' @types/foo ');
+    t.deepEqual(actual, { scoped: true, name: '@types/foo', version: null });
+});
+
 test('isFullRelease 1.2.3', t => {
     t.plan(1);
     const actual = npmparser.isFullRelease('1.2.3');

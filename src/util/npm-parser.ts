@@ -2,6 +2,7 @@ export function parsePackageString(packageString: string): PackageVersion {
     let name: string;
     let version: string | null;
     let scoped = false;
+    packageString = packageString.trim();
     const lastAtIndex = packageString.lastIndexOf('@');
 
     if (packageString.startsWith('@')) {
