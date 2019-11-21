@@ -203,6 +203,6 @@ const getTooltipMessage = (r: PkgSize) => {
     }
     const install = getReadableFileSize(r.installSize).pretty;
     const publish = getReadableFileSize(r.publishSize).pretty;
-
-    return `${r.version} | Publish Size: ${publish} | Install Size: ${install} | Publish Date: ${r.publishDate}`;
+    const suffix =  r.publishDate ? ` | Publish Date: ${r.publishDate}` : '';
+    return `${r.version} | Publish Size: ${publish} | Install Size: ${install}${suffix}`;
 };
