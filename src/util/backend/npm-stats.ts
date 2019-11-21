@@ -26,7 +26,12 @@ export function getDirSize(root: string, seen = new Set()): number {
         .reduce((acc, num) => acc + num, 0);
 }
 
-export async function calculatePackageSize(name: string, version: string, tmpDir: string) {
+export async function calculatePackageSize(
+    name: string,
+    version: string,
+    publishDate: string,
+    tmpDir: string,
+) {
     const tmpPackage = 'tmp-package' + Math.random();
 
     let t = setTimeout(async () => {
@@ -42,7 +47,7 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
     await npmInstall(pkgDir, cacheDir, name, version);
     const installSize = getDirSize(nodeModules);
     const publishSize = getDirSize(join(nodeModules, name));
-    const output: PkgSize = { name, version, publishSize, installSize };
+    const output: PkgSize = { name, version, publishDate, publishSize, installSize };
     clearTimeout(t);
     await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
 
