@@ -1,8 +1,9 @@
 {
   "name": "packagephobia",
-  "version": "1.0.0",
   "private": true,
-  "description": "Find the cost of adding a new dependency to your project",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "build": "cp -r static public",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
