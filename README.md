@@ -2,7 +2,7 @@
 
 # Package Phobia
 
-[![sponsor](https://badgen.net/badge/sponsor/styfle/purple)](https://github.com/sponsors/styfle)
+[![sponsor](https://badgen.net/badge/sponsor/styfle/black?icon=github)](https://github.com/sponsors/styfle)
 [![tests](https://badgen.net/github/checks/styfle/packagephobia?label=tests)](https://github.com/styfle/packagephobia/actions?workflow=Tests)
 [![dependency](https://badgen.net/david/dep/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia)
 [![devDependency](https://badgen.net/david/dev/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia?type=dev)
