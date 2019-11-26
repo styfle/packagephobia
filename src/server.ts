@@ -19,7 +19,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
     let { httpVersion, method, url } = req;
     console.log(`${httpVersion} ${method} ${url}`);
     let { pathname = '/', query = {} } = parse(url || '', true);
-    if (pathname === '/') {
+    if (!pathname || pathname === '/') {
         pathname = pages.index;
     }
     try {
