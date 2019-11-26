@@ -100,6 +100,7 @@ export async function renderPage(
                 <title>${title}</title>
                 <meta name="description" content="${description}">
                 <style>${css}</style>
+                ${pathname === pages.result ? '<link rel="preconnect" href="https://badgen.net">' : ''}
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
                 <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
                 <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -107,7 +108,6 @@ export async function renderPage(
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33">
                 <meta name="msapplication-TileColor" content="#333333">
                 <meta name="theme-color" content="#333333">
-
                 <meta property="og:title" content="${title}">
                 <meta property="og:image" content="https://${hostname}${pages.logo_png}">
                 <meta property="og:description" content="${description}">
