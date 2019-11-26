@@ -2,7 +2,8 @@
 
 # Package Phobia
 
-[![tests](https://badgen.net/github/checks/styfle/packagephobia?label=tests&icon=github)](https://github.com/styfle/packagephobia/actions?workflow=Tests)
+[![sponsor](https://badgen.net/badge/sponsor/styfle/black?icon=github)](https://github.com/sponsors/styfle)
+[![tests](https://badgen.net/github/checks/styfle/packagephobia?label=tests)](https://github.com/styfle/packagephobia/actions?workflow=Tests)
 [![dependency](https://badgen.net/david/dep/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia)
 [![devDependency](https://badgen.net/david/dev/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia?type=dev)
 [![lgtm](https://badgen.net/lgtm/grade/javascript/g/styfle/packagephobia)](https://lgtm.com/projects/g/styfle/packagephobia/)
@@ -132,6 +133,10 @@ Below are some other users who comically point out this JS bloat.
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/styfle/packagephobia/blob/master/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/styfle/packagephobia/blob/master/CODE_OF_CONDUCT.md) before you start writing any code
+
+## Sponsoring
+
+Get your name in this readme by [sponsoring this project](https://github.com/sponsors/styfle).
 
 ## Author
 
