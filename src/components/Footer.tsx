@@ -58,7 +58,13 @@ export default () => (
                     <code>npm&nbsp;install</code>. This includes the package, all of the
                     dependencies, and its dependency's dependencies...and so on.
                 </p>
-                <p>Env Vars {Object.keys(process.env).filter(key => key.startsWith('NOW_GITHUB_')).join(',')}</p>
+                <p>
+                    Env Vars {
+                        Object.entries(process.env)
+                            .filter(([key,value]) => key.startsWith('NOW_GITHUB_'))
+                            .map(([key,value]) => <div><strong>{key}</strong><span>{value}</span></div>)
+                    }
+                </p>
                 <p>
                     See the{' '}
                     <a
