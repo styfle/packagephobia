@@ -58,7 +58,7 @@ export default () => (
                     <code>npm&nbsp;install</code>. This includes the package, all of the
                     dependencies, and its dependency's dependencies...and so on.
                 </p>
-                <p>Git Commit {process.env.NOW_GITHUB_COMMIT_REF}</p>
+                <p>Env Vars {Object.keys(process.env).filter(key => key.startsWith('NOW_GITHUB_')).join(',')}</p>
                 <p>
                     See the{' '}
                     <a
