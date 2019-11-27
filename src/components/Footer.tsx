@@ -61,7 +61,7 @@ export default () => (
                 <p>
                     Env Vars {
                         Object.entries(process.env)
-                            .filter(([key,value]) => key.startsWith('NOW_GITHUB_'))
+                            .filter(([key]) => key.startsWith('NOW_GITHUB_'))
                             .map(([key,value]) => <div><strong>{key}</strong><span>{value}</span></div>)
                     }
                 </p>
