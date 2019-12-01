@@ -37,7 +37,7 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                             .map(result => result.pkgNameAndVersion)
                             .join(',')}
                     />
-                    <div style={{ maxWidth: '100%', overflow: 'scroll' }}>
+                    <div style={{ maxWidth: '100%', overflow: 'auto' }}>
                         <table style={{ marginTop: '60px' }}>
                             <tbody>
                                 {resultsToPrint
