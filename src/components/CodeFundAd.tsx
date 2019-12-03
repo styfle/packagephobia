@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Ad() {
+export default function CodeFundAd() {
     return (
         <>
             <div id="codefund"></div>

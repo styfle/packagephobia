@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Ad from '../components/Ad';
+import CodeFundAd from '../components/CodeFundAd';
 import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
@@ -30,8 +30,6 @@ export default () => (
 
             <SearchBar autoFocus={true} />
 
-            <Ad />
-
             <form
                 style={{ marginTop: '60px' }}
                 method="post"
@@ -48,6 +46,8 @@ export default () => (
                     </button>
                 </noscript>
             </form>
+
+            <CodeFundAd />
         </PageContainer>
         <Footer />
     </>

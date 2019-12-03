@@ -82,6 +82,14 @@ body {
     .bar-graph-container {
         margin: 0 auto;
     }
+}
+
+@media screen and (min-width: 48em) {
+    #codefund {
+        position: absolute;
+        top: 5vh;
+        left: 2vw;
+    }
 }`;
 
 export async function renderPage(
