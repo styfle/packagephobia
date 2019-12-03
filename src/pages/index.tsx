@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Ad from '../components/Ad';
 import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
@@ -28,6 +29,8 @@ export default () => (
             </p>
 
             <SearchBar autoFocus={true} />
+
+            <Ad />
 
             <form
                 style={{ marginTop: '60px' }}
