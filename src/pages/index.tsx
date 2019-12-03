@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CodeFundAd from '../components/CodeFundAd';
 import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
@@ -45,6 +46,8 @@ export default () => (
                     </button>
                 </noscript>
             </form>
+
+            <CodeFundAd />
         </PageContainer>
         <Footer />
     </>
