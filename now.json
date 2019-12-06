@@ -6,21 +6,23 @@
             "memory": 3008
         }
     },
-    "routes": [
-        {
-            "src": "/(.*)",
-            "continue": true,
-            "headers": {
-                "X-Content-Type-Options": "nosniff",
-                "X-Frame-Options": "DENY",
-                "X-XSS-Protection": "1; mode=block"
-            }
-        },
-        { "handle": "filesystem" },
-        { "src": "/(.*)", "dest": "/api/index.ts" }
+    "headers": [{
+        "source": "/(.*)",
+        "headers": [
+            { "key": "X-Content-Type-Options", "value": "nosniff" },
+            { "key": "X-Frame-Options", "value": "DENY" },
+            { "key": "X-XSS-Protection", "value": "1; mode=block" }
+        ]
+    }],
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/api/index.ts" }
     ],
+    "build": {
+        "env": {
+            "NOW_BUILDER_DEBUG": "1"
+        }
+    },
     "env": {
-        "NODE_ENV": "production",
         "REDIS_HOST": "@packagephobia2-redis-host",
         "REDIS_PORT": "@packagephobia2-redis-port",
         "REDIS_PASS": "@packagephobia2-redis-pass",
