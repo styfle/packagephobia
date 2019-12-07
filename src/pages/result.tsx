@@ -7,6 +7,7 @@ import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import Image from '../components/Image';
 import LinkedLogos from '../components/LinkedLogos';
+import CodeFundAd from '../components/CodeFundAd';
 
 import { pages, versionUnknown } from '../util/constants';
 import { getReadableFileSize } from '../util/npm-parser';
@@ -61,6 +62,7 @@ export default ({ pkgSize, readings, isLatest }: ResultProps) => {
                 ) : (
                     <Image width={350} height={350} file="tumblebeasts/tbstand2.png" />
                 )}
+                <CodeFundAd />
             </PageContainer>
 
             <Footer />
