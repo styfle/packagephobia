@@ -33,6 +33,6 @@
     "@zeit/git-hooks": "^0.1.4",
     "prettier": "^1.19.1",
     "tape": "^4.11.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   }
 }
