@@ -84,11 +84,13 @@ body {
     }
 }
 
-@media screen and (min-width: 48em) {
+#codefund { margin-top: 1em; }
+
+@media screen and (min-width: 75em) {
     #codefund {
         position: absolute;
         top: 5vh;
-        left: 2vw;
+        left: 1vw;
     }
 }`;
 
