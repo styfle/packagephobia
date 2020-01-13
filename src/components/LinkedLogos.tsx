@@ -62,7 +62,7 @@ export default (props: Props) => {
                 icon="graphql"
                 color="#36394A"
                 title="graph"
-                href={`https://npm.anvaka.com/#!/view/2d/${escape(escape(name))}`}
+                href={`https://npm.anvaka.com/#/view/2d/${escape(escape(name))}`}
             />
         </>
     );
