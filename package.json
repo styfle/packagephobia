@@ -29,7 +29,7 @@
     "@types/react-dom": "^16.9.5",
     "@types/redis": "^2.8.14",
     "@types/semver": "^7.1.0",
-    "@types/tape": "^4.2.33",
+    "@types/tape": "^4.2.34",
     "@zeit/git-hooks": "^0.1.4",
     "prettier": "^1.19.1",
     "tape": "^4.13.0",
