@@ -7,3 +7,5 @@ public
 pages/*.js
 src/*.js
 dev.sh
+
+.now
