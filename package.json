@@ -5,7 +5,6 @@
     "node": "12.x"
   },
   "scripts": {
-    "build": "cp -r static public",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
     "git-pre-commit": "npm run prettier && git add -A",
     "lint": "npm run prettier && git diff --exit-code",

@@ -1,6 +1,5 @@
 node_modules
 dist
-public
 .DS_Store
 .env
 .next
