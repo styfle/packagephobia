@@ -4,8 +4,8 @@ import { pages, hostname } from '../util/constants';
 export function getBadgeUrl(pkgSize: PkgSize, isLatest: boolean) {
     const { name, version } = pkgSize;
     return isLatest
-        ? `https://badgen.net/packagephobia/install/${name}`
-        : `https://badgen.net/packagephobia/install/${name}@${version}`;
+        ? `https://${hostname}${pages.badge}?p=${name}`
+        : `https://${hostname}${pages.badge}?p=${name}@${version}`;
 }
 
 export function getBadgeMarkdown(pkgNameAndVersion: string) {
