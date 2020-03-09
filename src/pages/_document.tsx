@@ -1,20 +1,13 @@
 import { ServerResponse } from 'http';
-import { createFactory } from 'react';
+import React from 'react';
 import { renderToNodeStream } from 'react-dom/server';
 
-import IndexPage from '../pages/index';
-import ResultPage from '../pages/result';
-import ComparePage from '../pages/compare';
-import NotFoundPage from '../pages/404';
-import ServerErrorPage from '../pages/500';
-import ParseFailurePage from '../pages/parse-failure';
-
-const IndexFactory = createFactory(IndexPage);
-const ResultFactory = createFactory(ResultPage);
-const CompareFactory = createFactory(ComparePage);
-const NotFoundFactory = createFactory(NotFoundPage);
-const ServerErrorFactory = createFactory(ServerErrorPage);
-const ParseFailureFactory = createFactory(ParseFailurePage);
+import Index from './index';
+import Result from './result';
+import Compare from './compare';
+import NotFound from './404';
+import ServerError from './500';
+import ParseFailure from './parse-failure';
 
 import { getResultProps } from '../page-props/results';
 import { getCompareProps } from '../page-props/compare';
@@ -161,19 +154,21 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
     try {
         switch (pathname) {
             case pages.index:
-                return IndexFactory();
+                return <Index />;
             case pages.parseFailure:
-                return ParseFailureFactory();
+                return <ParseFailure />;
             case pages.result:
-                return (query.p || '').includes(',')
-                    ? CompareFactory(await getCompareProps(query, tmpDir))
-                    : ResultFactory(await getResultProps(query, tmpDir));
+                return (query.p || '').includes(',') ? (
+                    <Compare {...await getCompareProps(query, tmpDir)} />
+                ) : (
+                    <Result {...await getResultProps(query, tmpDir)} />
+                );
             default:
-                return NotFoundFactory();
+                return <NotFound />;
         }
     } catch (e) {
         console.error(`ERROR: ${e.message}`);
-        return ServerErrorFactory();
+        return <ServerError />;
     }
 }
 
