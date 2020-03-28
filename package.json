@@ -30,7 +30,7 @@
     "@types/semver": "^7.1.0",
     "@types/tape": "^4.2.34",
     "@zeit/git-hooks": "^0.1.4",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "tape": "^4.13.2",
     "typescript": "^3.8.3"
   }
