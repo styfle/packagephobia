@@ -28,7 +28,7 @@
     "@types/react-dom": "^16.9.6",
     "@types/redis": "^2.8.18",
     "@types/semver": "^7.1.0",
-    "@types/tape": "^4.2.34",
+    "@types/tape": "^4.13.0",
     "@zeit/git-hooks": "^0.1.4",
     "prettier": "^2.0.4",
     "tape": "^4.13.2",
