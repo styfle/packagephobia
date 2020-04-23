@@ -115,18 +115,18 @@ export default () => (
 
                     <span>&nbsp;Get ceriously</span>
                 </a>
-                <a style={social} href="https://zeit.co/now">
+                <a style={social} href="https://vercel.com">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
                         viewBox="100 120 300 300"
                     >
-                        <title>ZEIT Logo</title>
+                        <title>Vercel Logo</title>
                         <path fill="#fff" d="M254 156.459L367 356H141z" />
                     </svg>
 
-                    <span>&nbsp;Hosted on ZEIT Now</span>
+                    <span>&nbsp;Hosted on Vercel</span>
                 </a>
             </div>
         </section>
