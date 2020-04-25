@@ -31,7 +31,7 @@
     "@types/tape": "^4.13.0",
     "@zeit/git-hooks": "^0.1.4",
     "prettier": "^2.0.4",
-    "tape": "^4.13.2",
+    "tape": "^5.0.0",
     "typescript": "^3.8.3"
   }
 }
