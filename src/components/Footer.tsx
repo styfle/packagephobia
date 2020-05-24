@@ -101,19 +101,10 @@ export default () => (
 
                     <span>&nbsp;Chat on Twitter</span>
                 </a>
-                <a style={social} href="https://www.ceriously.com">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="#00796b"
-                        viewBox="0 0 24 24"
-                    >
-                        <title>Ceriously icon</title>
-                        <path d="M11.997 24L1.605 17.997v-12L12 0l10.396 5.997L16.5 9.402 12 6.8 7.496 9.4v5.2l4.502 2.6 4.5-2.6 5.895 3.397L12.003 24h-.006z" />
-                    </svg>
+                <a style={social} href="https://styfle.dev">
+                    <img src="https://styfle.dev/styfle-ceriously.png" width="24" height="24" />
 
-                    <span>&nbsp;Get ceriously</span>
+                    <span>&nbsp;Created by styfle</span>
                 </a>
                 <a style={social} href="https://vercel.com">
                     <svg
