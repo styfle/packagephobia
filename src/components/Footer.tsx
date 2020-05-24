@@ -102,7 +102,14 @@ export default () => (
                     <span>&nbsp;Chat on Twitter</span>
                 </a>
                 <a style={social} href="https://styfle.dev">
-                    <img src="https://styfle.dev/styfle-ceriously.png" width="24" height="24" />
+                    <picture>
+                        <source
+                            srcSet="https://styfle.dev/styfle-ceriously.webp"
+                            type="image/webp"
+                        />
+                        <source srcSet="https://styfle.dev/styfle-ceriously.png" type="image/png" />
+                        <img alt="styfle" src="https://styfle.dev/styfle-ceriously.png" />
+                    </picture>
 
                     <span>&nbsp;Created by styfle</span>
                 </a>
