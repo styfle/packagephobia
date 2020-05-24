@@ -108,7 +108,12 @@ export default () => (
                             type="image/webp"
                         />
                         <source srcSet="https://styfle.dev/styfle-ceriously.png" type="image/png" />
-                        <img alt="styfle" src="https://styfle.dev/styfle-ceriously.png" />
+                        <img
+                            alt="styfle"
+                            src="https://styfle.dev/styfle-ceriously.png"
+                            width="24"
+                            height="24"
+                        />
                     </picture>
 
                     <span>&nbsp;Created by styfle</span>
