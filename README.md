@@ -141,4 +141,4 @@ Get your name in this readme by [sponsoring this project](https://github.com/spo
 
 ## Author
 
-Developed by [ceriously.com](https://www.ceriously.com)
+Developed by [styfle](https://styfle.dev)
