@@ -13,18 +13,16 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
 
         const resultsToPrint = results.map(({ pkgSize, isLatest }) => {
             const { name, version, installSize, publishSize } = pkgSize;
-            const exists = version !== versionUnknown;
             const install = getReadableFileSize(installSize);
             const publish = getReadableFileSize(publishSize);
             const pkgNameAndVersion = isLatest ? name : `${name}@${version}`;
             const badgeUrl = getBadgeUrl(pkgSize, isLatest);
             return {
-                exists,
+                name,
+                version,
                 install,
                 publish,
                 installSize,
-                name,
-                version,
                 pkgNameAndVersion,
                 badgeUrl,
             };
@@ -43,10 +41,13 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                         <table style={{ marginTop: '60px' }}>
                             <tbody>
                                 {resultsToPrint
+                                    .filter(
+                                        result =>
+                                            result.version && result.version !== versionUnknown,
+                                    )
                                     .sort((a, b) => b.installSize - a.installSize)
-                                    .filter(result => result.exists)
-                                    .map((result, i) => (
-                                        <tr key={i}>
+                                    .map(result => (
+                                        <tr key={result.pkgNameAndVersion}>
                                             <td
                                                 style={{ fontSize: '1.5rem', paddingRight: '2rem' }}
                                             >
