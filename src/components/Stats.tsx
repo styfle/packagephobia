@@ -14,15 +14,21 @@ export default function Stats(props: Props) {
     );
 }
 
-type StatProp = SizeWithUnit & { label: string; scale?: number };
+type StatProp = {
+    size: string;
+    unit: string;
+    label: string;
+    scale?: number;
+    color?: string;
+};
 
 export function Stat(props: StatProp) {
-    const scale = props.scale || 1;
+    const { size, unit, label, scale = 1, color = '#212121' } = props;
 
     const styleValue: React.CSSProperties = {
         fontSize: `${3 * scale}rem`,
         fontWeight: 'bold',
-        color: '#212121',
+        color,
     };
 
     const styleUnit: React.CSSProperties = {
@@ -43,9 +49,9 @@ export function Stat(props: StatProp) {
 
     return (
         <div>
-            <span style={styleValue}>{props.size}</span>
-            <span style={styleUnit}>{props.unit}</span>
-            <div style={styleLabel}>{props.label}</div>
+            <span style={styleValue}>{size}</span>
+            <span style={styleUnit}>{unit}</span>
+            <div style={styleLabel}>{label}</div>
         </div>
     );
 }

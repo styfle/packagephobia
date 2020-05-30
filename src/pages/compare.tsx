@@ -1,5 +1,5 @@
 import React from 'react';
-import { versionUnknown } from '../util/constants';
+import { pages, versionUnknown } from '../util/constants';
 import { getReadableFileSize } from '../util/npm-parser';
 import PageContainer from '../components/PageContainer';
 import Footer from '../components/Footer';
@@ -23,6 +23,8 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                 install,
                 publish,
                 installSize,
+                name,
+                version,
                 pkgNameAndVersion,
                 badgeUrl,
             };
@@ -45,17 +47,34 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                                     .filter(result => result.exists)
                                     .map((result, i) => (
                                         <tr key={i}>
-                                            <td style={{ fontSize: '1.2em', paddingRight: '2em' }}>
-                                                {result.pkgNameAndVersion}
+                                            <td
+                                                style={{ fontSize: '1.5rem', paddingRight: '2rem' }}
+                                            >
+                                                <a
+                                                    style={{ textDecoration: 'none' }}
+                                                    href={
+                                                        pages.result +
+                                                        '?p=' +
+                                                        result.pkgNameAndVersion
+                                                    }
+                                                >
+                                                    <Stat
+                                                        size={result.name}
+                                                        unit=""
+                                                        label={result.version}
+                                                        scale={0.75}
+                                                        color="#16864d"
+                                                    />
+                                                </a>
                                             </td>
-                                            <td style={{ padding: '0 2em', textAlign: 'center' }}>
+                                            <td style={{ padding: '0 2rem', textAlign: 'center' }}>
                                                 <Stat
                                                     {...result.install}
                                                     label="Install"
                                                     scale={0.75}
                                                 />
                                             </td>
-                                            <td style={{ padding: '0 2em', textAlign: 'center' }}>
+                                            <td style={{ padding: '0 2rem', textAlign: 'center' }}>
                                                 <Stat
                                                     {...result.publish}
                                                     label="Publish"
