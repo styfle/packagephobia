@@ -64,6 +64,7 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                                                         label={result.version}
                                                         scale={0.75}
                                                         color="#16864d"
+                                                        textAlign="right"
                                                     />
                                                 </a>
                                             </td>

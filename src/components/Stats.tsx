@@ -20,10 +20,11 @@ type StatProp = {
     label: string;
     scale?: number;
     color?: string;
+    textAlign?: 'center' | 'right';
 };
 
 export function Stat(props: StatProp) {
-    const { size, unit, label, scale = 1, color = '#212121' } = props;
+    const { size, unit, label, scale = 1, color = '#212121', textAlign = 'center' } = props;
 
     const styleValue: React.CSSProperties = {
         fontSize: `${3 * scale}rem`,
@@ -43,14 +44,16 @@ export function Stat(props: StatProp) {
         color: '#666E78',
         textTransform: 'uppercase',
         letterSpacing: '2px',
-        textAlign: 'center',
+        textAlign,
         marginBottom: '25px',
     };
 
     return (
         <div>
-            <span style={styleValue}>{size}</span>
-            <span style={styleUnit}>{unit}</span>
+            <div style={{ textAlign }}>
+                <span style={styleValue}>{size}</span>
+                <span style={styleUnit}>{unit}</span>
+            </div>
             <div style={styleLabel}>{label}</div>
         </div>
     );
