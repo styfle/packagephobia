@@ -41,10 +41,16 @@ export NPM_REGISTRY_URL="https://registry.npmjs.com"
 
 ## Running the code
 
-Make sure you have the [Vercel](https://vercel.com) cli installed with `npm i -g now`.
+Install [Vercel](https://vercel.com) CLI
 
 ```sh
-now dev
+npm install -g vercel
+```
+
+Run the development environment
+
+```sh
+vercel dev
 ```
 
 Now the web app should be available at http://localhost:3000
@@ -60,11 +66,11 @@ npm test
 
 ## Deploying the code
 
-The code is deployed to [Vercel](https://vercel.com) via [GitHub Integration](https://vercel.com/github).
+Each PR is automatically deployed to [Vercel](https://vercel.com) via the [GitHub Integration](https://vercel.com/github).
 
-If you want to deploy from the command line, you'll need the `now` cli. Run `npm i -g now` to get it.
+If you want to deploy from the command line, you'll need to install [Vercel](https://vercel.com) CLI with `npm i -g vercel`.
 
-Then you can simply run `now` and the code will deploy.
+Then you can simply run `vercel` to deploy.
 
 ## Submitting a PR
 
