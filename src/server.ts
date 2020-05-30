@@ -54,10 +54,10 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                     const [packageString] = data.toString().match(/{[\s\S]+}/) || [];
                     const packageData: PackageJson = JSON.parse(packageString);
                     const queryString = Object.entries(packageData.dependencies)
-                        .map(
-                            ([pkg, version]) =>
-                                `${pkg}@${version === '*' ? 'latest' : semver.coerce(version)}`,
-                        )
+                        .map(([name, version]) => {
+                            const exactVersion = semver.coerce(version);
+                            return exactVersion ? `${name}@${exactVersion}` : name;
+                        })
                         .join(',');
                     res.writeHead(302, { Location: `/result?p=${queryString}` });
                     return res.end();
