@@ -1,5 +1,5 @@
 import React from 'react';
-import { versionUnknown } from '../util/constants';
+import { pages, versionUnknown } from '../util/constants';
 import { getReadableFileSize } from '../util/npm-parser';
 import PageContainer from '../components/PageContainer';
 import Footer from '../components/Footer';
@@ -13,13 +13,13 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
 
         const resultsToPrint = results.map(({ pkgSize, isLatest }) => {
             const { name, version, installSize, publishSize } = pkgSize;
-            const exists = version !== versionUnknown;
             const install = getReadableFileSize(installSize);
             const publish = getReadableFileSize(publishSize);
             const pkgNameAndVersion = isLatest ? name : `${name}@${version}`;
             const badgeUrl = getBadgeUrl(pkgSize, isLatest);
             return {
-                exists,
+                name,
+                version,
                 install,
                 publish,
                 installSize,
@@ -41,21 +41,42 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                         <table style={{ marginTop: '60px' }}>
                             <tbody>
                                 {resultsToPrint
+                                    .filter(
+                                        result =>
+                                            result.version && result.version !== versionUnknown,
+                                    )
                                     .sort((a, b) => b.installSize - a.installSize)
-                                    .filter(result => result.exists)
-                                    .map((result, i) => (
-                                        <tr key={i}>
-                                            <td style={{ fontSize: '1.2em', paddingRight: '2em' }}>
-                                                {result.pkgNameAndVersion}
+                                    .map(result => (
+                                        <tr key={result.pkgNameAndVersion}>
+                                            <td
+                                                style={{ fontSize: '1.5rem', paddingRight: '2rem' }}
+                                            >
+                                                <a
+                                                    style={{ textDecoration: 'none' }}
+                                                    href={
+                                                        pages.result +
+                                                        '?p=' +
+                                                        result.pkgNameAndVersion
+                                                    }
+                                                >
+                                                    <Stat
+                                                        size={result.name}
+                                                        unit=""
+                                                        label={result.version}
+                                                        scale={0.75}
+                                                        color="#16864d"
+                                                        textAlign="right"
+                                                    />
+                                                </a>
                                             </td>
-                                            <td style={{ padding: '0 2em', textAlign: 'center' }}>
+                                            <td style={{ padding: '0 2rem', textAlign: 'center' }}>
                                                 <Stat
                                                     {...result.install}
                                                     label="Install"
                                                     scale={0.75}
                                                 />
                                             </td>
-                                            <td style={{ padding: '0 2em', textAlign: 'center' }}>
+                                            <td style={{ padding: '0 2rem', textAlign: 'center' }}>
                                                 <Stat
                                                     {...result.publish}
                                                     label="Publish"
