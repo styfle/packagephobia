@@ -8,3 +8,4 @@ src/*.js
 dev.sh
 
 .now
+.vercel

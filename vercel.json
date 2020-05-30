@@ -1,5 +1,4 @@
 {
-    "version": 2,
     "regions": ["sfo1", "cle1", "pdx1", "iad1"],
     "functions": {
         "api/**": {
@@ -17,11 +16,6 @@
     "rewrites": [
         { "source": "/(.*)", "destination": "/api/index.ts" }
     ],
-    "build": {
-        "env": {
-            "NOW_BUILDER_DEBUG": "1"
-        }
-    },
     "env": {
         "REDIS_HOST": "@packagephobia2-redis-host",
         "REDIS_PORT": "@packagephobia2-redis-port",
