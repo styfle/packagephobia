@@ -14,12 +14,6 @@
         ]
     }],
     "rewrites": [
-        { "source": "/(.*)", "destination": "/api/index.ts" }
-    ],
-    "env": {
-        "REDIS_HOST": "@packagephobia2-redis-host",
-        "REDIS_PORT": "@packagephobia2-redis-port",
-        "REDIS_PASS": "@packagephobia2-redis-pass",
-        "GA_ID": "@packagephobia-ga-id"
-    }
+        { "source": "/(.*)", "destination": "/api/index" }
+    ]
 }
