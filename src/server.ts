@@ -67,6 +67,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             });
         } else if (headers.host === oldHostname) {
             res.writeHead(302, { Location: `https://${hostname}${url}` });
+            return res.end();
         } else {
             const isIndex = pathname === pages.index;
             const hasVersion =
