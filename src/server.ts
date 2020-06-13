@@ -17,8 +17,8 @@ console.log('TMPDIR: ', TMPDIR);
 console.log('HOME: ', process.env.HOME);
 
 export async function handler(req: IncomingMessage, res: ServerResponse) {
-    let { httpVersion, method, url, headers } = req;
-    console.log(`${headers.host} ${httpVersion} ${method} ${url}`);
+    let { method, url, headers } = req;
+    console.log(`${method} ${headers.host}${url}`);
     let { pathname = '/', query = {} } = parse(url || '', true);
     if (!pathname || pathname === '/') {
         pathname = pages.index;
@@ -66,7 +66,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                 }
             });
         } else if (headers.host === oldHostname) {
-            res.writeHead(302, { Location: `https://${hostname}` });
+            res.writeHead(302, { Location: `https://${hostname}${url}` });
         } else {
             const isIndex = pathname === pages.index;
             const hasVersion =
