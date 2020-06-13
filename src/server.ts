@@ -18,7 +18,7 @@ console.log('HOME: ', process.env.HOME);
 
 export async function handler(req: IncomingMessage, res: ServerResponse) {
     let { httpVersion, method, url, headers } = req;
-    console.log(`${httpVersion} ${method} ${url}`);
+    console.log(`${headers.host} ${httpVersion} ${method} ${url}`);
     let { pathname = '/', query = {} } = parse(url || '', true);
     if (!pathname || pathname === '/') {
         pathname = pages.index;
