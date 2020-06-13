@@ -41,7 +41,7 @@ export NPM_REGISTRY_URL="https://registry.npmjs.com"
 
 ## Running the code
 
-Install [Vercel](https://vercel.com) CLI
+Install [Vercel](https://vercel.com/download) CLI
 
 ```sh
 npm install -g vercel
@@ -66,7 +66,7 @@ npm test
 
 ## Deploying the code
 
-Each PR is automatically deployed to [Vercel](https://vercel.com) via the [GitHub Integration](https://vercel.com/github).
+Each PR is automatically deployed to [Vercel](https://vercel.com/?utm_source=packagephobia) via the [GitHub Integration](https://vercel.com/github).
 
 If you want to deploy from the command line, you'll need to install [Vercel](https://vercel.com) CLI with `npm i -g vercel`.
 

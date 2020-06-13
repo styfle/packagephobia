@@ -118,7 +118,7 @@ export default () => (
 
                     <span>&nbsp;Created by styfle</span>
                 </a>
-                <a style={social} href="https://vercel.com">
+                <a style={social} href="https://vercel.com/?utm_source=packagephobia">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
