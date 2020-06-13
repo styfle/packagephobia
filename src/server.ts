@@ -27,7 +27,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
         if (pathname === pages.badge) {
             const { pkgSize, isLatest, cacheResult } = await getResultProps(query, TMPDIR);
             const badgeUrl = getBadgeUrl(pkgSize, isLatest);
-            res.statusCode = 302;
+            res.statusCode = 307;
             res.setHeader('Location', badgeUrl);
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end();
@@ -59,14 +59,14 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                             return exactVersion ? `${name}@${exactVersion}` : name;
                         })
                         .join(',');
-                    res.writeHead(302, { Location: `/result?p=${queryString}` });
+                    res.writeHead(307, { Location: `/result?p=${queryString}` });
                     return res.end();
                 } catch (e) {
                     return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
             });
         } else if ((headers.host || '').startsWith('packagephobia.now.sh')) {
-            res.writeHead(302, { Location: `https://${hostname}${url}` });
+            res.writeHead(308, { Location: `https://${hostname}${url}` });
             return res.end();
         } else {
             const isIndex = pathname === pages.index;
