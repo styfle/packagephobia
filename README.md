@@ -1,4 +1,4 @@
-<img src="https://packagephobia.now.sh/logo.svg" width=40 height=40 align="left" />
+<img src="https://packagephobia.com/logo.svg" width=40 height=40 align="left" />
 
 # Package Phobia
 
@@ -28,25 +28,25 @@ This is useful for inspecting potential `dependencies` or `devDependencies` with
 
 Results are saved so the first person might wait a bit to view package size, but everyone else gets to see the results instantly!
 
-## [Demo](https://packagephobia.now.sh)
+## [Demo](https://packagephobia.com)
 
 A good use case might be comparing test runners, web frameworks, or even bundlers. Click one of the links below to see Package Phobia in action!
 
-- Test Harnesses: [tap](https://packagephobia.now.sh/result?p=tap) vs [tape](https://packagephobia.now.sh/result?p=tape)
-- Web Frameworks: [express](https://packagephobia.now.sh/result?p=express) vs [micro](https://packagephobia.now.sh/result?p=micro)
-- JavaScript Bundlers: [webpack](https://packagephobia.now.sh/result?p=webpack) vs [rollup](https://packagephobia.now.sh/result?p=rollup)
-- Task Runners: [grunt](https://packagephobia.now.sh/result?p=grunt) vs [gulp](https://packagephobia.now.sh/result?p=gulp)
-- HTTP Requests: [request](https://packagephobia.now.sh/result?p=request) vs [node-fetch](https://packagephobia.now.sh/result?p=node-fetch)
-- Glob Patterns: [glob](https://packagephobia.now.sh/result?p=glob) vs [tiny-glob](https://packagephobia.now.sh/result?p=tiny-glob)
-- Arguments: [yargs](https://packagephobia.now.sh/result?p=yargs) vs [arg](https://packagephobia.now.sh/result?p=arg)
-- Site Generators: [gatsby](https://packagephobia.now.sh/result?p=gatsby) vs [hexo](https://packagephobia.now.sh/result?p=hexo)
-- Type Checkers: [typescript](https://packagephobia.now.sh/result?p=typescript) vs [flow-bin](https://packagephobia.now.sh/result?p=flow-bin)
-- Linters: [eslint](https://packagephobia.now.sh/result?p=eslint) vs [jslint](https://packagephobia.now.sh/result?p=jslint)
-- Color Formatters: [chalk](https://packagephobia.now.sh/result?p=chalk) vs [colorette](https://packagephobia.now.sh/result?p=colorette)
-- Command Line Interfaces: [@angular/cli](https://packagephobia.now.sh/result?p=%40angular%2Fcli) vs [@babel/cli](https://packagephobia.now.sh/result?p=%40babel%2Fcli)
-- Desktop Frameworks: [nw](https://packagephobia.now.sh/result?p=nw) vs [electron](https://packagephobia.now.sh/result?p=electron)
-- Headless Browsers: [puppeteer](https://packagephobia.now.sh/result?p=puppeteer) vs [chrome-aws-lambda](https://packagephobia.now.sh/result?p=chrome-aws-lambda)
-- Package Managers: [npm](https://packagephobia.now.sh/result?p=npm) vs [yarn](https://packagephobia.now.sh/result?p=yarn)
+- Test Harnesses: [tap](https://packagephobia.com/result?p=tap) vs [tape](https://packagephobia.com/result?p=tape)
+- Web Frameworks: [express](https://packagephobia.com/result?p=express) vs [micro](https://packagephobia.com/result?p=micro)
+- JavaScript Bundlers: [webpack](https://packagephobia.com/result?p=webpack) vs [rollup](https://packagephobia.com/result?p=rollup)
+- Task Runners: [grunt](https://packagephobia.com/result?p=grunt) vs [gulp](https://packagephobia.com/result?p=gulp)
+- HTTP Requests: [request](https://packagephobia.com/result?p=request) vs [node-fetch](https://packagephobia.com/result?p=node-fetch)
+- Glob Patterns: [glob](https://packagephobia.com/result?p=glob) vs [tiny-glob](https://packagephobia.com/result?p=tiny-glob)
+- Arguments: [yargs](https://packagephobia.com/result?p=yargs) vs [arg](https://packagephobia.com/result?p=arg)
+- Site Generators: [gatsby](https://packagephobia.com/result?p=gatsby) vs [hexo](https://packagephobia.com/result?p=hexo)
+- Type Checkers: [typescript](https://packagephobia.com/result?p=typescript) vs [flow-bin](https://packagephobia.com/result?p=flow-bin)
+- Linters: [eslint](https://packagephobia.com/result?p=eslint) vs [jslint](https://packagephobia.com/result?p=jslint)
+- Color Formatters: [chalk](https://packagephobia.com/result?p=chalk) vs [colorette](https://packagephobia.com/result?p=colorette)
+- Command Line Interfaces: [@angular/cli](https://packagephobia.com/result?p=%40angular%2Fcli) vs [@babel/cli](https://packagephobia.com/result?p=%40babel%2Fcli)
+- Desktop Frameworks: [nw](https://packagephobia.com/result?p=nw) vs [electron](https://packagephobia.com/result?p=electron)
+- Headless Browsers: [puppeteer](https://packagephobia.com/result?p=puppeteer) vs [chrome-aws-lambda](https://packagephobia.com/result?p=chrome-aws-lambda)
+- Package Managers: [npm](https://packagephobia.com/result?p=npm) vs [yarn](https://packagephobia.com/result?p=yarn)
 
 ## Prior Art
 
@@ -54,7 +54,7 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 
 ## How is this different?
 
-- [Package Phobia](https://packagephobia.now.sh) **THIS TOOL** web app that reports the install size of a package over time.
+- [Package Phobia](https://packagephobia.com) **THIS TOOL** web app that reports the install size of a package over time.
 - [Bundle Phobia](https://bundlephobia.com) web app that reports the size after webpack bundles the package over time.
 - [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules) cli that reports the size of your currently installed packages.
 - [Badge Size](https://github.com/ngryman/badge-size) badge service that reports the gzip size of a single file from a package as svg.

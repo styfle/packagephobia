@@ -2,7 +2,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { parse } from 'url';
 import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
-import { pages, versionUnknown } from './util/constants';
+import { pages, versionUnknown, hostname, oldHostname } from './util/constants';
 import { getResultProps } from './page-props/results';
 import { getBadgeUrl, getApiResponseSize } from './util/badge';
 import { parsePackageString } from './util/npm-parser';
@@ -17,8 +17,8 @@ console.log('TMPDIR: ', TMPDIR);
 console.log('HOME: ', process.env.HOME);
 
 export async function handler(req: IncomingMessage, res: ServerResponse) {
-    let { httpVersion, method, url } = req;
-    console.log(`${httpVersion} ${method} ${url}`);
+    let { method, url, headers } = req;
+    console.log(`${method} ${headers.host}${url}`);
     let { pathname = '/', query = {} } = parse(url || '', true);
     if (!pathname || pathname === '/') {
         pathname = pages.index;
@@ -65,6 +65,8 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                     return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
             });
+        } else if (headers.host === oldHostname) {
+            res.writeHead(302, { Location: `https://${hostname}${url}` });
         } else {
             const isIndex = pathname === pages.index;
             const hasVersion =
