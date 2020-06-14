@@ -66,6 +66,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                 }
             });
         } else if ((headers.host || '').startsWith('packagephobia.now.sh')) {
+            res.setHeader('Cache-Control', cacheControl(isProd, 0));
             res.writeHead(301, { Location: `https://${hostname}${url}` });
             return res.end();
         } else {
