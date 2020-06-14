@@ -66,7 +66,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                 }
             });
         } else if ((headers.host || '').startsWith('packagephobia.now.sh')) {
-            res.writeHead(308, { Location: `https://${hostname}${url}` });
+            res.writeHead(301, { Location: `https://${hostname}${url}` });
             return res.end();
         } else {
             const isIndex = pathname === pages.index;
