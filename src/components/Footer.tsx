@@ -63,7 +63,7 @@ export default () => (
                     <a
                         target="_blank"
                         rel="noopener"
-                        href="https://github.com/styfle/packagephobia/blob/master/README.md"
+                        href="https://github.com/styfle/packagephobia/blob/main/README.md"
                         style={footerLink}
                     >
                         README

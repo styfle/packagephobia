@@ -133,7 +133,7 @@ Below are some other users who comically point out this JS bloat.
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/styfle/packagephobia/blob/master/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/styfle/packagephobia/blob/master/CODE_OF_CONDUCT.md) before you start writing any code
+See [CONTRIBUTING.md](https://github.com/styfle/packagephobia/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/styfle/packagephobia/blob/main/CODE_OF_CONDUCT.md) before you start writing any code
 
 ## Sponsoring
 
