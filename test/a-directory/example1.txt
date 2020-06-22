@@ -1,3 +1,0 @@
-We use this file and `a-directory` for test purposes.
-
-Please do not delete, thanks!

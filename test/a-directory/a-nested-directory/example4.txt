@@ -1,3 +1,0 @@
-This is the another nested file.
-
-We should recursively read this for tests.
