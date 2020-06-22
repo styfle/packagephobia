@@ -11,4 +11,3 @@ dev.sh
 .vscode
 .prettierrc.json
 test
-*.md
