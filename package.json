@@ -8,7 +8,7 @@
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
     "git-pre-commit": "npm run prettier && git add -A",
     "lint": "npm run prettier && git diff --exit-code",
-    "test": "tsc && tape \"dist/test/**/*.js\""
+    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && tape \"dist/test/**/*.js\""
   },
   "repository": "styfle/packagephobia",
   "author": "styfle",

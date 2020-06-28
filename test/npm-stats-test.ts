@@ -34,8 +34,8 @@ test('getDirSize single file', t => {
 
 test('getDirSize original file should equal hardlink file', t => {
     t.plan(2);
-    const original = join(__dirname, 'a-hardlink', 'original.txt').replace('/dist', '');
-    const hardlink = join(__dirname, 'a-hardlink', 'hardlink.txt').replace('/dist', '');
+    const original = join(__dirname, 'hardlink', 'orig.txt').replace('/dist', '');
+    const hardlink = join(__dirname, 'hardlink', 'link').replace('/dist', '');
 
     const originalFiles = new Set<number>();
     const originalSize = getDirSize(original, originalFiles);
@@ -49,7 +49,7 @@ test('getDirSize original file should equal hardlink file', t => {
 test('getDirSize should count hardlink once', t => {
     // ln test/original.txt test/hardlink.txt
     t.plan(2);
-    const dir = join(__dirname, 'a-hardlink').replace('/dist', '');
+    const dir = join(__dirname, 'hardlink').replace('/dist', '');
 
     const files = new Set<number>();
     const size = getDirSize(dir, files);
