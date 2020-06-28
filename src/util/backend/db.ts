@@ -2,6 +2,10 @@ import { createClient } from 'redis';
 
 const { REDIS_HOST = '127.0.0.1', REDIS_PORT = '14555', REDIS_PASS } = process.env;
 
+delete process.env.REDIS_HOST;
+delete process.env.REDIS_PORT;
+delete process.env.REDIS_PASS;
+
 const client = createClient({
     host: REDIS_HOST,
     port: parseInt(REDIS_PORT),
