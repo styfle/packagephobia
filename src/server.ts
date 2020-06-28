@@ -11,7 +11,7 @@ import semver from 'semver';
 const { TMPDIR = '/tmp', GA_ID = '', NODE_ENV } = process.env;
 process.env.HOME = TMPDIR;
 const isProd = NODE_ENV === 'production';
-console.log('NODE_ENV' + NODE_ENV);
+console.log('NODE_ENV: ' + NODE_ENV);
 console.log('isProd: ', isProd);
 console.log('TMPDIR: ', TMPDIR);
 console.log('HOME: ', process.env.HOME);
