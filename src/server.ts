@@ -33,13 +33,13 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             res.end();
         } else if (pathname === pages.apiv1 || pathname === pages.apiv2) {
             const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
-            const { publishSize, installSize, name, version } = pkgSize;
+            const { publishSize, installSize, name, version, publishFiles, installFiles } = pkgSize;
             let result: ApiResponseV1 | ApiResponseV2;
             if (pathname === pages.apiv1) {
                 result = { publishSize, installSize };
             } else {
-                const publish = getApiResponseSize(publishSize);
-                const install = getApiResponseSize(installSize);
+                const publish = getApiResponseSize(publishSize, publishFiles);
+                const install = getApiResponseSize(installSize, installFiles);
                 result = { name, version, publish, install };
             }
             res.statusCode = version === versionUnknown ? 404 : 200;

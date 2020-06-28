@@ -35,6 +35,7 @@ interface ApiResponseV2 {
 
 interface ApiResponseSize {
     bytes: number;
+    files: number;
     pretty: string;
     color: string;
 }

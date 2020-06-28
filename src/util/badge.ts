@@ -14,8 +14,8 @@ export function getBadgeMarkdown(pkgNameAndVersion: string) {
     return `[![install size](${badgePage})](${resultPage})`;
 }
 
-export function getApiResponseSize(bytes: number): ApiResponseSize {
+export function getApiResponseSize(bytes: number, files: number): ApiResponseSize {
     const { pretty } = getReadableFileSize(bytes);
     const color = '#' + getHexColor(bytes);
-    return { bytes, pretty, color };
+    return { bytes, files, pretty, color };
 }
