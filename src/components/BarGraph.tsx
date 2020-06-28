@@ -204,5 +204,9 @@ const getTooltipMessage = (r: PkgSize) => {
     const install = getReadableFileSize(r.installSize).pretty;
     const publish = getReadableFileSize(r.publishSize).pretty;
     const suffix = r.publishDate ? ` | Publish Date: ${r.publishDate.split('T')[0]}` : '';
-    return `${r.version} | Publish Size: ${publish} | Install Size: ${install}${suffix}`;
+    let tooltip = `${r.version} | Publish Size: ${publish} | Install Size: ${install}${suffix}`;
+    if (r.publishFiles && r.installFiles) {
+        tooltip += ` | Publish Files: ${r.publishFiles} | Install Files: ${r.installFiles}`;
+    }
+    return tooltip;
 };
