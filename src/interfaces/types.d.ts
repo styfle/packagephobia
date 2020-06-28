@@ -16,6 +16,8 @@ interface PkgSize {
     publishDate: string;
     publishSize: number;
     installSize: number;
+    publishFiles: number;
+    installFiles: number;
     disabled?: boolean;
 }
 
@@ -33,6 +35,7 @@ interface ApiResponseV2 {
 
 interface ApiResponseSize {
     bytes: number;
+    files: number;
     pretty: string;
     color: string;
 }

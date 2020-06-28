@@ -1,4 +1,0 @@
-This is the original file.
-Once I add a hardlink, will you be able to tell which one is which?
-Probably not, so we'll check the inode value.
-Anything changed in original.txt will be changed in hardlink.txt I think.
