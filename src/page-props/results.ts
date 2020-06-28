@@ -35,6 +35,8 @@ export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Pro
                 publishDate: getPublishDate(manifest, v),
                 publishSize: 0,
                 installSize: 0,
+                publishFiles: 0,
+                installFiles: 0,
                 disabled: true,
             };
         }

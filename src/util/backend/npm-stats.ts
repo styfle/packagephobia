@@ -8,7 +8,7 @@ const execFileAsync = promisify(execFile);
 import { npmInstall, packageString } from './npm-wrapper';
 
 // TODO: Can this be optimized by changing sync to async?
-export function getDirSize(root: string, seen = new Set()): number {
+export function getDirSize(root: string, seen: Set<number>): number {
     const stats = lstatSync(root);
 
     if (seen.has(stats.ino)) {
@@ -45,9 +45,19 @@ export async function calculatePackageSize(
     await mkdirAsync(pkgDir);
     await writeFileAsync(packageJson, packageString, 'utf8');
     await npmInstall(pkgDir, cacheDir, name, version);
-    const installSize = getDirSize(nodeModules);
-    const publishSize = getDirSize(join(nodeModules, name));
-    const output: PkgSize = { name, version, publishDate, publishSize, installSize };
+    const installFiles = new Set<number>();
+    const installSize = getDirSize(nodeModules, installFiles);
+    const publishFiles = new Set<number>();
+    const publishSize = getDirSize(join(nodeModules, name), publishFiles);
+    const output: PkgSize = {
+        name,
+        version,
+        publishDate,
+        publishSize,
+        installSize,
+        publishFiles: publishFiles.size,
+        installFiles: installFiles.size,
+    };
     clearTimeout(t);
     await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
 

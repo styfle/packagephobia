@@ -16,6 +16,8 @@ interface PkgSize {
     publishDate: string;
     publishSize: number;
     installSize: number;
+    publishFiles: number;
+    installFiles: number;
     disabled?: boolean;
 }
 

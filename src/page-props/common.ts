@@ -65,6 +65,8 @@ function packageNotFound(name: string) {
         publishDate: '',
         publishSize: 0,
         installSize: 0,
+        publishFiles: 0,
+        installFiles: 0,
         disabled: true,
     };
     const result = {
