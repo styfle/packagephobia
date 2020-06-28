@@ -56,7 +56,8 @@ export async function calculatePackageSize(
         publishSize,
         installSize,
         publishFiles: publishFiles.size,
-        installFiles: installFiles.size,
+        // Subtract 1 to exclude `node_modules` root dir
+        installFiles: installFiles.size - 1,
     };
     clearTimeout(t);
     await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
