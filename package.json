@@ -26,7 +26,7 @@
     "@types/node-fetch": "^2.5.7",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
-    "@types/redis": "^2.8.22",
+    "@types/redis": "^2.8.23",
     "@types/semver": "^7.3.1",
     "@types/tape": "^4.13.0",
     "@zeit/git-hooks": "^0.1.4",
