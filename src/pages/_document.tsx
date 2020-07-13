@@ -77,10 +77,10 @@ body {
     }
 }
 
-#codefund { margin-top: 1em; }
+#ethicalad { margin-top: 1em; }
 
 @media screen and (min-width: 75em) {
-    #codefund {
+    #ethicalad {
         position: absolute;
         top: 5vh;
         left: 1vw;
