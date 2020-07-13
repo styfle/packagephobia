@@ -2,7 +2,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { parse } from 'url';
 import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
-import { pages, versionUnknown, hostname } from './util/constants';
+import { pages, versionUnknown } from './util/constants';
 import { getResultProps } from './page-props/results';
 import { getBadgeUrl, getApiResponseSize } from './util/badge';
 import { parsePackageString } from './util/npm-parser';
@@ -65,10 +65,6 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                     return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
             });
-        } else if ((headers.host || '').startsWith('packagephobia.now.sh')) {
-            res.setHeader('Cache-Control', cacheControl(isProd, 0));
-            res.writeHead(301, { Location: `https://${hostname}${url}` });
-            return res.end();
         } else {
             const isIndex = pathname === pages.index;
             const hasVersion =

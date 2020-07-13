@@ -12,13 +12,14 @@ import ParseFailure from './parse-failure';
 import { getResultProps } from '../page-props/results';
 import { getCompareProps } from '../page-props/compare';
 
-import { containerId, pages, hostname } from '../util/constants';
+import { containerId, pages } from '../util/constants';
 import OctocatCorner from '../components/OctocatCorner';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
 const title = 'Package Phobia';
-const description = 'Find the cost of installing a node dependency';
+const description =
+    'Find the cost of adding a npm dependency to your Node.js project. Compare package install size and publish size over time.';
 const css = `
 body {
     margin: 0;
