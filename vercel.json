@@ -1,5 +1,5 @@
 {
     "redirects": [
-        { "source": "/(.*)", "destination": "https://packagephobia.com/$1" }
+        { "source": "/(.*)", "destination": "https://packagephobia.com/$1", "statusCode": 301 }
     ]
 }
