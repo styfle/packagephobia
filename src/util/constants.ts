@@ -11,4 +11,4 @@ export const pages = {
 };
 export const containerId = 'app-container';
 export const versionUnknown = 'unknown';
-export const hostname = 'packagephobia.com';
+export const productionHostname = 'packagephobia.com';

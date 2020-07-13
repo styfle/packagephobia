@@ -1,5 +1,5 @@
 import { getReadableFileSize, getHexColor } from './npm-parser';
-import { pages, hostname } from '../util/constants';
+import { pages, productionHostname } from '../util/constants';
 
 export function getBadgeUrl(pkgSize: PkgSize, isLatest: boolean) {
     const { name, version } = pkgSize;
@@ -9,8 +9,8 @@ export function getBadgeUrl(pkgSize: PkgSize, isLatest: boolean) {
 }
 
 export function getBadgeMarkdown(pkgNameAndVersion: string) {
-    const badgePage = `https://${hostname}${pages.badge}?p=${pkgNameAndVersion}`;
-    const resultPage = `https://${hostname}${pages.result}?p=${pkgNameAndVersion}`;
+    const badgePage = `https://${productionHostname}${pages.badge}?p=${pkgNameAndVersion}`;
+    const resultPage = `https://${productionHostname}${pages.result}?p=${pkgNameAndVersion}`;
     return `[![install size](${badgePage})](${resultPage})`;
 }
 

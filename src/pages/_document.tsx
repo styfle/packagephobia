@@ -12,7 +12,7 @@ import ParseFailure from './parse-failure';
 import { getResultProps } from '../page-props/results';
 import { getCompareProps } from '../page-props/compare';
 
-import { containerId, pages } from '../util/constants';
+import { containerId, pages, productionHostname } from '../util/constants';
 import OctocatCorner from '../components/OctocatCorner';
 
 const existingPaths = new Set(Object.values(pages));
@@ -117,7 +117,7 @@ export async function renderPage(
                 <meta name="msapplication-TileColor" content="#333333">
                 <meta name="theme-color" content="#333333">
                 <meta property="og:title" content="${title}">
-                <meta property="og:image" content="https://${hostname}${pages.logo_png}">
+                <meta property="og:image" content="https://${productionHostname}${pages.logo_png}">
                 <meta property="og:description" content="${description}">
             </head>
             <body>
