@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import { getBadgeUrl } from '../util/badge';
 import { Stat } from '../components/Stats';
 import SearchBar from '../components/SearchBar';
+import CarbonAd from '../components/CarbonAd';
 
 export default class ComparePage extends React.Component<CompareProps, {}> {
     render() {
@@ -38,7 +39,7 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                             .join(',')}
                     />
                     <div style={{ maxWidth: '100%', overflow: 'auto' }}>
-                        <table style={{ marginTop: '60px' }}>
+                        <table style={{ marginTop: '30px' }}>
                             <tbody>
                                 {resultsToPrint
                                     .filter(
@@ -88,6 +89,7 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                             </tbody>
                         </table>
                     </div>
+                    <CarbonAd />
                 </PageContainer>
                 <Footer />
             </>

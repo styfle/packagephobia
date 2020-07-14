@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EthicalAd from '../components/EthicalAd';
+import CarbonAd from '../components/CarbonAd';
 import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
@@ -31,7 +31,7 @@ export default () => (
             <SearchBar autoFocus={true} />
 
             <form
-                style={{ marginTop: '60px' }}
+                style={{ marginTop: '30px' }}
                 method="post"
                 action={pages.compare}
                 encType="multipart/form-data"
@@ -47,7 +47,7 @@ export default () => (
                 </noscript>
             </form>
 
-            <EthicalAd />
+            <CarbonAd />
         </PageContainer>
         <Footer />
     </>
