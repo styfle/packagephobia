@@ -31,7 +31,7 @@ export default () => (
             <SearchBar autoFocus={true} />
 
             <form
-                style={{ marginTop: '60px' }}
+                style={{ marginTop: '30px' }}
                 method="post"
                 action={pages.compare}
                 encType="multipart/form-data"
