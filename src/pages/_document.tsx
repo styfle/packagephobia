@@ -25,7 +25,7 @@ body {
     margin: 0;
     padding: 0;
     background: #fafafa;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;    
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 }
 
 *,
@@ -43,7 +43,7 @@ body {
     margin-left: calc(50vw - ${logoSize / 2}px);
     animation: rotate 1s infinite linear;
   }
-  
+
   @keyframes rotate {
     0% {
       transform: rotate(0deg);
@@ -51,7 +51,7 @@ body {
     100% {
       transform: rotate(360deg);
     }
-  } 
+  }
 
 .content-container {
     display: flex;
@@ -69,6 +69,7 @@ body {
     .content-container {
         flex-wrap: wrap;
     }
+
     .stats-container {
         margin: 0 auto;
     }
@@ -77,16 +78,7 @@ body {
         margin: 0 auto;
     }
 }
-
-#ethicalad { margin-top: 1em; }
-
-@media screen and (min-width: 75em) {
-    #ethicalad {
-        position: absolute;
-        top: 5vh;
-        left: 1vw;
-    }
-}`;
+`;
 
 export async function renderPage(
     res: ServerResponse,
