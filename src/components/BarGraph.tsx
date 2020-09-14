@@ -1,129 +1,151 @@
 import React from 'react';
 import { getReadableFileSize } from '../util/npm-parser';
 const stylesheet = `
-.bar-graph{
-    height:55vh;
-    padding-bottom:10vh;
-    display:flex;
-    align-items:baseline;
-    margin:0;
-    justify-content:center;
+.bar-graph {
+    height: 55vh;
+    padding-bottom: 10vh;
+    display: flex;
+    align-items: baseline;
+    margin: 0;
+    justify-content: center;
     max-width: 80vw;
     overflow-x: auto;
 }
-.bar-graph__bar-group{
-    height:100%;
-    position:relative;
-    width:1.6vw;
-    min-width:15px;
-    margin:0 5px;
+.bar-graph__bar-group {
+    height: 100%;
+    position: relative;
+    width: 1.6vw;
+    min-width: 15px;
+    margin: 0 5px;
 }
-.bar-graph__bar,.bar-graph__bar2{
-    width:100%;
-    position:absolute;
-    left:0;
-    bottom:0;
-    transition:background 0.2s;
-    animation:grow 0.4s cubic-bezier(0.305,0.42,0.205,1.2);
-    transform-origin:100% 100%;
-    cursor:pointer;
+.bar-graph__bar,
+.bar-graph__bar2 {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: background 0.2s;
+    -webkit-animation: grow 0.4s cubic-bezier(0.305, 0.42, 0.205, 1.2);
+            animation: grow 0.4s cubic-bezier(0.305, 0.42, 0.205, 1.2);
+    transform-origin: 100% 100%;
+    cursor: pointer;
 }
 .color1 {
-    background: #32DE85;
+    background: #32de85;
 }
 .color2 {
-    background: #26A664;
+    background: #26a664;
 }
-.bar-graph__bar-group--disabled .bar-graph__bar{
-    background:#dfe1e4;
+.bar-graph__bar-group--disabled .bar-graph__bar {
+    background: #dfe1e4;
 }
-.bar-graph__bar2{
-    z-index:1;
-    pointer-events:none;
+.bar-graph__bar2 {
+    z-index: 1;
+    pointer-events: none;
 }
-.bar-graph__bar:hover, .bar-graph__bar2:hover{
+.bar-graph__bar:hover,
+.bar-graph__bar2:hover {
     box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.1);
 }
-.bar-graph__bar-version{
-    font-size:0.8rem;
-    position:absolute;
-    bottom:-50px;
-    font-weight:400;
-    display:block;
-    transform:rotate(-90deg);
-    transform-origin:50% 50%;
-    width:100%;
-    text-align:right;
-    font-variant-numeric:tabular-nums;
-    color:#666E78;
-    transition:opacity 0.2s,color 0.2s;
-    animation:fade-in 0.5s 0.1s forwards cubic-bezier(0.305,0.42,0.205,1.2);
-    font-family:"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
-    letter-spacing:-1px;
+.bar-graph__bar-version {
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -50px;
+    font-weight: 400;
+    display: block;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    width: 100%;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: #666e78;
+    transition: opacity 0.2s, color 0.2s;
+    -webkit-animation: fade-in 0.5s 0.1s forwards cubic-bezier(0.305, 0.42, 0.205, 1.2);
+            animation: fade-in 0.5s 0.1s forwards cubic-bezier(0.305, 0.42, 0.205, 1.2);
+    font-family: "Source Code Pro", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    letter-spacing: -1px;
 }
-@media screen and (max-width:48em){
-    .bar-graph__bar-version{
-        font-size:0.75rem;
+@media screen and (max-width: 48em) {
+    .bar-graph__bar-version {
+        font-size: 0.75rem;
     }
 }
-@media screen and (max-width:40em){
-    .bar-graph__bar-version{
-        font-size:0.7rem;
+@media screen and (max-width: 40em) {
+    .bar-graph__bar-version {
+        font-size: 0.7rem;
     }
 }
-.bar-graph-container:hover .bar-graph__bar-version{
-    opacity:1;
-    color:black;
+.bar-graph-container:hover .bar-graph__bar-version {
+    opacity: 1;
+    color: black;
 }
-.bar-graph__bar-group:hover .bar-graph__bar-version{
-    color:black;
+.bar-graph__bar-group:hover .bar-graph__bar-version {
+    color: black;
 }
-.bar-graph__legend{
-    font-size:0.8rem;
-    padding-top:15px;
-    display:flex;
-    text-transform:uppercase;
-    justify-content:center;
-    color:#6d747d;
+.bar-graph__legend {
+    font-size: 0.8rem;
+    padding-top: 15px;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    color: #6d747d;
 }
-@media screen and (max-width:48em){
-    .bar-graph__legend{
-        font-size:0.75rem;
+@media screen and (max-width: 48em) {
+    .bar-graph__legend {
+        font-size: 0.75rem;
     }
 }
-@media screen and (max-width:40em){
-    .bar-graph__legend{
-        font-size:0.7rem;
+@media screen and (max-width: 40em) {
+    .bar-graph__legend {
+        font-size: 0.7rem;
     }
 }
-.bar-graph__legend__colorbox{
-    width:15px;
-    height:15px;
-    margin-right:10px;
+.bar-graph__legend__colorbox {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
 }
-.bar-graph__legend__bar1,.bar-graph__legend__bar2{
-    display:flex;
-    align-items:center;
+.bar-graph__legend__bar1,
+.bar-graph__legend__bar2 {
+    display: flex;
+    align-items: center;
 }
-.bar-graph__legend__bar1{
-    margin-right:40px;
+.bar-graph__legend__bar1 {
+    margin-right: 40px;
 }
-@keyframes grow{
-    from{
-        transform:scaleY(0);
+@-webkit-keyframes grow {
+    from {
+        transform: scaleY(0);
     }
-    to{
-        transform:scaleY(1);
+    to {
+        transform: scaleY(1);
     }
 }
-@keyframes fade-in{
-    from{
-        opacity:0;
+@keyframes grow {
+    from {
+        transform: scaleY(0);
     }
-    to{
-        opacity:0.7;
+    to {
+        transform: scaleY(1);
     }
-}`;
+}
+@-webkit-keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.7;
+    }
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.7;
+    }
+}
+`;
 
 interface Props {
     readings: PkgSize[];
