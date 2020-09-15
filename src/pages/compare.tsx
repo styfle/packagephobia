@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import { getBadgeUrl } from '../util/badge';
 import { Stat } from '../components/Stats';
 import SearchBar from '../components/SearchBar';
-import CarbonAd from '../components/CarbonAd';
+import EthicalAd from '../components/EthicalAd';
 
 export default class ComparePage extends React.Component<CompareProps, {}> {
     render() {
@@ -89,7 +89,7 @@ export default class ComparePage extends React.Component<CompareProps, {}> {
                             </tbody>
                         </table>
                     </div>
-                    <CarbonAd />
+                    <EthicalAd />
                 </PageContainer>
                 <Footer />
             </>
