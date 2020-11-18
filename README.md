@@ -5,8 +5,6 @@
 [![sponsor](https://badgen.net/badge/sponsor/styfle/black?icon=github)](https://github.com/sponsors/styfle)
 [![tests](https://github.com/styfle/packagephobia/workflows/Tests/badge.svg)](https://github.com/styfle/packagephobia/actions?workflow=Tests)
 ![uptime](https://badgen.net/uptime-robot/week/m783908968-e68af1e88fe9d03309911b73)
-[![dependency](https://badgen.net/david/dep/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia)
-[![devDependency](https://badgen.net/david/dev/styfle/packagephobia)](https://david-dm.org/styfle/packagephobia?type=dev)
 [![lgtm](https://badgen.net/lgtm/grade/javascript/g/styfle/packagephobia?label=quality)](https://lgtm.com/projects/g/styfle/packagephobia/)
 [![style: prettier](https://badgen.net/badge/style/prettier/ff69b4)](https://github.com/prettier/prettier)
 
