@@ -2,7 +2,7 @@ const npm = require('npm');
 const install = require('npm/lib/install');
 
 export function npmInstall(where: string, cacheDir: string, name: string, version: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
         npm.load((err?: Error) => {
             if (err) {
                 reject(err);
