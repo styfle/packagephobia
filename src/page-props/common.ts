@@ -22,11 +22,11 @@ export async function getPkgDetails(
 
     const tagToVersion = getAllDistTags(manifest);
     if (!version) {
-        version = tagToVersion['latest'];
+        version = tagToVersion.latest;
         isLatest = true;
         cacheResult = false;
     } else if (typeof tagToVersion[version] !== 'undefined') {
-        version = tagToVersion[version];
+        version = tagToVersion[version] || '';
         cacheResult = false;
     }
 

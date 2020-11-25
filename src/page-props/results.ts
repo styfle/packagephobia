@@ -26,10 +26,8 @@ export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Pro
     const cachedVersions = await findAll(name);
 
     const readings = chartVersions.map(v => {
-        if (v in cachedVersions) {
-            return cachedVersions[v];
-        } else {
-            return {
+        return (
+            cachedVersions[v] || {
                 name: name,
                 version: v,
                 publishDate: getPublishDate(manifest, v),
@@ -38,8 +36,8 @@ export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Pro
                 publishFiles: 0,
                 installFiles: 0,
                 disabled: true,
-            };
-        }
+            }
+        );
     });
 
     return {

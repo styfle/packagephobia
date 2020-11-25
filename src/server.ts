@@ -51,7 +51,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             req.on('data', chunk => data.push(chunk));
             req.on('end', () => {
                 try {
-                    const [packageString] = data.toString().match(/{[\s\S]+}/) || [];
+                    const [packageString = '{}'] = data.toString().match(/{[\s\S]+}/) || [];
                     const packageData: PackageJson = JSON.parse(packageString);
                     const queryString = Object.entries(packageData.dependencies)
                         .map(([name, version]) => {

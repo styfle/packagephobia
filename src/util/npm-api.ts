@@ -63,7 +63,7 @@ export function getVersionsForChart(allVersions: string[], version: string, coun
  * Get the npm publish date of a specific version
  */
 export function getPublishDate(manifest: NpmManifest | null, version: string) {
-    return manifest ? manifest.time[version] : '';
+    return manifest?.time[version] || '';
 }
 
 /**
