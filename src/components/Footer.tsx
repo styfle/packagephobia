@@ -102,20 +102,11 @@ export default () => (
                     <span>&nbsp;Chat on Twitter</span>
                 </a>
                 <a style={social} href="https://styfle.dev">
-                    <picture>
-                        <source
-                            srcSet="https://styfle.dev/styfle-ceriously.webp"
-                            type="image/webp"
-                        />
-                        <source srcSet="https://styfle.dev/styfle-ceriously.png" type="image/png" />
-                        <img
-                            alt="styfle"
-                            src="https://styfle.dev/styfle-ceriously.png"
-                            width="24"
-                            height="24"
-                        />
-                    </picture>
-
+                    <img
+                        src="https://styfle.dev/_next/image?url=%2Fimages%2Fblog%2Fstyfle-ceriously.png&w=128&q=75"
+                        width="24"
+                        height="24"
+                    />
                     <span>&nbsp;Created by styfle</span>
                 </a>
                 <a style={social} href="https://vercel.com/?utm_source=packagephobia">
