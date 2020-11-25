@@ -24,7 +24,7 @@ export function findAll(name: string) {
             } else {
                 const obj: { [key: string]: PkgSize } = {};
                 for (let version in reply) {
-                    const payload: PkgSize = JSON.parse(reply[version]);
+                    const payload: PkgSize = JSON.parse(reply[version] || '{}');
                     payload.name = name;
                     payload.version = version;
                     obj[version] = payload;
