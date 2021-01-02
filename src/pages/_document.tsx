@@ -14,7 +14,7 @@ import { getCompareProps } from '../page-props/compare';
 
 import { containerId, pages, productionHostname } from '../util/constants';
 import OctocatCorner from '../components/OctocatCorner';
-import PackagePhobiaLogo from '../components/PackagePhobiaLogo';
+import Logo from '../components/Logo';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
@@ -122,7 +122,7 @@ export async function renderPage(
                 <meta property="og:description" content="${description}">
             </head>
             <body>
-            <div id="spinwrap"><div></div><div id="spinner">${PackagePhobiaLogo('s')}</div></div>
+            <div id="spinwrap"><div></div><div id="spinner">${Logo('s')}</div></div>
             <script>
                 const spinwrap = document.getElementById('spinwrap');
                 spinwrap.style.display='block'
@@ -163,7 +163,7 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
     try {
         switch (pathname) {
             case pages.index:
-                return <Index logoSvg={PackagePhobiaLogo('m')} />;
+                return <Index />;
             case pages.parseFailure:
                 return <ParseFailure />;
             case pages.result:
