@@ -14,6 +14,7 @@
   "author": "styfle",
   "license": "MIT",
   "dependencies": {
+    "badgen": "^3.2.2",
     "node-fetch": "^2.6.1",
     "npm": "^6.14.10",
     "react": "^17.0.1",

@@ -1,11 +1,21 @@
+import { badgen } from 'badgen';
 import { getReadableFileSize, getHexColor } from './npm-parser';
 import { pages, productionHostname } from '../util/constants';
 
+export function getBadgeSvg(pkgSize: PkgSize) {
+    const { installSize } = pkgSize;
+    const { pretty } = getReadableFileSize(installSize);
+    return badgen({
+        label: 'install size',
+        status: pretty,
+        color: getHexColor(installSize),
+    });
+}
+
 export function getBadgeUrl(pkgSize: PkgSize, isLatest: boolean) {
     const { name, version } = pkgSize;
-    return isLatest
-        ? `https://badgen.net/packagephobia/install/${name}`
-        : `https://badgen.net/packagephobia/install/${name}@${version}`;
+    const pkgNameAndVersion = isLatest ? name : `${name}@${version}`;
+    return `https://${productionHostname}${pages.badge}?p=${pkgNameAndVersion}`;
 }
 
 export function getBadgeMarkdown(pkgNameAndVersion: string) {
