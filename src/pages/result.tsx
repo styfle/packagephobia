@@ -35,8 +35,8 @@ export default ({ pkgSize, readings, isLatest }: ResultProps) => {
                     <div style={{ display: 'flex', padding: '10px 0' }}>
                         <details style={{ cursor: 'pointer' }} title="Click to view markdown">
                             <summary dangerouslySetInnerHTML={{ __html: badgeSvg }} />
-                            <p>
-                                Copy and paste the following into your README.md:
+                            <p style={{ maxWidth: '138px' }}>
+                                Markdown:
                                 <br />
                                 <input
                                     type="text"
