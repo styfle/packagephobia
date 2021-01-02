@@ -24,9 +24,9 @@ export function mimeType(path: string): string {
 }
 
 export function cacheControl(isProd: boolean, days: number): string {
-    if (days === 0 || !isProd) {
+    if (!isProd) {
         return 'public, no-cache, no-store, must-revalidate';
     }
-    const sec = days * 24 * 60 * 60;
+    const sec = days === 0 ? 30 : days * 24 * 60 * 60;
     return `public, s-maxage=${sec}, max-age=${sec}`;
 }
