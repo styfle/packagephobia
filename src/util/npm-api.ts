@@ -12,10 +12,10 @@ export async function fetchManifest(name: string) {
     const response = await fetch(`${NPM_REGISTRY_URL}/${encodedPackage}`);
     const manifest: NpmManifest = await response.json();
     if (response.status === 404 || !manifest || Object.keys(manifest).length === 0) {
-        throw new Error('Package not found');
+        throw new Error(`Package "${name}" not found`);
     }
     if (manifest.time.unpublished) {
-        throw new Error('Package was unpublished');
+        throw new Error(`Package "${name}" was unpublished`);
     }
     return manifest;
 }
