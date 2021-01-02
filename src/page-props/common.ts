@@ -1,22 +1,20 @@
 import { findOne, insert } from '../util/backend/db';
-import { fetchManifest, getAllDistTags, getAllVersions, getPublishDate } from '../util/npm-api';
+import { getAllDistTags, getAllVersions, getPublishDate } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
 
 export async function getPkgDetails(
+    manifest: NpmManifest | null,
     name: string,
     version: string | null,
     force: boolean,
     tmpDir: string,
 ) {
-    let manifest: NpmManifest;
     let cacheResult = true;
     let isLatest = false;
 
-    try {
-        manifest = await fetchManifest(name);
-    } catch (e) {
-        console.error(`Package ${name} does not exist in npm`);
+    if (!manifest) {
+        console.error(`Package "${name}" does not exist in npm`);
         return packageNotFound(name);
     }
 
@@ -53,7 +51,6 @@ export async function getPkgDetails(
         cacheResult,
         isLatest,
         allVersions,
-        manifest,
     };
     return result;
 }

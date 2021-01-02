@@ -2,6 +2,8 @@ import * as npmapi from '../src/util/npm-api';
 import test from 'tape';
 
 const manifest = {
+    name: 'manifest example',
+    description: 'manifest example description',
     versions: {
         '1.0.0': '',
         '1.0.1': '',
@@ -45,6 +47,8 @@ const allVersions = [
 ];
 
 const manifestUnordered = {
+    name: 'manifest unordered example',
+    description: 'manifest unordered example description',
     versions: {
         '1.3.0-alpha': '',
         '1.3.0-beta': '',

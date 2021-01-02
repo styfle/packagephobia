@@ -15,12 +15,11 @@ import { getCompareProps } from '../page-props/compare';
 import { containerId, pages, productionHostname } from '../util/constants';
 import OctocatCorner from '../components/OctocatCorner';
 import Logo from '../components/Logo';
+import { fetchManifest } from '../util/npm-api';
+import { parsePackageString } from '../util/npm-parser';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
-const title = 'Package Phobia';
-const description =
-    'Find the cost of adding a npm dependency to your Node.js project. Compare package install size and publish size over time.';
 const css = `
 body {
     margin: 0;
@@ -102,6 +101,20 @@ export async function renderPage(
     gaId = '',
 ) {
     res.statusCode = getStatusCode(pathname);
+    let manifest: NpmManifest | null = null;
+    let title = 'Package Phobia';
+    let description =
+        'Find the cost of adding a npm dependency to your Node.js project. Compare package install size and publish size over time.';
+    if (pathname === pages.result && typeof query.p === 'string') {
+        try {
+            const parsed = parsePackageString(query.p);
+            manifest = await fetchManifest(parsed.name);
+            title = `${manifest.name} - Package Phobia`;
+            description = `Find the size of ${manifest.name}: ${manifest.description} - Package Phobia`;
+        } catch (err) {
+            console.error(err);
+        }
+    }
     res.write(`<!DOCTYPE html>
             <html lang="en">
             <head>
@@ -129,7 +142,7 @@ export async function renderPage(
             </script>
             ${OctocatCorner()}
             <div id="${containerId}">`);
-    const factory = await routePage(pathname, query, tmpDir);
+    const factory = await routePage(pathname, query, manifest, tmpDir);
     const stream = renderToNodeStream(factory);
     stream.pipe(res, { end: false });
     stream.on('end', () => {
@@ -160,7 +173,12 @@ export async function renderPage(
     });
 }
 
-async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string) {
+async function routePage(
+    pathname: string,
+    query: ParsedUrlQuery,
+    manifest: NpmManifest | null,
+    tmpDir: string,
+) {
     try {
         switch (pathname) {
             case pages.index:
@@ -171,7 +189,7 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
                 return (query.p || '').includes(',') ? (
                     <Compare {...await getCompareProps(query, tmpDir)} />
                 ) : (
-                    <Result {...await getResultProps(query, tmpDir)} />
+                    <Result {...await getResultProps(query, manifest, tmpDir)} />
                 );
             default:
                 return <NotFound />;

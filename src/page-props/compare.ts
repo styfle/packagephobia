@@ -1,3 +1,4 @@
+import { fetchManifest } from '../util/npm-api';
 import { parsePackageString } from '../util/npm-parser';
 import { getPkgDetails } from './common';
 
@@ -8,9 +9,10 @@ export async function getCompareProps(query: ParsedUrlQuery, tmpDir: string) {
     const packages = query.p.split(',').map(parsePackageString);
     const force = query.force === '1';
 
-    const promises = packages.map(({ name, version }) =>
-        getPkgDetails(name, version, force, tmpDir),
-    );
+    const promises = packages.map(async ({ name, version }) => {
+        const manifest = await fetchManifest(name);
+        return getPkgDetails(manifest, name, version, force, tmpDir);
+    });
     const results = await Promise.all(promises);
 
     return { results };

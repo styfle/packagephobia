@@ -62,6 +62,8 @@ interface ParsedUrlQuery {
 }
 
 interface NpmManifest {
+    name: string;
+    description: string;
     versions: { [version: string]: any };
     time: { [version: string]: string };
     'dist-tags': {

@@ -3,13 +3,18 @@ import { findAll } from '../util/backend/db';
 import { getVersionsForChart, getPublishDate } from '../util/npm-api';
 import { getPkgDetails } from './common';
 
-export async function getResultProps(query: ParsedUrlQuery, tmpDir: string): Promise<ResultProps> {
+export async function getResultProps(
+    query: ParsedUrlQuery,
+    manifest: NpmManifest | null,
+    tmpDir: string,
+): Promise<ResultProps> {
     if (!query || typeof query.p !== 'string') {
         throw new Error(`Unknown query string ${query}`);
     }
     const parsed = parsePackageString(query.p);
     const force = query.force === '1';
-    const { pkgSize, allVersions, cacheResult, isLatest, manifest } = await getPkgDetails(
+    const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(
+        manifest,
         parsed.name,
         parsed.version,
         force,
