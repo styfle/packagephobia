@@ -25,10 +25,10 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
     }
     try {
         if (pathname === pages.badge) {
-            const { pkgSize, isLatest, cacheResult } = await getResultProps(query, TMPDIR);
+            const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
             res.setHeader('Content-Type', mimeType('*.svg'));
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
-            res.end(getBadgeSvg(pkgSize, isLatest));
+            res.end(getBadgeSvg(pkgSize));
         } else if (pathname === pages.apiv1 || pathname === pages.apiv2) {
             const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
             const { publishSize, installSize, name, version, publishFiles, installFiles } = pkgSize;
