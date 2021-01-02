@@ -4,7 +4,7 @@ import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
 import { pages, versionUnknown } from './util/constants';
 import { getResultProps } from './page-props/results';
-import { getBadgeUrl, getApiResponseSize } from './util/badge';
+import { getApiResponseSize, getBadgeSvg } from './util/badge';
 import { parsePackageString } from './util/npm-parser';
 import semver from 'semver';
 
@@ -26,11 +26,9 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
     try {
         if (pathname === pages.badge) {
             const { pkgSize, isLatest, cacheResult } = await getResultProps(query, TMPDIR);
-            const badgeUrl = getBadgeUrl(pkgSize, isLatest);
-            res.statusCode = 307;
-            res.setHeader('Location', badgeUrl);
+            res.setHeader('Content-Type', mimeType('*.svg'));
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
-            res.end();
+            res.end(getBadgeSvg(pkgSize, isLatest));
         } else if (pathname === pages.apiv1 || pathname === pages.apiv2) {
             const { pkgSize, cacheResult } = await getResultProps(query, TMPDIR);
             const { publishSize, installSize, name, version, publishFiles, installFiles } = pkgSize;
