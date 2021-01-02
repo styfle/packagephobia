@@ -14,6 +14,7 @@ import { getCompareProps } from '../page-props/compare';
 
 import { containerId, pages, productionHostname } from '../util/constants';
 import OctocatCorner from '../components/OctocatCorner';
+import Logo from '../components/Logo';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
@@ -34,9 +35,14 @@ body {
     box-sizing: border-box;
 }
 
+#spinwrap {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: #fafafa;
+}
+
 #spinner {
-    background: url(${pages.logo_svg});
-    box-sizing: border-box;
     height: ${logoSize}px;
     width: ${logoSize}px;
     margin-top: calc(50vh - ${logoSize / 2}px);
@@ -112,12 +118,15 @@ export async function renderPage(
                 <meta name="msapplication-TileColor" content="#333333">
                 <meta name="theme-color" content="#333333">
                 <meta property="og:title" content="${title}">
-                <meta property="og:image" content="https://${productionHostname}${pages.logo_png}">
+                <meta property="og:image" content="https://${productionHostname}/logo.png">
                 <meta property="og:description" content="${description}">
             </head>
             <body>
-            <div id="spinner"></div>
-            <script>document.getElementById('spinner').style.display='block'</script>
+            <div id="spinwrap"><div></div><div id="spinner">${Logo('s')}</div></div>
+            <script>
+                const spinwrap = document.getElementById('spinwrap');
+                spinwrap.style.display='block'
+            </script>
             ${OctocatCorner()}
             <div id="${containerId}">`);
     const factory = await routePage(pathname, query, tmpDir);
@@ -126,10 +135,14 @@ export async function renderPage(
     stream.on('end', () => {
         res.end(`</div>
                 <script>
+                    const form = document.querySelector('form')
                     const input = document.querySelector('input[type=file]');
-                    input.onchange = () => input.form.submit();
+                    spinwrap.style.display='none';
+                    if (form)
+                      form.onsubmit = () => spinwrap.style.display='block';
+                    if (input)
+                        input.onchange = () => form.submit();
                 </script>
-                <script>document.getElementById('spinner').style.display='none'</script>
                 <script>
                     if ('${gaId}') {
                         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

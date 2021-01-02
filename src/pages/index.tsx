@@ -4,6 +4,7 @@ import EthicalAd from '../components/EthicalAd';
 import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
+import Logo from '../components/Logo';
 
 import { pages } from '../util/constants';
 
@@ -17,7 +18,7 @@ const h1: React.CSSProperties = {
 export default () => (
     <>
         <PageContainer>
-            <img src={pages.logo_svg} alt="Logo" width="108" height="108" />
+            <span dangerouslySetInnerHTML={{ __html: Logo('main') }} />
 
             <h1 style={h1}>
                 <span style={{ color: '#202420' }}>Package</span>
