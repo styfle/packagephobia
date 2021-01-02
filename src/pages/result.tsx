@@ -11,7 +11,7 @@ import EthicalAd from '../components/EthicalAd';
 
 import { pages, versionUnknown } from '../util/constants';
 import { getReadableFileSize } from '../util/npm-parser';
-import { getBadgeUrl, getBadgeMarkdown } from '../util/badge';
+import { getBadgeSvg, getBadgeMarkdown } from '../util/badge';
 
 const error: React.CSSProperties = {
     fontSize: '2.3rem',
@@ -24,7 +24,7 @@ export default ({ pkgSize, readings, isLatest }: ResultProps) => {
     const install = getReadableFileSize(pkgSize.installSize);
     const publish = getReadableFileSize(pkgSize.publishSize);
     const pkgNameAndVersion = isLatest ? pkgSize.name : `${pkgSize.name}@${pkgSize.version}`;
-    const badgeUrl = getBadgeUrl(pkgSize, isLatest);
+    const badgeSvg = getBadgeSvg(pkgSize);
 
     return (
         <>
@@ -34,9 +34,7 @@ export default ({ pkgSize, readings, isLatest }: ResultProps) => {
                 {exists ? (
                     <div style={{ display: 'flex', padding: '10px 0' }}>
                         <details style={{ cursor: 'pointer' }} title="Click to view markdown">
-                            <summary>
-                                <img alt="badge" src={badgeUrl} />
-                            </summary>
+                            <summary dangerouslySetInnerHTML={{ __html: badgeSvg }} />
                             <p>
                                 Copy and paste the following into your README.md:
                                 <br />
