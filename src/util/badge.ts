@@ -7,8 +7,8 @@ export function getBadgeSvg(pkgSize: PkgSize) {
     const { pretty } = getReadableFileSize(installSize);
     return badgen({
         label: 'install size',
-        labelColor: getHexColor(installSize),
         status: pretty,
+        color: getHexColor(installSize),
     });
 }
 
