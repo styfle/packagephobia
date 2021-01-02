@@ -5,11 +5,12 @@ import { pages, productionHostname } from '../util/constants';
 export function getBadgeSvg(pkgSize: PkgSize) {
     const { installSize } = pkgSize;
     const { pretty } = getReadableFileSize(installSize);
-    return badgen({
+    const svg = badgen({
         label: 'install size',
         status: pretty,
         color: getHexColor(installSize),
     });
+    return svg;
 }
 
 export function getBadgeUrl(pkgSize: PkgSize, isLatest: boolean) {
