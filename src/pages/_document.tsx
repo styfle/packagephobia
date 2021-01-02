@@ -135,13 +135,14 @@ export async function renderPage(
     stream.on('end', () => {
         res.end(`</div>
                 <script>
-                    const form = document.querySelector('form')
+                    const forms = document.querySelectorAll('form')
                     const input = document.querySelector('input[type=file]');
                     spinwrap.style.display='none';
-                    if (form)
+                    for (let form of forms)
                       form.onsubmit = () => spinwrap.style.display='block';
-                    if (input)
-                        input.onchange = () => form.submit();
+                    if (input) {
+                        input.onchange = () => input.form.submit();
+                    }
                 </script>
                 <script>
                     if ('${gaId}') {
