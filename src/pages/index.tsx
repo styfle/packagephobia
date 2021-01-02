@@ -17,7 +17,7 @@ const h1: React.CSSProperties = {
 export default (props: { logoSvg: string }) => (
     <>
         <PageContainer>
-            <div dangerouslySetInnerHTML={{ __html: props.logoSvg }} />
+            <span dangerouslySetInnerHTML={{ __html: props.logoSvg }} />
 
             <h1 style={h1}>
                 <span style={{ color: '#202420' }}>Package</span>

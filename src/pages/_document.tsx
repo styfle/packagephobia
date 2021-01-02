@@ -18,7 +18,6 @@ import PackagePhobiaLogo from '../components/PackagePhobiaLogo';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
-const logoSvg = PackagePhobiaLogo();
 const title = 'Package Phobia';
 const description =
     'Find the cost of adding a npm dependency to your Node.js project. Compare package install size and publish size over time.';
@@ -36,8 +35,14 @@ body {
     box-sizing: border-box;
 }
 
+#spinwrap {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: #fafafa;
+}
+
 #spinner {
-    box-sizing: border-box;
     height: ${logoSize}px;
     width: ${logoSize}px;
     margin-top: calc(50vh - ${logoSize / 2}px);
@@ -117,8 +122,11 @@ export async function renderPage(
                 <meta property="og:description" content="${description}">
             </head>
             <body>
-            <div id="spinner">${logoSvg}</div>
-            <script>document.getElementById('spinner').style.display='block'</script>
+            <div id="spinwrap"><div></div><div id="spinner">${PackagePhobiaLogo('s')}</div></div>
+            <script>
+                const spinwrap = document.getElementById('spinwrap');
+                spinwrap.style.display='block'
+            </script>
             ${OctocatCorner()}
             <div id="${containerId}">`);
     const factory = await routePage(pathname, query, tmpDir);
@@ -127,10 +135,14 @@ export async function renderPage(
     stream.on('end', () => {
         res.end(`</div>
                 <script>
+                    const form = document.querySelector('form')
                     const input = document.querySelector('input[type=file]');
-                    input.onchange = () => input.form.submit();
+                    spinwrap.style.display='none';
+                    if (form)
+                      form.onsubmit = () => spinwrap.style.display='block';
+                    if (input)
+                        input.onchange = () => form.submit();
                 </script>
-                <script>document.getElementById('spinner').style.display='none'</script>
                 <script>
                     if ('${gaId}') {
                         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -151,7 +163,7 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
     try {
         switch (pathname) {
             case pages.index:
-                return <Index logoSvg={logoSvg} />;
+                return <Index logoSvg={PackagePhobiaLogo('m')} />;
             case pages.parseFailure:
                 return <ParseFailure />;
             case pages.result:
