@@ -108,6 +108,7 @@ export default () => (
                         height="24"
                         loading="lazy"
                         decoding="async"
+                        alt="styfle"
                     />
                     <span>&nbsp;Created by styfle</span>
                 </a>
