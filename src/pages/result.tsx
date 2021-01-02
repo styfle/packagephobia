@@ -35,14 +35,19 @@ export default ({ pkgSize, readings, isLatest }: ResultProps) => {
                     <div style={{ display: 'flex', padding: '10px 0' }}>
                         <details style={{ cursor: 'pointer' }} title="Click to view markdown">
                             <summary dangerouslySetInnerHTML={{ __html: badgeSvg }} />
-                            <p style={{ maxWidth: '138px' }}>
-                                Markdown:
+                            <p>
+                                Copy Markdown:
                                 <br />
                                 <input
                                     type="text"
                                     aria-label="Markdown for Badge"
                                     defaultValue={getBadgeMarkdown(pkgNameAndVersion)}
-                                    style={{ width: '100%', fontFamily: 'monospace' }}
+                                    style={{
+                                        position: 'absolute',
+                                        width: '285px',
+                                        maxWidth: '90vw',
+                                        fontFamily: 'monospace',
+                                    }}
                                 />
                             </p>
                         </details>
