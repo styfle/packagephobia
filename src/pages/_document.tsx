@@ -14,9 +14,11 @@ import { getCompareProps } from '../page-props/compare';
 
 import { containerId, pages, productionHostname } from '../util/constants';
 import OctocatCorner from '../components/OctocatCorner';
+import PackagePhobiaLogo from '../components/PackagePhobiaLogo';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
+const logoSvg = PackagePhobiaLogo();
 const title = 'Package Phobia';
 const description =
     'Find the cost of adding a npm dependency to your Node.js project. Compare package install size and publish size over time.';
@@ -35,7 +37,6 @@ body {
 }
 
 #spinner {
-    background: url(${pages.logo_svg});
     box-sizing: border-box;
     height: ${logoSize}px;
     width: ${logoSize}px;
@@ -112,11 +113,11 @@ export async function renderPage(
                 <meta name="msapplication-TileColor" content="#333333">
                 <meta name="theme-color" content="#333333">
                 <meta property="og:title" content="${title}">
-                <meta property="og:image" content="https://${productionHostname}${pages.logo_png}">
+                <meta property="og:image" content="https://${productionHostname}/logo.png">
                 <meta property="og:description" content="${description}">
             </head>
             <body>
-            <div id="spinner"></div>
+            <div id="spinner">${logoSvg}</div>
             <script>document.getElementById('spinner').style.display='block'</script>
             ${OctocatCorner()}
             <div id="${containerId}">`);
@@ -150,7 +151,7 @@ async function routePage(pathname: string, query: ParsedUrlQuery, tmpDir: string
     try {
         switch (pathname) {
             case pages.index:
-                return <Index />;
+                return <Index logoSvg={logoSvg} />;
             case pages.parseFailure:
                 return <ParseFailure />;
             case pages.result:

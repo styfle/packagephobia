@@ -14,10 +14,10 @@ const h1: React.CSSProperties = {
     marginBottom: '0',
 };
 
-export default () => (
+export default (props: { logoSvg: string }) => (
     <>
         <PageContainer>
-            <img src={pages.logo_svg} alt="Logo" width="108" height="108" />
+            <div dangerouslySetInnerHTML={{ __html: props.logoSvg }} />
 
             <h1 style={h1}>
                 <span style={{ color: '#202420' }}>Package</span>
