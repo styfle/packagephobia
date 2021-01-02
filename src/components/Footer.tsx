@@ -106,6 +106,8 @@ export default () => (
                         src="https://styfle.dev/_next/image?url=%2Fimages%2Fblog%2Fstyfle-ceriously.png&w=128&q=75"
                         width="24"
                         height="24"
+                        loading="lazy"
+                        decoding="async"
                     />
                     <span>&nbsp;Created by styfle</span>
                 </a>
