@@ -105,7 +105,7 @@ export async function renderPage(
     let title = 'Package Phobia';
     let description =
         'Find the cost of adding a npm dependency to your Node.js project. Compare package install size and publish size over time.';
-    if (pages.result && typeof query.p === 'string') {
+    if (pathname === pages.result && typeof query.p === 'string') {
         try {
             const parsed = parsePackageString(query.p);
             manifest = await fetchManifest(parsed.name);
