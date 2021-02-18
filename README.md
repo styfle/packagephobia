@@ -46,6 +46,11 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 - Headless Browsers: [puppeteer](https://packagephobia.com/result?p=puppeteer) vs [chrome-aws-lambda](https://packagephobia.com/result?p=chrome-aws-lambda)
 - Package Managers: [npm](https://packagephobia.com/result?p=npm) vs [yarn](https://packagephobia.com/result?p=yarn)
 
+## API
+
+If you would like to use Package Phobia in your project, there is an API available. I would really appreciate if you could contact me before using it, so my [data storage doesn't suddenly increase by 10x](https://github.com/styfle/packagephobia/issues/141). You can let me know by [creating an issue](https://github.com/styfle/packagephobia/issues).
+
+See [API.md](https://github.com/styfle/packagephobia/blob/main/API.md) for more details.
 ## Prior Art
 
 Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundlephobia) and [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules).
