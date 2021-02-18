@@ -9,11 +9,11 @@ You can use the npm package name and version (cached for one week):
 
 [`https://packagephobia.com/api.json?p=next@10.0.7`](https://packagephobia.com/api.json?p=next@10.0.7)
 
-Or the npm package name, which will automatically use the latest version (cached for thirty seconds):
+Or just the npm package name, which will automatically use the latest version (cached for thirty seconds):
 
 [`https://packagephobia.com/api.json?p=next`](https://packagephobia.com/api.json?p=next)
 
-> This caching is done using a `Cache-Control` header, see [`server.ts`](https://github.com/styfle/packagephobia/blob/main/src/server.ts)
+> This caching is done using a [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) header, see [`server.ts`](https://github.com/styfle/packagephobia/blob/main/src/server.ts).
 
 ### Example response from v1
 
