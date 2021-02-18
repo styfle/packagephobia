@@ -1,5 +1,12 @@
 # API
 
+## Users
+
+- https://badgen.net
+- https://cnpmjs.org
+- https://npm.taobao.org
+- https://bestofjs.org
+
 ## Endpoints
 
 - v1: `GET /api.json`
