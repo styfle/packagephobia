@@ -100,16 +100,25 @@ export async function renderPage(
     gaId = '',
 ) {
     res.statusCode = getStatusCode(pathname);
+    const force = query.force === '1';
+    let inputStr = '';
     let manifest: NpmManifest | null = null;
+    let pkgVersions: PackageVersion[] = [];
     let title = 'Package Phobia';
     let description =
         'Find the cost of adding a npm dependency to your Node.js project. Compare package install size and publish size over time.';
     if (pathname === pages.result && typeof query.p === 'string') {
         try {
-            const parsed = parsePackageString(query.p);
-            manifest = await fetchManifest(parsed.name);
-            title = `${manifest.name} - Package Phobia`;
-            description = `Find the size of ${manifest.name}: ${manifest.description} - Package Phobia`;
+            inputStr = query.p;
+            pkgVersions = inputStr.split(',').map(parsePackageString);
+            const first = pkgVersions[0];
+            if (first) {
+                manifest = await fetchManifest(first.name);
+                if (pkgVersions.length === 1) {
+                    title = `${manifest.name} - Package Phobia`;
+                    description = `Find the size of ${manifest.name}: ${manifest.description} - Package Phobia`;
+                }
+            }
         } catch (err) {
             console.error(err);
         }
@@ -141,7 +150,7 @@ export async function renderPage(
             </script>
             ${OctocatCorner()}
             <div id="${containerId}">`);
-    const factory = await routePage(pathname, query, manifest, tmpDir);
+    const factory = await routePage(pathname, inputStr, pkgVersions, manifest, force, tmpDir);
     const stream = renderToNodeStream(factory);
     stream.pipe(res, { end: false });
     stream.on('end', () => {
@@ -174,8 +183,10 @@ export async function renderPage(
 
 async function routePage(
     pathname: string,
-    query: ParsedUrlQuery,
+    inputStr: string,
+    pkgVersions: PackageVersion[],
     manifest: NpmManifest | null,
+    force: boolean,
     tmpDir: string,
 ) {
     try {
@@ -185,10 +196,14 @@ async function routePage(
             case pages.parseFailure:
                 return <ParseFailure />;
             case pages.result:
-                return (query.p || '').includes(',') ? (
-                    <Compare {...await getCompareProps(query, tmpDir)} />
+                const first = pkgVersions[0];
+                return pkgVersions.length === 1 ||
+                    pkgVersions.every(p => p.name === first?.name && p.scoped == first?.scoped) ? (
+                    <Result
+                        {...await getResultProps(inputStr, pkgVersions, manifest, force, tmpDir)}
+                    />
                 ) : (
-                    <Result {...await getResultProps(query, manifest, tmpDir)} />
+                    <Compare {...await getCompareProps(inputStr, pkgVersions, force, tmpDir)} />
                 );
             default:
                 return <NotFound />;

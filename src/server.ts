@@ -3,7 +3,7 @@ import { parse } from 'url';
 import { mimeType, cacheControl } from './util/backend/lookup';
 import { renderPage } from './pages/_document';
 import { pages, versionUnknown } from './util/constants';
-import { getResultProps } from './page-props/results';
+import { getPkgDetails } from './page-props/common';
 import { getApiResponseSize, getBadgeSvg } from './util/badge';
 import { parsePackageString } from './util/npm-parser';
 import semver from 'semver';
@@ -24,18 +24,31 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
     if (!pathname || pathname === '/') {
         pathname = pages.index;
     }
+    const force = query.force === '1';
     try {
         if (pathname === pages.badge) {
             const parsed = parsePackageString(query.p as string);
             const manifest = await fetchManifest(parsed.name);
-            const { pkgSize, cacheResult } = await getResultProps(query, manifest, TMPDIR);
+            const { pkgSize, cacheResult } = await getPkgDetails(
+                manifest,
+                parsed.name,
+                parsed.version,
+                force,
+                TMPDIR,
+            );
             res.setHeader('Content-Type', mimeType('*.svg'));
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end(getBadgeSvg(pkgSize));
         } else if (pathname === pages.apiv1 || pathname === pages.apiv2) {
             const parsed = parsePackageString(query.p as string);
             const manifest = await fetchManifest(parsed.name);
-            const { pkgSize, cacheResult } = await getResultProps(query, manifest, TMPDIR);
+            const { pkgSize, cacheResult } = await getPkgDetails(
+                manifest,
+                parsed.name,
+                parsed.version,
+                force,
+                TMPDIR,
+            );
             const { publishSize, installSize, name, version, publishFiles, installFiles } = pkgSize;
             let result: ApiResponseV1 | ApiResponseV2;
             if (pathname === pages.apiv1) {

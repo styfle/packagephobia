@@ -19,7 +19,7 @@ const error: React.CSSProperties = {
     textAlign: 'center',
 };
 
-export default ({ pkgSize, readings, isLatest }: ResultProps) => {
+export default ({ pkgSize, readings, isLatest, inputStr }: ResultProps) => {
     const exists = pkgSize.version !== versionUnknown;
     const install = getReadableFileSize(pkgSize.installSize);
     const publish = getReadableFileSize(pkgSize.publishSize);
@@ -29,7 +29,7 @@ export default ({ pkgSize, readings, isLatest }: ResultProps) => {
     return (
         <>
             <PageContainer>
-                <SearchBar autoFocus={false} defaultValue={pkgNameAndVersion} />
+                <SearchBar autoFocus={false} defaultValue={inputStr} />
 
                 {exists ? (
                     <div style={{ display: 'flex', padding: '10px 0' }}>
