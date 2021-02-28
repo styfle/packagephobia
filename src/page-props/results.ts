@@ -1,18 +1,19 @@
-import { parsePackageString, isFullRelease } from '../util/npm-parser';
+import { isFullRelease } from '../util/npm-parser';
 import { findAll } from '../util/backend/db';
 import { getVersionsForChart, getPublishDate } from '../util/npm-api';
 import { getPkgDetails } from './common';
 
 export async function getResultProps(
-    query: ParsedUrlQuery,
+    inputStr: string,
+    pkgVersions: PackageVersion[],
     manifest: NpmManifest | null,
+    force: boolean,
     tmpDir: string,
 ): Promise<ResultProps> {
-    if (!query || typeof query.p !== 'string') {
-        throw new Error(`Unknown query string ${query}`);
+    const parsed = pkgVersions[0];
+    if (!parsed) {
+        throw new Error('Expected one or more versions');
     }
-    const parsed = parsePackageString(query.p);
-    const force = query.force === '1';
     const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(
         manifest,
         parsed.name,
@@ -20,11 +21,15 @@ export async function getResultProps(
         force,
         tmpDir,
     );
+
     const { name, version } = pkgSize;
 
-    const filteredVersions = isFullRelease(version)
-        ? allVersions.filter(isFullRelease)
-        : allVersions;
+    const filteredVersions =
+        pkgVersions.length > 1
+            ? pkgVersions.map(p => p.version).filter(notEmpty)
+            : isFullRelease(version)
+            ? allVersions.filter(isFullRelease)
+            : allVersions;
 
     const chartVersions = getVersionsForChart(filteredVersions, version, 7);
 
@@ -50,5 +55,10 @@ export async function getResultProps(
         readings,
         cacheResult,
         isLatest,
+        inputStr,
     };
+}
+
+function notEmpty<T>(value: T | null | undefined): value is T {
+    return value !== null && value !== undefined;
 }

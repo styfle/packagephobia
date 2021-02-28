@@ -45,6 +45,7 @@ interface ResultProps {
     readings: PkgSize[];
     cacheResult: boolean;
     isLatest: boolean;
+    inputStr: string;
 }
 
 interface ComparePackage {
@@ -54,6 +55,7 @@ interface ComparePackage {
 }
 
 interface CompareProps {
+    inputStr: string;
     results: ComparePackage[];
 }
 
