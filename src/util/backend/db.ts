@@ -10,6 +10,7 @@ const client = createClient({
     host: REDIS_HOST,
     port: parseInt(REDIS_PORT),
     password: REDIS_PASS,
+    tls: true,
 });
 
 client.on('error', err => {
