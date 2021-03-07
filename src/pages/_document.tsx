@@ -82,10 +82,17 @@ body {
     }
 }
 
-#ethicalad { margin-top: 1em; }
+#sponsors { margin-top: 1em; }
+
+#sponsors:before {
+    content: 'Sponsors';
+    color: #777;
+    font-weight: 300;
+    padding-left: 25%;
+}
 
 @media screen and (min-width: 75em) {
-    #ethicalad {
+    #sponsors {
         position: absolute;
         top: 5vh;
         left: 1vw;

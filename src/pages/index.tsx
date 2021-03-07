@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EthicalAd from '../components/EthicalAd';
+import Sponsors from '../components/Sponsors';
 import PageContainer from '../components/PageContainer';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
@@ -48,7 +48,7 @@ export default () => (
                 </noscript>
             </form>
 
-            <EthicalAd />
+            <Sponsors />
         </PageContainer>
         <Footer />
     </>

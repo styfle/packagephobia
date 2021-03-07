@@ -1,14 +1,12 @@
-<img src="https://packagephobia.com/logo.svg" width=40 height=40 align="left" />
+<img src="https://packagephobia.com/logo.svg" width="40" height="40" align="left" />
 
 # Package Phobia
-
-[![sponsor](https://badgen.net/badge/sponsor/styfle/black?icon=github)](https://github.com/sponsors/styfle)
 [![tests](https://github.com/styfle/packagephobia/workflows/Tests/badge.svg)](https://github.com/styfle/packagephobia/actions?workflow=Tests)
 ![uptime](https://badgen.net/uptime-robot/week/m783908968-e68af1e88fe9d03309911b73)
 [![lgtm](https://badgen.net/lgtm/grade/javascript/g/styfle/packagephobia?label=quality)](https://lgtm.com/projects/g/styfle/packagephobia/)
 [![style: prettier](https://badgen.net/badge/style/prettier/ff69b4)](https://github.com/prettier/prettier)
 
-<a href="https://turnoff.us/geek/npm-install/"><img src="https://turnoff.us/image/en/npm-install.png" width=300 height=400 align="right" /></a>
+<a href="https://turnoff.us/geek/npm-install/"><img src="https://turnoff.us/image/en/npm-install.png" width="300" height="400" align="right" /></a>
 
 - ⚖️ Find the cost of adding a new dependency to your project
 - 🕗 Save yourself time and disk space with this web app
@@ -138,9 +136,10 @@ Below are some other users who comically point out this JS bloat.
 
 See [CONTRIBUTING.md](https://github.com/styfle/packagephobia/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/styfle/packagephobia/blob/main/CODE_OF_CONDUCT.md) before you start writing any code
 
-## Sponsoring
+## Sponsors
 
-Get your name in this readme by [sponsoring this project](https://github.com/sponsors/styfle).
+- Web hosting sponsored by [vercel.com](https://vercel.com/?utm_source=packagephobia)
+- Database sponsored by [upstash.com](https://upstash.com/?ref=packagephobia)
 
 ## Author
 
