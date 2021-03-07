@@ -49,6 +49,7 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 If you would like to use the Package Phobia API in your project, please create a PR modifying [API Users](https://github.com/styfle/packagephobia/blob/main/API.md#users).
 
 See [API.md](https://github.com/styfle/packagephobia/blob/main/API.md) for more usage details.
+
 ## Prior Art
 
 Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundlephobia) and [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules).
@@ -116,21 +117,22 @@ I'm not the first one to notice npm packages are snowballing into bloated depend
 
 Below are some other users who comically point out this JS bloat.
 
-- [thomasfuchs](https://twitter.com/thomasfuchs/status/977541462199029760)
-- [ben_a_adams](https://twitter.com/ben_a_adams/status/979358943561609216)
-- [devrant](https://devrant.com/rants/760537/heaviest-objects-in-the-universe)
-- [turnoff.us](https://turnoff.us/geek/npm-install/)
-- [styfle](https://twitter.com/styfle/status/968180698149539841)
-- [davej](https://github.com/npm/npm/issues/10361)
-- [FredyC](https://github.com/yarnpkg/yarn/issues/2088)
-- [tomitrescak](https://github.com/npm/npm/issues/12515)
-- [maybekatz](https://twitter.com/maybekatz/status/988893800054456320)
-- [hichaelmart](https://twitter.com/hichaelmart/status/988882864270962688)
-- [brad_frost](https://twitter.com/brad_frost/status/996014341592961025)
-- [Bryan_Chapel](https://twitter.com/Bryan_Chapel/status/1002680482159648769)
-- [getabitlit](https://twitter.com/getabitlit/status/1013524294394003456)
-- [iamdevloper](https://twitter.com/iamdevloper/status/1013767672369242112)
-- [rickhanlonii](https://twitter.com/rickhanlonii/status/1062319416107560961)
+| [thomasfuchs](https://twitter.com/thomasfuchs/status/977541462199029760)
+| [ben_a_adams](https://twitter.com/ben_a_adams/status/979358943561609216)
+| [devrant](https://devrant.com/rants/760537/heaviest-objects-in-the-universe)
+| [turnoff.us](https://turnoff.us/geek/npm-install/)
+| [styfle](https://twitter.com/styfle/status/968180698149539841)
+| [davej](https://github.com/npm/npm/issues/10361)
+| [FredyC](https://github.com/yarnpkg/yarn/issues/2088)
+| [tomitrescak](https://github.com/npm/npm/issues/12515)
+| [maybekatz](https://twitter.com/maybekatz/status/988893800054456320)
+| [hichaelmart](https://twitter.com/hichaelmart/status/988882864270962688)
+| [brad_frost](https://twitter.com/brad_frost/status/996014341592961025)
+| [Bryan_Chapel](https://twitter.com/Bryan_Chapel/status/1002680482159648769)
+| [getabitlit](https://twitter.com/getabitlit/status/1013524294394003456)
+| [iamdevloper](https://twitter.com/iamdevloper/status/1013767672369242112)
+| [rickhanlonii](https://twitter.com/rickhanlonii/status/1062319416107560961)
+|
 
 ## Contributing
 
