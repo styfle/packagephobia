@@ -35,7 +35,7 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 - HTTP Requests: [request](https://packagephobia.com/result?p=request) vs [node-fetch](https://packagephobia.com/result?p=node-fetch)
 - Glob Patterns: [glob](https://packagephobia.com/result?p=glob) vs [tiny-glob](https://packagephobia.com/result?p=tiny-glob)
 - Arguments: [yargs](https://packagephobia.com/result?p=yargs) vs [arg](https://packagephobia.com/result?p=arg)
-- Site Generators: [gatsby](https://packagephobia.com/result?p=gatsby) vs [hexo](https://packagephobia.com/result?p=hexo)
+- Site Generators: [gatsby](https://packagephobia.com/result?p=gatsby) vs [next](https://packagephobia.com/result?p=next)
 - Type Checkers: [typescript](https://packagephobia.com/result?p=typescript) vs [flow-bin](https://packagephobia.com/result?p=flow-bin)
 - Linters: [eslint](https://packagephobia.com/result?p=eslint) vs [jslint](https://packagephobia.com/result?p=jslint)
 - Color Formatters: [chalk](https://packagephobia.com/result?p=chalk) vs [colorette](https://packagephobia.com/result?p=colorette)
