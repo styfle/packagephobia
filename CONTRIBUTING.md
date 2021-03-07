@@ -15,7 +15,7 @@ cd packagephobia
 
 ### Redis
 
-You will need to run `redis` either locally or in the cloud such as [redis labs](https://redislabs.com).
+You will need to run `redis` either locally or in the cloud such as [upstash.com](https://upstash.com/?ref=packagephobia).
 
 If you have docker, you can get started quickly with the following command.
 
