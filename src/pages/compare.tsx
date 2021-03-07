@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import { getBadgeUrl } from '../util/badge';
 import { Stat } from '../components/Stats';
 import SearchBar from '../components/SearchBar';
-import EthicalAd from '../components/EthicalAd';
+import Sponsors from '../components/Sponsors';
 
 export default ({ inputStr, results }: CompareProps) => {
     const resultsToPrint = results.map(({ pkgSize, isLatest }) => {
@@ -76,7 +76,7 @@ export default ({ inputStr, results }: CompareProps) => {
                         </tbody>
                     </table>
                 </div>
-                <EthicalAd />
+                <Sponsors />
             </PageContainer>
             <Footer />
         </>
