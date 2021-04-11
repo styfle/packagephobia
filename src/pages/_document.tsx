@@ -135,8 +135,8 @@ export async function renderPage(
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                <title>${title}</title>
-                <meta name="description" content="${description}">
+                <title>${escapeHtml(title)}</title>
+                <meta name="description" content="${escapeHtml(description)}">
                 <style>${css}</style>
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
                 <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -145,9 +145,9 @@ export async function renderPage(
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33">
                 <meta name="msapplication-TileColor" content="#333333">
                 <meta name="theme-color" content="#333333">
-                <meta property="og:title" content="${title}">
+                <meta property="og:title" content="${escapeHtml(title)}">
                 <meta property="og:image" content="https://${productionHostname}/logo.png">
-                <meta property="og:description" content="${description}">
+                <meta property="og:description" content="${escapeHtml(description)}">
             </head>
             <body>
             <div id="spinwrap"><div></div><div id="spinner">${Logo('s')}</div></div>
@@ -226,4 +226,19 @@ function getStatusCode(pathname: string) {
         return 200;
     }
     return 404;
+}
+
+function escapeHtml(str: string): string {
+    const entityMap: { [s: string]: string } = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+        '/': '&#x2F;',
+    };
+    return str
+        .split('')
+        .map(s => entityMap[s] || s)
+        .join('');
 }
