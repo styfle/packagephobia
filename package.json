@@ -30,7 +30,7 @@
     "@types/redis": "^2.8.28",
     "@types/semver": "^7.3.4",
     "@types/tape": "^4.13.0",
-    "@zeit/git-hooks": "^0.1.4",
+    "@vercel/git-hooks": "^1.0.0",
     "prettier": "^2.2.1",
     "tape": "^5.2.2",
     "typescript": "^4.2.4"
