@@ -1,6 +1,6 @@
 import { isFullRelease } from '../util/npm-parser';
 import { findAll } from '../util/backend/db';
-import { getVersionsForChart, getPublishDate } from '../util/npm-api';
+import { getAllDistTags, getVersionsForChart, getPublishDate } from '../util/npm-api';
 import { getPkgDetails } from './common';
 
 export async function getResultProps(
@@ -14,6 +14,9 @@ export async function getResultProps(
     if (!parsed) {
         throw new Error('Expected one or more versions');
     }
+    if (!manifest) {
+        throw new Error(`Package "${parsed.name}" does not exist in npm`);
+    }
     const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(
         manifest,
         parsed.name,
@@ -23,10 +26,11 @@ export async function getResultProps(
     );
 
     const { name, version } = pkgSize;
+    const tagToVersion = getAllDistTags(manifest);
 
     const filteredVersions =
         pkgVersions.length > 1
-            ? pkgVersions.map(p => p.version).filter(notEmpty)
+            ? pkgVersions.map(p => tagToVersion[p.version || ''] || p.version).filter(notEmpty)
             : isFullRelease(version)
             ? allVersions.filter(isFullRelease)
             : allVersions;
