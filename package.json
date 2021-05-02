@@ -6,7 +6,8 @@
   },
   "scripts": {
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
-    "git-pre-commit": "npm run prettier && git add -A",
+    "pre-commit": "npm run prettier && git add -A",
+    "prepare": "husky install",
     "lint": "npm run prettier && git diff --exit-code",
     "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && tape \"dist/test/**/*.js\""
   },
@@ -15,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "badgen": "^3.2.2",
+    "husky": "^6.0.0",
     "node-fetch": "^2.6.1",
     "npm": "^6.14.11",
     "react": "^17.0.2",
@@ -30,7 +32,6 @@
     "@types/redis": "^2.8.28",
     "@types/semver": "^7.3.5",
     "@types/tape": "^4.13.0",
-    "@vercel/git-hooks": "^1.0.0",
     "prettier": "^2.2.1",
     "tape": "^5.2.2",
     "typescript": "^4.2.4"
