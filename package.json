@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/node": "^15.12.4",
     "@types/node-fetch": "^2.5.12",
-    "@types/react": "^17.0.15",
+    "@types/react": "^17.0.16",
     "@types/react-dom": "^17.0.9",
     "@types/redis": "^2.8.31",
     "@types/semver": "^7.3.8",
