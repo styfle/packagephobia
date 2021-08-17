@@ -78,6 +78,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                     res.writeHead(307, { Location: `/result?p=${queryString}` });
                     return res.end();
                 } catch (e) {
+                    res.setHeader('Content-Type', mimeType('*.html'));
                     return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
                 }
             });
