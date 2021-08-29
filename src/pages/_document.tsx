@@ -216,7 +216,11 @@ async function routePage(
                 return <NotFound />;
         }
     } catch (e) {
-        console.error(`ERROR: ${e.message}`);
+        if (e instanceof Error) {
+            console.error(`ERROR: ${e.message}`);
+        } else {
+            console.error(`ERROR: ${e}`);
+        }
         return <ServerError />;
     }
 }
