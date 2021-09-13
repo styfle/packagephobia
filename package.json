@@ -27,7 +27,7 @@
     "@types/node-fetch": "^2.5.12",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
-    "@types/redis": "^2.8.31",
+    "@types/redis": "^2.8.32",
     "@types/semver": "^7.3.8",
     "@types/tape": "^4.13.2",
     "@vercel/git-hooks": "^1.0.0",
