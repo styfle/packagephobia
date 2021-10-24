@@ -31,7 +31,7 @@ Create a `.env` file in the root directory.
 # required settings
 REDIS_HOST="localhost"
 REDIS_PORT="6379"
-REDIS_PASS="SomePass42"
+REDIS_PASS=""
 GA_ID=""
 
 # optional settings

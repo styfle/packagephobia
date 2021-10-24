@@ -9,8 +9,8 @@ delete process.env.REDIS_PASS;
 const client = createClient({
     host: REDIS_HOST,
     port: parseInt(REDIS_PORT),
-    password: REDIS_PASS,
-    tls: true,
+    password: REDIS_PASS || undefined,
+    tls: REDIS_HOST !== '127.0.0.1',
 });
 
 client.on('error', err => {
