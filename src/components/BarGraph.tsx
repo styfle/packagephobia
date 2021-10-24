@@ -52,7 +52,11 @@ const stylesheet = `
     display:block;
     transform:rotate(-90deg);
     transform-origin:50% 50%;
-    width:100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:150%;
+    padding-bottom:50%;
     text-align:right;
     font-variant-numeric:tabular-nums;
     color:#666E78;
