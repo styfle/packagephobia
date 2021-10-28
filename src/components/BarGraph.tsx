@@ -9,7 +9,7 @@ const stylesheet = `
     margin:0;
     justify-content:center;
     max-width: 80vw;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 .bar-graph__bar-group{
     height:100%;
@@ -57,7 +57,7 @@ const stylesheet = `
     text-overflow: ellipsis;
     width:150%;
     padding-bottom:50%;
-    text-align:right;
+    text-align: left;
     font-variant-numeric:tabular-nums;
     color:#666E78;
     transition:opacity 0.2s,color 0.2s;
