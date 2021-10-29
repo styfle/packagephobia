@@ -58,10 +58,10 @@ const stylesheet = `
     transform-origin:0% 0%;
     text-overflow:ellipsis;
     overflow:hidden;
-	white-space: nowrap;
+    white-space:nowrap;
     text-align:left;
     padding-bottom:50%;
-    text-align: left;
+    text-align:left;
     font-variant-numeric:tabular-nums;
     color:#666E78;
     transition:opacity 0.2s,color 0.2s;
