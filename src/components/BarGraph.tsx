@@ -9,7 +9,7 @@ const stylesheet = `
     margin:0;
     justify-content:center;
     max-width: 80vw;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 .bar-graph__bar-group{
     height:100%;
@@ -47,15 +47,19 @@ const stylesheet = `
 .bar-graph__bar-version{
     font-size:0.8rem;
     position:absolute;
-    bottom:-50px;
+    bottom:-80px;
+    padding-top:0.4vw;
     font-weight:400;
     display:block;
+    width:45px;
+    height:1.6vw;
+    min-height:15px;
     transform:rotate(-90deg);
-    transform-origin:50% 50%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width:150%;
+    transform-origin:0% 0%;
+    text-overflow:ellipsis;
+    overflow:hidden;
+	white-space: nowrap;
+    text-align:left;
     padding-bottom:50%;
     text-align: left;
     font-variant-numeric:tabular-nums;
