@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import https from 'https';
 import semver from 'semver';
 
 const { NPM_REGISTRY_URL = 'https://registry.npmjs.com' } = process.env;
@@ -9,15 +9,57 @@ const { NPM_REGISTRY_URL = 'https://registry.npmjs.com' } = process.env;
  */
 export async function fetchManifest(name: string) {
     const encodedPackage = escapePackageName(name);
-    const response = await fetch(`${NPM_REGISTRY_URL}/${encodedPackage}`);
-    const manifest: NpmManifest = await response.json();
-    if (response.status === 404 || !manifest || Object.keys(manifest).length === 0) {
-        throw new Error(`Package "${name}" not found`);
+    const manifest = await fetchJSON(`${NPM_REGISTRY_URL}/${encodedPackage}`);
+    if (!isManifest(manifest)) {
+        throw new Error(`Package "${name}" was not found`);
     }
     if (manifest.time.unpublished) {
         throw new Error(`Package "${name}" was unpublished`);
     }
     return manifest;
+}
+
+function isManifest(obj: unknown): obj is NpmManifest {
+    return typeof obj === 'object' && obj !== null && 'name' in obj && 'description' in obj;
+}
+
+function fetchJSON(url: string) {
+    const { hostname, port, pathname } = new URL(url);
+    const options = {
+        method: 'GET',
+        port: port || 443,
+        hostname: hostname,
+        path: pathname,
+    };
+
+    return new Promise<NpmManifest | null>((resolve, reject) => {
+        const req = https.request(options, res => {
+            res.setEncoding('utf8');
+
+            if (res.statusCode === 404) {
+                resolve(null);
+                return;
+            }
+
+            let str = '';
+            res.on('data', data => {
+                str += data;
+            });
+            res.on('end', () => {
+                if (str?.startsWith('{')) {
+                    resolve(JSON.parse(str));
+                } else {
+                    resolve(null);
+                }
+            });
+        });
+
+        req.on('error', error => {
+            reject(error);
+        });
+
+        req.end();
+    });
 }
 
 /**
