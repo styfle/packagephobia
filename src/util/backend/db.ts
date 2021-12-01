@@ -1,17 +1,19 @@
-import { createClient } from 'redis';
+import Redis from 'ioredis';
 
-const { REDIS_HOST = '127.0.0.1', REDIS_PORT = '14555', REDIS_PASS } = process.env;
+const { REDIS_URL = '' } = process.env;
+delete process.env.REDIS_URL;
 
-delete process.env.REDIS_HOST;
-delete process.env.REDIS_PORT;
-delete process.env.REDIS_PASS;
+if (!REDIS_URL) {
+    throw new Error('Missing REDIS_URL environment variable');
+}
 
-const client = createClient({
-    host: REDIS_HOST,
-    port: parseInt(REDIS_PORT),
-    password: REDIS_PASS || undefined,
-    tls: REDIS_HOST !== '127.0.0.1',
-});
+try {
+    new URL(REDIS_URL);
+} catch (err) {
+    throw new Error('Invalid REDIS_URL environment variable');
+}
+
+const client = new Redis(REDIS_URL);
 
 client.on('error', err => {
     console.error('Redis error: ', err);
