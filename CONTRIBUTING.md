@@ -29,9 +29,7 @@ Create a `.env` file in the root directory.
 
 ```
 # required settings
-REDIS_HOST="127.0.0.1"
-REDIS_PORT="6379"
-REDIS_PASS=""
+REDIS_URL="redis://127.0.0.1:6379"
 GA_ID=""
 
 # optional settings

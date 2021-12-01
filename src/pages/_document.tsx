@@ -215,12 +215,8 @@ async function routePage(
             default:
                 return <NotFound />;
         }
-    } catch (e) {
-        if (e instanceof Error) {
-            console.error(`ERROR: ${e.message}`);
-        } else {
-            console.error(`ERROR: ${e}`);
-        }
+    } catch (err) {
+        console.error('Unexpected Error Occurred...', err);
         return <ServerError />;
     }
 }
