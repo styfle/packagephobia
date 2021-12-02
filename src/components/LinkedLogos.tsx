@@ -53,8 +53,8 @@ export default (props: Props) => {
                 title="libraries"
                 href={
                     isLatest
-                        ? `https://libraries.io/npm/${name}`
-                        : `https://libraries.io/npm/${name}/${version}`
+                        ? `https://libraries.io/npm/${escape(name)}`
+                        : `https://libraries.io/npm/${escape(name)}/${version}`
                 }
             />
             <LinkedLogo
