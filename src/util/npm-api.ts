@@ -20,7 +20,7 @@ export async function fetchManifest(name: string) {
 }
 
 function isManifest(obj: unknown): obj is NpmManifest {
-    return typeof obj === 'object' && obj !== null && 'name' in obj && 'description' in obj;
+    return typeof obj === 'object' && obj !== null && 'name' in obj && 'dist-tags' in obj;
 }
 
 function fetchJSON(url: string) {
