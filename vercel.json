@@ -1,9 +1,4 @@
 {
-    "functions": {
-        "api/**": {
-            "memory": 1024
-        }
-    },
     "headers": [{
         "source": "/(.*)",
         "headers": [
@@ -13,6 +8,6 @@
         ]
     }],
     "rewrites": [
-        { "source": "/(.*)", "destination": "/api/index" }
+        { "source": "/(.*)", "destination": "/api" }
     ]
 }
