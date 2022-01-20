@@ -11,11 +11,18 @@ import { fetchManifest } from './util/npm-api';
 
 const { TMPDIR = '/tmp', GA_ID = '', NODE_ENV } = process.env;
 process.env.HOME = TMPDIR;
+
+delete process.env.AWS_ACCESS_KEY_ID;
+delete process.env.AWS_SECRET_KEY;
+delete process.env.AWS_SECRET_ACCESS_KEY;
+delete process.env.AWS_SESSION_TOKEN;
+
 const isProd = NODE_ENV === 'production';
 console.log('NODE_ENV: ' + NODE_ENV);
 console.log('isProd: ', isProd);
 console.log('TMPDIR: ', TMPDIR);
 console.log('HOME: ', process.env.HOME);
+console.log('AWS_SECRET_ACCESS_KEY: ', process.env.AWS_SECRET_ACCESS_KEY);
 
 export async function handler(req: IncomingMessage, res: ServerResponse) {
     let { method, url, headers } = req;
