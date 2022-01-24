@@ -30,7 +30,7 @@
     "@types/tape": "^4.13.2",
     "@vercel/git-hooks": "^1.0.0",
     "prettier": "^2.5.1",
-    "tape": "^5.4.0",
+    "tape": "^5.4.1",
     "typescript": "^4.5.5"
   }
 }
