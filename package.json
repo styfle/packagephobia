@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/ioredis": "^4.28.10",
     "@types/node": "^16.11.26",
-    "@types/react": "^17.0.41",
+    "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/semver": "^7.3.9",
     "@types/tape": "^4.13.2",
