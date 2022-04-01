@@ -73,6 +73,8 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [npm Download Size cli](https://github.com/arve0/npm-download-size-cli) cli that reports the download size (network traffic) of a package.
 - [Build Size](https://github.com/Daniel15/BuildSize) - GitHub App that comments on a PR with the size of your build artifacts
 - [Pkg Size](http://pkgsize.com) - web app that displays package size and file count over time (static data only)
+- [BundleWatch](https://github.com/bundlewatch/bundlewatch) - cli that checks if your bundle exceeds a specific size and also tracks increase
+- [PackWatch](https://github.com/mcataford/packwatch) - cli that checks if your package tarball exceeds a specific size and also tracks increase
 
 ## Why is the size different than size on disk?
 
