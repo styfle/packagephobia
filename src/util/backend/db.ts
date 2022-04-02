@@ -28,6 +28,7 @@ export async function findAll(name: string) {
         payload.version = version;
         obj[version] = payload;
     }
+    return obj;
 }
 
 export async function findOne(name: string, version: string) {
