@@ -1,6 +1,6 @@
 import { ServerResponse } from 'http';
 import React from 'react';
-import { renderToNodeStream } from 'react-dom/server';
+import { renderToStaticNodeStream } from 'react-dom/server';
 
 import Index from './index';
 import Result from './result';
@@ -158,7 +158,7 @@ export async function renderPage(
             ${OctocatCorner()}
             <div id="${containerId}">`);
     const factory = await routePage(pathname, inputStr, pkgVersions, manifest, force, tmpDir);
-    const stream = renderToNodeStream(factory);
+    const stream = renderToStaticNodeStream(factory);
     stream.pipe(res, { end: false });
     stream.on('end', () => {
         res.end(`</div>
