@@ -9,8 +9,10 @@ const style: React.CSSProperties = {
     padding: '1rem',
 };
 
-interface Props {}
+interface Props {
+    children: React.ReactNode;
+}
 
-const PageContainer: React.SFC<Props> = props => <div style={style}>{props.children}</div>;
-
-export default PageContainer;
+export default function PageContainer(props: Props) {
+    return <div style={style}>{props.children}</div>;
+}
