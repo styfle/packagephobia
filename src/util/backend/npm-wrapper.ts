@@ -18,6 +18,7 @@ export async function npmInstall(where: string, cacheDir: string, name: string, 
             npm.config.set('progress', false);
             npm.config.set('silent', true);
     */
+    await unlink(join(where, 'yarn.lock'));
 }
 
 export const packageString = JSON.stringify({
