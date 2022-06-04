@@ -10,7 +10,7 @@ export async function npmInstall(where: string, cacheDir: string, name: string, 
     if (cacheDir) {
         console.log({ cacheDir });
     }
-    await execFileAysnc(yarn, ['install', `${name}@${version}`], {
+    await execFileAysnc(yarn, ['add', `${name}@${version}`], {
         cwd: where,
     });
     /*
