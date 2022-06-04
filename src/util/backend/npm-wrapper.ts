@@ -7,6 +7,9 @@ const execFileAysnc = promisify(execFile);
 const yarn = join(__dirname, '../../../public/yarn.js');
 
 export async function npmInstall(where: string, cacheDir: string, name: string, version: string) {
+    if (cacheDir) {
+        console.log({ cacheDir });
+    }
     await execFileAysnc(yarn, ['install', `${name}@${version}`], {
         cwd: where,
     });
