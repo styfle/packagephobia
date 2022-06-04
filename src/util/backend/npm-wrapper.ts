@@ -14,7 +14,7 @@ export async function npmInstall(cwd: string, cacheDir: string, name: string, ve
             YARN_CACHE_FOLDER: cacheDir,
             YARN_NPM_REGISTRY_SERVER: process.env.NPM_REGISTRY_URL,
             YARN_NODE_LINKER: 'node-modules',
-            YARN_LOG_FILTERS_LEVEL: 'error',
+            //YARN_LOG_FILTERS_LEVEL: 'error',
         },
     });
     await unlink(join(cwd, 'node_modules', '.yarn-state.yml'));
