@@ -6,22 +6,18 @@ import { promisify } from 'util';
 const execFileAysnc = promisify(execFile);
 const yarn = join(__dirname, '../../../public/yarn.js');
 
-export async function npmInstall(where: string, cacheDir: string, name: string, version: string) {
-    if (cacheDir) {
-        console.log({ cacheDir });
-    }
+export async function npmInstall(cwd: string, cacheDir: string, name: string, version: string) {
     await execFileAysnc(yarn, ['add', `${name}@${version}`], {
-        cwd: where,
+        cwd,
+        env: {
+            ...process.env,
+            YARN_CACHE_FOLDER: cacheDir,
+            YARN_NPM_REGISTRY_SERVER: process.env.NPM_REGISTRY_URL,
+            YARN_NODE_LINKER: 'node-modules',
+            YARN_LOG_FILTERS_LEVEL: 'error',
+        },
     });
-    /*
-            npm.config.set('cache', cacheDir);
-            npm.config.set('audit', false);
-            npm.config.set('update-notifier', false);
-            npm.config.set('package-lock', false);
-            npm.config.set('progress', false);
-            npm.config.set('silent', true);
-    */
-    await unlink(join(where, 'yarn.lock'));
+    await unlink(join(where, 'node_modules', '.yarn-state.yml'));
 }
 
 export const packageString = JSON.stringify({
