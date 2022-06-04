@@ -7,7 +7,7 @@ const execFileAysnc = promisify(execFile);
 const yarn = join(__dirname, '../../../public/yarn.js');
 
 export async function npmInstall(cwd: string, cacheDir: string, name: string, version: string) {
-    await execFileAysnc(yarn, ['add', `${name}@${version}`], {
+    const result = await execFileAysnc(yarn, ['add', `${name}@${version}`], {
         cwd,
         env: {
             ...process.env,
@@ -17,6 +17,9 @@ export async function npmInstall(cwd: string, cacheDir: string, name: string, ve
             //YARN_LOG_FILTERS_LEVEL: 'error',
         },
     });
+    if (result.stderr) {
+        console.error(result.stderr);
+    }
     await unlink(join(cwd, 'node_modules', '.yarn-state.yml'));
 }
 
