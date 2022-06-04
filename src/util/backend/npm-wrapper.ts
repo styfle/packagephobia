@@ -17,7 +17,7 @@ export async function npmInstall(cwd: string, cacheDir: string, name: string, ve
             YARN_LOG_FILTERS_LEVEL: 'error',
         },
     });
-    await unlink(join(where, 'node_modules', '.yarn-state.yml'));
+    await unlink(join(cwd, 'node_modules', '.yarn-state.yml'));
 }
 
 export const packageString = JSON.stringify({
