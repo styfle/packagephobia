@@ -5,6 +5,7 @@ dist
 .next
 pages/*.js
 src/*.js
+public/yarn.js
 test/hardlink/link
 dev.sh
 .now

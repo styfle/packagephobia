@@ -1,34 +1,26 @@
-const npm = require('npm');
-const install = require('npm/lib/install');
+import { join } from 'path';
+import { unlink } from 'fs/promises';
+import { execFile } from 'child_process';
+import { promisify } from 'util';
 
-export function npmInstall(where: string, cacheDir: string, name: string, version: string) {
-    return new Promise<void>((resolve, reject) => {
-        npm.load((err?: Error) => {
-            if (err) {
-                reject(err);
-                return;
-            }
+const execFileAysnc = promisify(execFile);
+const yarn = join(__dirname, '../../../public/yarn.js');
 
-            npm.config.set('cache', cacheDir);
-            npm.config.set('audit', false);
-            npm.config.set('update-notifier', false);
-            npm.config.set('package-lock', false);
-            npm.config.set('progress', false);
-            npm.config.set('silent', true);
-
-            if (process.env.NPM_REGISTRY_URL) {
-                npm.config.set('registry', process.env.NPM_REGISTRY_URL);
-            }
-
-            install(where, [`${name}@${version}`], (err?: Error) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve();
-                }
-            });
-        });
+export async function npmInstall(cwd: string, cacheDir: string, name: string, version: string) {
+    const result = await execFileAysnc(yarn, ['add', `${name}@${version}`], {
+        cwd,
+        env: {
+            ...process.env,
+            YARN_CACHE_FOLDER: cacheDir,
+            YARN_NPM_REGISTRY_SERVER: process.env.NPM_REGISTRY_URL,
+            YARN_NODE_LINKER: 'node-modules',
+            //YARN_LOG_FILTERS_LEVEL: 'error',
+        },
     });
+    if (result.stderr) {
+        console.error(result.stderr);
+    }
+    await unlink(join(cwd, 'node_modules', '.yarn-state.yml'));
 }
 
 export const packageString = JSON.stringify({

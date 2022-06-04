@@ -8,7 +8,8 @@
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
     "git-pre-commit": "npm run prettier && git add -A",
     "lint": "npm run prettier && git diff --exit-code",
-    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && tape \"dist/test/**/*.js\""
+    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && tape \"dist/test/**/*.js\"",
+    "postinstall": "cp node_modules/yarn/bin/yarn.js public/"
   },
   "repository": "styfle/packagephobia",
   "author": "styfle",
@@ -16,10 +17,10 @@
   "dependencies": {
     "badgen": "^3.2.2",
     "ioredis": "^5.0.5",
-    "npm": "^6.14.17",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "semver": "^7.3.7"
+    "semver": "^7.3.7",
+    "yarn": "^2.4.3"
   },
   "devDependencies": {
     "@types/node": "^16.11.36",

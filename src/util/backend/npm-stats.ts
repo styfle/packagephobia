@@ -39,7 +39,7 @@ export async function calculatePackageSize(
     }, 2 * 60 * 1000);
 
     const pkgDir = join(tmpDir, tmpPackage);
-    const cacheDir = join(tmpDir, 'npm-cache');
+    const cacheDir = join(tmpDir, 'cache');
     const packageJson = join(pkgDir, 'package.json');
     const nodeModules = join(pkgDir, 'node_modules');
     await mkdirAsync(pkgDir);

@@ -37,7 +37,7 @@ export async function getPkgDetails(
     const publishDate = getPublishDate(manifest, version);
     let pkgSize = await findOne(name, version);
     if (!pkgSize || force) {
-        console.log(`Cache miss for ${name}@${version} - running npm install in ${tmpDir}...`);
+        console.log(`Cache miss - running "yarn add ${name}@${version}" in ${tmpDir}...`);
         const start = new Date();
         pkgSize = await calculatePackageSize(name, version, publishDate, tmpDir);
         const end = new Date();
