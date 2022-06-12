@@ -1,5 +1,6 @@
 import * as npmapi from '../src/util/npm-api';
-import test from 'tape';
+import test from 'test';
+import assert from 'assert/strict';
 
 const manifest = {
     name: 'manifest example',
@@ -65,68 +66,57 @@ const manifestUnordered = {
     'dist-tags': { latest: '2.0.0' },
 };
 
-test('getAllVersions should return versions array', t => {
-    t.plan(1);
+test('getAllVersions should return versions array', () => {
     const actual = npmapi.getAllVersions(manifest);
-    t.deepEqual(actual, allVersions);
+    assert.deepEqual(actual, allVersions);
 });
 
-test('getAllVersions should sort by semver', t => {
-    t.plan(1);
+test('getAllVersions should sort by semver', () => {
     const actual = npmapi.getAllVersions(manifestUnordered);
-    t.deepEqual(actual, allVersions);
+    assert.deepEqual(actual, allVersions);
 });
 
-test('getLatestVersion', t => {
-    t.plan(1);
+test('getLatestVersion', () => {
     const { latest } = npmapi.getAllDistTags(manifest);
-    t.equal(latest, '2.0.0');
+    assert.equal(latest, '2.0.0');
 });
 
-test('getVersionsForChart middle', t => {
-    t.plan(1);
+test('getVersionsForChart middle', () => {
     const actual = npmapi.getVersionsForChart(allVersions, '1.2.0', 2);
-    t.deepEqual(actual, ['1.0.3', '1.1.0', '1.2.0', '1.3.0-alpha', '1.3.0-beta']);
+    assert.deepEqual(actual, ['1.0.3', '1.1.0', '1.2.0', '1.3.0-alpha', '1.3.0-beta']);
 });
 
-test('getVersionsForChart first', t => {
-    t.plan(1);
+test('getVersionsForChart first', () => {
     const actual = npmapi.getVersionsForChart(allVersions, '1.0.0', 2);
-    t.deepEqual(actual, ['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.1.0']);
+    assert.deepEqual(actual, ['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.1.0']);
 });
 
-test('getVersionsForChart second', t => {
-    t.plan(1);
+test('getVersionsForChart second', () => {
     const actual = npmapi.getVersionsForChart(allVersions, '1.0.1', 2);
-    t.deepEqual(actual, ['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.1.0']);
+    assert.deepEqual(actual, ['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.1.0']);
 });
 
-test('getVersionsForChart last', t => {
-    t.plan(1);
+test('getVersionsForChart last', () => {
     const actual = npmapi.getVersionsForChart(allVersions, '2.0.0', 2);
-    t.deepEqual(actual, ['1.2.0', '1.3.0-alpha', '1.3.0-beta', '1.3.0', '2.0.0']);
+    assert.deepEqual(actual, ['1.2.0', '1.3.0-alpha', '1.3.0-beta', '1.3.0', '2.0.0']);
 });
 
-test('getVersionsForChart second to last', t => {
-    t.plan(1);
+test('getVersionsForChart second to last', () => {
     const actual = npmapi.getVersionsForChart(allVersions, '1.3.0', 2);
-    t.deepEqual(actual, ['1.2.0', '1.3.0-alpha', '1.3.0-beta', '1.3.0', '2.0.0']);
+    assert.deepEqual(actual, ['1.2.0', '1.3.0-alpha', '1.3.0-beta', '1.3.0', '2.0.0']);
 });
 
-test('getVersionsForChart with count larger than allVersions', t => {
-    t.plan(1);
+test('getVersionsForChart with count larger than allVersions', () => {
     const actual = npmapi.getVersionsForChart(allVersions, '1.3.0-beta', 30);
-    t.deepEqual(actual, allVersions);
+    assert.deepEqual(actual, allVersions);
 });
 
-test('getPublishDate should get date for specific version', t => {
-    t.plan(1);
+test('getPublishDate should get date for specific version', () => {
     const actual = npmapi.getPublishDate(manifest, '1.0.0');
-    t.deepEqual(actual, '2017-10-14T22:05:10.599Z');
+    assert.deepEqual(actual, '2017-10-14T22:05:10.599Z');
 });
 
-test('getPublishDate should return empty string for null manifest', t => {
-    t.plan(1);
+test('getPublishDate should return empty string for null manifest', () => {
     const actual = npmapi.getPublishDate(null, '1.0.0');
-    t.deepEqual(actual, '');
+    assert.deepEqual(actual, '');
 });
