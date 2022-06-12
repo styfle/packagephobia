@@ -1,39 +1,36 @@
 import { getDirSize } from '../src/util/backend/npm-stats';
 import { join } from 'path';
-import test from 'tape';
+import test from 'test';
+import assert from 'assert/strict';
 
-test('getDirSize top level', t => {
-    t.plan(2);
+test('getDirSize top level', () => {
     const dir = join(__dirname, 'a-directory').replace('/dist', '');
     const files = new Set<number>();
     const size = getDirSize(dir, files);
-    t.equal(size, 242);
-    t.equal(files.size, 6);
+    assert.equal(size, 242);
+    assert.equal(files.size, 6);
 });
 
-test('getDirSize second level', t => {
-    t.plan(2);
+test('getDirSize second level', () => {
     const dir = join(__dirname, 'a-directory', 'a-nested-directory').replace('/dist', '');
     const files = new Set<number>();
     const size = getDirSize(dir, files);
-    t.equal(size, 120);
-    t.equal(files.size, 3);
+    assert.equal(size, 120);
+    assert.equal(files.size, 3);
 });
 
-test('getDirSize single file', t => {
-    t.plan(2);
+test('getDirSize single file', () => {
     const dir = join(__dirname, 'a-directory', 'a-nested-directory', 'example4.txt').replace(
         '/dist',
         '',
     );
     const files = new Set<number>();
     const size = getDirSize(dir, files);
-    t.equal(size, 77);
-    t.equal(files.size, 1);
+    assert.equal(size, 77);
+    assert.equal(files.size, 1);
 });
 
-test('getDirSize original file should equal hardlink file', t => {
-    t.plan(2);
+test('getDirSize original file should equal hardlink file', () => {
     const original = join(__dirname, 'hardlink', 'orig.txt').replace('/dist', '');
     const hardlink = join(__dirname, 'hardlink', 'link').replace('/dist', '');
 
@@ -42,23 +39,22 @@ test('getDirSize original file should equal hardlink file', t => {
     const hardlinkFiles = new Set<number>();
     const hardlinkSize = getDirSize(hardlink, hardlinkFiles);
 
-    t.equal(originalSize, hardlinkSize);
-    t.equal(originalFiles.size, hardlinkFiles.size);
+    assert.equal(originalSize, hardlinkSize);
+    assert.equal(originalFiles.size, hardlinkFiles.size);
 });
 
-test('getDirSize should count hardlink once', t => {
+test('getDirSize should count hardlink once', () => {
     // ln test/original.txt test/hardlink.txt
-    t.plan(2);
     const dir = join(__dirname, 'hardlink').replace('/dist', '');
 
     const files = new Set<number>();
     const size = getDirSize(dir, files);
 
-    t.equal(size, 214);
-    t.equal(files.size, 2);
+    assert.equal(size, 214);
+    assert.equal(files.size, 2);
 });
 /*
-test('getDirSize full-icu should be 26 MB', t => {
+test('getDirSize full-icu should be 26 MB', () => {
     // npm install --save full-icu@1.2.1
     t.plan(1);
     const dir = path
@@ -67,6 +63,6 @@ test('getDirSize full-icu should be 26 MB', t => {
 
     const actual = getDirSize(dir);
     
-    t.equal(actual, 26874753);
+    assert.equal(actual, 26874753);
 });
 */

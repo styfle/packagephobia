@@ -8,7 +8,7 @@
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
     "git-pre-commit": "npm run prettier && git add -A",
     "lint": "npm run prettier && git diff --exit-code",
-    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && tape \"dist/test/**/*.js\"",
+    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && node--test dist/test/",
     "postinstall": "cp node_modules/yarn/bin/yarn.js public/"
   },
   "repository": "styfle/packagephobia",
@@ -27,10 +27,9 @@
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "@types/semver": "^7.3.9",
-    "@types/tape": "^4.13.2",
     "@vercel/git-hooks": "^1.0.0",
     "prettier": "^2.6.2",
-    "tape": "^5.5.3",
+    "test": "^3.0.0",
     "typescript": "^4.7.3"
   }
 }
