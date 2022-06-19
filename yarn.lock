@@ -60,13 +60,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/git-hooks@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@vercel/git-hooks@npm:1.0.0"
-  checksum: fc6248460a5ff900ca7ec36ccea47990951a881729ba23f593389caf42499b25cdb9360f080ed5453ebf9a8ab0556530e3396a3ae57f6a0bb94f364070d57b93
-  languageName: node
-  linkType: hard
-
 "badgen@npm:^3.2.2":
   version: 3.2.2
   resolution: "badgen@npm:3.2.2"
@@ -471,7 +464,6 @@ __metadata:
     "@types/react": ^18.0.14
     "@types/react-dom": ^18.0.5
     "@types/semver": ^7.3.9
-    "@vercel/git-hooks": ^1.0.0
     badgen: ^3.2.2
     ioredis: ^5.0.6
     prettier: ^2.6.2
