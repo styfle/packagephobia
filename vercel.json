@@ -1,7 +1,8 @@
 {
     "functions": {
         "api/**": {
-            "memory": 1024
+            "memory": 2048,
+            "maxDuration": 30
         }
     },
     "headers": [{
