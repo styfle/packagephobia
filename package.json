@@ -6,8 +6,8 @@
   },
   "scripts": {
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
-    "git-pre-commit": "npm run prettier && git add -A",
-    "lint": "npm run prettier && git diff --exit-code",
+    "git-pre-commit": "yarn run prettier && git add -A",
+    "lint": "yarn run prettier && git diff --exit-code",
     "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && node--test dist/test/",
     "postinstall": "cp .yarn/releases/yarn-3.2.1.cjs public/yarn.js"
   },
@@ -18,17 +18,17 @@
     "badgen": "^3.2.2",
     "ioredis": "^5.0.6",
     "react": "^18.2.0",
-    "react-dom": "^18.1.0",
+    "react-dom": "^18.2.0",
     "semver": "^7.3.7"
   },
   "devDependencies": {
     "@types/node": "^16.11.39",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
-    "@types/semver": "^7.3.9",
-    "prettier": "^2.6.2",
+    "@types/semver": "^7.3.10",
+    "prettier": "^2.7.1",
     "test": "^3.0.1",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.4"
   },
   "packageManager": "yarn@3.2.1"
 }
