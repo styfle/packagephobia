@@ -53,7 +53,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/semver@npm:^7.3.9":
+"@types/semver@npm:^7.3.10":
   version: 7.3.10
   resolution: "@types/semver@npm:7.3.10"
   checksum: 7047c2822b1759b2b950f39cfcf261f2b9dca47b4b55bdebba0905a8553631f1531eb0f59264ffe4834d1198c8331c8e0010a4cd742f4e0b60abbf399d134364
@@ -463,19 +463,19 @@ __metadata:
     "@types/node": ^16.11.39
     "@types/react": ^18.0.14
     "@types/react-dom": ^18.0.5
-    "@types/semver": ^7.3.9
+    "@types/semver": ^7.3.10
     badgen: ^3.2.2
     ioredis: ^5.0.6
-    prettier: ^2.6.2
+    prettier: ^2.7.1
     react: ^18.2.0
-    react-dom: ^18.1.0
+    react-dom: ^18.2.0
     semver: ^7.3.7
     test: ^3.0.1
-    typescript: ^4.7.3
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
-"prettier@npm:^2.6.2":
+"prettier@npm:^2.7.1":
   version: 2.7.1
   resolution: "prettier@npm:2.7.1"
   bin:
@@ -484,7 +484,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.1.0":
+"react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -620,7 +620,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.7.3":
+"typescript@npm:^4.7.4":
   version: 4.7.4
   resolution: "typescript@npm:4.7.4"
   bin:
@@ -630,7 +630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.7.3#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
   version: 4.7.4
   resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"
   bin:
