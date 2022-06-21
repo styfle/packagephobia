@@ -59,7 +59,7 @@ Now the web app should be available at http://localhost:3000
 Make sure the tests are passing.
 
 ```
-npm test
+yarn run test
 ```
 
 ## Deploying the code
@@ -75,6 +75,6 @@ Then you can simply run `vercel` to deploy.
 Wow you're doing great! Before you submit a Pull Request, please create an issue so that we can discuss the problem you are solving. When we're all on the same page, make sure you test the code and prettify the code. And please add additional tests if possible.
 
 ```sh
-npm run test
-npm run prettier
+yarn run test
+yarn run prettier
 ```
