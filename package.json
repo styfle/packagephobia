@@ -16,13 +16,13 @@
   "license": "MIT",
   "dependencies": {
     "badgen": "^3.2.2",
-    "ioredis": "^5.0.6",
+    "ioredis": "^5.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "semver": "^7.3.7"
   },
   "devDependencies": {
-    "@types/node": "^16.11.39",
+    "@types/node": "^16.11.42",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/semver": "^7.3.10",
