@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/node": "^16.11.42",
     "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
+    "@types/react-dom": "^18.0.6",
     "@types/semver": "^7.3.10",
     "prettier": "^2.7.1",
     "test": "^3.0.1",
