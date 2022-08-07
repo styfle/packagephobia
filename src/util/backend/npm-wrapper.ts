@@ -4,7 +4,7 @@ import { execFile } from 'child_process';
 import { promisify } from 'util';
 
 const execFileAysnc = promisify(execFile);
-const yarn = join(__dirname, '../../../public/yarn.js');
+const yarn = join(__dirname, '../../../yarn-cli/lib/cli.js');
 
 export async function npmInstall(cwd: string, cacheDir: string, name: string, version: string) {
     const result = await execFileAysnc(yarn, ['add', `${name}@${version}`], {
@@ -20,14 +20,9 @@ export async function npmInstall(cwd: string, cacheDir: string, name: string, ve
     if (result.stderr) {
         console.error(result.stderr);
     }
-    await unlink(join(cwd, 'node_modules', '.yarn-state.yml'));
+    await unlink(join(cwd, 'node_modules', '.yarn-integrity'));
 }
 
 export const packageString = JSON.stringify({
-    name: 'none',
-    version: '1.0.0',
-    description: 'None',
-    main: 'index.js',
-    license: 'ISC',
-    repository: 'github:npm/cli',
+    private: true,
 });

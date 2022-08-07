@@ -5,10 +5,10 @@ dist
 .next
 pages/*.js
 src/*.js
-public/yarn.js
 test/hardlink/link
 dev.sh
 .now
 .vercel
 .yarn/cache
 .yarn/install-state.gz
+yarn-cli

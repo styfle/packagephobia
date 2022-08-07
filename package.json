@@ -9,7 +9,7 @@
     "git-pre-commit": "yarn run prettier && git add -A",
     "lint": "yarn run prettier && git diff --exit-code",
     "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && node--test dist/test/",
-    "postinstall": "cp .yarn/releases/yarn-3.2.1.cjs public/yarn.js"
+    "postinstall": "cp -R ./node_modules/yarn ./yarn-cli"
   },
   "repository": "styfle/packagephobia",
   "author": "styfle",
@@ -19,7 +19,8 @@
     "ioredis": "^5.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "semver": "^7.3.7"
+    "semver": "^7.3.7",
+    "yarn": "1.22.19"
   },
   "devDependencies": {
     "@types/node": "^16.11.42",
@@ -29,6 +30,5 @@
     "prettier": "^2.7.1",
     "test": "^3.0.1",
     "typescript": "^4.7.4"
-  },
-  "packageManager": "yarn@3.2.1"
+  }
 }
