@@ -10,9 +10,9 @@ export default () => (
     <>
         <PageContainer>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                <h1>500 Internal Server Error</h1>
+                <h1>Unable to locate package package</h1>
 
-                <p>Oops, something went terribly wrong.</p>
+                <p>We could not find the package you are looking for. Please, search again!</p>
                 <p>
                     <a href={pages.index}>Go Home You</a>
                 </p>
