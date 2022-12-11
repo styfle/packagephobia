@@ -6,7 +6,7 @@ import Index from './index';
 import Result from './result';
 import Compare from './compare';
 import NotFound from './404';
-import ServerError from './500';
+import PackageNotFound from './packageNotFound';
 import ParseFailure from './parse-failure';
 
 import { getResultProps } from '../page-props/results';
@@ -17,7 +17,6 @@ import OctocatCorner from '../components/OctocatCorner';
 import Logo from '../components/Logo';
 import { fetchManifest } from '../util/npm-api';
 import { parsePackageString } from '../util/npm-parser';
-
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
 const css = `
@@ -216,8 +215,8 @@ async function routePage(
                 return <NotFound />;
         }
     } catch (err) {
-        console.error('Unexpected Error Occurred...', err);
-        return <ServerError />;
+        console.log('Unexpected Error Occurred...', err);
+        return <PackageNotFound />;
     }
 }
 
