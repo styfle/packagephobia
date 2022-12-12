@@ -2,6 +2,7 @@ import { isFullRelease } from '../util/npm-parser';
 import { findAll } from '../util/backend/db';
 import { getAllDistTags, getVersionsForChart, getPublishDate } from '../util/npm-api';
 import { getPkgDetails } from './common';
+import { NotFoundError } from '../util/not-found-error';
 
 export async function getResultProps(
     inputStr: string,
@@ -15,7 +16,7 @@ export async function getResultProps(
         throw new Error('Expected one or more versions');
     }
     if (!manifest) {
-        throw new Error(`Package "${parsed.name}" does not exist in npm`);
+        throw new NotFoundError({ resource: parsed.name });
     }
     const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(
         manifest,

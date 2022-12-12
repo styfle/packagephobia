@@ -17,6 +17,7 @@ import OctocatCorner from '../components/OctocatCorner';
 import Logo from '../components/Logo';
 import { fetchManifest } from '../util/npm-api';
 import { parsePackageString } from '../util/npm-parser';
+import { NotFoundError } from '../util/not-found-error';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
@@ -213,9 +214,12 @@ async function routePage(
                     <Compare {...await getCompareProps(inputStr, pkgVersions, force, tmpDir)} />
                 );
             default:
-                return <NotFound />;
+                return <NotFound resource={pathname} />;
         }
     } catch (err) {
+        if (err instanceof NotFoundError) {
+            return <NotFound resource={err.resource} />;
+        }
         console.error('Unexpected Error Occurred...', err);
         return <ServerError />;
     }

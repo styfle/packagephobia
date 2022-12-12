@@ -6,13 +6,13 @@ import PageContainer from '../components/PageContainer';
 
 import { pages } from '../util/constants';
 
-export default () => (
+export default (props: { resource: string }) => (
     <>
         <PageContainer>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                 <h1>404 Not Found</h1>
 
-                <p>Oops, this page does not exist.</p>
+                <p>Oops, "{props.resource}" does not exist.</p>
                 <p>
                     <a href={pages.index}>Go Home You</a>
                 </p>

@@ -1,5 +1,6 @@
 import https from 'https';
 import semver from 'semver';
+import { NotFoundError } from './not-found-error';
 
 const { NPM_REGISTRY_URL = 'https://registry.npmjs.com' } = process.env;
 
@@ -11,10 +12,10 @@ export async function fetchManifest(name: string) {
     const encodedPackage = escapePackageName(name);
     const manifest = await fetchJSON(`${NPM_REGISTRY_URL}/${encodedPackage}`);
     if (!isManifest(manifest)) {
-        throw new Error(`Package "${name}" was not found`);
+        throw new NotFoundError({ resource: name });
     }
     if (manifest.time.unpublished) {
-        throw new Error(`Package "${name}" was unpublished`);
+        throw new NotFoundError({ resource: name });
     }
     return manifest;
 }
