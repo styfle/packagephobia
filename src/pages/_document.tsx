@@ -218,7 +218,7 @@ async function routePage(
         }
     } catch (err) {
         if (err instanceof NotFoundError) {
-            return <NotFound resource={err.resource} />
+            return <NotFound resource={err.resource} />;
         }
         console.error('Unexpected Error Occurred...', err);
         return <ServerError />;

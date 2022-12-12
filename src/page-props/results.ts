@@ -16,7 +16,7 @@ export async function getResultProps(
         throw new Error('Expected one or more versions');
     }
     if (!manifest) {
-        throw new NotFoundError({resource: parsed.name});
+        throw new NotFoundError({ resource: parsed.name });
     }
     const { pkgSize, allVersions, cacheResult, isLatest } = await getPkgDetails(
         manifest,
