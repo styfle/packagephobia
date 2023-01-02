@@ -1,4 +1,4 @@
-<img src="https://packagephobia.com/logo.svg" width="40" height="40" align="left" />
+<a href="https://packagephobia.com"><img src="https://packagephobia.com/logo.svg" width="60" height="60" align="right" /></a>
 
 # Package Phobia
 [![tests](https://github.com/styfle/packagephobia/workflows/Tests/badge.svg)](https://github.com/styfle/packagephobia/actions?workflow=Tests)
