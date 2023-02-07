@@ -112,6 +112,7 @@ Hopefully, this would lead to publishers taking notice of their bloated packages
 - [webpack-cli@3.0.0 is 4x smaller](https://twitter.com/styfle/status/1006605750981021697)
 - [v8n@1.1.1 is 11x smaller](https://twitter.com/styfle/status/1022433043498364931)
 - [now@13.0.0-canary.6 is 2x smaller](https://twitter.com/styfle/status/1064512498706116617)
+- [typescript@5.0.0-beta is 41% smaller](https://twitter.com/styfle/status/1619058702753071105)
 
 ## npm dependencies in the media
 
