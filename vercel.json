@@ -2,7 +2,7 @@
     "functions": {
         "api/**": {
             "memory": 2048,
-            "maxDuration": 15
+            "maxDuration": 30
         }
     },
     "headers": [{
