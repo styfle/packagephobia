@@ -22,13 +22,13 @@
     "semver": "^7.3.7"
   },
   "devDependencies": {
-    "@types/node": "^16.11.42",
+    "@types/node": "^18.15.3",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/semver": "^7.3.10",
     "prettier": "^2.7.1",
     "test": "^3.0.1",
-    "typescript": "5.0.2"
+    "typescript": "^5.0.2"
   },
   "packageManager": "yarn@3.2.1"
 }
