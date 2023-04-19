@@ -2,7 +2,7 @@
 
 ## Users
 
-Current website using this API:
+Current websites using this API:
 
 - https://badgen.net
 - https://cnpmjs.org
