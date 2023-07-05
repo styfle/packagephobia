@@ -34,9 +34,12 @@ export async function calculatePackageSize(
 ) {
     const tmpPackage = 'tmp-package' + Math.random();
 
-    let t = setTimeout(async () => {
-        await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
-    }, 2 * 60 * 1000);
+    let t = setTimeout(
+        async () => {
+            await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
+        },
+        2 * 60 * 1000,
+    );
 
     const pkgDir = join(tmpDir, tmpPackage);
     const cacheDir = join(tmpDir, 'cache');
