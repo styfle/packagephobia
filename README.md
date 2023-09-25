@@ -58,7 +58,7 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 - [Package Phobia](https://packagephobia.com) **THIS TOOL** web app that reports the install size of a package over time.
 - [Bundle Phobia](https://bundlephobia.com) web app that reports the size after webpack bundles the package over time.
 - [Bundle.js](https://bundlejs.com) web app that reports the size after esbuild bundles the custom code snippet.
-- [Pkg-Size](https://pkg-size.dev) web app that reports the size after esbuild bundles one more more packages.
+- [Pkg-Size](https://pkg-size.dev) web app that reports the size after esbuild bundles one or more packages.
 - [Cost Of Modules](https://github.com/siddharthkp/cost-of-modules) cli that reports the size of your currently installed packages.
 - [Badge Size](https://github.com/ngryman/badge-size) badge service that reports the gzip size of a single file from a package as svg.
 - [Size Limit](https://github.com/ai/size-limit) cli that fails if the bundled (or non-bundled) size of your app is too large.
