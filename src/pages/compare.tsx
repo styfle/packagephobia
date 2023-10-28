@@ -31,7 +31,7 @@ export default ({ inputStr, results }: CompareProps) => {
             <PageContainer>
                 <SearchBar autoFocus={false} defaultValue={inputStr} />
                 <div style={{ maxWidth: '100%', overflow: 'auto' }}>
-                    <table style={{ marginTop: '30px' }}>
+                    <table className="compare" style={{ marginTop: '30px' }}>
                         <tbody>
                             {resultsToPrint
                                 .filter(
@@ -52,7 +52,7 @@ export default ({ inputStr, results }: CompareProps) => {
                                                     unit=""
                                                     label={result.version}
                                                     scale={0.75}
-                                                    color="#16864d"
+                                                    color="var(--brand-color)"
                                                     textAlign="right"
                                                 />
                                             </a>

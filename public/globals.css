@@ -1,62 +1,21 @@
-.logo_package {
-    color: #202420
-}
-
-.logo_phobia {
-    color: #16864d
+:root {
+    --brand-color: #16864d;
+    --accent: #32de85;
+    --background: #fafafa;
+    --foreground: #18181b;
+    --muted: #e4e4e7;
+    --muted-foreground: #3f3f46;
+    --border: #d4d4d8;
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background: #09090b;
-        color: #f4f4f5;
-    }
-
-    .logo_package {
-        color: #f4f4f5
-    }
-
-    .logo_phobia {
-        color: #32de85
-    }
-
-    form input[type=text] {
-        background-color: #27272a;
-        color: #d4d4d8 !important;
-        border-color: #3f3f46 !important;
-    }
-
-    form button[type=submit] {
-        background-color: #27272a !important;
-        border-color: #3f3f46 !important;
-        fill: #f4f4f5;
-    }
-
-    #spinwrap {
-        background: #09090b;
-    }
-
-    #sponsors::before {
-        color: #d4d4d8
-    }
-
-    .color1 {
-        background: #52525b !important;
-    }
-
-    .color2 {
-        background: #32de85 !important;
-    }
-
-    .bar-graph__bar-version {
-        color: #d4d4d8 !important;
-    }
-
-    .bar-graph-container:hover .bar-graph__bar-version {
-        color: #f4f4f5 !important;
-    }
-
-    .bar-graph__bar-group:hover .bar-graph__bar-version {
-        color: #f4f4f5 !important;
+    :root {
+        --brand-color: #32de85;
+        --accent: #16864d;
+        --background: #09090b;
+        --foreground: #f4f4f5;
+        --muted: #27272a;
+        --muted-foreground: #d4d4d8;
+        --border: #3f3f46;
     }
 }

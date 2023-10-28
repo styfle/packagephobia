@@ -25,7 +25,8 @@ const css = `
 body {
     margin: 0;
     padding: 0;
-    background: #fafafa;
+    background: var(--background);
+    color: var(--foreground);
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;    
 }
 
@@ -38,7 +39,7 @@ body {
 #spinwrap {
     display: none;
     height: 100vh;
-    background: #fafafa;
+    background: var(--background);
 }
 
 #spinner {
@@ -87,7 +88,7 @@ body {
 
 #sponsors:before {
     content: 'Sponsors';
-    color: #777;
+    color: var(--muted-foreground);
     font-weight: 300;
     padding-left: 25%;
 }
@@ -138,8 +139,8 @@ export async function renderPage(
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <title>${escapeHtml(title)}</title>
                 <meta name="description" content="${escapeHtml(description)}">
-                <style>${css}</style>
                 <link rel="stylesheet" href="/globals.css">
+                <style>${css}</style>
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
                 <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
                 <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
