@@ -28,8 +28,7 @@
     "@types/semver": "^7.3.10",
     "prettier": "^3.0.0",
     "test": "^3.0.1",
-    "typescript": "^5.0.2",
-    "vercel": "^32.5.0"
+    "typescript": "^5.0.2"
   },
   "packageManager": "yarn@3.2.1"
 }
