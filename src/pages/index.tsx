@@ -21,8 +21,8 @@ export default () => (
             <span dangerouslySetInnerHTML={{ __html: Logo('main') }} />
 
             <h1 style={h1}>
-                <span style={{ color: '#202420' }}>Package</span>
-                <span style={{ color: '#16864d' }}>Phobia</span>
+                <span className="logo_package">Package</span>
+                <span className="logo_phobia">Phobia</span>
             </h1>
 
             <p style={{ textAlign: 'center' }}>
