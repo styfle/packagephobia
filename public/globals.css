@@ -7,7 +7,6 @@
     --muted-foreground: #3f3f46;
     --border: #d4d4d8;
     --search-input: #fff;
-    --search-button: #f4f4f5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,6 +19,5 @@
         --muted-foreground: #d4d4d8;
         --border: #3f3f46;
         --search-input: #18181b;
-        --search-button: #000;
     }
 }
