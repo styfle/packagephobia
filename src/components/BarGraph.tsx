@@ -29,10 +29,10 @@ const stylesheet = `
     cursor:pointer;
 }
 .color1 {
-    background: var(--accent);
+    background: #32de85;
 }
 .color2 {
-    background: var(--brand-color);
+    background: #16864d;
 }
 .bar-graph__bar-group--disabled .bar-graph__bar{
     background: var(--muted);

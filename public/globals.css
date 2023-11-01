@@ -1,6 +1,5 @@
 :root {
     --brand-color: #16864d;
-    --accent: #32de85;
     --background: #fafafa;
     --foreground: #18181b;
     --muted: #e4e4e7;
@@ -12,7 +11,6 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --brand-color: #32de85;
-        --accent: #16864d;
         --background: #09090b;
         --foreground: #f4f4f5;
         --muted: #27272a;
