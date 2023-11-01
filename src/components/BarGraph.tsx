@@ -35,7 +35,7 @@ const stylesheet = `
     background: #26A664;
 }
 .bar-graph__bar-group--disabled .bar-graph__bar{
-    background:#dfe1e4;
+    background: var(--muted);
 }
 .bar-graph__bar2{
     z-index:1;
@@ -55,7 +55,7 @@ const stylesheet = `
     width:100%;
     text-align:right;
     font-variant-numeric:tabular-nums;
-    color:#666E78;
+    color: var(--muted-foreground);
     transition:opacity 0.2s,color 0.2s;
     animation:fade-in 0.5s 0.1s forwards cubic-bezier(0.305,0.42,0.205,1.2);
     font-family:"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
@@ -73,10 +73,10 @@ const stylesheet = `
 }
 .bar-graph-container:hover .bar-graph__bar-version{
     opacity:1;
-    color:black;
+    color: var(--foreground);
 }
 .bar-graph__bar-group:hover .bar-graph__bar-version{
-    color:black;
+    color: var(--foreground);
 }
 .bar-graph__legend{
     font-size:0.8rem;

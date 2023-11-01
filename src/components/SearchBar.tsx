@@ -12,14 +12,15 @@ const height = '4rem';
 const radius = '3px';
 
 const input: React.CSSProperties = {
-    color: '#333',
+    color: 'var(--muted-foreground)',
+    background: 'var(--search-input)',
     fontSize: '2.4rem',
     textAlign: 'center',
     fontFamily:
         '"Source Code Pro","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace',
     fontWeight: 300,
     maxWidth: `calc(100% - ${height})`,
-    border: '1px solid #eee',
+    border: '1px solid var(--border)',
     borderRadius: `${radius} 0 0 ${radius}`,
     height: height,
 };
@@ -29,8 +30,9 @@ const button: React.CSSProperties = {
     width: height,
     height: height,
     padding: '0.7rem',
-    background: '#fcfcfc',
-    border: '1px solid #eee',
+    background: 'var(--search-input)',
+    border: '1px solid var(--border)',
+    fill: 'var(--muted-foreground)',
     borderLeft: 'none',
     borderRadius: `0 ${radius} ${radius} 0`,
     cursor: 'pointer',

@@ -24,7 +24,14 @@ type StatProp = {
 };
 
 export function Stat(props: StatProp) {
-    const { size, unit, label, scale = 1, color = '#212121', textAlign = 'center' } = props;
+    const {
+        size,
+        unit,
+        label,
+        scale = 1,
+        color = 'var(--foreground)',
+        textAlign = 'center',
+    } = props;
 
     const styleValue: React.CSSProperties = {
         fontSize: `${3 * scale}rem`,

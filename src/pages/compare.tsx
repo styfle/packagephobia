@@ -52,7 +52,7 @@ export default ({ inputStr, results }: CompareProps) => {
                                                     unit=""
                                                     label={result.version}
                                                     scale={0.75}
-                                                    color="#16864d"
+                                                    color="var(--brand-color)"
                                                     textAlign="right"
                                                 />
                                             </a>
