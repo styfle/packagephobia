@@ -14,6 +14,12 @@
         ]
     }],
     "rewrites": [
-        { "source": "/(.*)", "destination": "/api/index" }
+        { "source": "/", "destination": "/api/index" },
+        { "source": "/result", "destination": "/api/index" },
+        { "source": "/scan-results", "destination": "/api/index" },
+        { "source": "/parse-failure", "destination": "/api/index" },
+        { "source": "/badge", "destination": "/api/index" },
+        { "source": "/api.json", "destination": "/api/index" },
+        { "source": "/v2/api.json", "destination": "/api/index" }
     ]
 }

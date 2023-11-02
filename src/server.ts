@@ -76,7 +76,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             res.setHeader('Content-Type', mimeType(pathname));
             res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
             res.end(JSON.stringify(result));
-        } else if (pathname === pages.compare) {
+        } else if (pathname === pages.scanResults) {
             let data: Buffer[] = [];
             req.on('data', chunk => data.push(chunk));
             req.on('end', () => {
