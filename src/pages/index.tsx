@@ -34,7 +34,7 @@ export default () => (
             <form
                 style={{ marginTop: '30px' }}
                 method="post"
-                action={pages.compare}
+                action={pages.scanResults}
                 encType="multipart/form-data"
             >
                 <label>
