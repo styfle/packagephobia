@@ -3,6 +3,7 @@ import { findAll } from '../util/backend/db';
 import { getAllDistTags, getVersionsForChart, getPublishDate } from '../util/npm-api';
 import { getPkgDetails } from './common';
 import { NotFoundError } from '../util/not-found-error';
+import type { NpmManifest, PackageVersion, ResultProps } from '../types';
 
 export async function getResultProps(
     inputStr: string,

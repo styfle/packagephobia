@@ -6,6 +6,7 @@ const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);
 const execFileAsync = promisify(execFile);
 import { npmInstall, packageString } from './npm-wrapper';
+import type { PkgSize } from '../../types';
 
 // TODO: Can this be optimized by changing sync to async?
 export function getDirSize(root: string, seen: Set<number>): number {

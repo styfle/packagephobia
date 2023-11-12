@@ -1,6 +1,7 @@
 import React from 'react';
 import { escape } from 'querystring';
 import LinkedLogo from './LinkedLogo';
+import type { PkgSize } from '../types';
 
 interface Props {
     pkgSize: PkgSize;

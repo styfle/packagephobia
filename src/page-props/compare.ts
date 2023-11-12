@@ -1,5 +1,6 @@
 import { fetchManifest } from '../util/npm-api';
 import { getPkgDetails } from './common';
+import type { CompareProps, PackageVersion } from '../types';
 
 export async function getCompareProps(
     inputStr: string,

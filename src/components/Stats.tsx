@@ -1,4 +1,5 @@
 import React from 'react';
+import type { SizeWithUnit } from '../types';
 
 interface Props {
     publish: SizeWithUnit;

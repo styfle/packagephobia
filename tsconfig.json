@@ -2,9 +2,9 @@
     "compilerOptions": {
         "esModuleInterop": true,
         "outDir": "./dist",
-        "module": "commonjs",
-        "target": "es2019",
-        "moduleResolution": "node",
+        "target": "es2022",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
         "jsx": "react",
         "sourceMap": true,
         "strict": true,

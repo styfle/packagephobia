@@ -1,6 +1,7 @@
 import { badgen } from 'badgen';
 import { getReadableFileSize, getHexColor, color } from './npm-parser';
 import { pages, productionHostname } from '../util/constants';
+import type { ApiResponseSize, PkgSize } from '../types';
 
 export function getBadgeSvg(pkgSize: PkgSize) {
     const { installSize } = pkgSize;

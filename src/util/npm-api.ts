@@ -1,6 +1,7 @@
 import https from 'https';
 import semver from 'semver';
 import { NotFoundError } from './not-found-error';
+import type { NpmManifest } from '../types';
 
 const { NPM_REGISTRY_URL = 'https://registry.npmjs.com' } = process.env;
 

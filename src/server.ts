@@ -9,6 +9,7 @@ import { parsePackageString } from './util/npm-parser';
 import semver from 'semver';
 import { fetchManifest } from './util/npm-api';
 import { NotFoundError } from './util/not-found-error';
+import type { ApiResponseV1, ApiResponseV2, PackageJson } from './types';
 
 const { TMPDIR = '/tmp', GA_ID = '', NODE_ENV } = process.env;
 process.env.HOME = TMPDIR;

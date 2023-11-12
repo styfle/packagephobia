@@ -1,4 +1,5 @@
 import Redis from 'ioredis';
+import type { PkgSize } from '../../types';
 
 const { REDIS_URL = '' } = process.env;
 delete process.env.REDIS_URL;

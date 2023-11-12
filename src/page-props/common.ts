@@ -2,6 +2,7 @@ import { findOne, insert } from '../util/backend/db';
 import { getAllDistTags, getAllVersions, getPublishDate } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
+import type { NpmManifest, PkgSize } from '../types';
 
 export async function getPkgDetails(
     manifest: NpmManifest | null,
