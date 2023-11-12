@@ -1,5 +1,5 @@
 import { join } from 'path';
-//import { unlink } from 'fs/promises';
+import { unlink } from 'fs/promises';
 import { execFile } from 'child_process';
 import { promisify } from 'util';
 
@@ -24,7 +24,7 @@ export async function npmInstall(cwd: string, cacheDir: string, name: string, ve
     if (result.stderr) {
         console.error('npm install error', result.stderr);
     }
-    //await unlink(join(cwd, 'node_modules', '.yarn-state.yml'));
+    await unlink(join(cwd, 'node_modules', '.package-lock.json'));
 }
 
 export const packageString = JSON.stringify({
