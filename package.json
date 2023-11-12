@@ -2,14 +2,13 @@
   "name": "packagephobia",
   "private": true,
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "scripts": {
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
-    "git-pre-commit": "yarn run prettier && git add -A",
-    "lint": "yarn run prettier && git diff --exit-code",
-    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && node--test dist/test/",
-    "postinstall": "cp .yarn/releases/yarn-3.2.1.cjs public/yarn.js"
+    "git-pre-commit": "npm run prettier && git add -A",
+    "lint": "npm run prettier && git diff --exit-code",
+    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && node--test dist/test/"
   },
   "repository": "styfle/packagephobia",
   "author": "styfle",
@@ -26,9 +25,10 @@
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/semver": "^7.3.10",
+    "npm": "^10.2.3",
     "prettier": "^3.0.0",
     "test": "^3.0.1",
     "typescript": "^5.0.2"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "npm@10.2.3"
 }

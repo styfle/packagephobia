@@ -4,30 +4,31 @@ import { execFile } from 'child_process';
 import { promisify } from 'util';
 
 const execFileAysnc = promisify(execFile);
-const yarn = join(__dirname, '../../../public/yarn.js');
+const npm = join(require.resolve('npm'), '../bin/npm-cli.js');
 
 export async function npmInstall(cwd: string, cacheDir: string, name: string, version: string) {
-    const result = await execFileAysnc(yarn, ['add', `${name}@${version}`], {
+    const result = await execFileAysnc(npm, ['i', `${name}@${version}`], {
         cwd,
         env: {
             ...process.env,
-            YARN_CACHE_FOLDER: cacheDir,
-            YARN_NPM_REGISTRY_SERVER: process.env.NPM_REGISTRY_URL,
-            YARN_NODE_LINKER: 'node-modules',
-            //YARN_LOG_FILTERS_LEVEL: 'error',
+            // See https://docs.npmjs.com/cli/v10/commands/npm#configuration
+            npm_config_audit: 'false',
+            npm_config_update_notifier: 'false',
+            npm_config_package_lock: 'false',
+            npm_config_progress: 'false',
+            npm_config_silent: 'true',
+            npm_config_cache: cacheDir,
+            npm_config_registry: process.env.NPM_REGISTRY_URL,
         },
     });
     if (result.stderr) {
-        console.error(result.stderr);
+        console.error('npm install error', result.stderr);
     }
-    await unlink(join(cwd, 'node_modules', '.yarn-state.yml'));
+    await unlink(join(cwd, 'node_modules', '.package-lock.json'));
 }
 
 export const packageString = JSON.stringify({
+    private: true,
     name: 'none',
     version: '1.0.0',
-    description: 'None',
-    main: 'index.js',
-    license: 'ISC',
-    repository: 'github:npm/cli',
 });

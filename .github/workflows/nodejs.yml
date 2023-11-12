@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        node: [16, 18]
+        node: [18, 20]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -29,6 +29,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - run: yarn install
-      - run: yarn run lint
-      - run: yarn run test
+      - run: corepack enable npm
+      - run: npm --version
+      - run: npm install
+      - run: npm run lint
+      - run: npm run test
