@@ -1,4 +1,4 @@
-import type { PackageVersion, SizeWithUnit } from "../types";
+import type { PackageVersion, SizeWithUnit } from '../types';
 
 export function parsePackageString(packageString: string): PackageVersion {
     let name: string;
