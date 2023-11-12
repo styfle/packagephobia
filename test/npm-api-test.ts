@@ -1,5 +1,5 @@
 import * as npmapi from '../src/util/npm-api';
-import test from 'test';
+import test from 'node:test';
 import assert from 'assert/strict';
 
 const manifest = {
