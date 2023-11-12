@@ -30,6 +30,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: corepack enable npm
+      - run: npm --version
       - run: npm install
       - run: npm run lint
       - run: npm run test
