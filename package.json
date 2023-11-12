@@ -6,8 +6,8 @@
   },
   "scripts": {
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
-    "git-pre-commit": "pnpm run prettier && git add -A",
-    "lint": "pnpm run prettier && git diff --exit-code",
+    "git-pre-commit": "npm run prettier && git add -A",
+    "lint": "npm run prettier && git diff --exit-code",
     "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && node--test dist/test/",
     "postinstall": "mkdir .n && cd .n"
   },
