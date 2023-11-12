@@ -19,7 +19,7 @@ export async function npmInstall(cwd: string, cacheDir: string, name: string, ve
             npm_config_silent: 'true',
             npm_config_cache: cacheDir,
             npm_config_registry: process.env.NPM_REGISTRY_URL,
-        }
+        },
     });
     if (result.stderr) {
         console.error('npm install error', result.stderr);
