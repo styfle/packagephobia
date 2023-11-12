@@ -8,7 +8,7 @@
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
     "git-pre-commit": "npm run prettier && git add -A",
     "lint": "npm run prettier && git diff --exit-code",
-    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && node--test dist/test/"
+    "test": "tsc && rm -f test/hardlink/link && ln test/hardlink/orig.txt test/hardlink/link && node --test dist/test/"
   },
   "repository": "styfle/packagephobia",
   "author": "styfle",
@@ -21,14 +21,13 @@
     "semver": "^7.5.2"
   },
   "devDependencies": {
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.18.9",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/semver": "^7.3.10",
     "npm": "^10.2.3",
     "prettier": "^3.0.0",
-    "test": "^3.0.1",
-    "typescript": "^5.0.2"
+    "typescript": "^5.2.2"
   },
   "packageManager": "npm@10.2.3"
 }

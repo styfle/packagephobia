@@ -12,6 +12,7 @@ import Sponsors from '../components/Sponsors';
 import { pages, versionUnknown } from '../util/constants';
 import { getReadableFileSize } from '../util/npm-parser';
 import { getBadgeSvg, getBadgeMarkdown } from '../util/badge';
+import type { PkgSize, ResultProps } from '../types';
 
 const error: React.CSSProperties = {
     fontSize: '2.3rem',

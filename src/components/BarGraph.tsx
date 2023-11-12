@@ -1,5 +1,6 @@
 import React from 'react';
 import { getReadableFileSize } from '../util/npm-parser';
+import type { PkgSize } from '../types';
 const stylesheet = `
 .bar-graph{
     height:55vh;

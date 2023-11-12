@@ -1,6 +1,6 @@
 import { getDirSize } from '../src/util/backend/npm-stats';
 import { join } from 'path';
-import test from 'test';
+import test from 'node:test';
 import assert from 'assert/strict';
 
 test('getDirSize top level', () => {

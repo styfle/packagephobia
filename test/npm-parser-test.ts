@@ -1,5 +1,5 @@
 import * as npmparser from '../src/util/npm-parser';
-import test from 'test';
+import test from 'node:test';
 import assert from 'assert/strict';
 
 const kilobyte = 1024;

@@ -18,6 +18,7 @@ import Logo from '../components/Logo';
 import { fetchManifest } from '../util/npm-api';
 import { parsePackageString } from '../util/npm-parser';
 import { NotFoundError } from '../util/not-found-error';
+import type { NpmManifest, PackageVersion, ParsedUrlQuery } from '../types';
 
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
