@@ -2,7 +2,7 @@
  * The `pages` here should match the `rewrites` in vercel.json
  */
 export const pages = {
-    index: '/index',
+    index: '/',
     result: '/result',
     scanResults: '/scan-results',
     parseFailure: '/parse-failure',
