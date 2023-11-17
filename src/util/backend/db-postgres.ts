@@ -1,4 +1,4 @@
-import { sql } from '@vercel/postgres'
+import { sql } from '@vercel/postgres';
 import type { PkgSize } from '../../types';
 
 export async function findAll(name: string) {

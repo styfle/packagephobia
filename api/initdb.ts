@@ -9,8 +9,8 @@ export default async function handler(_req: IncomingMessage, res: ServerResponse
         res.end('403 Forbidden');
         return;
     }
-    
-/*
+
+    /*
 console.log(await sql`
     CREATE COLLATION semver (
         LOCALE = 'en-US-u-kn-true',
@@ -19,10 +19,13 @@ console.log(await sql`
 `);
 */
 
-console.log(await sql`
+    console.log(
+        await sql`
     drop table if exists "packages";
-`);
-console.log(await sql`
+`,
+    );
+    console.log(
+        await sql`
     CREATE TABLE "packages" (
         "name" VARCHAR(214),
         "version" VARCHAR(255) COLLATE semver,
@@ -33,26 +36,26 @@ console.log(await sql`
         "installFiles" INTEGER,
         PRIMARY KEY ("name", "version")
     );
-`);
+`,
+    );
 
-const result = await findAll('next');
-console.log(`inserting ${Object.keys(result).length} rows`);
+    const result = await findAll('next');
+    console.log(`inserting ${Object.keys(result).length} rows`);
 
-  for (let pkg of Object.values(result)) {
-    await sql`
+    for (let pkg of Object.values(result)) {
+        await sql`
         INSERT INTO "packages" values (${pkg.name}, ${pkg.version}, ${pkg.publishDate}, ${pkg.publishSize}, ${pkg.installSize}, ${pkg.publishFiles}, ${pkg.installFiles});
     `;
-  }
-  /*
+    }
+    /*
   console.log(await sql`
     SELECT *
     FROM "packages"
     ORDER BY version desc;
   `);
   */
-  
-   
-   res.end('success');
+
+    res.end('success');
 }
 
 /**

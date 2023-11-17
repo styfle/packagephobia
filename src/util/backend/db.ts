@@ -1,5 +1,5 @@
-import * as redis from './db-redis'
-import * as postgres from './db-postgres'
+import * as redis from './db-redis';
+import * as postgres from './db-postgres';
 import type { PkgSize } from '../../types';
 
 export async function findAll(name: string) {
