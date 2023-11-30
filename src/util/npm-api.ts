@@ -1,15 +1,24 @@
 import https from 'https';
 import semver from 'semver';
+import { LRUCache } from 'lru-cache';
 import { NotFoundError } from './not-found-error';
 import type { NpmManifest } from '../types';
 
 const { NPM_REGISTRY_URL = 'https://registry.npmjs.com' } = process.env;
+const cache = new LRUCache<string, NpmManifest>({ max: 5000, ttl: 1000 * 60 * 5 });
 
 /**
  * Make an API call to npm to get package manifest details
  * @param name The npm package name
  */
 export async function fetchManifest(name: string) {
+    let cachedManifest = cache.get(name);
+    if (cachedManifest) {
+        // fetch can take 2000ms or slower so we cache
+        console.log('lrucache hit');
+        return cachedManifest;
+    }
+    console.log('lrucache miss');
     const encodedPackage = escapePackageName(name);
     const manifest = await fetchJSON(`${NPM_REGISTRY_URL}/${encodedPackage}`);
     if (!isManifest(manifest)) {
@@ -18,7 +27,16 @@ export async function fetchManifest(name: string) {
     if (manifest.time.unpublished) {
         throw new NotFoundError({ resource: name });
     }
-    return manifest;
+    // only cache some properties and sort the versions by semver
+    cachedManifest = {
+        name: manifest.name,
+        description: manifest.description,
+        versions: getAllVersions(manifest),
+        time: manifest.time,
+        'dist-tags': manifest['dist-tags'],
+    };
+    cache.set(name, cachedManifest);
+    return cachedManifest;
 }
 
 function isManifest(obj: unknown): obj is NpmManifest {

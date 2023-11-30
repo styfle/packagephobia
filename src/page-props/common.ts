@@ -1,5 +1,5 @@
 import { findOne, insert } from '../util/backend/db';
-import { getAllDistTags, getAllVersions, getPublishDate } from '../util/npm-api';
+import { getAllDistTags, getPublishDate } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
 import type { NpmManifest, PkgSize } from '../types';
@@ -29,7 +29,7 @@ export async function getPkgDetails(
         cacheResult = false;
     }
 
-    const allVersions = getAllVersions(manifest);
+    const allVersions = manifest.versions;
     if (!allVersions.includes(version)) {
         console.error(`Version ${name}@${version} does not exist in npm`);
         return packageNotFound(name);
