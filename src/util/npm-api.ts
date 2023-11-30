@@ -1,6 +1,6 @@
 import https from 'https';
 import semver from 'semver';
-import { LRUCache } from 'lru-cache'
+import { LRUCache } from 'lru-cache';
 import { NotFoundError } from './not-found-error';
 import type { NpmManifest } from '../types';
 
