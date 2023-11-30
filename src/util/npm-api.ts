@@ -34,7 +34,7 @@ export async function fetchManifest(name: string) {
         versions: getAllVersions(manifest),
         time: manifest.time,
         'dist-tags': manifest['dist-tags'],
-    }
+    };
     cache.set(name, cachedManifest);
     return cachedManifest;
 }
