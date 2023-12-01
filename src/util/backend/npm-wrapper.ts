@@ -19,6 +19,8 @@ export async function npmInstall(cwd: string, cacheDir: string, name: string, ve
             npm_config_silent: 'true',
             npm_config_cache: cacheDir,
             npm_config_registry: process.env.NPM_REGISTRY_URL,
+            // Omit peerDependencies to match legacy behavior from npm@6 and `yarn@1`
+            npm_config_omit: 'peer',
         },
     });
     if (result.stderr) {
