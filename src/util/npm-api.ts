@@ -48,9 +48,9 @@ function fetchJSON(url: string) {
         hostname: hostname,
         path: pathname,
         headers: {
-            'Accept': 'application/vnd.npm.install-v1+json',
+            Accept: 'application/vnd.npm.install-v1+json',
             'User-Agent': 'packagephobia.com',
-        }
+        },
     };
 
     return new Promise<NpmManifest | null>((resolve, reject) => {
