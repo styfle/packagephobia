@@ -1,6 +1,6 @@
 import { isFullRelease } from '../util/npm-parser';
 import { findAll } from '../util/backend/db';
-import { getAllDistTags, getVersionsForChart, getPublishDate } from '../util/npm-api';
+import { getAllDistTags, getVersionsForChart } from '../util/npm-api';
 import { getPkgDetails } from './common';
 import { NotFoundError } from '../util/not-found-error';
 import type { NpmManifest, PackageVersion, ResultProps } from '../types';
@@ -46,7 +46,6 @@ export async function getResultProps(
             cachedVersions[v] || {
                 name: name,
                 version: v,
-                publishDate: getPublishDate(manifest, v),
                 publishSize: 0,
                 installSize: 0,
                 publishFiles: 0,

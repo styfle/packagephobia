@@ -30,7 +30,6 @@ export function getDirSize(root: string, seen: Set<number>): number {
 export async function calculatePackageSize(
     name: string,
     version: string,
-    publishDate: string,
     tmpDir: string,
 ) {
     const tmpPackage = 'tmp-package' + Math.random();
@@ -56,7 +55,6 @@ export async function calculatePackageSize(
     const output: PkgSize = {
         name,
         version,
-        publishDate,
         publishSize,
         installSize,
         publishFiles: publishFiles.size,
