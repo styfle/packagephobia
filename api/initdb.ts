@@ -29,7 +29,6 @@ console.log(await sql`
     CREATE TABLE "packages" (
         "name" VARCHAR(214),
         "version" VARCHAR(255) COLLATE semver,
-        "publishDate" VARCHAR(32),
         "publishSize" INTEGER,
         "installSize" INTEGER,
         "publishFiles" INTEGER,
@@ -44,7 +43,7 @@ console.log(await sql`
 
     for (let pkg of Object.values(result)) {
         await sql`
-        INSERT INTO "packages" values (${pkg.name}, ${pkg.version}, ${pkg.publishDate}, ${pkg.publishSize}, ${pkg.installSize}, ${pkg.publishFiles}, ${pkg.installFiles});
+        INSERT INTO "packages" values (${pkg.name}, ${pkg.version}, ${pkg.publishSize}, ${pkg.installSize}, ${pkg.publishFiles}, ${pkg.installFiles});
     `;
     }
     /*
