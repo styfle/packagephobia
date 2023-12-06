@@ -13,7 +13,6 @@ export interface SizeWithUnit {
 export interface PkgSize {
     name: string;
     version: string;
-    publishDate: string;
     publishSize: number;
     installSize: number;
     publishFiles: number;
@@ -67,7 +66,7 @@ export interface NpmManifest {
     name: string;
     description: string;
     versions: { [version: string]: any };
-    time: { [version: string]: string };
+    modified: string;
     'dist-tags': {
         latest: string;
         [tag: string]: string;

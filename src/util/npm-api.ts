@@ -24,15 +24,12 @@ export async function fetchManifest(name: string) {
     if (!isManifest(manifest)) {
         throw new NotFoundError({ resource: name });
     }
-    if (manifest.time.unpublished) {
-        throw new NotFoundError({ resource: name });
-    }
     // only cache some properties and sort the versions by semver
     cachedManifest = {
         name: manifest.name,
         description: manifest.description,
         versions: getAllVersions(manifest),
-        time: manifest.time,
+        modified: manifest.modified,
         'dist-tags': manifest['dist-tags'],
     };
     cache.set(name, cachedManifest);
@@ -45,11 +42,15 @@ function isManifest(obj: unknown): obj is NpmManifest {
 
 function fetchJSON(url: string) {
     const { hostname, port, pathname } = new URL(url);
-    const options = {
+    const options: https.RequestOptions = {
         method: 'GET',
         port: port || 443,
         hostname: hostname,
         path: pathname,
+        headers: {
+            Accept: 'application/vnd.npm.install-v1+json',
+            'User-Agent': 'packagephobia.com',
+        },
     };
 
     return new Promise<NpmManifest | null>((resolve, reject) => {
@@ -119,13 +120,6 @@ export function getVersionsForChart(allVersions: string[], version: string, coun
     }
 
     return allVersions.slice(start, end);
-}
-
-/**
- * Get the npm publish date of a specific version
- */
-export function getPublishDate(manifest: NpmManifest | null, version: string) {
-    return manifest?.time[version] || '';
 }
 
 /**

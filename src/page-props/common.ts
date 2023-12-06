@@ -1,5 +1,5 @@
 import { findOne, insert } from '../util/backend/db';
-import { getAllDistTags, getPublishDate } from '../util/npm-api';
+import { getAllDistTags } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
 import type { NpmManifest, PkgSize } from '../types';
@@ -35,12 +35,11 @@ export async function getPkgDetails(
         return packageNotFound(name);
     }
 
-    const publishDate = getPublishDate(manifest, version);
     let pkgSize = await findOne(name, version);
     if (!pkgSize || force) {
         console.log(`Cache miss - running "npm i ${name}@${version}" in ${tmpDir}...`);
         const start = new Date();
-        pkgSize = await calculatePackageSize(name, version, publishDate, tmpDir);
+        pkgSize = await calculatePackageSize(name, version, tmpDir);
         const end = new Date();
         const sec = (end.getTime() - start.getTime()) / 1000;
         console.log(`Calculated size of ${name}@${version} in ${sec}s`);
@@ -60,7 +59,6 @@ function packageNotFound(name: string) {
     const pkgSize: PkgSize = {
         name,
         version: versionUnknown,
-        publishDate: '',
         publishSize: 0,
         installSize: 0,
         publishFiles: 0,
