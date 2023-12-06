@@ -1,24 +1,39 @@
 import https from 'https';
 import semver from 'semver';
+import { LRUCache } from 'lru-cache';
 import { NotFoundError } from './not-found-error';
 import type { NpmManifest } from '../types';
 
 const { NPM_REGISTRY_URL = 'https://registry.npmjs.com' } = process.env;
+const cache = new LRUCache<string, NpmManifest>({ max: 5000, ttl: 1000 * 60 * 5 });
 
 /**
  * Make an API call to npm to get package manifest details
  * @param name The npm package name
  */
 export async function fetchManifest(name: string) {
+    let cachedManifest = cache.get(name);
+    if (cachedManifest) {
+        // fetch can take 2000ms or slower so we cache
+        console.log('lrucache hit');
+        return cachedManifest;
+    }
+    console.log('lrucache miss');
     const encodedPackage = escapePackageName(name);
     const manifest = await fetchJSON(`${NPM_REGISTRY_URL}/${encodedPackage}`);
     if (!isManifest(manifest)) {
         throw new NotFoundError({ resource: name });
     }
-    if (manifest.time.unpublished) {
-        throw new NotFoundError({ resource: name });
-    }
-    return manifest;
+    // only cache some properties and sort the versions by semver
+    cachedManifest = {
+        name: manifest.name,
+        description: manifest.description,
+        versions: getAllVersions(manifest),
+        modified: manifest.modified,
+        'dist-tags': manifest['dist-tags'],
+    };
+    cache.set(name, cachedManifest);
+    return cachedManifest;
 }
 
 function isManifest(obj: unknown): obj is NpmManifest {
@@ -27,11 +42,15 @@ function isManifest(obj: unknown): obj is NpmManifest {
 
 function fetchJSON(url: string) {
     const { hostname, port, pathname } = new URL(url);
-    const options = {
+    const options: https.RequestOptions = {
         method: 'GET',
         port: port || 443,
         hostname: hostname,
         path: pathname,
+        headers: {
+            Accept: 'application/vnd.npm.install-v1+json',
+            'User-Agent': 'packagephobia.com',
+        },
     };
 
     return new Promise<NpmManifest | null>((resolve, reject) => {
@@ -101,13 +120,6 @@ export function getVersionsForChart(allVersions: string[], version: string, coun
     }
 
     return allVersions.slice(start, end);
-}
-
-/**
- * Get the npm publish date of a specific version
- */
-export function getPublishDate(manifest: NpmManifest | null, version: string) {
-    return manifest?.time[version] || '';
 }
 
 /**
