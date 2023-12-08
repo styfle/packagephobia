@@ -21,6 +21,7 @@ client.on('error', err => {
 });
 
 export async function findAll(name: string) {
+    console.time('findAll (redis)');
     const reply = await client.hgetall(name);
     const obj: { [key: string]: PkgSize } = {};
     for (let version in reply) {
@@ -29,10 +30,12 @@ export async function findAll(name: string) {
         payload.version = version;
         obj[version] = payload;
     }
+    console.timeEnd('findAll (redis)');
     return obj;
 }
 
 export async function findOne(name: string, version: string) {
+    console.time('findOne (redis)');
     const reply = await client.hget(name, version);
 
     if (!reply) {
@@ -42,6 +45,8 @@ export async function findOne(name: string, version: string) {
     let record: PkgSize = JSON.parse(reply);
     record.name = name;
     record.version = version;
+
+    console.timeEnd('findOne (redis)');
     return record;
 }
 
