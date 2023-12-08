@@ -11,13 +11,12 @@ export default async function handler(_req: IncomingMessage, res: ServerResponse
     }
 
     /*
-console.log(await sql`
-    CREATE COLLATION semver (
-        LOCALE = 'en-US-u-kn-true',
-        PROVIDER = 'icu'
-    );
-`);
-*/
+    console.log(await sql`
+        CREATE COLLATION semver (
+            LOCALE = 'en-US-u-kn-true',
+            PROVIDER = 'icu'
+        );
+    `);
 
     console.log(
         await sql`
@@ -37,11 +36,12 @@ console.log(await sql`
     );
 `,
     );
-
+*/
     const result = await findAll('next');
     console.log(`inserting ${Object.keys(result).length} rows`);
 
     for (let pkg of Object.values(result)) {
+        console.log(`inserting row ${pkg.name}@${pkg.version}`);
         await sql`
         INSERT INTO "packages" values (${pkg.name}, ${pkg.version}, ${pkg.publishSize}, ${pkg.installSize}, ${pkg.publishFiles}, ${pkg.installFiles});
     `;
