@@ -2,7 +2,7 @@ import { sql } from '@vercel/postgres';
 import { findAll } from '../src/util/backend/db-redis';
 import type { IncomingMessage, ServerResponse } from 'http';
 
-export default async function handler(_req: IncomingMessage, res: ServerResponse) {
+export default async function handler(req: IncomingMessage, res: ServerResponse) {
     // This is a temporary function we can use to test
     if (process.env.VERCEL_ENV !== 'development') {
         res.statusCode = 403;
@@ -18,11 +18,8 @@ export default async function handler(_req: IncomingMessage, res: ServerResponse
         );
     `);
 
-    console.log(
-        await sql`
-    drop table if exists "packages";
-`,
-    );
+    console.log(await sql`drop table if exists "packages";`);
+
     console.log(
         await sql`
     CREATE TABLE "packages" (
@@ -37,23 +34,30 @@ export default async function handler(_req: IncomingMessage, res: ServerResponse
 `,
     );
 */
-    const result = await findAll('next');
-    console.log(`inserting ${Object.keys(result).length} rows`);
 
-    for (let pkg of Object.values(result)) {
-        console.log(`inserting row ${pkg.name}@${pkg.version}`);
-        await sql`
-        INSERT INTO "packages" values (${pkg.name}, ${pkg.version}, ${pkg.publishSize}, ${pkg.installSize}, ${pkg.publishFiles}, ${pkg.installFiles});
-    `;
+    const url = new URL(req.url ?? '/', 'http://example.com');
+    const pkgName = url.searchParams.get('p');
+    if (pkgName) {
+        const result = await findAll(pkgName);
+        console.log(`inserting ${Object.keys(result).length} rows`);
+
+        for (let pkg of Object.values(result)) {
+            console.log(`inserting row ${pkg.name}@${pkg.version}`);
+            try {
+                await sql`INSERT INTO "packages" values (${pkg.name}, ${pkg.version}, ${pkg.publishSize}, ${pkg.installSize}, ${pkg.publishFiles}, ${pkg.installFiles});`;
+            } catch (error) {
+                if (String(error).includes('duplicate key value')) {
+                    console.log('skipping duplicate key', pkg.name, pkg.version);
+                } else {
+                    throw error;
+                }
+            }
+        }
+        console.log('inserting complete!\n');
+        // console.log(await sql`SELECT * FROM "packages" ORDER BY version desc;`);
+    } else {
+        console.log('Missing "p" query parameter so no packages were inserted')
     }
-    /*
-  console.log(await sql`
-    SELECT *
-    FROM "packages"
-    ORDER BY version desc;
-  `);
-  */
-
     res.end('success');
 }
 
