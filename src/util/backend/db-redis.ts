@@ -51,8 +51,10 @@ export async function findOne(name: string, version: string) {
 }
 
 export async function insert(data: PkgSize) {
+    console.time('insert (redis)');
     const { name, version, ...payload } = data;
     const value = JSON.stringify(payload);
     const reply = await client.hset(name, version, value);
+    console.timeEnd('insert (redis)');
     return reply;
 }
