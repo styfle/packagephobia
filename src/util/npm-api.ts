@@ -20,7 +20,9 @@ export async function fetchManifest(name: string) {
     }
     console.log('lrucache miss');
     const encodedPackage = escapePackageName(name);
+    console.time('fetchJSON');
     const manifest = await fetchJSON(`${NPM_REGISTRY_URL}/${encodedPackage}`);
+    console.timeEnd('fetchJSON');
     if (!isManifest(manifest)) {
         throw new NotFoundError({ resource: name });
     }

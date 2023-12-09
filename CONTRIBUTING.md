@@ -30,11 +30,10 @@ Create a `.env` file in the root directory.
 ```
 # required settings
 REDIS_URL="redis://127.0.0.1:6379"
-GA_ID=""
 
 # optional settings
-export PORT="3000"
-export NPM_REGISTRY_URL="https://registry.npmjs.com"
+PORT="3000"
+NPM_REGISTRY_URL="https://registry.npmjs.com"
 ```
 
 ## Running the code

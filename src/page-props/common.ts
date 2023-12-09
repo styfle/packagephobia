@@ -1,4 +1,6 @@
-import { findOne, insert } from '../util/backend/db';
+import { findOne } from '../util/backend/db';
+import { insert as insertPostgres } from '../util/backend/db-postgres';
+import { insert as insertRedis } from '../util/backend/db-redis';
 import { getAllDistTags } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
@@ -43,7 +45,7 @@ export async function getPkgDetails(
         const end = new Date();
         const sec = (end.getTime() - start.getTime()) / 1000;
         console.log(`Calculated size of ${name}@${version} in ${sec}s`);
-        insert(pkgSize);
+        await Promise.all([insertRedis(pkgSize), insertPostgres(pkgSize)]);
     }
 
     const result = {
