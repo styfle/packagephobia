@@ -36,8 +36,10 @@ export async function findOne(name: string, version: string) {
 }
 
 export async function insert(pkg: PkgSize) {
+    console.time('insert (postgres)');
     const reply = await sql`
         INSERT INTO "packages" VALUES (${pkg.name}, ${pkg.version}, ${pkg.publishSize}, ${pkg.installSize}, ${pkg.publishFiles}, ${pkg.installFiles});
     `;
+    console.timeEnd('insert (postgres)');
     return reply;
 }
