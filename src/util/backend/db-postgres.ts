@@ -35,12 +35,19 @@ export async function findOne(name: string, version: string) {
     return reply as PkgSize;
 }
 
-export async function insert({ name, version, publishSize, installSize, publishFiles, installFiles }: PkgSize) {
+export async function insert({
+    name,
+    version,
+    publishSize,
+    installSize,
+    publishFiles,
+    installFiles,
+}: PkgSize) {
     console.time('insert (postgres)');
     const reply = await sql`
         INSERT INTO "packages" 
         VALUES (${name}, ${version}, ${publishSize}, ${installSize}, ${publishFiles}, ${installFiles})
-        ON CONFLICT (packages_pkey)
+        ON CONFLICT ("name", "version")
         DO UPDATE SET "publishSize" = ${publishSize}, "installSize" = ${installSize}, "publishFiles" = ${publishFiles}, "installFiles" = ${installFiles}
         ;
     `;
