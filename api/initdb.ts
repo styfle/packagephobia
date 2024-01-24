@@ -56,7 +56,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         console.log('inserting complete!\n');
         // console.log(await sql`SELECT * FROM "packages" ORDER BY version desc;`);
     } else {
-        console.log('Missing "p" query parameter so no packages were inserted')
+        console.log('Missing "p" query parameter so no packages were inserted');
     }
     res.end('success');
 }
