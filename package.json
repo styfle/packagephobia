@@ -2,7 +2,7 @@
   "name": "packagephobia",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "scripts": {
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
