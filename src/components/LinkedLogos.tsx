@@ -65,8 +65,8 @@ export default (props: Props) => {
                 title="graph"
                 href={
                     isLatest
-                        ? `https://npm.anvaka.com/#/view/2d/${escape(escape(name))}`
-                        : `https://npm.anvaka.com/#/view/2d/${escape(escape(name))}/${version}`
+                        ? `https://npmgraph.js.org/?q=${name}`
+                        : `https://npmgraph.js.org/?q=${name}@${version}`
                 }
             />
         </>
