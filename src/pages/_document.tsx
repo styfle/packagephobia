@@ -147,7 +147,6 @@ export async function renderPage(
                 <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
                 <link rel="manifest" href="/site.webmanifest">
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33">
-                <meta name="msapplication-TileColor" content="#333333">
                 <meta name="theme-color" content="#333333">
                 <meta property="og:title" content="${escapeHtml(title)}">
                 <meta property="og:image" content="https://${productionHostname}/logo.png">
