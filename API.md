@@ -8,6 +8,7 @@ Current websites using this API:
 - https://cnpmjs.org
 - https://npm.taobao.org
 - https://bestofjs.org
+- https://socket.dev
 
 If you intend to use this API, please add your website to the list and set user-agent header to match.
 
