@@ -65,8 +65,8 @@ export default (props: Props) => {
                 title="graph"
                 href={
                     isLatest
-                        ? `https://npmgraph.js.org/?q=${name}`
-                        : `https://npmgraph.js.org/?q=${name}@${version}`
+                        ? `https://npmgraph.js.org/?q=${name}#sizing`
+                        : `https://npmgraph.js.org/?q=${name}@${version}#sizing`
                 }
             />
         </>

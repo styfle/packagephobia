@@ -23,6 +23,28 @@ import type { NpmManifest, PackageVersion, ParsedUrlQuery } from '../types';
 const existingPaths = new Set(Object.values(pages));
 const logoSize = 108;
 const css = `
+:root {
+    --brand-color: #16864d;
+    --background: #fafafa;
+    --foreground: #18181b;
+    --muted: #e4e4e7;
+    --muted-foreground: #3f3f46;
+    --border: #d4d4d8;
+    --search-input: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --brand-color: #32de85;
+        --background: #09090b;
+        --foreground: #f4f4f5;
+        --muted: #27272a;
+        --muted-foreground: #d4d4d8;
+        --border: #3f3f46;
+        --search-input: #18181b;
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -140,14 +162,12 @@ export async function renderPage(
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <title>${escapeHtml(title)}</title>
                 <meta name="description" content="${escapeHtml(description)}">
-                <link rel="stylesheet" href="/globals.css">
                 <style>${css}</style>
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
                 <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
                 <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
                 <link rel="manifest" href="/site.webmanifest">
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#33aa33">
-                <meta name="msapplication-TileColor" content="#333333">
                 <meta name="theme-color" content="#333333">
                 <meta property="og:title" content="${escapeHtml(title)}">
                 <meta property="og:image" content="https://${productionHostname}/logo.png">
