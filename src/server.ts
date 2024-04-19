@@ -28,7 +28,8 @@ console.log('AWS_SECRET_ACCESS_KEY: ', process.env.AWS_SECRET_ACCESS_KEY);
 
 export async function handler(req: IncomingMessage, res: ServerResponse) {
     let { method, url, headers } = req;
-    console.log(`${method} ${headers.host}${url} [${headers['user-agent']}]`);
+    console.log(`${method} ${headers.host}${url}`);
+    console.log(`user-agent: ${headers['user-agent']}`);
     let { pathname = '/', query = {} } = parse(url || '', true);
     if (!pathname || pathname === '/') {
         pathname = pages.index;
