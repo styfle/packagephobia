@@ -11,26 +11,25 @@ on:
 
 env:
   FORCE_COLOR: 2
+  NODE: 20
+
+permissions:
+  contents: read
 
 jobs:
   test:
-    name: Node.js ${{ matrix.node }} on ${{ matrix.os }}
     timeout-minutes: 3
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest]
-        node: [20]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Clone repo
         uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node }}
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
-      - run: corepack enable npm
-      - run: npm --version
-      - run: npm install
+          node-version: ${{ env.NODE }}
+          cache: npm
+      - run: npm ci
       - run: npm run lint
       - run: npm run test
