@@ -14,22 +14,22 @@
   "author": "styfle",
   "license": "MIT",
   "dependencies": {
-    "@vercel/postgres": "^0.5.1",
-    "badgen": "^3.2.2",
-    "ioredis": "^5.1.0",
-    "lru-cache": "^10.1.0",
+    "@vercel/postgres": "^0.8.0",
+    "badgen": "^3.2.3",
+    "ioredis": "^5.4.1",
+    "lru-cache": "^10.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "semver": "^7.5.2"
+    "semver": "^7.6.0"
   },
   "devDependencies": {
-    "@types/node": "^18.18.9",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
-    "@types/semver": "^7.3.10",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "@types/semver": "^7.5.8",
     "npm": "^10.4.0",
-    "prettier": "^3.0.0",
-    "typescript": "^5.2.2"
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
   },
   "packageManager": "npm@10.4.0"
 }
