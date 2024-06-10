@@ -1,5 +1,9 @@
 # API
 
+If you intend to use this API, please add your website to the list below and set your client's `user-agent` request header to match.
+
+If you forget to set a `user-agent`, you will likely be blocked.
+
 ## Users
 
 Current websites using this API:
@@ -9,8 +13,6 @@ Current websites using this API:
 - https://npm.taobao.org
 - https://bestofjs.org
 - https://socket.dev
-
-If you intend to use this API, please add your website to the list and set user-agent header to match.
 
 ## Endpoints
 
