@@ -34,8 +34,8 @@ export async function getResultProps(
         pkgVersions.length > 1
             ? pkgVersions.map(p => tagToVersion[p.version || ''] || p.version).filter(notEmpty)
             : isFullRelease(version)
-            ? allVersions.filter(isFullRelease)
-            : allVersions;
+              ? allVersions.filter(isFullRelease)
+              : allVersions;
 
     const chartVersions = getVersionsForChart(filteredVersions, version, 7);
 
