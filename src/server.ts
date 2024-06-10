@@ -40,7 +40,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
         userAgent.startsWith('got')
     ) {
         botCount++;
-        if (botCount % 100 === 0) {
+        if (botCount % 10 === 0) {
             res.statusCode = 429;
             res.end(
                 'Too many requests from unknown user-agent. See https://github.com/styfle/packagephobia/blob/main/API.md',
