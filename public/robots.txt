@@ -4,9 +4,13 @@ User-agent: Barkrowler
 Disallow: /
 User-agent: Bytespider
 Disallow: /
+User-agent: DotBot
+Disallow: /
 User-agent: GPTBot
 Disallow: /
 User-agent: marketgoo
+Disallow: /
+User-agent: MJ12bot
 Disallow: /
 User-agent: Moz dotbot
 Disallow: /
