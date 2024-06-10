@@ -26,10 +26,28 @@ console.log('TMPDIR: ', TMPDIR);
 console.log('HOME: ', process.env.HOME);
 console.log('AWS_SECRET_ACCESS_KEY: ', process.env.AWS_SECRET_ACCESS_KEY);
 
+let botCount = 0;
+
 export async function handler(req: IncomingMessage, res: ServerResponse) {
     let { method, url, headers } = req;
+    const userAgent = headers['user-agent'] || '';
     console.log(`${method} ${headers.host}${url}`);
-    console.log(`user-agent: ${headers['user-agent']}`);
+    console.log(`user-agent: ${userAgent}`);
+    if (
+        !userAgent ||
+        userAgent === 'node' ||
+        userAgent.startsWith('axios') ||
+        userAgent.startsWith('got')
+    ) {
+        botCount++;
+        if (botCount % 100 === 0) {
+            res.statusCode = 429;
+            res.end(
+                'Too many requests from unknown user-agent. See https://github.com/styfle/packagephobia/blob/main/API.md',
+            );
+            return;
+        }
+    }
     let { pathname = '/', query = {} } = parse(url || '', true);
     if (!pathname || pathname === '/') {
         pathname = pages.index;
