@@ -35,7 +35,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
     console.log(`user-agent: ${userAgent}`);
     if (
         !userAgent ||
-        userAgent === 'node' ||
+        userAgent.startsWith('node') ||
         userAgent.startsWith('axios') ||
         userAgent.startsWith('got')
     ) {
