@@ -16,6 +16,13 @@ export default (props: Props) => {
         <>
             <LinkedLogo
                 name={name}
+                icon="github"
+                color="#333"
+                title="github"
+                href={`https://ghub.io/${name}`}
+            />
+            <LinkedLogo
+                name={name}
                 icon="npm"
                 color="#CB3837"
                 title="npm"
