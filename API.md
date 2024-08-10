@@ -13,7 +13,7 @@ Current websites using this API:
 - https://npm.taobao.org
 - https://bestofjs.org
 - https://socket.dev
-- picocolors-size-benchmark
+- [picocolors-size-benchmark](https://github.com/alexeyraspopov/picocolors/pull/76)
 
 ## Endpoints
 
