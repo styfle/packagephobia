@@ -71,7 +71,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                 TMPDIR,
             );
             res.setHeader('Content-Type', mimeType('*.svg'));
-            res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
+            res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 31 : 0));
             res.end(getBadgeSvg(pkgSize));
         } else if (pathname === pages.apiv1 || pathname === pages.apiv2) {
             const parsed = parsePackageString(query.p as string);
