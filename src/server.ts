@@ -94,7 +94,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             }
             res.statusCode = version === versionUnknown ? 404 : 200;
             res.setHeader('Content-Type', mimeType(pathname));
-            res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 7 : 0));
+            res.setHeader('Cache-Control', cacheControl(isProd, cacheResult ? 31 : 0));
             res.end(JSON.stringify(result));
         } else if (pathname === pages.scanResults) {
             let data: Buffer[] = [];
@@ -121,7 +121,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
             const hasVersion =
                 typeof query.p === 'string' && parsePackageString(query.p).version !== null;
             res.setHeader('Content-Type', mimeType('*.html'));
-            res.setHeader('Cache-Control', cacheControl(isProd, isIndex || hasVersion ? 7 : 0));
+            res.setHeader('Cache-Control', cacheControl(isProd, isIndex || hasVersion ? 31 : 0));
             renderPage(res, pathname, query, TMPDIR, GA_ID);
         }
     } catch (e) {
