@@ -2,7 +2,7 @@
   "name": "packagephobia",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "scripts": {
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
@@ -31,5 +31,5 @@
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
-  "packageManager": "npm@10.4.0"
+  "packageManager": "npm@10.9.0"
 }
