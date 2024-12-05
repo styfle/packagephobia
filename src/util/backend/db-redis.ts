@@ -21,7 +21,7 @@ client.on('error', err => {
 });
 
 export async function findAll(name: string) {
-    console.time('findAll (redis)');
+    const startTime = Date.now();
     const reply = await client.hgetall(name);
     const obj: { [key: string]: PkgSize } = {};
     for (let version in reply) {
@@ -30,12 +30,12 @@ export async function findAll(name: string) {
         payload.version = version;
         obj[version] = payload;
     }
-    console.timeEnd('findAll (redis)');
+    console.log(`findAll (redis) ${Date.now() - startTime}ms`);
     return obj;
 }
 
 export async function findOne(name: string, version: string) {
-    console.time('findOne (redis)');
+    const startTime = Date.now();
     const reply = await client.hget(name, version);
 
     if (!reply) {
@@ -46,15 +46,15 @@ export async function findOne(name: string, version: string) {
     record.name = name;
     record.version = version;
 
-    console.timeEnd('findOne (redis)');
+    console.log(`findOne (redis) ${Date.now() - startTime}ms`);
     return record;
 }
 
 export async function insert(data: PkgSize) {
-    console.time('insert (redis)');
+    const startTime = Date.now();
     const { name, version, ...payload } = data;
     const value = JSON.stringify(payload);
     const reply = await client.hset(name, version, value);
-    console.timeEnd('insert (redis)');
+    console.log(`insert (redis) ${Date.now() - startTime}ms`);
     return reply;
 }
