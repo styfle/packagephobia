@@ -12,7 +12,8 @@ export default () => (
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                 <h1>500 Internal Server Error</h1>
 
-                <p>Oops, something went terribly wrong.</p>
+                <p>Oops, the package failed to install.</p>
+                <p>This can happen when there is no prebuilt binary for node@{process.versions.node} or the install script requires CLIs like python/curl/etc.</p>
                 <p>
                     <a href={pages.index}>Go Home You</a>
                 </p>
