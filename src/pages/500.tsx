@@ -13,7 +13,7 @@ export default () => (
                 <h1>500 Internal Server Error</h1>
 
                 <p>Oops, the package failed to install.</p>
-                <p style={{maxWidth: '500px'}}>
+                <p style={{ maxWidth: '500px' }}>
                     This can happen when there is no prebuilt binary for node@
                     {process.versions.node} or the install script requires CLIs like
                     python/curl/etc.
