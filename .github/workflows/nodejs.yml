@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: corepack enable npm
+      #- run: corepack enable npm
       - run: npm --version
       - run: npm install
       - run: npm run lint
