@@ -16,7 +16,7 @@
 
 ## What is the purpose?
 
-Package Phobia reports the size of an npm package *before* you install it.
+Package Phobia reports the size of an npm package *before* you install it, and records the size over time.
 
 This is useful for inspecting potential `dependencies` or `devDependencies` without using up precious disk space or waiting minutes for `npm install`. Ain't nobody got time for dat.
 
