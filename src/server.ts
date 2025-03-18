@@ -24,7 +24,6 @@ console.log('NODE_ENV: ' + NODE_ENV);
 console.log('isProd: ', isProd);
 console.log('TMPDIR: ', TMPDIR);
 console.log('HOME: ', process.env.HOME);
-console.log('AWS_SECRET_ACCESS_KEY: ', process.env.AWS_SECRET_ACCESS_KEY);
 
 let botCount = 0;
 
