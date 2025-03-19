@@ -37,7 +37,7 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
             controller.abort();
             await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
         },
-        25 * 1000, // timeout after 25 seconds since vercel.json is 30 seconds
+        26 * 1000, // timeout after 26 seconds since max duration is 30 seconds
     );
 
     const pkgDir = join(tmpDir, tmpPackage);
