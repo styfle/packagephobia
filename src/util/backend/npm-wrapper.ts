@@ -6,9 +6,16 @@ import { promisify } from 'util';
 const execFileAysnc = promisify(execFile);
 const npm = join(require.resolve('npm'), '../bin/npm-cli.js');
 
-export async function npmInstall(cwd: string, cacheDir: string, name: string, version: string) {
+export async function npmInstall(
+    cwd: string,
+    cacheDir: string,
+    name: string,
+    version: string,
+    signal: AbortSignal,
+) {
     const result = await execFileAysnc(npm, ['i', `${name}@${version}`], {
         cwd,
+        signal,
         env: {
             ...process.env,
             // See https://docs.npmjs.com/cli/v10/commands/npm#configuration

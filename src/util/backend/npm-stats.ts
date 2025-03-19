@@ -29,12 +29,15 @@ export function getDirSize(root: string, seen: Set<number>): number {
 
 export async function calculatePackageSize(name: string, version: string, tmpDir: string) {
     const tmpPackage = 'tmp-package' + Math.random();
+    const controller = new AbortController();
 
     let t = setTimeout(
         async () => {
+            console.error(`Aborting npm install and deleting ${tmpPackage}`);
+            controller.abort();
             await execFileAsync('rm', ['-rf', tmpPackage], { cwd: tmpDir });
         },
-        2 * 60 * 1000,
+        25 * 1000, // timeout after 25 seconds since vercel.json is 30 seconds
     );
 
     const pkgDir = join(tmpDir, tmpPackage);
@@ -43,7 +46,7 @@ export async function calculatePackageSize(name: string, version: string, tmpDir
     const nodeModules = join(pkgDir, 'node_modules');
     await mkdirAsync(pkgDir);
     await writeFileAsync(packageJson, packageString, 'utf8');
-    await npmInstall(pkgDir, cacheDir, name, version);
+    await npmInstall(pkgDir, cacheDir, name, version, controller.signal);
     const installFiles = new Set<number>();
     const installSize = getDirSize(nodeModules, installFiles);
     const publishFiles = new Set<number>();
