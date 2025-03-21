@@ -30,11 +30,12 @@ let botCount = 0;
 export async function handler(req: IncomingMessage, res: ServerResponse) {
     let { method, url, headers } = req;
     const userAgent = headers['user-agent'] || '';
-    const reqId = String(headers['x-vercel-id'] || '')
-        .split(':')
-        .pop() || '';
     console.log(`${method} ${headers.host}${url}`);
     console.log(`user-agent: ${userAgent}`);
+    const reqId =
+        String(headers['x-vercel-id'] || '')
+            .split(':')
+            .pop() || '';
     if (
         !userAgent ||
         userAgent.startsWith('node') ||
