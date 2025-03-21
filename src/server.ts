@@ -30,6 +30,7 @@ let botCount = 0;
 export async function handler(req: IncomingMessage, res: ServerResponse) {
     let { method, url, headers } = req;
     const userAgent = headers['user-agent'] || '';
+    const reqId = String(headers['x-vercel-id'] || '');
     console.log(`${method} ${headers.host}${url}`);
     console.log(`user-agent: ${userAgent}`);
     if (
@@ -112,7 +113,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                     return res.end();
                 } catch (e) {
                     res.setHeader('Content-Type', mimeType('*.html'));
-                    return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID);
+                    return renderPage(res, pages.parseFailure, query, TMPDIR, GA_ID, reqId);
                 }
             });
         } else {
@@ -121,7 +122,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
                 typeof query.p === 'string' && parsePackageString(query.p).version !== null;
             res.setHeader('Content-Type', mimeType('*.html'));
             res.setHeader('Cache-Control', cacheControl(isProd, isIndex || hasVersion ? 31 : 0));
-            renderPage(res, pathname, query, TMPDIR, GA_ID);
+            renderPage(res, pathname, query, TMPDIR, GA_ID, reqId);
         }
     } catch (e) {
         console.error(e);

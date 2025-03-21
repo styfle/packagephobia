@@ -6,7 +6,7 @@ import PageContainer from '../components/PageContainer';
 
 import { pages } from '../util/constants';
 
-export default () => (
+export default ({ reqId }: { reqId: string }) => (
     <>
         <PageContainer>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -19,7 +19,14 @@ export default () => (
                     python/curl/etc.
                 </p>
                 <p>
-                    <a href={pages.index}>Go Home You</a>
+                    <a href={pages.index}>Go Home</a>
+                </p>
+                <p>
+                    <a
+                        href={`https://vercel.com/packagephobia/packagephobia/logs?requestIds=${reqId}`}
+                    >
+                        Logs
+                    </a>
                 </p>
             </div>
 

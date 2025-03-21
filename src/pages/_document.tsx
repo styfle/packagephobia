@@ -129,7 +129,8 @@ export async function renderPage(
     pathname: string,
     query: ParsedUrlQuery,
     tmpDir: string,
-    gaId = '',
+    gaId: string,
+    reqId: string,
 ) {
     res.statusCode = getStatusCode(pathname);
     const force = query.force === '1';
@@ -181,7 +182,15 @@ export async function renderPage(
             </script>
             ${OctocatCorner()}
             <div id="${containerId}">`);
-    const factory = await routePage(pathname, inputStr, pkgVersions, manifest, force, tmpDir);
+    const factory = await routePage(
+        pathname,
+        inputStr,
+        pkgVersions,
+        manifest,
+        force,
+        tmpDir,
+        reqId,
+    );
     const stream = renderToStaticNodeStream(factory);
     stream.pipe(res, { end: false });
     stream.on('end', () => {
@@ -219,6 +228,7 @@ async function routePage(
     manifest: NpmManifest | null,
     force: boolean,
     tmpDir: string,
+    reqId: string,
 ) {
     try {
         switch (pathname) {
@@ -244,7 +254,7 @@ async function routePage(
             return <NotFound resource={err.resource} />;
         }
         console.error('Unexpected Error Occurred...', err);
-        return <ServerError />;
+        return <ServerError reqId={reqId} />;
     }
 }
 
