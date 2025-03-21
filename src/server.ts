@@ -32,7 +32,7 @@ export async function handler(req: IncomingMessage, res: ServerResponse) {
     const userAgent = headers['user-agent'] || '';
     const reqId = String(headers['x-vercel-id'] || '')
         .split(':')
-        .pop();
+        .pop() || '';
     console.log(`${method} ${headers.host}${url}`);
     console.log(`user-agent: ${userAgent}`);
     if (
