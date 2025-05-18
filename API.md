@@ -14,6 +14,7 @@ Current websites using this API:
 - https://bestofjs.org
 - https://socket.dev
 - [picocolors-size-benchmark](https://github.com/alexeyraspopov/picocolors/pull/76)
+- [dependencies-dashboard](https://github.com/shakib1729/dependencies-dashboard-main)
 
 ## Endpoints
 
