@@ -17,6 +17,9 @@ export async function runInSandbox(name: string, version: string): Promise<PkgSi
     const pwd = await sandbox.runCommand('pwd');
     console.log(`Working dir: ${await pwd.stdout()}`);
 
+    const init = await sandbox.runCommand(`npm init -y`);
+    console.log(`npm init: ${await init.stdout()}`);
+
     const install = await sandbox.runCommand(`npm init -y && npm install ${name}@${version}`);
     console.log(`npm install: ${await install.stdout()}`);
 
