@@ -14,19 +14,16 @@ export async function runInSandbox(name: string, version: string): Promise<PkgSi
     const whoami = await sandbox.runCommand('whoami');
     console.log(`Running as: ${await whoami.stdout()}`);
 
-    const which = await sandbox.runCommand('which node');
-    console.log(`which: ${await which.stdout()}`);
-
     const pwd = await sandbox.runCommand('pwd');
     console.log(`Working dir: ${await pwd.stdout()}`);
 
-    const init = await sandbox.runCommand(`npm init -y`);
+    const init = await sandbox.runCommand('npm', ['init', '-y']);
     console.log(`npm init: ${await init.stdout()}`);
 
-    const install = await sandbox.runCommand(`npm init -y && npm install ${name}@${version}`);
+    const install = await sandbox.runCommand('npm', ['install', `${name}@${version}`]);
     console.log(`npm install: ${await install.stdout()}`);
 
-    const node_modules = await sandbox.runCommand('du -sh node_modules');
+    const node_modules = await sandbox.runCommand('du', ['-sh', 'node_modules']);
     console.log(`node_modules: ${await node_modules.stdout()}`);
 
     return {
