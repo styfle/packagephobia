@@ -1,14 +1,7 @@
 import { Sandbox } from '@vercel/sandbox';
 
-const teamId = process.env.VERCEL_TEAM_ID || '';
-const projectId = process.env.VERCEL_PROJECT_ID || '';
-const token = process.env.VERCEL_TOKEN || '';
-
 export async function runInSandbox(name: string, version: string) {
     const sandbox = await Sandbox.create({
-        teamId,
-        projectId,
-        token,
         runtime: 'node22',
         resources: {
             vcpus: 2,

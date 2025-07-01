@@ -40,7 +40,7 @@ export async function getPkgDetails(
     if (!pkgSize || force) {
         console.log(`Cache miss - running "npm i ${name}@${version}" in ${tmpDir}...`);
         const start = new Date();
-        pkgSize = await calculatePackageSize(name, version, tmpDir);
+        //pkgSize = await calculatePackageSize(name, version, tmpDir);
         await runInSandbox(name, version);
         const end = new Date();
         const sec = (end.getTime() - start.getTime()) / 1000;
