@@ -14,7 +14,7 @@ export async function runInSandbox(name: string, version: string): Promise<PkgSi
     const whoami = await sandbox.runCommand('whoami');
     console.log(`Running as: ${await whoami.stdout()}`);
 
-    const which = await sandbox.runCommand('which whoami');
+    const which = await sandbox.runCommand('command -v whoami');
     console.log(`which: ${await which.stdout()}`);
 
     const pwd = await sandbox.runCommand('pwd');
