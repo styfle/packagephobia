@@ -1,6 +1,7 @@
 import { Sandbox } from '@vercel/sandbox';
+import type { PkgSize } from '../../types';
 
-export async function runInSandbox(name: string, version: string) {
+export async function runInSandbox(name: string, version: string): Promise<PkgSize> {
     const sandbox = await Sandbox.create({
         runtime: 'node22',
         resources: {
@@ -24,4 +25,13 @@ export async function runInSandbox(name: string, version: string) {
 
     const node_modules = await sandbox.runCommand('du -sh node_modules');
     console.log(`node_modules: ${await node_modules.stdout()}`);
+
+    return {
+        name,
+        version,
+        publishSize: 0, // Placeholder, implement actual size calculation
+        installSize: 0, // Placeholder, implement actual size calculation
+        publishFiles: 0, // Placeholder, implement actual file count
+        installFiles: 0, // Placeholder, implement actual file count
+    };
 }
