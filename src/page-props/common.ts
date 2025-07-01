@@ -1,5 +1,4 @@
 import { findOne } from '../util/backend/db';
-import { insert as insertRedis } from '../util/backend/db-redis';
 import { getAllDistTags } from '../util/npm-api';
 import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
