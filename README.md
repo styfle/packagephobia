@@ -1,7 +1,7 @@
 <a href="https://packagephobia.com"><img src="https://packagephobia.com/logo.svg" width="60" height="60" align="right" /></a>
 
 # Package Phobia
-[![tests](https://github.com/styfle/packagephobia/workflows/Tests/badge.svg)](https://github.com/styfle/packagephobia/actions?workflow=Tests)
+[![Tests](https://github.com/styfle/packagephobia/actions/workflows/nodejs.yml/badge.svg)](https://github.com/styfle/packagephobia/actions/workflows/nodejs.yml)
 ![uptime](https://badgen.net/uptime-robot/week/m783908968-e68af1e88fe9d03309911b73)
 
 <a href="https://turnoff.us/geek/npm-install/"><img src="https://turnoff.us/image/en/npm-install.png" width="300" height="400" align="right" /></a>
