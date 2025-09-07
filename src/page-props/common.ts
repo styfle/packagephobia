@@ -1,9 +1,8 @@
 import { findOne } from '../util/backend/db';
-import { insert as insertRedis } from '../util/backend/db-redis';
 import { getAllDistTags } from '../util/npm-api';
-import { calculatePackageSize } from '../util/backend/npm-stats';
 import { versionUnknown } from '../util/constants';
 import type { NpmManifest, PkgSize } from '../types';
+import { runInSandbox } from '../util/backend/npm-sanbox';
 
 export async function getPkgDetails(
     manifest: NpmManifest | null,
@@ -40,11 +39,10 @@ export async function getPkgDetails(
     if (!pkgSize || force) {
         console.log(`Cache miss - running "npm i ${name}@${version}" in ${tmpDir}...`);
         const start = new Date();
-        pkgSize = await calculatePackageSize(name, version, tmpDir);
+        pkgSize = await runInSandbox(name, version);
         const end = new Date();
         const sec = (end.getTime() - start.getTime()) / 1000;
         console.log(`Calculated size of ${name}@${version} in ${sec}s`);
-        await insertRedis(pkgSize);
     }
 
     const result = {

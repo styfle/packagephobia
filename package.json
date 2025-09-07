@@ -14,6 +14,7 @@
   "author": "styfle",
   "license": "MIT",
   "dependencies": {
+    "@vercel/sandbox": "^0.0.12",
     "badgen": "^3.2.3",
     "ioredis": "^5.4.1",
     "lru-cache": "^10.2.0",
