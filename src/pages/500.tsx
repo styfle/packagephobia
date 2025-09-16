@@ -23,6 +23,7 @@ export default ({ reqId }: { reqId: string }) => (
                 </p>
                 <p>
                     <a
+                        rel="nofollow"
                         href={`https://vercel.com/packagephobia/packagephobia/logs?requestIds=${reqId}`}
                     >
                         View Logs
