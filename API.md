@@ -15,7 +15,7 @@ Current websites using this API:
 - https://socket.dev
 - [picocolors-size-benchmark](https://github.com/alexeyraspopov/picocolors/pull/76)
 - [dependencies-dashboard](https://github.com/shakib1729/dependencies-dashboard-main)
-- https://jsgrids.statico.io
+- [jsgrids.statico.io](https://github.com/statico/jsgrids/commit/bb8069627d4d9a9b158ffb6324054399ef8d0433)
 
 ## Endpoints
 
