@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        node: [22]
+        node: [24]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
