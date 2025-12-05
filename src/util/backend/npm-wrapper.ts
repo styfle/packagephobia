@@ -23,7 +23,7 @@ export async function npmInstall(
             npm_config_update_notifier: 'false',
             npm_config_package_lock: 'false',
             npm_config_progress: 'false',
-            npm_config_silent: 'true',
+            npm_config_loglevel: 'silent',
             npm_config_cache: cacheDir,
             npm_config_registry: process.env.NPM_REGISTRY_URL,
             // Omit peerDependencies to match legacy behavior from npm@6 and `yarn@1`
