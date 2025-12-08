@@ -1,8 +1,10 @@
 # API
 
-If you intend to use this API, please add your website to the list below and set your client's `user-agent` request header to match.
+If you intend to use this API, set your `User-Agent` to identify your app, and then add that same identifier to the list below
 
-If you forget to set a `user-agent`, you will likely be blocked.
+For example, set your `User-Agent: "example.com (some other app information)"`, and then add `example.com` to the list. Make your entry link to where the user agent is specified.
+
+If you forget to set a `User-Agent`, you will likely be blocked.
 
 ## Users
 
