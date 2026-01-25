@@ -17,6 +17,7 @@
     "badgen": "^3.2.3",
     "ioredis": "^5.4.1",
     "lru-cache": "^10.2.0",
+    "npm": "^11.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "semver": "^7.6.0"
@@ -26,9 +27,8 @@
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
     "@types/semver": "^7.5.8",
-    "npm": "^11.6.4",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
-  "packageManager": "npm@10.9.0"
+  "packageManager": "npm@11.8.0"
 }
