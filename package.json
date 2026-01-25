@@ -15,20 +15,20 @@
   "license": "MIT",
   "dependencies": {
     "badgen": "^3.2.3",
-    "ioredis": "^5.4.1",
-    "lru-cache": "^10.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "semver": "^7.6.0"
+    "ioredis": "^5.9.2",
+    "lru-cache": "^11.2.4",
+    "npm": "^11.8.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "semver": "^7.7.3"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
+    "@types/node": "^22.19.7",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
     "@types/semver": "^7.5.8",
-    "npm": "^11.6.4",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3"
   },
-  "packageManager": "npm@10.9.0"
+  "packageManager": "npm@11.8.0"
 }
