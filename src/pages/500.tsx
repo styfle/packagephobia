@@ -6,7 +6,7 @@ import PageContainer from '../components/PageContainer';
 
 import { pages } from '../util/constants';
 
-export default ({ reqId }: { reqId: string }) => (
+export default ({ reqId, isTimeout }: { reqId: string; isTimeout?: boolean }) => (
     <>
         <PageContainer>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -14,9 +14,12 @@ export default ({ reqId }: { reqId: string }) => (
 
                 <p>Oops, the package failed to install.</p>
                 <p style={{ maxWidth: '500px' }}>
-                    This can happen when there is no prebuilt binary for node@
-                    {process.versions.node} or the install script requires CLIs like
-                    python/curl/etc.
+                    {isTimeout
+                        ? 'This can happen when the package took too long to install and the request timed out.'
+                        : <>This can happen when there is no prebuilt binary for node@
+                            {process.versions.node} or the install script requires CLIs like
+                            python/curl/etc.</>
+                    }
                 </p>
                 <p>
                     <a href={pages.index}>Go Home</a>
