@@ -14,12 +14,15 @@ export default ({ reqId, isTimeout }: { reqId: string; isTimeout?: boolean }) =>
 
                 <p>Oops, the package failed to install.</p>
                 <p style={{ maxWidth: '500px' }}>
-                    {isTimeout
-                        ? 'This can happen when the package took too long to install and the request timed out.'
-                        : <>This can happen when there is no prebuilt binary for node@
+                    {isTimeout ? (
+                        'This can happen when the package took too long to install and the request timed out.'
+                    ) : (
+                        <>
+                            This can happen when there is no prebuilt binary for node@
                             {process.versions.node} or the install script requires CLIs like
-                            python/curl/etc.</>
-                    }
+                            python/curl/etc.
+                        </>
+                    )}
                 </p>
                 <p>
                     <a href={pages.index}>Go Home</a>

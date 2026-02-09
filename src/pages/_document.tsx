@@ -253,7 +253,8 @@ async function routePage(
         if (err instanceof NotFoundError) {
             return <NotFound resource={err.resource} />;
         }
-        const isTimeout = err instanceof Error && 'code' in err && (err as any).code === 'ABORT_ERR';
+        const isTimeout =
+            err instanceof Error && 'code' in err && (err as any).code === 'ABORT_ERR';
         console.error('Unexpected Error Occurred...', err);
         return <ServerError reqId={reqId} isTimeout={isTimeout} />;
     }
