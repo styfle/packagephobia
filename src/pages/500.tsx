@@ -10,7 +10,7 @@ export default ({ reqId, isTimeout }: { reqId: string; isTimeout?: boolean }) =>
     <>
         <PageContainer>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                <h1>500 Internal Server Error</h1>
+                <h1>{isTimeout ? '504 Timeout' : '500 Server Error'}</h1>
 
                 <p>Oops, the package failed to install.</p>
                 <p style={{ maxWidth: '500px' }}>
