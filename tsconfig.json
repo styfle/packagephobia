@@ -2,7 +2,7 @@
     "compilerOptions": {
         "esModuleInterop": true,
         "outDir": "./dist",
-        "target": "es2022",
+        "target": "esnext",
         "module": "nodenext",
         "moduleResolution": "nodenext",
         "jsx": "react",
