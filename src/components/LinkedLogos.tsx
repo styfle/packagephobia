@@ -34,6 +34,17 @@ export default (props: Props) => {
             />
             <LinkedLogo
                 name={name}
+                icon="npmx"
+                color="#0A0A0A"
+                title="npmx"
+                href={
+                    isLatest
+                        ? `https://npmx.dev/package/${name}`
+                        : `https://npmx.dev/package/${name}/v/${version}`
+                }
+            />
+            <LinkedLogo
+                name={name}
                 icon="cloudflare"
                 color="#222"
                 title="unpkg"
