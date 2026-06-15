@@ -39,7 +39,7 @@ const icons = {
         </svg>
     ),
     npmx: (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 153 153">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 193 193">
             <g transform="translate(16.704 9.9827)">
                 <path d="m0.93476 97.205h24.081v23.693h-24.081z" />
                 <path d="m103.12-9.2307-3.6211 10.246-46.309 131-3.6211 10.246h15.537l3.6211-10.246 11.717-33.148 38.211-108.1z" />
