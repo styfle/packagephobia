@@ -31,7 +31,7 @@ Or just the npm package name, which will automatically use the latest version (c
 
 [`https://packagephobia.com/api.json?p=satori`](https://packagephobia.com/api.json?p=satori)
 
-> This caching is done using a [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) header, see [`server.ts`](https://github.com/styfle/packagephobia/blob/main/src/server.ts).
+> This caching is done using a [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) header, see [`handler.ts`](https://github.com/styfle/packagephobia/blob/main/src/handler.ts).
 
 ### Example response from v1
 

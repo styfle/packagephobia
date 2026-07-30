@@ -1,3 +1,3 @@
-import { handler } from '../src/server';
+import { handler } from '../src/handler';
 
 export default handler;
