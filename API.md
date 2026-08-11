@@ -9,6 +9,7 @@ If you forget to set a `user-agent`, you will likely be blocked.
 Current websites using this API:
 
 - https://badgen.net
+- https://badges.ws
 - https://cnpmjs.org
 - https://npm.taobao.org
 - https://bestofjs.org
