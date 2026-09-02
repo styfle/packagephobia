@@ -79,6 +79,7 @@ Package Phobia is inspired by [Bundle Phobia](https://github.com/pastelsky/bundl
 
 Did you install a package and compare the size on disk with the size reported on Package Phobia?
 
+
 This number will likely be different because Package Phobia doesn't know anything about your hard drive so it can't predict how blocks are allocated.
 
 Packages are known to contain many small `.js` files which can actually use up a lot of disk space, more than if there was one large, contiguous file.
