@@ -1,4 +1,4 @@
-<a href="https://packagephobia.com"><img src="https://packagephobia.com/logo.svg" width="60" height="60" align="right" /></a>
+<a href="https://packagephobia.com"><img src="https://packagephobia.com/logo.svg?v=1" width="60" height="60" align="right" /></a>
 
 # Package Phobia
 [![Tests](https://github.com/styfle/packagephobia/actions/workflows/nodejs.yml/badge.svg)](https://github.com/styfle/packagephobia/actions/workflows/nodejs.yml)
