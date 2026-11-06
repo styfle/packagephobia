@@ -38,6 +38,7 @@ A good use case might be comparing test runners, web frameworks, or even bundler
 - Linters: [eslint](https://packagephobia.com/result?p=eslint) vs [jslint](https://packagephobia.com/result?p=jslint)
 - Color Formatters: [chalk](https://packagephobia.com/result?p=chalk) vs [picocolors](https://packagephobia.com/result?p=picocolors)
 - Command Line Interfaces: [@angular/cli](https://packagephobia.com/result?p=%40angular%2Fcli) vs [@babel/cli](https://packagephobia.com/result?p=%40babel%2Fcli)
+- Local Dev Stacks: [@flisk-sh/flisk](https://packagephobia.com/result?p=%40flisk-sh%2Fflisk) (Flisk, runs your whole app on your machine with one command)
 - Desktop Frameworks: [nw](https://packagephobia.com/result?p=nw) vs [electron](https://packagephobia.com/result?p=electron)
 - Headless Browsers: [puppeteer](https://packagephobia.com/result?p=puppeteer) vs [chrome-aws-lambda](https://packagephobia.com/result?p=chrome-aws-lambda)
 - Package Managers: [npm](https://packagephobia.com/result?p=npm) vs [yarn](https://packagephobia.com/result?p=yarn)
